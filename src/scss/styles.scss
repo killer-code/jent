@@ -1,0 +1,49 @@
+@import 'base/fonts.scss';
+@import 'base/reset.scss';
+@import 'base/base.scss';
+
+.v-main { flex: auto !important; }
+.theme--light.v-toolbar.v-sheet {
+    background-color: #f5f5f5 !important;
+}
+
+.app-form-select_city {
+    & input::placeholder {
+        font-size: 14px;
+        line-height: 17px;
+        color: #18335D !important;
+    }
+    & i { color: #18335D !important; }
+}
+
+.whithout-head .v-picker__title { display: none; }
+
+.v-calendar-daily__scroll-area { overflow-y: hidden !important; overflow-x: hidden !important; }
+.v-calendar-daily__scroll-area::-webkit-scrollbar {
+    display: none;
+}
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.v-calendar-daily__scroll-area {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+}
+.v-calendar-daily__head { margin-right: 0 !important; }
+.theme--light.v-calendar-daily .v-calendar-daily__day { border-right: 0 !important; }
+.v-calendar-daily__intervals-body { display: none; }
+
+.v-calendar-daily__pane {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow: hidden;
+    border-bottom: 0;
+}
+.router-link-exact-active p { 
+    color: #173679; 
+}
+.router-link-exact-active .tab { 
+    opacity: 1;
+    border-bottom: solid 2px #173679 !important; 
+}
+.v-text-field__details { display: none !important; }
+.v-date-picker-table__current { color: #000 !important; }
