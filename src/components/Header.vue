@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" :class="{ 'app-header_min': asideData.isOpen }">
     <div class="west-side">
       <button class="app-btn">
         <img src="@/assets/img/burger.svg" alt="">
@@ -19,6 +19,7 @@
 <script>
 export default {
   name: 'Header',
+  props: ['asideData'],
 }
 </script>
 
@@ -33,6 +34,8 @@ export default {
   left: 0;
   right: 0;
   z-index: 1;
+
+  &_min { left: 30vw; }
 }
 .app-btn {
   border: 0;

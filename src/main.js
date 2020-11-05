@@ -7,6 +7,9 @@ import store  from './store'
 
 import VueFullPage from 'vue-fullpage.js'
 
+import * as PIXI from 'pixi.js'
+Vue.prototype.$PIXI = PIXI;
+
 Vue.config.productionTip = false
 
 Vue.use(VueFullPage);
