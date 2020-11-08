@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <div class="section">
-      <ScreenOne :asideData="asideData" :getAsideData="getAsideData" />
+      <ScreenOne :asideData="asideData" 
+        :getAsideData="getAsideData" />
     </div>
-    <!-- <div class="section">
+    <div class="section">
       <ScreenTwo />
-    </div> -->
+    </div>
     <div class="section">
       <ScreenThree />
     </div>

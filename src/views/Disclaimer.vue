@@ -13,7 +13,10 @@
 export default {
   name: 'Disclaimer',
   methods: {
-    goSite() { this.$router.push({ name: 'Home' }) }
+    goSite() { 
+      localStorage.old = true;
+      this.$router.push({ name: 'Home' });
+    }
   }
 }
 </script>

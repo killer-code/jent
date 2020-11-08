@@ -5,15 +5,25 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "core-js": "^3.6.5",
     "pixi.js": "^5.3.3",
     "vue": "^2.6.11",
     "vue-extend-layout": "^2.0.6",
     "vue-fullpage.js": "^0.1.6",
     "vue-router": "^3.2.0",
+    "vue-router-sitemap": "0.0.4",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -22,6 +32,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "node-sass": "^4.14.1",
+    "react-snap": "^1.23.0",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "vue-template-compiler": "^2.6.11"

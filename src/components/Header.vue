@@ -34,6 +34,7 @@ export default {
   left: 0;
   right: 0;
   z-index: 1;
+  transition: all .7s ease;
 
   &_min { left: 30vw; }
 }
@@ -41,6 +42,8 @@ export default {
   border: 0;
   background: none;
   cursor: pointer;
+
+  &:focus { outline: none; }
 }
 .discription {
   font-weight: 400;
@@ -55,4 +58,5 @@ export default {
   align-items: center;
 }
 .main-logo { margin-left: 10px; }
+
 </style>

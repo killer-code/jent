@@ -1,3 +1,4 @@
+// Proxima Nova
 @font-face {
     font-family: 'ProximaNova';
     src: url('~@/assets/fonts/ProximaNovaT-Thin.ttf');
@@ -30,5 +31,13 @@
     font-family: 'ProximaNova';
     src: url('~@/assets/fonts/ProximaNova-Black.ttf');
     font-weight: 900;
+    font-style: normal;
+}
+
+// Aldrich
+@font-face {
+    font-family: 'Aldrich';
+    src: url('~@/assets/fonts/Aldrich/Aldrich-Regular.ttf');
+    font-weight: 400;
     font-style: normal;
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="screen-two">
+  <section class="screen-three">
     <div class="container">
       <transition>
         <h2 class="caption-2 caption-2_gradient">Активное<br>вещество</h2>
