@@ -57,15 +57,8 @@ export default {
         })
     },
     loadProgressHandler(loader, resource) {
-      //Display the file `url` currently being loaded
       console.log("loading: " + resource.url); 
-
-      //Display the percentage of files currently loaded
       console.log("progress: " + loader.progress + "%"); 
-
-      //If you gave your files names as the first argument 
-      //of the `add` method, you can access them like this
-      //console.log("loading: " + resource.name);
     },
     onAssetsLoaded() {
       const frames = [];
@@ -136,6 +129,28 @@ export default {
       }
       }
     },
+    onAssetsLoaded1() {
+      let frames = [];
+      if ( this.app.stage ) {
+        for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
+          {	this.app.stage.removeChild(this.app.stage.children[i]) };
+      };
+      for ( let i = 91; i > 59; i-- ) {
+        const val = i;
+
+        frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
+        const anim = new this.$PIXI.AnimatedSprite(frames);
+        
+        anim.x = this.app.screen.width / 2;
+        anim.y = this.app.screen.height / 2;
+        anim.anchor.set(.5);
+        anim.animationSpeed = .5;
+        anim.loop = false;
+        anim.play();
+
+        this.app.stage.addChild(anim);
+      }
+    },
     onAssetsLoaded2() {
       let frames = [];
       if ( this.app.stage ) {
@@ -169,6 +184,9 @@ export default {
   },
   watch: {
     scroll() {
+      if ( this.scroll === 0 ) {
+        this.onAssetsLoaded1();
+      }
       if ( this.scroll === 1 ) {
         this.onAssetsLoaded2();
       }
