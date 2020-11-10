@@ -7,7 +7,13 @@
       <Header :asideData="asideData" />
     </section>
 
-    <AnimationOne />
+    <AnimationOne :scroll="scroll" 
+      :json_1="json_0" 
+      :sprite_1="sprite_0" />
+    <!-- <AnimationTwo :scroll="scroll" 
+      :json_2="json_2"
+      :sprite_2="sprite_2"
+      v-show="scroll === 1" /> -->
 
     <full-page ref="fullpage" id="fullpage" :options="options">
       <router-view :asideData="asideData" />
@@ -22,11 +28,19 @@ import Footer   from '@/components/Footer'
 import WestSide from '@/components/WestSide'
 
 import AnimationOne from '@/components/home/AnimationOne'
+import AnimationTwo from '@/components/home/AnimationTwo'
 
 export default {
   name: 'general',
-  components: { Header, Footer, WestSide, AnimationOne },
+  components: { Header, Footer, WestSide, AnimationOne, AnimationTwo },
   data: () => ({
+    json_0: require('@/assets/img/sprites/scene-1/screen-0.json'),
+    sprite_0: require('@/assets/img/sprites/scene-1/screen-0.png'),
+    // json_1: require('@/assets/img/sprites/scene-1/screen-1.json'),
+    // sprite_1: require('@/assets/img/sprites/scene-1/screen-1.png'),
+    // json_2: require('@/assets/img/sprites/scene-2/screen-2.json'),
+    // sprite_2: require('@/assets/img/sprites/scene-2/screen-2.png'),
+
     asideData: {
       isOpen: false,
     },
@@ -35,20 +49,19 @@ export default {
   computed: {
     options: function() {
       return {
-        afterLoad: this.afterLoad,
         licenseKey: 'BSD-3-Clause',
+        onLeave: this.onLeave,
+        fitToSectionDelay: 5000,
+        scrollingSpeed: 2000,
       }
     }
-  },
-  mounted() {
-    console.log(this.scroll);
   },
   methods: {
-    afterLoad() {
+    onLeave() {
       if ( this.$refs.fullpage.api ) {
-        this.scroll = this.$refs.fullpage.api.getActiveSection().index;
+        this.scroll += 1;
       }
-    }
+    },
   }
 }
 </script>
@@ -65,5 +78,8 @@ export default {
   left: 0;
   top: 0;
   z-index: -1;
+}
+.opacity {
+  opacity: 0;
 }
 </style>
