@@ -7,9 +7,13 @@
       <Header :asideData="asideData" />
     </section>
 
-    <AnimationOne :scroll="scroll" 
+    <Preloader v-show="!loaded" :process="process" @load="changeLoad" />
+
+    <AnimationOne v-show="loaded" 
+      :scroll="scroll" 
       :json_1="json_0" 
-      :sprite_1="sprite_0" />
+      :sprite_1="sprite_0"
+      @process="changeLoad" />
     <!-- <AnimationTwo :scroll="scroll" 
       :json_2="json_2"
       :sprite_2="sprite_2"
@@ -27,13 +31,25 @@ import Header   from '@/components/Header'
 import Footer   from '@/components/Footer'
 import WestSide from '@/components/WestSide'
 
+import Preloader from '@/components/Preloader'
+
 import AnimationOne from '@/components/home/AnimationOne'
 import AnimationTwo from '@/components/home/AnimationTwo'
 
 export default {
   name: 'general',
-  components: { Header, Footer, WestSide, AnimationOne, AnimationTwo },
+  components: { 
+    Header, 
+    Footer, 
+    WestSide, 
+    Preloader,
+    AnimationOne, 
+    AnimationTwo 
+  },
   data: () => ({
+    process: false,
+    loaded: false,
+
     json_0: require('@/assets/img/sprites/scene/screen-00.json'),
     sprite_0: require('@/assets/img/sprites/scene/screen-00.webp'),
     // json_1: require('@/assets/img/sprites/scene-1/screen-1.json'),
@@ -64,6 +80,12 @@ export default {
         this.scroll --;
       }
     },
+    changeLoad() {
+      setTimeout(() => { this.loaded = true; }, 2000)
+    },
+    changeProcess() {
+      setTimeout(() => { this.process = true; }, 100)
+    }
   }
 }
 </script>

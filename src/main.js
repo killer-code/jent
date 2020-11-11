@@ -5,7 +5,9 @@ import App    from './App.vue'
 import router from './router'
 import store  from './store'
 
-import VueFullPage from 'vue-fullpage.js'
+import VueFullPage     from 'vue-fullpage.js'
+// import { VueSpinners } from '@saeris/vue-spinners'
+
 
 import * as PIXI from 'pixi.js'
 Vue.prototype.$PIXI = PIXI;
@@ -15,6 +17,7 @@ Vue.prototype.$anime = anime;
 Vue.config.productionTip = false
 
 Vue.use(VueFullPage);
+// Vue.use(VueSpinners);
 
 new Vue({
   router,

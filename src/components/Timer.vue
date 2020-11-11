@@ -81,7 +81,15 @@ export default {
   mounted() {
     this.animeteTimer();
     this.animeClocker();
-  }
+  },
+  // watch: {
+  //   loaded() {
+  //     if ( this.loaded ) {
+  //       this.animeteTimer();
+  //       this.animeClocker();
+  //     }
+  //   }
+  // }
 }
 </script>
 

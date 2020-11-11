@@ -1,6 +1,7 @@
 <template>
   <section class="scene" style="position: fixed;">
-    <div data-depth="0.05" class="canvas sequence-1"></div>
+    <div data-depth="0.05" 
+      class="canvas sequence-1"></div>
   </section>
 </template>
 
@@ -12,15 +13,19 @@ export default {
   props: ['scroll', 'json_1', 'sprite_1'],
   data: () => ({
     mouseX: 0,
-    loaded: false,
+    mouseY: 0,
+    rotation: 0.1,
+
+    width: window.innerWidth,
+    height: window.innerHeight
   }),
   computed: {
     app: function() {
       return new this.$PIXI.Application({
         antialias: true,
         transparent: true,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: this.width,
+        height: this.height,
       });
     },
   },
@@ -31,8 +36,8 @@ export default {
   methods: {
     createScene() {
       if ( this.app.stage ) {
-        for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
-          {	this.app.stage.removeChild(this.app.stage.children[i]);
+        for (let i = this.app.stage.children.length - 1; i >= 0; i--) {	
+          this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
 
@@ -49,7 +54,7 @@ export default {
         .load((loader, resources) => {
           console.log("progress: " + loader.progress + "%");
           
-          if ( loader.progress === 100 ) this.loaded = true;
+          if ( loader.progress === 100 ) this.$emit('process');
          
           const texture = new this.$PIXI.Texture.from(this.sprite_1);
           const sheet = new this.$PIXI.Spritesheet(texture, this.json_1);
@@ -77,8 +82,9 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .2;
+            anim.animationSpeed = .5;
             anim.loop = false;
+            // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
 
             this.app.stage.addChild(anim);
@@ -93,9 +99,11 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .2;
+            anim.animationSpeed = .5;
             anim.loop = false;
+            // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
+            // console.log(anim.rotation);
 
             this.app.stage.addChild(anim);
           }
@@ -149,6 +157,7 @@ export default {
 
     getMouseX(e) {
       let newMouseX = e.clientX;
+      let newMouseY = e.clientY;
       let widthFrame = window.innerWidth / 30;
       let strat_frame = Math.round(this.mouseX / widthFrame);
       let end_frame   = Math.round(newMouseX / widthFrame);
@@ -158,10 +167,11 @@ export default {
       setTimeout( () => {
         this.onAssetsLoaded(strat_frame, end_frame);
         this.mouseX = newMouseX;
+        this.mouseY = newMouseY - window.innerHeight / 2;
       }, 100)
-    }
+    },
   },
-  watch: {
+  watch: { 
     scroll() {
       if ( this.scroll === 0 ) {
         this.onAssetsLoaded1();
