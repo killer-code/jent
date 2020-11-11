@@ -34,8 +34,8 @@ export default {
   name: 'general',
   components: { Header, Footer, WestSide, AnimationOne, AnimationTwo },
   data: () => ({
-    json_0: require('@/assets/img/sprites/scene/screen-0.json'),
-    sprite_0: require('@/assets/img/sprites/scene/screen-0.webp'),
+    json_0: require('@/assets/img/sprites/scene/screen-00.json'),
+    sprite_0: require('@/assets/img/sprites/scene/screen-00.webp'),
     // json_1: require('@/assets/img/sprites/scene-1/screen-1.json'),
     // sprite_1: require('@/assets/img/sprites/scene-1/screen-1.png'),
     // json_2: require('@/assets/img/sprites/scene-2/screen-2.json'),

@@ -12,6 +12,7 @@ export default {
   props: ['scroll', 'json_1', 'sprite_1'],
   data: () => ({
     mouseX: 0,
+    loaded: false,
   }),
   computed: {
     app: function() {
@@ -25,7 +26,7 @@ export default {
   },
   mounted() {
     this.createScene();
-    document.addEventListener('mouseover', this.getMouseX, false);
+    document.addEventListener('mousemove', this.getMouseX, false);
   },
   methods: {
     createScene() {
@@ -46,88 +47,60 @@ export default {
       self.app.loader
         .add('image', this.json_1.meta.image)
         .load((loader, resources) => {
-          console.log("loading: " + resources.image.url)
           console.log("progress: " + loader.progress + "%");
+          
+          if ( loader.progress === 100 ) this.loaded = true;
+         
           const texture = new this.$PIXI.Texture.from(this.sprite_1);
           const sheet = new this.$PIXI.Spritesheet(texture, this.json_1);
 
           sheet.parse(() => {
-            this.onAssetsLoaded();
+            this.onAssetsLoaded(1, 10);
           })
         })
     },
-    loadProgressHandler(loader, resource) {
-      console.log("loading: " + resource.url); 
-      console.log("progress: " + loader.progress + "%"); 
-    },
-    onAssetsLoaded() {
+    onAssetsLoaded(frame_start = 30, frame_end = 31) {
       const frames = [];
       if ( this.scroll === 0 ) {
-      if ( this.mouseX === 0 ) {
         if ( this.app.stage ) {
           for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
             {	this.app.stage.removeChild(this.app.stage.children[i]);
           };
         }
+        if ( frame_start > frame_end ) {
+          for ( let i = frame_start; i > frame_end; i-- ) {
+            const val = i;
 
-        for ( let i = 60; i < 61; i++ ) {
-          const val = i;
+            frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
+            const anim = new this.$PIXI.AnimatedSprite(frames);
 
-          frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
-          const anim = new this.$PIXI.AnimatedSprite(frames);
+            anim.x = this.app.screen.width / 2;
+            anim.y = this.app.screen.height / 2;
+            anim.anchor.set(.5);
+            anim.animationSpeed = .2;
+            anim.loop = false;
+            anim.play();
 
-          anim.x = this.app.screen.width / 2;
-          anim.y = this.app.screen.height / 2;
-          anim.anchor.set(.5);
+            this.app.stage.addChild(anim);
+          }
+        } else if ( frame_start < frame_end ) {
+          for ( let i = frame_start; i < frame_end; i++ ) {
+            const val = i;
 
-          this.app.stage.addChild(anim);
+            frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
+            const anim = new this.$PIXI.AnimatedSprite(frames);
+
+            anim.x = this.app.screen.width / 2;
+            anim.y = this.app.screen.height / 2;
+            anim.anchor.set(.5);
+            anim.animationSpeed = .2;
+            anim.loop = false;
+            anim.play();
+
+            this.app.stage.addChild(anim);
+          }
         }
-      } else if ( this.mouseX < this.app.screen.width / 2 ) {
-        if ( this.app.stage ) {
-          for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
-            {	this.app.stage.removeChild(this.app.stage.children[i]);
-          };
-        }
-
-        for ( let i = 1; i < 31; i++ ) {
-          const val = i;
-
-          frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
-          const anim = new this.$PIXI.AnimatedSprite(frames);
-          
-          anim.x = this.app.screen.width / 2;
-          anim.y = this.app.screen.height / 2;
-          anim.anchor.set(.5);
-          anim.animationSpeed = .4;
-          anim.loop = false;
-          anim.play();
-
-          this.app.stage.addChild(anim);
-        }
-      } else {
-        if ( this.app.stage ) {
-          for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
-            {	this.app.stage.removeChild(this.app.stage.children[i]);
-          };
-        }
-
-        for ( let i = 31; i < 61; i++ ) {
-          const val = i;
-
-          frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
-          const anim = new this.$PIXI.AnimatedSprite(frames);
-          
-          anim.x = this.app.screen.width / 2;
-          anim.y = this.app.screen.height / 2;
-          anim.anchor.set(.5);
-          anim.animationSpeed = .4;
-          anim.loop = false;
-          anim.play();
-
-          this.app.stage.addChild(anim);
-        }
-      }
-      }
+      } 
     },
     onAssetsLoaded1() {
       let frames = [];
@@ -135,7 +108,7 @@ export default {
         for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
           {	this.app.stage.removeChild(this.app.stage.children[i]) };
       };
-      for ( let i = 91; i > 59; i-- ) {
+      for ( let i = 63; i > 30; i-- ) {
         const val = i;
 
         frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
@@ -157,7 +130,7 @@ export default {
         for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
           {	this.app.stage.removeChild(this.app.stage.children[i]) };
       };
-      for ( let i = 60; i < 92; i++ ) {
+      for ( let i = 30; i < 64; i++ ) {
         const val = i;
 
         frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
@@ -175,11 +148,17 @@ export default {
     },
 
     getMouseX(e) {
-      let newMouseX = e.pageX;
-      if ( Math.abs(newMouseX - this.mouseX) > 100 ) {
+      let newMouseX = e.clientX;
+      let widthFrame = window.innerWidth / 30;
+      let strat_frame = Math.round(this.mouseX / widthFrame);
+      let end_frame   = Math.round(newMouseX / widthFrame);
+      if ( strat_frame === 0 ) strat_frame += 1;
+      if ( end_frame === 0 ) end_frame += 1;
+      if ( strat_frame === end_frame ) end_frame += 1;
+      setTimeout( () => {
+        this.onAssetsLoaded(strat_frame, end_frame);
         this.mouseX = newMouseX;
-        this.onAssetsLoaded();
-      }
+      }, 100)
     }
   },
   watch: {
