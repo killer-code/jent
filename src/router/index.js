@@ -2,7 +2,9 @@ import Vue       from 'vue'
 import VueRouter from 'vue-router'
 
 import Home       from '@/views/Home'
+import Order      from '@/views/Order'
 import Disclaimer from '@/views/Disclaimer'
+
 import Err404     from '@/views/404'
 
 Vue.use(VueRouter)
@@ -20,6 +22,13 @@ const routes = [
     component: Disclaimer,
     meta: { layout: 'empty', clear: true, },
   },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order,
+    meta: { layout: 'default', age: true, },
+  },
+
   {
     path: '/404',
     name: 'Err404',
