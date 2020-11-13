@@ -67,6 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 .screen-one {
+  position: relative;
   height: 100vh;
   width: 100vw;
 }

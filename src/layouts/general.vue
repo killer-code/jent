@@ -9,6 +9,8 @@
 
     <Preloader v-show="!loaded" :process="process" @load="changeLoad" />
 
+    <CanvasBackground :loaded="loaded" />
+
     <AnimationOne v-show="loaded" 
       :scroll="scroll" 
       :json_1="json_0" 
@@ -35,6 +37,7 @@ import Preloader from '@/components/Preloader'
 
 import AnimationOne from '@/components/home/AnimationOne'
 import AnimationTwo from '@/components/home/AnimationTwo'
+import CanvasBackground from '@/components/home/CanvasBackground'
 
 export default {
   name: 'general',
@@ -44,14 +47,15 @@ export default {
     WestSide, 
     Preloader,
     AnimationOne, 
-    AnimationTwo 
+    AnimationTwo,
+    CanvasBackground
   },
   data: () => ({
     process: false,
     loaded: false,
 
     json_0: require('@/assets/img/sprites/scene/screen-00.json'),
-    sprite_0: require('@/assets/img/sprites/scene/screen-00.webp'),
+    sprite_0: require('@/assets/img/sprites/scene/screen-00.png'),
     // json_1: require('@/assets/img/sprites/scene-1/screen-1.json'),
     // sprite_1: require('@/assets/img/sprites/scene-1/screen-1.png'),
     // json_2: require('@/assets/img/sprites/scene-2/screen-2.json'),

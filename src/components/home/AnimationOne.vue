@@ -1,6 +1,6 @@
 <template>
   <section class="scene" style="position: fixed;">
-    <div data-depth="0.05" 
+    <div data-depth-x="0.2" data-depth-y="0.1"
       class="canvas sequence-1"></div>
   </section>
 </template>
@@ -82,7 +82,7 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .5;
+            anim.animationSpeed = .8;
             anim.loop = false;
             // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
@@ -99,11 +99,10 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .5;
+            anim.animationSpeed = .8;
             anim.loop = false;
             // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
-            // console.log(anim.rotation);
 
             this.app.stage.addChild(anim);
           }
@@ -168,7 +167,7 @@ export default {
         this.onAssetsLoaded(strat_frame, end_frame);
         this.mouseX = newMouseX;
         this.mouseY = newMouseY - window.innerHeight / 2;
-      }, 100)
+      }, 10)
     },
   },
   watch: { 
