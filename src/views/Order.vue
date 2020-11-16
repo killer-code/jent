@@ -5,6 +5,10 @@
       <div slot="header" class="clearfix">
         <h2 class="caption-3 _dark">Форма</h2>
       </div>
+      {{ ip }}
+      <!-- {{ city.city.name_ru }} -->
+      {{ allCities }}
+      <!-- {{ localStorage.getItem('city') }} -->
       <div class="text item">
         QWEQWE
       </div>
@@ -18,24 +22,33 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Order',
   computed: {
-    ...mapGetters(['userIP', 'userCity']),
+    ...mapGetters(['userIP', 'userCity', 'allCities']),
     ip: function() {
-      if ( localStorage.getItem('ip') ) {
+      if ( !localStorage.getItem('ip') ) {
+        this.fetchUserIP();
+      } else {
         return localStorage.getItem('ip');
       }
     },
+    city: function() {
+      if ( this.ip ) {
+        if ( !localStorage.getItem('city') ) {
+          this.fetchUserCity(this.ip);
+        } else {
+          return JSON.parse(localStorage.getItem('city'));
+        }
+      }
+    }
   },
   methods: {
-    ...mapActions(['fetchUserIP', 'fetchUserCity']),
+    ...mapActions(['fetchUserIP', 'fetchUserCity', 'fetchCities']),
   },
   mounted() {
-    if ( !localStorage.getItem('ip') ) {
-      this.fetchUserIP();
-      localStorage.ip = this.userIP;
-    };
-    if ( localStorage.getItem('ip') && !localStorage.getItem('city') ) {
-      this.fetchUserCity(localStorage.getItem('ip'));
-      localStorage.city = this.userCity;
+    this.fetchCities();
+  },
+  watch: {
+    userIP() {
+      if ( this.userIP ) this.fetchUserCity(this.userIP);
     }
   }
 }

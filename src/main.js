@@ -13,6 +13,8 @@ import Element     from 'element-ui'
 
 import * as PIXI from 'pixi.js'
 Vue.prototype.$PIXI = PIXI;
+import anime from 'animejs/lib/anime.es'
+Vue.prototype.$anime = anime;
 
 Vue.config.productionTip = false
 

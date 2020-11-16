@@ -11,10 +11,10 @@ export default {
   name: 'CanvasBackground',
   props: ['loaded'],
   data: () => ({
-    width: window.innerWidth,
+    width: window.innerWidth / 1.5,
     height: window.innerHeight,
 
-    particalCount: 500,
+    particalCount: 300,
     particles: [],
 
     mouse_coord: {
@@ -52,11 +52,11 @@ export default {
     },
 
     Particle(self) {
-      this.color = `rgba(47, 39, 70, .7)`;
-      this.shadowcolor = `rgba(28, 22, 43, 1)`;
+      this.color = `rgba(255, 255, 255, .05)`;
+      this.shadowcolor = `rgba(255, 255, 255, .025)`;
     
       this.x = Math.random() * self.width;
-      this.y = Math.random() * self.height;
+      this.y = Math.random() * self.height + (window.innerHeight / 3.3);
       this.direction = {
           "x": -1 + Math.random() * 2,
           "y": -1 + Math.random() * 2
@@ -205,13 +205,15 @@ export default {
 <style lang="scss" scoped>
 .canvas-background {
   position: fixed;
-  top: -200;
-  left: -200;
+  bottom: 0;
+  left: 15vw;
   height: 100vh;
   width: 100vw;
 }
 .bg-canvas {
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  bottom: 0;
 }
 </style>

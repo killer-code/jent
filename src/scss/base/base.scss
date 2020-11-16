@@ -1,6 +1,8 @@
 html { 
     overflow-y: auto !important; 
     overflow-x: hidden;
+    -webkit-font-smoothing:  antialiased !important;
+    -moz-osx-font-smoothing: antialiased !important;
 }
 
 body {
@@ -8,8 +10,9 @@ body {
     margin: 0 !important;
     padding: 0;
     background: #13101D;
-    // background-image: url('../assets/img/bg-s1.jpg');
-    // background-size: cover;
+    background-image: url('../assets/img/bg-s1.jpg');
+    background-size: cover;
+    background-position: center;
     background-image: radial-gradient(30.1% 53.52% at 48.78% 46.48%, rgba(38, 37, 42, 0.8) 0%, rgba(37, 36, 41, 0) 100%), #0A0020;
     color: #fff;
     overflow-y: auto;

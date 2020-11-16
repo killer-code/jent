@@ -2,8 +2,9 @@
   <section class="disclaimer">
     <section class="disclaimer__content disclaimer__content_center">
       <img src="@/assets/img/logo_color.svg" class="disclaimer__img" alt="">
-      <p>Информируем вас, что данный сайт... </p>
-      <p>Нажимая кнопку «да», вы подтверждаете, что вам 18+ лет.</p>
+      <p>Информация на сайте предназначена для врачей.</p>
+      <p>Нажимая кнопку “Да”, вы подтверждаете, что являетесь</p>
+      <p>действующим специалистом</p>
       <button class="disclaimer__btn" @click="goSite">да</button>
     </section>
   </section>
@@ -30,7 +31,7 @@ export default {
   width: 100vw;
   height: 100vh;
 
-  background: url('../assets/img/back-dis.png');
+  background: url('../assets/img/bg-s1.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

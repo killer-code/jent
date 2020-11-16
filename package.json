@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@saeris/vue-spinners": "^1.0.8",
+    "animejs": "^3.2.1",
+    "ckeditor4-vue": "^1.2.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
     "parallax-js": "^3.1.0",
