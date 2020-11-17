@@ -33,11 +33,12 @@ a { text-decoration: none; }
 
 }
 .caption-2 {
-    font-weight: 600;
-    font-size: 140px;
-    line-height: 140px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 78px;
 
-    letter-spacing: 0.01em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
 
     &_gradient { 

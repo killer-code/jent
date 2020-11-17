@@ -2,25 +2,11 @@
   <section class="screen-one">
     <div class="container">
       
-      <transition name="left2right">
-        <h2 class="caption-2 caption-2_gradient">КОМПАКТНЫЙ</h2>
-      </transition>
-      
       <section class="content page-1-content">
         <div class="start">
-          <!-- <div class="right_txt _mb-7">
-            <p class="txt txt_right">Инновационный</p>
-            <p class="txt txt_right">формат 
-              <strong class="txt txt_strong">мини-спрея</strong>
-            </p>
-
-            <div @click="openAside" 
-                 data-key="oneFirst" 
-                 class="txt_right wrap_more wrap_more_right">
-              <p class="more">Подробнее</p>
-              <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
-            </div>
-          </div> -->
+          <h2 class="caption-2">Джент.</h2>
+          <h2 class="caption-2 caption-2_gradient">Быстрее ваших</h2>
+          <h2 class="caption-2 caption-2_gradient">желаний</h2>
         </div>
 
 
@@ -103,7 +89,11 @@ export default {
 }
 
 .content > div { display: flex; }
-.start { display: flex; justify-content: flex-start; align-items: center; }
+.start { 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;  
+}
 .end { display: flex; justify-content: flex-end; align-items: center; }
 
 </style>
