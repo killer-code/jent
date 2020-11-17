@@ -20,52 +20,12 @@
           </el-select>
         </div>
       </div>
-      {{ formData }}
-      <div class="text item">
-        <el-input
-          placeholder="ФИО"
-          v-model="formData.name"
-          clearable>
-        </el-input>
+      
+      <Form :formData="formData" :city="city"
+        :citiesOptions="citiesOptions"
+        :parmacyOptions="parmacyOptions"
+        :getSpeciality="getSpeciality" />
 
-        <el-select v-model="formData.store_uid" 
-          placeholder="Выберите аптеку" 
-          class="">
-            <el-option
-              v-for="item in parmacyOptions"
-              :value="item.value"
-              :key="item.value"
-              :label="item.label">
-            </el-option>
-        </el-select>
-
-        <el-input type="tel"
-          placeholder="Телефон"
-          v-model="formData.phone"
-          clearable>
-        </el-input>
-
-        <el-input type="mail"
-          placeholder="email"
-          v-model="formData.email"
-          clearable>
-        </el-input>
-
-        <el-select v-model="formData.speciality" 
-          placeholder="Выберите специальность" 
-          class="">
-            <el-option
-              v-for="item in getSpeciality"
-              :value="item"
-              :key="item"
-              :label="item">
-            </el-option>
-        </el-select>
-      </div>
-
-      <el-button type="primary"
-        @click.prevent="sendOrder">Батон
-      </el-button> 
     </el-card>
   </section>
 </template>
@@ -73,8 +33,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import Form from '@/components/how_to_by/Form'
+
 export default {
   name: 'Order',
+  components: { Form },
   data: function() {
     return {
       formData: {
@@ -140,6 +103,11 @@ export default {
 
       return pharmacy;
     },
+    cityForGetPharmacy: function() {
+      if ( this.formData.city != '' ) {
+        return this.formData.city;
+      }
+    }
   },
   methods: {
     ...mapActions([
@@ -147,37 +115,17 @@ export default {
       'fetchCities', 
       'fetchPharmacy',
       'fetchUserCity',
-      'createOrder',
     ]),
-    async sendOrder() {
-      this.response = await this.createOrder(this.formData);
-    },
-    getUserCity() {
-      this.citiesOptions.forEach(city => {
-        if ( city.label == localStorage.getItem('city') ) {
-          this.formData.city = city.label;
-        }
-      });
-      if ( this.formData.city === '' ) {
-        this.citiesOptions.forEach(city => {
-          if ( city.label == localStorage.getItem('district') ) {
-            this.formData.city = city.label;
-          }
-        })
-      }
-    },
   },
   mounted() {
     this.fetchCities();
-    this.fetchPharmacy(this.formData.city);
-    this.getUserCity();
   },
   watch: {
     userIP() {
       if ( this.userIP ) this.fetchUserCity(this.userIP);
     },
-    citiesOptions() {
-      setTimeout(() => { this.getUserCity() }, 300) ;
+    cityForGetPharmacy() {
+      this.fetchPharmacy(this.formData.city);
     }
   }
 }
