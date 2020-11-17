@@ -6,9 +6,9 @@
         <h2 class="caption-2 caption-2_gradient">КОМПАКТНЫЙ</h2>
       </transition>
       
-      <section class="content">
+      <section class="content page-1-content">
         <div class="start">
-          <div class="right_txt _mb-7">
+          <!-- <div class="right_txt _mb-7">
             <p class="txt txt_right">Инновационный</p>
             <p class="txt txt_right">формат 
               <strong class="txt txt_strong">мини-спрея</strong>
@@ -20,19 +20,37 @@
               <p class="more">Подробнее</p>
               <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
             </div>
-          </div>
+          </div> -->
         </div>
 
 
-        <div class="end">
+        <div class="end _mb-7">
           <Timer />
           <div class="right_txt">
             <p class="txt txt_left">Стабильная эрекция</p>
-            <p class="txt txt_left">уже через <strong class="txt txt_strong">10 мин</strong></p>
+            <p class="txt txt_left">уже через 
+              <strong class="txt txt_strong">10 мин</strong>
+            </p>
 
             <div @click="openAside" 
                  data-key="oneSecond"
                  class="txt_left wrap_more wrap_more_left">
+              <p class="more">Подробнее</p>
+              <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="end" style="margin-right: 7vw;">
+          <div class="_mb-7">
+            <p class="txt txt_left">Инновационный</p>
+            <p class="txt txt_left">формат 
+              <strong class="txt txt_strong">мини-спрея</strong>
+            </p>
+
+            <div @click="openAside" 
+                data-key="oneFirst" 
+                class="txt_left wrap_more wrap_more_left">
               <p class="more">Подробнее</p>
               <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
             </div>
@@ -70,6 +88,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+}
+.page-1-content {
+  display: flex;
+  justify-content: center;
 }
 .content {
   display: flex;

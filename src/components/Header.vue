@@ -8,6 +8,11 @@
       <router-link to="/" class="main-logo">
         <img src="@/assets/img/logo.svg" alt="">
       </router-link>
+
+      <button @click="$router.push('/order')" 
+        class="app-btn__how-by">
+          <span>Как купить</span>
+      </button>
     </div>
     
     <p class="discription">
@@ -58,5 +63,20 @@ export default {
   align-items: center;
 }
 .main-logo { margin-left: 10px; }
+.app-btn__how-by {
+  background: none;
+  color: #f36d01;
+  border: 1px solid #f36d01;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 15px;
 
+  transition: .3 all ease;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+}
 </style>

@@ -1,6 +1,7 @@
 export default ({
   state: {
     user_city: '',
+    user_district: '',
     cities: [],
   },
   getters: {
@@ -13,8 +14,11 @@ export default ({
   },
   mutations: {
     updateUserCity(state, city) {
-      localStorage.city = JSON.stringify(city);
-      state.user_city = city;
+      console.log(city);
+      localStorage.city = city.city.name_ru;
+      localStorage.district = city.region.name_ru;
+      state.user_city = city.city.name_ru;
+      state.user_district = city.region.name_ru;
     },
     updateCities(state, cities) {
       state.cities = cities;
@@ -32,7 +36,6 @@ export default ({
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
-        credentials: 'include',
       });
       const cities = await res.json()
 
