@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    font-family: 'ProximaNova', 'Roboto', sans-serif;
+    font-family: 'Manrope', 'Roboto', sans-serif;
     margin: 0 !important;
     padding: 0;
     background: #13101D;
@@ -34,7 +34,7 @@ a { text-decoration: none; }
 }
 .caption-2 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 60px;
     line-height: 78px;
 
@@ -42,8 +42,8 @@ a { text-decoration: none; }
     text-transform: uppercase;
 
     &_gradient { 
-        opacity: 0.2;
-        background: linear-gradient(86.19deg, #3F2A85 -1%, #FF4848 65.71%), linear-gradient(91.1deg, #FB5A00 3.09%, #66C5B4 74.16%);
+        opacity: 0.7;
+        background: radial-gradient(106.15% 294.86% at 64.43% 50%, #DAD5FF 0%, rgba(255, 255, 255, 0) 100%);
 
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

@@ -7,6 +7,12 @@
           <h2 class="caption-2">Джент.</h2>
           <h2 class="caption-2 caption-2_gradient">Быстрее ваших</h2>
           <h2 class="caption-2 caption-2_gradient">желаний</h2>
+
+          <div class="txt">
+            <p>Инновационное решение, которое поможет избежать</p>
+            <p>неловких ситуаций и «неудач». Джент в новом </p>
+            <p>формате спрея усилит эрекцию за 10 минут.</p>
+          </div>
         </div>
 
 
@@ -77,6 +83,7 @@ export default {
 }
 .page-1-content {
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 .content {
@@ -93,6 +100,15 @@ export default {
   display: flex; 
   flex-direction: column;
   justify-content: center;  
+}
+.txt {
+  & p {
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 34px;
+
+    letter-spacing: 0.004em;
+  }
 }
 .end { display: flex; justify-content: flex-end; align-items: center; }
 
