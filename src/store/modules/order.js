@@ -13,7 +13,8 @@ export default ({
       const url = 'http://fmdev.ru/pharmacy/map/api/createOrder/';
 
       const resp = await fetch(
-        `${url}?product_code=jent&store_uid=${payload.store_uid}&count=1&phone=${payload.phone}&email=${payload.email}&name=${payload.name}&specialty=${payload.speciality}`, {
+        `${url}?product_code=jent&store_uid=${payload.store_uid}&count=1&phone=${payload.phone}&email=${payload.email}&name=${payload.name}&specialty=${payload.speciality}`, 
+      {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',

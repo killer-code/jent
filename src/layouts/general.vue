@@ -7,15 +7,15 @@
       <Header :asideData="asideData" />
     </section>
 
-    <Preloader v-show="!loaded" :process="process" @load="changeLoad" />
+    <!-- <Preloader v-show="!loaded" :process="process" @load="changeLoad" /> -->
 
     <CanvasBackground :loaded="loaded" />
 
-    <AnimationOne v-show="loaded" 
+    <!-- <AnimationOne v-show="loaded" 
       :scroll="scroll" 
       :json_1="json_0" 
       :sprite_1="sprite_0"
-      @process="changeLoad" />
+      @process="changeLoad" /> -->
     <!-- <AnimationTwo :scroll="scroll" 
       :json_2="json_2"
       :sprite_2="sprite_2"

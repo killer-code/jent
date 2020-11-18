@@ -174,11 +174,19 @@ export default {
     scroll() {
       if ( this.scroll === 0 ) {
         this.onAssetsLoaded1();
+        // document.querySelector('.scene').style.bottom = 0;
       }
       if ( this.scroll === 1 ) {
+        // document.querySelector('.scene').style.bottom = -200 + 'px';
         this.onAssetsLoaded2();
       }
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.scene {
+  transition: all 1s ease;
+}
+</style>

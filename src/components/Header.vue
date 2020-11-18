@@ -13,9 +13,23 @@
         class="app-btn__how-by">
           <span>Как купить</span>
       </button>
+
+      <nav class="nav tb_d-none">
+        <router-link to="/" class="nav__link">
+          Как работает
+        </router-link>
+
+        <router-link to="/" class="nav__link">
+          WebAR
+        </router-link>
+
+        <router-link to="/" class="nav__link">
+          Инструкция
+        </router-link>
+      </nav>
     </div>
     
-    <p class="discription">
+    <p class="discription tb_d-none">
       Информация для специалистов здравоохранения
     </p>
   </header>
@@ -34,7 +48,7 @@ export default {
   position: fixed;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 100px;
+  padding: 60px 96px;
   top: 0;
   left: 0;
   right: 0;
@@ -42,6 +56,10 @@ export default {
   transition: all .7s ease;
 
   &_min { left: 30vw; }
+
+  @media screen and (max-width: 1280px) {
+    padding: 40px 30px;
+  }
 }
 .app-btn {
   border: 0;
@@ -62,14 +80,14 @@ export default {
   display: flex;
   align-items: center;
 }
-.main-logo { margin-left: 10px; }
+.main-logo { margin-left: 34px; }
 .app-btn__how-by {
   background: none;
   color: #f36d01;
   border: 1px solid #f36d01;
   box-sizing: border-box;
   border-radius: 5px;
-  margin-left: 15px;
+  margin-left: 35px;
 
   transition: .3 all ease;
   cursor: pointer;
@@ -77,6 +95,19 @@ export default {
   &:hover {
     color: #fff;
     border-color: #fff;
+  }
+}
+.nav {
+  display: flex;
+
+  &__link {
+    color: #fff;
+    margin-left: 40px;
+  }
+}
+.tb_d-none {
+  @media screen and (max-width: 1280px) {
+    display: none;
   }
 }
 </style>
