@@ -24,7 +24,7 @@
     <full-page ref="fullpage" id="fullpage" :options="options">
       <router-view :asideData="asideData" />
     </full-page>
-    <Footer />
+    <Footer :scroll="scroll" @down="scrollDown" />
   </section>
 </template>
 
@@ -89,6 +89,9 @@ export default {
     },
     changeProcess() {
       setTimeout(() => { this.process = true; }, 100)
+    },
+    scrollDown() {
+      this.$refs.fullpage.api.moveSectionDown();
     }
   }
 }
