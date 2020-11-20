@@ -25,9 +25,7 @@
             <Timer />
             <div class="right_txt">
               <p class="txt txt_left">Стабильная эрекция</p>
-              <p class="txt txt_left">уже через 
-                <strong class="txt txt_strong">10 мин</strong>
-              </p>
+              <p class="txt txt_left">уже через 10 мин</p>
 
               <div @click="openAside" 
                   data-key="oneSecond"

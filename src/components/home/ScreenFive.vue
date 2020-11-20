@@ -1,12 +1,6 @@
 <template>
-  <section class="screen-four">
+  <section class="screen-five">
     <div class="container">
-
-      <section class="scene-4-static">
-        <img class="img-jent_static" 
-          data-depth-x="0.15" data-depth-y="0.1"
-          src="@/assets/img/bg-s4-1.png">
-      </section>
       
       <section class="content page-1-content">
         <h2 class="caption-2">Действует быстро</h2>
@@ -35,24 +29,20 @@
 </template>
 
 <script>
-import Parallax from 'parallax-js'
-
 export default {
-  name: 'ScreenFour',
-  mounted() {
-    // Delete sprite
-    const sceneSt = document.querySelector('.scene-4-static');
-    let parallaxInstance = new Parallax(sceneSt);
-    // END
-  }
+  name: 'ScreenFive',
 }
 </script>
 
 <style lang="scss" scoped>
-.screen-four {
+.screen-five {
   position: relative;
   height: 100vh;
   width: 100vw;
+  background: #060113;
+  background-image: url('../../assets/img/bg-s5.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 .content {
   display: flex;

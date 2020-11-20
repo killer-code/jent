@@ -1,9 +1,9 @@
 <template>
-  <section class="screen-three">
+  <section class="screen-six">
     <div class="container">
       
-      <section class="scene-3-static">
-        <img class="img-jent_static-1" 
+      <section class="scene-6-static">
+        <!-- <img class="img-jent_static-1" 
           data-depth-x="0.05" data-depth-y="0.05"
           src="@/assets/img/bg-s3-1.jpg">
 
@@ -16,27 +16,37 @@
 
         <img class="img-jent_static-1" 
           data-depth-x="0.05" data-depth-y="0.05"
-          src="@/assets/img/bg-s3-4.png">
+          src="@/assets/img/bg-s3-4.png"> -->
       </section>
 
       <section class="content page-1-content">
-        <h2 class="caption-2">Активная молекула </h2>
+        <h2 class="caption-2">Попробуйте Джент</h2>
 
         <div class="_mt-7">
           <p class="txt txt_left">
-            Спрей Джент — это всё тот же безопасный и хорошо
+            Оформите заказ, чтобы получить флакон нового Джент
           </p>
           <p class="txt txt_left">
-            изученный 
-            <strong class="txt txt_strong">силденафил</strong>. 
-            Вещество уже давно используют 
+            совершенно бесплатно. Оплатите заказ в ближайшей  
           </p>
           <p class="txt txt_left">
-            для лечения проблем с потенцией. Оно отлично помогает
+            аптеке, получите специальный код и введите его
           </p>
           <p class="txt txt_left">
-            мужчинам достигать и поддерживать мощную эрекцию.
+            на странице «Возврат средств». Деньги поступят
           </p>
+          <p class="txt txt_left">
+            на счёт вашего телефона в течение нескольких часов.
+          </p>
+        </div>
+
+        <div class="app-row _mt-7">
+          <button class="app-btn app-btn_orange">
+            Заказать
+          </button>
+          <button class="app-btn app-btn_white _ml-7">
+            Возврат средств
+          </button>
         </div>
       </section>
 
@@ -48,10 +58,10 @@
 import Parallax from 'parallax-js'
 
 export default {
-  name: 'ScreenThree',
+  name: 'ScreenSix',
   mounted() {
     // Delete sprite
-    const sceneSt = document.querySelector('.scene-3-static');
+    const sceneSt = document.querySelector('.scene-6-static');
     let parallaxInstance = new Parallax(sceneSt);
     // END
   }
@@ -59,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.screen-three {
+.screen-six {
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -69,7 +79,7 @@ export default {
   max-width: 1400px;
   margin: 80px auto 0;
 }
-.scene-3-static {
+.scene-6-static {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -151,22 +161,22 @@ export default {
 ._mt-7 {
   margin-top: 35px;
 }
+._ml-7 {
+  margin-left: 35px;
+}
 ._mt-60 {
   margin-top: 60px;
 }
+.app-btn {
+  padding: 13px 73px;
+  background: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
 
-// .animate-west-side {
-//   animation: anim-west 10s ease infinite;
-// }
-
-// @keyframes anim-west {
-//   0% { 
-//     left: -10px;
-//     top: -10px;
-//   }
-//   100% { 
-//     left: 10px;
-//     top: 10px;
-//   }
-// }
+  &:focus { outline: none; }
+  &_white  { border: 1px solid #fff; }
+  &_orange { border: 1px solid #f36d01; }
+}
 </style>

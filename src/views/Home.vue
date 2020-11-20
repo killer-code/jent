@@ -8,10 +8,17 @@
       <ScreenTwo />
     </div>
     <div class="section">
-      <ScreenThree />
+      <ScreenThree :asideData="asideData" 
+        :getAsideData="getAsideData"/>
     </div>
     <div class="section">
       <ScreenFour />
+    </div>
+    <div class="section">
+      <ScreenFive />
+    </div>
+    <div class="section">
+      <ScreenSix />
     </div>
   </div>
 </template>
@@ -23,13 +30,22 @@ import ScreenOne   from '@/components/home/ScreenOne'
 import ScreenTwo   from '@/components/home/ScreenTwo'
 import ScreenThree from '@/components/home/ScreenThree'
 import ScreenFour  from '@/components/home/ScreenFour'
+import ScreenFive  from '@/components/home/ScreenFive'
+import ScreenSix  from '@/components/home/ScreenSix'
 
 // import * as db from '@/api/data.json'
 
 export default {
   name: 'Home',
   props: ['asideData'],
-  components: { ScreenOne, ScreenTwo, ScreenThree, ScreenFour },
+  components: { 
+    ScreenOne, 
+    ScreenTwo, 
+    ScreenThree, 
+    ScreenFour,
+    ScreenFive,
+    ScreenSix,
+  },
   computed: {
     ...mapGetters(['getAsideData']),
   },

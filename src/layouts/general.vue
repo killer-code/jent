@@ -71,8 +71,8 @@ export default {
       return {
         licenseKey: 'BSD-3-Clause',
         onLeave: this.onLeave,
-        fitToSectionDelay: 5000,
-        scrollingSpeed: 2000,
+        fitToSectionDelay: 4500,
+        scrollingSpeed: 1500,
       }
     }
   },
