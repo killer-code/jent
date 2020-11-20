@@ -4,18 +4,18 @@
       
       <section class="scene-3-static">
         <img class="img-jent_static-1" 
-          data-depth-x="0.05" data-depth-y="0.05"
+          data-depth-x="-0.05" data-depth-y="-0.05"
           src="@/assets/img/bg-s3-1.jpg">
 
         <img class="img-jent_static animate-west-side" 
-          data-depth-x="0.1" data-depth-y="0.1"
+          data-depth-x="-0.1" data-depth-y="-0.1"
           src="@/assets/img/bg-s3-2.png">
         <img class="img-jent_static animate-east-side" 
-          data-depth-x="0.15" data-depth-y="0.15"
+          data-depth-x="-0.2" data-depth-y="-0.2"
           src="@/assets/img/bg-s3-3.png">
 
         <img class="img-jent_static-1" 
-          data-depth-x="0.05" data-depth-y="0.05"
+          data-depth-x="-0.05" data-depth-y="-0.05"
           src="@/assets/img/bg-s3-4.png">
       </section>
 
@@ -63,6 +63,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.05);
 }
 .content {
   display: flex;
@@ -139,7 +143,12 @@ export default {
   margin-top: 150px;
   object-fit: contain;
 
-  &-1 { object-fit: cover; }
+  &-1 { 
+    object-fit: cover; 
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+  }
 
   @media screen and (max-width: 768px) {
     object-fit: cover;
@@ -156,7 +165,7 @@ export default {
 }
 
 // .animate-west-side {
-//   animation: anim-west 10s ease infinite;
+//   animation: anim-west 10s ease infinite alternate;
 // }
 
 // @keyframes anim-west {

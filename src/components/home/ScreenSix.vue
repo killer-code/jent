@@ -3,20 +3,9 @@
     <div class="container">
       
       <section class="scene-6-static">
-        <!-- <img class="img-jent_static-1" 
-          data-depth-x="0.05" data-depth-y="0.05"
-          src="@/assets/img/bg-s3-1.jpg">
-
-        <img class="img-jent_static animate-west-side" 
-          data-depth-x="0.1" data-depth-y="0.1"
-          src="@/assets/img/bg-s3-2.png">
-        <img class="img-jent_static animate-east-side" 
-          data-depth-x="0.15" data-depth-y="0.15"
-          src="@/assets/img/bg-s3-3.png">
-
         <img class="img-jent_static-1" 
-          data-depth-x="0.05" data-depth-y="0.05"
-          src="@/assets/img/bg-s3-4.png"> -->
+          data-depth-x="-0.05" data-depth-y="-0.05"
+          src="@/assets/img/bg-s6-12.png">
       </section>
 
       <section class="content page-1-content">
@@ -73,6 +62,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  -webkit-box-shadow: inset 0px 17px 22px -2px rgba(255,255,255,.1);
+  -moz-box-shadow:    inset 0px 17px 22px -2px rgba(255,255,255,.1);
+  box-shadow:         inset 0px 17px 22px -2px rgba(255,255,255,.1);
 }
 .content {
   display: flex;
