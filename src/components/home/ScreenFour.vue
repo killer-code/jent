@@ -53,6 +53,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  -webkit-box-shadow: inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  -moz-box-shadow:    inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  box-shadow:         inset 0px -20px 26px -2px rgba(5,0,18,.75);
 }
 .content {
   display: flex;

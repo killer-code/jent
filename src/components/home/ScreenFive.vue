@@ -43,6 +43,10 @@ export default {
   background-image: url('../../assets/img/bg-s5.jpg');
   background-repeat: no-repeat;
   background-position: bottom;
+
+  -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
 }
 .content {
   display: flex;

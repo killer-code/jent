@@ -89,6 +89,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  -webkit-box-shadow: inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  -moz-box-shadow:    inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  box-shadow:         inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
 }
 .scene-static {
   position: absolute;

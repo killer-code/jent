@@ -85,6 +85,12 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+  background: radial-gradient(29.27% 59.49% at 50% 100%, rgba(79, 70, 92, 0.6) 0%, rgba(79, 70, 92, 0) 100%), #0A0B11;
+  background-image: url('../../assets/img/bg-s2-2.png');
+  background-position: 5vw 32vh;
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
+  mix-blend-mode: lighten;
 }
 .content {
   display: flex;
