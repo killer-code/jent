@@ -82,10 +82,6 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
 }
 .content {
   margin: 0 auto;
@@ -152,6 +148,10 @@ export default {
 
   @media screen and (max-width: 768px) {
     object-fit: cover;
+  }
+  @media screen and (max-width: 560px) {
+    object-fit: contain;
+    min-height: 400px;
   }
 }
 .wrap_more {

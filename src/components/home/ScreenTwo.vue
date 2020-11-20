@@ -8,12 +8,14 @@
 
       <!-- <img class="img-jent_static" 
         src="@/assets/img/bg-s2-2.png"> -->
-      
+      <button class="btn_mob">
+        <img src="@/assets/img/cross.svg" alt="">
+      </button>
       
       <section class="content page-1-content">
         <h2 class="caption-2">Спрей</h2>
-        <div class=" _mt-7">
-          <div>
+        <div class="_mt-7">
+          <div class="mb_d-none">
             <p class="txt txt_left">
               Одна доза — два нажатия. Спрей Джент имеет
             </p>
@@ -30,9 +32,18 @@
               мощной эрекции хватит всего двух нажатий.
             </p>
           </div>
+          <div class="mb_d">
+            <p class="txt txt_left mb-d">
+              Одна доза — два нажатия. Спрей Джент имеет
+              удобную гибкую дозировку, что снижает риск
+              возникновения побочных эффектов. В одном
+              «пшике» содержится 12,5 мг, а для получения 
+              мощной эрекции хватит всего двух нажатий.
+            </p>
+          </div>
         </div>
 
-        <div class="block-2 _mt-7">
+        <div class="block-2 mb_d-none _mt-7">
           <div class="circle">
             <p class="timer__txt">2x</p>
           </div>
@@ -91,6 +102,11 @@ export default {
   background-repeat: no-repeat;
   background-blend-mode: lighten;
   mix-blend-mode: lighten;
+
+  @media screen and ( max-width: 560px ) {
+    background-position: -25vw 72%;
+    background-size: 75%;
+  }
 }
 .content {
   display: flex;
@@ -133,6 +149,10 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  @media screen and ( max-width: 560px ) {
+    justify-content: flex-start;
+    padding-top: 70px;
   }
 }
 .content > div { display: flex; }
@@ -178,12 +198,17 @@ export default {
   @media screen and (max-width: 768px) {
     object-fit: cover;
   }
+  @media screen and (max-width: 560px) {
+    min-width: 680px;
+    right: -60px;
+  }
 }
 .wrap_more {
   margin-top: 20px;
 }
 ._mt-7 {
   margin-top: 35px;
+  @media screen and ( max-width: 560px ) { margin-top: 16px; }
 }
 ._mt-60 {
   margin-top: 60px;
@@ -218,4 +243,58 @@ export default {
   }
 }
 
+.tb_d-none {
+  @media screen and (max-width: 1280px) { display: none; }
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) { display: none !important; }
+}
+.mb-d {
+  display: none !important;
+  @media screen and (max-width: 560px) {
+    display: block !important;
+  }
+}
+
+.btn_mob {
+  position: absolute;
+  top: calc(60% - 14.5px);
+  right: 60px;
+  display: none;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #f36d01;
+  cursor: pointer;
+
+  &:focus { outline: none; }
+  @media screen and (max-width: 560px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,.1);
+      animation: btn-mob-anim 1s ease infinite alternate;
+      width: 0px;
+      height: 0px;
+      border-radius: 50%; 
+      z-index: -1;
+    }
+  }
+}
+
+@keyframes btn-mob-anim {
+  0% { 
+    width: 0px;
+    height: 0px;  
+  }
+  100% { 
+    width: 52px;
+    height: 52px;
+  }
+}
 </style>

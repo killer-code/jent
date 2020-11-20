@@ -11,20 +11,30 @@
       <section class="content page-1-content">
         <h2 class="caption-2">Попробуйте Джент</h2>
 
-        <div class="_mt-7">
-          <p class="txt txt_left">
+        <div class="_mt-7 mb_d-none">
+          <p class="txt txt_left mb_d-none">
             Оформите заказ, чтобы получить флакон нового Джент
           </p>
-          <p class="txt txt_left">
+          <p class="txt txt_left mb_d-none">
             совершенно бесплатно. Оплатите заказ в ближайшей  
           </p>
-          <p class="txt txt_left">
+          <p class="txt txt_left mb_d-none">
             аптеке, получите специальный код и введите его
           </p>
-          <p class="txt txt_left">
+          <p class="txt txt_left mb_d-none">
             на странице «Возврат средств». Деньги поступят
           </p>
-          <p class="txt txt_left">
+          <p class="txt txt_left mb_d-none">
+            на счёт вашего телефона в течение нескольких часов.
+          </p>
+        </div>
+
+        <div class="_mt-7 mb_d">
+          <p class="txt txt_left mb_d">
+            Оформите заказ, чтобы получить флакон нового Джент 
+            совершенно бесплатно. Оплатите заказ в ближайшей 
+            аптеке, получите специальный код и введите его 
+            на странице «Возврат средств». Деньги поступят 
             на счёт вашего телефона в течение нескольких часов.
           </p>
         </div>
@@ -66,6 +76,10 @@ export default {
   -webkit-box-shadow: inset 0px 17px 22px -2px rgba(255,255,255,.1);
   -moz-box-shadow:    inset 0px 17px 22px -2px rgba(255,255,255,.1);
   box-shadow:         inset 0px 17px 22px -2px rgba(255,255,255,.1);
+
+  @media screen and (max-width: 560px) {
+    background: rgba(0,0,0,.4);
+  }
 }
 .content {
   display: flex;
@@ -81,10 +95,6 @@ export default {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
 }
 .content {
   margin: 0 auto;
@@ -147,18 +157,33 @@ export default {
   @media screen and (max-width: 768px) {
     object-fit: cover;
   }
+  @media screen and (max-width: 560px) {
+    max-width: 200px;
+    object-fit: contain;
+  }
 }
 .wrap_more {
   margin-top: 20px;
 }
 ._mt-7 {
   margin-top: 35px;
+  @media screen and (max-width: 560px) {
+    margin-top: 16px;
+  }
 }
 ._ml-7 {
   margin-left: 35px;
+  @media screen and (max-width: 560px) {
+    margin-left: 0;
+  }
 }
 ._mt-60 {
   margin-top: 60px;
+}
+.app-row {
+  @media screen and (max-width: 560px) {
+    width: 100%;
+  }
 }
 .app-btn {
   padding: 13px 73px;
@@ -171,5 +196,22 @@ export default {
   &:focus { outline: none; }
   &_white  { border: 1px solid #fff; }
   &_orange { border: 1px solid #f36d01; }
+
+  @media screen and (max-width: 560px) {
+    padding: 10px 0;
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) {
+    display: none !important;
+  }
+}
+.mb-d {
+  display: none !important;
+  @media screen and (max-width: 560px) {
+    display: block !important;
+  }
 }
 </style>

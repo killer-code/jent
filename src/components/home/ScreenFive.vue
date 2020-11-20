@@ -5,20 +5,28 @@
       <section class="content page-1-content">
         <h2 class="caption-2">Действует быстро</h2>
 
-        <div class="_mt-7">
-          <p class="txt txt_left">
+        <div class="_mt-7 ">
+          <p class="txt mb_d-none txt_left">
             Препарат Джент действует эффективно, без долгих
           </p>
-          <p class="txt txt_left">
+          <p class="txt mb_d-none txt_left">
             ожиданий и усилий. В отличие от таблеток, оральный спрей 
           </p>
-          <p class="txt txt_left">
+          <p class="txt mb_d-none txt_left">
             Джент быстро всасывается через слизистую оболочку
           </p>
-          <p class="txt txt_left">
+          <p class="txt mb_d-none txt_left">
             полости рта и действует уже через 10 минут с момента 
           </p>
-          <p class="txt txt_left">
+          <p class="txt mb_d-none txt_left">
+            использования. 
+          </p>
+
+          <p class="txt txt_left mb-d">
+            Препарат Джент действует эффективно, без долгих
+            ожиданий и усилий. В отличие от таблеток, оральный спрей 
+            Джент быстро всасывается через слизистую оболочку 
+            полости рта и действует уже через 10 минут с момента 
             использования. 
           </p>
         </div>
@@ -47,6 +55,17 @@ export default {
   -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
   -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
   box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
+
+  @media screen and (max-width: 560px) {
+    background: #060113;
+    background-image: url('../../assets/img/bg-s5-mob.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+
+    -webkit-box-shadow: inherit;
+    -moz-box-shadow:    inherit;
+    box-shadow:         inherit;
+  }
 }
 .content {
   display: flex;
@@ -58,10 +77,6 @@ export default {
   bottom: -25px;
   right: -100px;
   z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
 }
 .content {
   margin: 0 auto;
@@ -79,6 +94,10 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  @media screen and (max-width: 560px) {
+    justify-content: flex-end;
+    padding-bottom: 70px; 
   }
 }
 .start { 
@@ -130,8 +149,27 @@ export default {
 }
 ._mt-7 {
   margin-top: 35px;
+  @media screen and (max-width: 768px) {
+    margin-top: 16px;
+  }
 }
 ._mt-60 {
   margin-top: 60px;
+}
+.tb_d-none {
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) {
+    display: none !important;
+  }
+}
+.mb-d {
+  display: none !important;
+  @media screen and (max-width: 560px) {
+    display: block !important;
+  }
 }
 </style>

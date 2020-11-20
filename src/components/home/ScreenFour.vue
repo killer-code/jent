@@ -68,10 +68,6 @@ export default {
   bottom: -25px;
   right: -100px;
   z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
 }
 .content {
   margin: 0 auto;
@@ -89,6 +85,9 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  @media screen and (max-width: 560px) {
+    justify-content: flex-start;
   }
 }
 .start { 
@@ -133,6 +132,9 @@ export default {
 
   @media screen and (max-width: 768px) {
     object-fit: cover;
+  }
+  @media screen and (max-width: 560px) {
+    min-width: 480px;
   }
 }
 .wrap_more {
