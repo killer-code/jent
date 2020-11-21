@@ -10,7 +10,7 @@
       </router-link>
 
       <button @click="$router.push('/order')" 
-        class="app-btn__how-by">
+        class="app-btn__how-by mb_d-none">
           <span>Как купить</span>
       </button>
 
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-export default {
+export default { 
   name: 'Header',
   props: ['asideData'],
 }
@@ -59,6 +59,9 @@ export default {
 
   @media screen and (max-width: 1280px) {
     padding: 40px 30px;
+  }
+  @media screen and ( max-width: 560px ) {
+    padding: 20px 15px;
   }
 }
 .app-btn {
@@ -107,6 +110,11 @@ export default {
 }
 .tb_d-none {
   @media screen and (max-width: 1280px) {
+    display: none;
+  }
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) {
     display: none;
   }
 }

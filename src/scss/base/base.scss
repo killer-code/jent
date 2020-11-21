@@ -53,6 +53,11 @@ a { text-decoration: none; }
         font-size: 42px;
         line-height: 55px;
     }
+    @media screen and (max-width: 560px) {
+        font-weight: 300;
+        font-size: 23px;
+        line-height: 30px;
+    }
 }
 .caption-3 {
     font-weight: 300;
@@ -100,6 +105,9 @@ a { text-decoration: none; }
     @media screen and (max-width: 1280px) {
         padding: 0 30px;
     } 
+    @media screen and (max-width: 560px) {
+        padding: 0 15px;
+    }
 }
 
 ._mb-7 { margin-bottom: 28px; }

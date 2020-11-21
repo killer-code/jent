@@ -31,10 +31,7 @@ export default {
   width: 100vw;
   height: 100vh;
 
-  background: url('../assets/img/bg-s1.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: radial-gradient(29.27% 59.49% at 50% 100%, rgba(79, 70, 92, 0.6) 0%, rgba(79, 70, 92, 0) 100%), #0A0B11;
 
   &__content {
     display: flex;
@@ -43,10 +40,21 @@ export default {
     font-size: 24px;
     font-weight: 400;
     line-height: 36px;
+
+    @media screen and ( max-width: 560px ) {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 27px;
+
+      text-align: center;
+    }
   }
 
   &__img {
     margin-bottom: 70px;
+    @media screen and ( max-width: 560px ) {
+      width: 113px;
+    }
   }
   &__btn {
     border: 1px solid #FFFFFF;
@@ -60,8 +68,10 @@ export default {
     height: 58px;
     cursor: pointer;
 
-    &:focus {
-      outline: none;
+    &:focus { outline: none; }
+
+    @media screen and ( max-width: 560px ) {
+      width: calc(100% - 60px);
     }
   }
 }

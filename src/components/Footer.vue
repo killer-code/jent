@@ -44,6 +44,11 @@ export default {
   @media screen and (max-width: 1280px) {
     padding: 40px 30px;
   }
+  @media screen and (max-width: 560px) {
+    padding: 20px 15px;
+    font-size: 14px;
+    line-height: 22px;
+  }
 }
 .btn_circle_down {
   position: absolute;
@@ -61,5 +66,14 @@ export default {
   cursor: pointer;
 
   &:focus { outline: none; }
+
+  @media screen and (max-width: 560px) {
+    width: 36px;
+    height: 36px;
+
+    & img {
+      width: 6px;
+    }
+  }
 }
 </style>

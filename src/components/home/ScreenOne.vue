@@ -7,20 +7,40 @@
           src="@/assets/img/jent-static.png">
       </section>
 
+      <button class="btn_mob">
+        <img src="@/assets/img/cross.svg" alt="">
+      </button>
+
       <section class="content page-1-content">
         <div class="start">
-          <h2 class="caption-2">Джент.</h2>
-          <h2 class="caption-2 caption-2_gradient">Быстрее ваших</h2>
-          <h2 class="caption-2 caption-2_gradient">желаний</h2>
+          <h2 class="caption-2 mb_d-none">Джент.</h2>
+          <h2 class="caption-2 caption-2_gradient mb_d-none">Быстрее ваших</h2>
+          <h2 class="caption-2 caption-2_gradient mb_d-none">желаний</h2>
 
-          <div class="txt _mt-7">
+          <div class="txt _mt-7 mb_d-none">
             <p>Инновационное решение, которое поможет</p>
             <p>избежать неловких ситуаций и «неудач». Джент в</p>
             <p>новом формате спрея усилит эрекцию за 10 минут.</p>
           </div>
         </div>
 
-        <section>
+        <div class="start">
+          <h2 class="caption-2 mb-d">Джент.
+            <strong class="caption-2 caption-2_gradient">
+              Быстрее ваших желаний
+            </strong>
+          </h2>
+
+          <div class="txt mb-d _mt-7">
+            <p>
+              Инновационное решение, которое поможет
+              избежать неловких ситуаций и «неудач». Джент в
+              новом формате спрея усилит эрекцию за 10 минут.
+            </p>
+          </div>
+        </div>
+
+        <section class="mb_d-none">
           <div class="end _mb-7">
             <Timer />
             <div class="right_txt">
@@ -107,6 +127,10 @@ export default {
   @media screen and (max-width: 768px) {
     left: 20%;
   }
+  @media screen and (max-width: 560px) {
+    left: 0;
+    top: -15vh;
+  }
 }
 .content {
   display: flex;
@@ -127,6 +151,10 @@ export default {
     align-items: flex-start;
     justify-content: center;
   }
+  @media screen and ( max-width: 560px ) {
+    justify-content: flex-end;
+    padding-bottom: 70px;
+  }
 }
 .content > div { display: flex; }
 .start { 
@@ -134,6 +162,13 @@ export default {
   flex-direction: column;
   justify-content: center; 
   width: fit-content; 
+
+  & .caption-2 {
+    @media screen and (max-width: 560px) {
+      font-weight: 400;
+      width: fit-content;
+    }
+  }
 }
 .txt {
   @media screen and (max-width: 1280px) {
@@ -172,14 +207,76 @@ export default {
   @media screen and (max-width: 768px) {
     object-fit: cover;
   }
+  @media screen and ( max-width: 560px ) {
+    object-fit: contain;
+    min-width: 680px; 
+  }
 }
 .wrap_more {
   margin-top: 20px;
 }
 ._mt-7 {
   margin-top: 35px;
+  @media screen and ( max-width: 560px ) { margin-top: 16px; }
 }
 ._mt-60 {
   margin-top: 60px;
+}
+.tb_d-none {
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) {
+    display: none !important;
+  }
+}
+.mb-d {
+  display: none !important;
+  @media screen and (max-width: 560px) {
+    display: block !important;
+  }
+}
+.btn_mob {
+  position: absolute;
+  top: calc(50% - 14.5px);
+  right: 80px;
+  display: none;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #f36d01;
+  cursor: pointer;
+
+  &:focus { outline: none; }
+  @media screen and (max-width: 560px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,.1);
+      animation: btn-mob-anim 1s ease infinite alternate;
+      width: 0px;
+      height: 0px;
+      border-radius: 50%; 
+      z-index: -1;
+    }
+  }
+}
+
+@keyframes btn-mob-anim {
+  0% { 
+    width: 0px;
+    height: 0px;  
+  }
+  100% { 
+    width: 52px;
+    height: 52px;
+  }
 }
 </style>

@@ -11,10 +11,7 @@ export default {
   name: 'CanvasBackground',
   props: ['loaded'],
   data: () => ({
-    width: window.innerWidth / 1.5,
     height: window.innerHeight,
-
-    particalCount: 300,
     particles: [],
 
     mouse_coord: {
@@ -32,6 +29,20 @@ export default {
       const ctx = this.canvas.getContext('2d');
       return ctx;
     },
+    particalCount: function() {
+      let count = 300;
+      if ( window.innerWidth < 561 ) {
+        count = 150;
+      }
+      return count;
+    },
+    width: function() {
+      let width = window.innerWidth / 1.5;
+      if ( window.innerWidth < 561 ) {
+        width = window.innerWidth
+      }
+      return width;
+    }
   },
   mounted() {
     this.ctx.globalCompositeOperation = "lighter";
@@ -209,6 +220,10 @@ export default {
   left: 15vw;
   height: 100vh;
   width: 100vw;
+
+  @media screen and ( max-width: 560px ) {
+    left: 0;
+  }
 }
 .bg-canvas {
   position: absolute;
