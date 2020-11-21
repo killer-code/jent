@@ -1,7 +1,6 @@
 <template>
-  <section>
+  <section class="wrapper-page">
     <Header :asideData="asideData" />
-    <CanvasBackground />
     <main class="app-page">
       <router-view></router-view>
     </main>
@@ -10,11 +9,10 @@
 
 <script>
 import Header from '@/components/Header'
-import CanvasBackground from '@/components/home/CanvasBackground'
 
 export default {
   name: 'default',
-  components: { Header, CanvasBackground },
+  components: { Header },
   data: () => ({
     asideData: {
       isOpen: false,
@@ -30,5 +28,10 @@ export default {
   max-width: 1200px;
   padding: 0 30px;
   z-index: 1;
+}
+.wrapper-page {
+  background:#0A0B11;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
