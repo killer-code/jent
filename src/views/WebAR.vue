@@ -1,63 +1,75 @@
 <template>
   <section class="webar">
-    <div class="webar__title">Web AR — дополненная реальность в вебе.</div>
-    <div class="webar__about">
-      Что это значит? Пользователи могут получить доступ к просмотру контента
-      в дополненной реальности, используя мобильный браузер.
-    </div>
+    <div class="webar__container">
+      <div class="webar__title">Web AR — дополненная реальность в вебе.</div>
+      <div class="webar__about">
+        Что это значит? Пользователи могут получить доступ к просмотру контента
+        в дополненной реальности, используя мобильный браузер.
+      </div>
 
-    <div class="steps steps--desktop">
-      <img src="@/assets/img/webar-qr.svg" alt="qr code" class="steps__qr" />
-      <div class="steps__items">
-        <div class="step">
-          <div class="step__title"><span class="number">1.</span> Отсканируйте QR-код</div>
-          <div class="step__description">
-            Воспользуйтесь камерой планшета или телефона и отсканируйте QR-код.
+      <div class="steps steps--desktop">
+        <img src="@/assets/img/webar-qr.svg" alt="qr code" class="steps__qr" />
+        <div class="steps__items">
+          <div class="step">
+            <div class="step__title">
+              <span class="number">1.</span> Отсканируйте QR-код
+            </div>
+            <div class="step__description">
+              Воспользуйтесь камерой планшета или телефона и отсканируйте
+              QR-код.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__title">
+              <span class="number">2.</span> Или пройдите по ссылке
+            </div>
+            <div class="step__description">
+              <a href="https://medium.com/phygitalism/web-ar-348de5d7188"
+                >https://medium.com/phygitalism/web-ar-348de5d7188</a
+              >
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__title">
+              <span class="number">3.</span> Наслаждайтесь дополненной
+              реальностью!
+            </div>
+            <div class="step__description">
+              Правила игры очень простые - распыляйте препарат на предметы.
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="step">
-          <div class="step__title"><span class="number">2.</span> Или пройдите по ссылке</div>
-          <div class="step__description">
-            <a href="https://medium.com/phygitalism/web-ar-348de5d7188"
-              >https://medium.com/phygitalism/web-ar-348de5d7188</a
+      <div class="steps steps--mobile">
+        <div class="steps__items">
+          <div class="step">
+            <div class="step__title">
+              <span class="number">1.</span> Пройдите по ссылке
+            </div>
+            <a
+              class="step__link"
+              href="https://medium.com/phygitalism/web-ar-348de5d7188"
             >
+              Web AR
+            </a>
           </div>
-        </div>
 
-        <div class="step">
-          <div class="step__title">
-            <span class="number">3.</span> Наслаждайтесь дополненной реальностью!
-          </div>
-          <div class="step__description">
-            Правила игры очень простые - распыляйте препарат на предметы.
+          <div class="step">
+            <div class="step__title">
+              <span class="number">2.</span> Наслаждайтесь дополненной
+              реальностью!
+            </div>
+            <div class="step__description">
+              Правила игры очень простые - распыляйте препарат на предметы.
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="steps steps--mobile">
-      <div class="steps__items">
-        <div class="step">
-          <div class="step__title"><span class="number">1.</span> Пройдите по ссылке</div>
-          <a
-            class="step__link"
-            href="https://medium.com/phygitalism/web-ar-348de5d7188"
-          >
-            Web AR
-          </a>
-        </div>
-
-        <div class="step">
-          <div class="step__title">
-            <span class="number">2.</span> Наслаждайтесь дополненной реальностью!
-          </div>
-          <div class="step__description">
-            Правила игры очень простые - распыляйте препарат на предметы.
-          </div>
-        </div>
-      </div>
-    </div>
     <StaticFooter />
   </section>
 </template>
@@ -75,10 +87,13 @@ export default {
 
 <style lang="scss" scoped>
 .webar {
-  max-width: 1040px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+
+  &__container {
+    max-width: 1040px;
+  }
 
   &__title {
     font-size: 42px;
@@ -141,7 +156,7 @@ export default {
 
     &__title {
       font-size: 21px;
-      line-height: 100%;
+      line-height: 130%;
       margin-bottom: 24px;
       text-indent: -22px;
       margin-left: 22px;
