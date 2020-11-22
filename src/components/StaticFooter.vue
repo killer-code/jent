@@ -19,6 +19,7 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-top: auto;
 
   p {
     color: white;
