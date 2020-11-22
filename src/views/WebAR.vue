@@ -156,7 +156,7 @@ export default {
 
     &__title {
       font-size: 21px;
-      line-height: 100%;
+      line-height: 130%;
       margin-bottom: 24px;
       text-indent: -22px;
       margin-left: 22px;
