@@ -1027,6 +1027,10 @@ export default {
 .instruction {
   &__header {
     margin-bottom: 48px;
+
+    @media screen and (max-width: 560px) {
+      margin-bottom: 12px;
+    }
   }
 
   &__container {
@@ -1039,12 +1043,32 @@ export default {
       font-size: 28px;
       line-height: 130%;
       margin-bottom: 42px;
+
+      @media screen and (max-width: 1280px) {
+        font-size: 24px;
+        line-height: 130%;
+      }
+      @media screen and (max-width: 560px) {
+        font-size: 16px;
+        line-height: 130%;
+        margin-bottom: 24px;
+      }
     }
 
     &__second {
       margin-bottom: 80px;
       font-size: 42px;
       line-height: 130%;
+
+      @media screen and (max-width: 1280px) {
+        font-size: 36px;
+        line-height: 130%;
+      }
+      @media screen and (max-width: 560px) {
+        font-size: 26px;
+        line-height: 130%;
+        margin-bottom: 44px;
+      }
     }
 
     &__last {
