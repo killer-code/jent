@@ -6,14 +6,12 @@
 
       <el-card class="box-card" :class="{ 'box-card_min' : step == 2 }">
         <div>
-          <section class="row" v-if="step === 0">
-            
-            <WestSide 
+          <section v-if="step === 0">
+            <StepOne
               :formData="formData" 
               :pharmacy="allPharmacy" 
               :cities="citiesOptions"
               :maxHeight="maxHeight" />
-            <Map :pharmacy="allPharmacy" :maxHeight="maxHeight" />
           </section>
 
           <section v-if="step == 1">
@@ -31,6 +29,7 @@
               Назад
             </button>
             <button class="btn__store next"
+              :disabled="disabledBtn"
               :class="{ 'order-1' : step == 2 }"  
               @click="nextStep">
               {{ step === 2 ? 'Подтвердить' : 'Далее' }}
@@ -58,15 +57,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 import OrderHeader from '@/components/how_to_by/OrderHeader'
 
-import Map from '@/components/how_to_by/Map'
-import WestSide from '@/components/how_to_by/WestSide'
-
+import StepOne   from '@/components/how_to_by/StepOne'
 import StepTwo   from '@/components/how_to_by/StepTwo'
 import StepThree from '@/components/how_to_by/StepThree'
 
 export default {
   name: 'NewOrder',
-  components: { OrderHeader, Map, WestSide, StepTwo, StepThree, },
+  components: { OrderHeader, StepOne, StepTwo, StepThree, },
   data: function() {
     return {
       formData: {
@@ -130,6 +127,13 @@ export default {
     },
     selectedCity: function() {
       return this.formData.city;
+    },
+    disabledBtn: function() {
+      if ( this.step === 0 && 
+          ( this.formData.city == '' ||   
+          this.formData.store_uid == '' )) {
+            return true
+      }
     }
   },
   methods: {
@@ -157,17 +161,7 @@ export default {
       if (this.step-- < 1) this.step = 0;
     },
     nextStep() {
-      if ( this.step == 0 && 
-          this.formData.city !== '' && 
-          this.formData.store_uid !== '' ) {
-            this.step ++
-      } else if ( this.step == 1 ) {
-        this.step ++;
-      } else if ( this.step == 2 ) {
-        this.step ++
-      } else {
-        return
-      }
+      if (this.step++ > 2) this.step = 3;
     },
   },
   mounted() {
@@ -192,18 +186,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::-webkit-scrollbar {
-    width: .2em;
-}
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
 .row { display: flex; }
 .justify_between { display: flex; justify-content: space-between; }
 
@@ -234,19 +216,6 @@ export default {
     }
   }
 }
-
-.card__store {
-  padding: 16px;
-  border: 1px solid #525252;
-  box-sizing: border-box;
-  border-radius: 6px;
-  margin: 16px 0;
-  cursor: pointer;
-  transition: border-color .3s ease;
-
-  &:hover { border-color: #F36D01; }
-  &_selected { border-color: #F36D01; }
-}
 .card__footer {
   border-top: 1px solid #343434;
   padding: 20px 20px 0;
@@ -261,6 +230,7 @@ export default {
   cursor: pointer;
 
   &:focus { outline: none; }
+  &:disabled { opacity: 0.5; }
 }
 .prev { background: none; }
 .next { background: #f36d01; }

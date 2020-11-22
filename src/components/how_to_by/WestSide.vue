@@ -4,7 +4,6 @@
     :style="{'max-height': `${maxHeight}px`}">
     <el-select 
       v-model="formData.city" 
-      :placeholder="city" 
       class="app-select_city">
         <el-option
           v-for="item in cities"
@@ -91,6 +90,18 @@ export default {
   line-height: 20px;
   margin-bottom: 5px;
   color: #8f8f8f;
+}
+.card__store {
+  padding: 16px;
+  border: 1px solid #525252;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin: 16px 0;
+  cursor: pointer;
+  transition: border-color .3s ease;
+
+  &:hover { border-color: #F36D01; }
+  &_selected { border-color: #F36D01; }
 }
 </style>
 
