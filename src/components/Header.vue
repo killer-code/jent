@@ -15,7 +15,7 @@
       </button>
 
       <nav class="nav tb_d-none">
-        <router-link to="/" class="nav__link">
+        <router-link to="/how-it-works" class="nav__link">
           Как работает
         </router-link>
 
