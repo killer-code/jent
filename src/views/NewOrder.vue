@@ -74,12 +74,14 @@ export default {
         email: '',
         name: '',
         count: 1,
+        perInfo: false,
+        aply: false,
       },
       
       formCode: { code: '', },
 
       response: '',
-      step: 0,
+      step: 1,
       maxHeight: window.innerHeight / 3,
     }
   },
@@ -133,6 +135,14 @@ export default {
           ( this.formData.city == '' ||   
           this.formData.store_uid == '' )) {
             return true
+      } else if ( this.step === 1 && (
+        this.formData.speciality == ' ' ||
+        this.formData.phone == '' ||
+        this.formData.email == '' ||
+        this.formData.name == ''  ||
+        !this.formData.perInfo || !this.formData.aply
+      )) {
+        return true;
       }
     }
   },
@@ -142,6 +152,7 @@ export default {
       'fetchCities', 
       'fetchPharmacy',
       'fetchUserCity',
+      'createOrder',
     ]),
     getUserCity() {
       this.citiesOptions.forEach(city => {
@@ -161,8 +172,13 @@ export default {
       if (this.step-- < 1) this.step = 0;
     },
     nextStep() {
+      if ( this.step === 1 ) this.submitForm();
       if (this.step++ > 2) this.step = 3;
     },
+    async submitForm() {
+      this.response = await this.createOrder(this.formData);
+      console.log(this.response);
+    }
   },
   mounted() {
     this.fetchCities();
@@ -241,8 +257,10 @@ export default {
 
 .timer__txt {
   display: flex;
+  font-size: 15px;
   &_1 { color: #fff; }
   &_2 {
+    margin-left: 5px;
     color: #79B0F9;
     cursor: pointer;
   }

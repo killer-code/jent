@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="title">Подтвердите <br> номер телефона</h2>
+    <h2 class="title">Подтверждение <br> номера телефона</h2>
     <p class="sub-title">Введите проверочный код</p>
 
     <section class="input-code">
@@ -24,7 +24,7 @@
         type="text" @input="inputCode" 
         maxlength="1" />
     </section>
-    
+
   </section>
 </template>
 

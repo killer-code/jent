@@ -88,7 +88,7 @@
       </div>
 
       <div class="form__input">
-        <el-checkbox v-model="perInfo"
+        <el-checkbox v-model="formData.perInfo"
           calss="form__check">
           <span class="form__check">
             Даю согласие на обработку своих персональных данных
@@ -102,7 +102,7 @@
       </div>
 
       <div class="form__input">
-        <el-checkbox v-model="aply"
+        <el-checkbox v-model="formData.aply"
           calss="form__check">
           <span class="form__check">
             Я подтверждаю правила оферты
@@ -123,8 +123,6 @@ export default {
     firstName: '',
     secondName: '',
     lastName: '',
-    perInfo: false,
-    aply: false,
   }),
   computed: {
     ...mapGetters(['getSpeciality']),
