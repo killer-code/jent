@@ -1,10 +1,9 @@
 <template>
   <footer>
     <p>
-      Владелец регистрационного удостоверения/Организация, принимающая претензии
-      от потребителей
+      © 2020, «Фармамед». Все права защищены.
     </p>
-    <p>ООО «Фармамед», тел. (812) 647 02 46, сайт: JENT.MEN</p>
+    <p>Правовая информация</p>
   </footer>
 </template>
 
@@ -19,10 +18,12 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   p {
     color: white;
     opacity: 0.5;
+    text-align: center;
   }
 }
 </style>
