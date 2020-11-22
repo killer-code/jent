@@ -165,6 +165,10 @@ export default {
       padding: 13px 0;
       border: 1px solid #f36d01;
       border-radius: 8px;
+
+      @media screen and (max-width: 560px) {
+        width: 100%;
+      }
     }
   }
 }
