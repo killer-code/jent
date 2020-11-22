@@ -10,14 +10,14 @@
       <img src="@/assets/img/webar-qr.svg" alt="qr code" class="steps__qr" />
       <div class="steps__items">
         <div class="step">
-          <div class="step__title">1. Отсканируйте QR-код</div>
+          <div class="step__title"><span class="number">1.</span> Отсканируйте QR-код</div>
           <div class="step__description">
             Воспользуйтесь камерой планшета или телефона и отсканируйте QR-код.
           </div>
         </div>
 
         <div class="step">
-          <div class="step__title">2. Или пройдите по ссылке</div>
+          <div class="step__title"><span class="number">2.</span> Или пройдите по ссылке</div>
           <div class="step__description">
             <a href="https://medium.com/phygitalism/web-ar-348de5d7188"
               >https://medium.com/phygitalism/web-ar-348de5d7188</a
@@ -27,7 +27,7 @@
 
         <div class="step">
           <div class="step__title">
-            3. Наслаждайтесь дополненной реальностью!
+            <span class="number">3.</span> Наслаждайтесь дополненной реальностью!
           </div>
           <div class="step__description">
             Правила игры очень простые - распыляйте препарат на предметы.
@@ -39,7 +39,7 @@
     <div class="steps steps--mobile">
       <div class="steps__items">
         <div class="step">
-          <div class="step__title">1. Пройдите по ссылке</div>
+          <div class="step__title"><span class="number">1.</span> Пройдите по ссылке</div>
           <a
             class="step__link"
             href="https://medium.com/phygitalism/web-ar-348de5d7188"
@@ -50,7 +50,7 @@
 
         <div class="step">
           <div class="step__title">
-            2. Наслаждайтесь дополненной реальностью!
+            <span class="number">2.</span> Наслаждайтесь дополненной реальностью!
           </div>
           <div class="step__description">
             Правила игры очень простые - распыляйте препарат на предметы.
@@ -75,6 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 .webar {
+  max-width: 1040px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -106,6 +107,10 @@ export default {
       line-height: 130%;
       margin-bottom: 40px;
     }
+  }
+
+  .number {
+    font-family: 'Aldrich', 'Roboto', sans-serif;
   }
 
   .steps {

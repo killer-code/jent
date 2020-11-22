@@ -20,6 +20,7 @@ footer {
   justify-content: center;
   flex-direction: column;
   margin-top: auto;
+  font-size: 12px;
 
   p {
     color: white;
