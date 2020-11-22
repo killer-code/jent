@@ -1031,6 +1031,7 @@ export default {
 
   &__container {
     margin-bottom: 130px;
+    max-width: 1040px;
   }
 
   .header {
