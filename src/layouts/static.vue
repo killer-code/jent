@@ -38,7 +38,8 @@ export default {
   min-height: calc(100vh - 250px);
 
   @media screen and (max-width: 560px) {
-    margin: 100px auto 50px;
+    margin: 100px auto 0;
+    padding: 0 15px 50px;
     min-height: calc(100vh - 150px);
   }
 }
