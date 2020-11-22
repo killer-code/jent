@@ -128,6 +128,11 @@ export default {
     height: 138px;
     margin: 0 42px 0 32px;
 
+    @media screen and (max-width: 1280px) {
+      width: 125px;
+      height: 125px;
+    }
+
     @media screen and (max-width: 560px) {
       margin: 0 auto 30px 0;
     }
@@ -135,6 +140,8 @@ export default {
 }
 
 .how-it-works {
+  max-width: 1040px;
+
   .title {
     font-weight: 500;
     font-size: 42px;
@@ -180,6 +187,14 @@ export default {
 
     &:last-of-type {
       margin-bottom: 125px;
+
+      @media screen and (max-width: 1280px) {
+        margin-bottom: 80px;
+      }
+
+      @media screen and (max-width: 560px) {
+        margin-bottom: 60px;
+      }
     }
 
     &__title {

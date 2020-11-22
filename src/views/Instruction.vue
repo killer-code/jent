@@ -1097,6 +1097,7 @@ export default {
     font-weight: bold;
     font-size: 18px;
     line-height: 24px;
+    margin-top: 48px;
 
     padding: 24px 0 12px;
     min-height: 48px;
@@ -1111,6 +1112,10 @@ export default {
     &:hover {
       cursor: pointer;
       color: #f36d01;
+
+      @media screen and (max-width: 1280px) {
+        color: inherit;
+      }
     }
   }
 

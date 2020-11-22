@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   background: #0a0b11;
+  margin-right: 15px;
 }
 
 .app-page {
@@ -38,13 +39,13 @@ export default {
   min-height: calc(100vh - 250px);
 
   @media screen and (max-width: 560px) {
-    margin: 100px auto 50px;
+    margin: 100px auto 0;
+    padding: 0 15px 50px;
     min-height: calc(100vh - 150px);
   }
 }
 .wrapper-page {
   background: #0a0b11;
-  width: 100vw;
   height: 100vh;
 }
 </style>
