@@ -2,67 +2,17 @@
   <section class="">
     <div class="container">
 
-      <el-steps 
-        :active="step" 
-        finish-status="success" 
-        class="card__header"
-        align-center>
+      <OrderHeader :step="step" />
 
-        <el-step 
-          class="step" 
-          title="Выбор аптеки">
-        </el-step>
-
-        <el-step 
-          class="step" 
-          title="Оформление">
-        </el-step>
-
-        <el-step 
-          class="step" 
-          title="Подтверждение">
-        </el-step>
-      </el-steps>
-
-      <el-card class="box-card">
+      <el-card class="box-card" :class="{ 'box-card_min' : step == 2 }">
         <div>
           <section class="row" v-if="step === 0">
-            <div class="west-side"
-              :style="{'max-height': `${maxHeight}px`}">
-              <el-select 
-                v-model="formData.city" 
-                :placeholder="city" 
-                class="app-select_city">
-                  <el-option
-                    v-for="item in citiesOptions"
-                    :value="item.label"
-                    :key="item.value"
-                    :label="item.label">
-                  </el-option>
-              </el-select>
-
-              <section class="card__store" 
-                :data-uid="pharm.STORE_UID"
-                @click="getUid"
-                v-for="pharm of allPharmacy" :key="pharm.ID">
-                <h4 class="store__title">{{ pharm.NAME }}</h4>
-                <div>
-                  <p class="store__txt">
-                    <strong class="stor__sub">
-                      Адрес:
-                    </strong>
-                    {{ pharm.ADDRESS }}
-                  </p>
-                  <p class="store__txt">
-                    <strong class="stor__sub">
-                      Режим работы:
-                    </strong>
-                    {{ pharm.WORKTIME }}
-                  </p>
-                </div>
-              </section>
-            </div>
             
+            <WestSide 
+              :formData="formData" 
+              :pharmacy="allPharmacy" 
+              :cities="citiesOptions"
+              :maxHeight="maxHeight" />
             <Map :pharmacy="allPharmacy" :maxHeight="maxHeight" />
           </section>
 
@@ -70,13 +20,29 @@
             <StepTwo :formData="formData" />
           </section>
 
+          <section v-if="step == 2">
+            <StepThree :code="formCode" />
+          </section>
+
           <section class="card__footer justify_between">
-            <button class="prev" @click="prevStep">
+            <button class="btn__store prev"
+              :class="{ 'order-2' : step == 2 }" 
+              @click="prevStep">
               Назад
             </button>
-            <button class="next" @click="nextStep">
-              Далее
+            <button class="btn__store next"
+              :class="{ 'order-1' : step == 2 }"  
+              @click="nextStep">
+              {{ step === 2 ? 'Подтвердить' : 'Далее' }}
             </button>
+
+            <section class="justify_between order-3" v-if="step == 2">
+              <div class="timer"></div>
+              <div class="timer__txt">
+                <p class="timer__txt_1">Не получили код?</p>
+                <p class="timer__txt_2">Выслать новый код</p>
+              </div>
+            </section>
           </section>
         </div>
       </el-card>
@@ -90,12 +56,17 @@
 import gmapsInit from '@/utils/gmaps';
 import { mapGetters, mapActions } from 'vuex'
 
+import OrderHeader from '@/components/how_to_by/OrderHeader'
+
 import Map from '@/components/how_to_by/Map'
-import StepTwo from '@/components/how_to_by/StepTwo'
+import WestSide from '@/components/how_to_by/WestSide'
+
+import StepTwo   from '@/components/how_to_by/StepTwo'
+import StepThree from '@/components/how_to_by/StepThree'
 
 export default {
   name: 'NewOrder',
-  components: { Map, StepTwo, },
+  components: { OrderHeader, Map, WestSide, StepTwo, StepThree, },
   data: function() {
     return {
       formData: {
@@ -108,6 +79,8 @@ export default {
         count: 1,
       },
       
+      formCode: { code: '', },
+
       response: '',
       step: 0,
       maxHeight: window.innerHeight / 3,
@@ -150,19 +123,6 @@ export default {
       
       return cities;
     },
-    parmacyOptions: function() {
-      let pharmacy = [];
-      if ( this.allPharmacy ) {
-        this.allPharmacy.forEach(pharm => {
-          pharmacy.push({
-            value: pharm.STORE_UID,
-            label: pharm.NAME,
-          })
-        });
-      }
-
-      return pharmacy;
-    },
     cityForGetPharmacy: function() {
       if ( this.formData.city != '' ) {
         return this.formData.city;
@@ -192,19 +152,6 @@ export default {
           }
         })
       }
-    },
-    getUid(e) {
-      const el = e.target.closest('.card__store');
-      document.querySelectorAll('.card__store_selected')
-        .forEach(el => {
-          if ( el.classList.contains('card__store_selected') ) {
-            el.classList.remove('card__store_selected')
-          }
-        })
-      el.classList.add('card__store_selected');
-
-      const uid = el.dataset.uid;
-      this.formData.store_uid = uid;
     },
     prevStep() {
       if (this.step-- < 1) this.step = 0;
@@ -245,6 +192,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::-webkit-scrollbar {
+    width: .2em;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 .row { display: flex; }
 .justify_between { display: flex; justify-content: space-between; }
 
@@ -253,26 +212,29 @@ export default {
   padding: 0 15px;
   margin: auto;
 }
-.card__header {
-  margin-bottom: 32px;
-}
 .box-card {
   background: none;
   border: 1px solid #343434;
   box-sizing: border-box;
   border-radius: 6px;
+
+  &_min {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 520px;
+    width: fit-content;
+    margin: 0 auto;
+
+    & .card__footer {
+      display: flex;
+      flex-direction: column;
+      border: none;
+    }
+  }
 }
-.west-side {
-  overflow-y: auto;
-  width: 45%;
-  padding-right: 20px;
-}
-.app-select_city {
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 6px; 
-  margin-bottom: 20px;
-}
+
 .card__store {
   padding: 16px;
   border: 1px solid #525252;
@@ -290,97 +252,29 @@ export default {
   padding: 20px 20px 0;
   margin: 20px -20px 0;
 }
-.store__title {
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 21px;
-  margin-bottom: 5px;
-  color: #fff;
-}
-.stor__sub {
-  font-size: 15px;
-  line-height: 20px;
-  color: #F36D01;
-}
-.store__txt {
-  font-size: 15px;
-  line-height: 20px;
-  margin-bottom: 5px;
-  color: #8f8f8f;
-}
-.prev {
-  background: none;
-  cursor: pointer;
-  border-width: 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-  color: #fff;
-  padding: 8px 15px;
-  transition: all .3s ease;
 
-  &:focus { outline: none; }
-}
-.next {
-  background: #f36d01;
-  cursor: pointer;
-  color: #fff;
+.btn__store {
+  border-radius: 4px;
+  padding: 8px 15px;
   border: none;
-  border-radius: 4px;
-  padding: 8px 15px;
-  transition: all .3s ease;
+  color: #fff;
+  cursor: pointer;
+
   &:focus { outline: none; }
 }
-</style>
+.prev { background: none; }
+.next { background: #f36d01; }
 
-<style lang="scss">
-// Steps
-.is-process {
-  & .el-step__icon {
-    color: #fff;
-    background: #f36d01;
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
+
+.timer__txt {
+  display: flex;
+  &_1 { color: #fff; }
+  &_2 {
+    color: #79B0F9;
+    cursor: pointer;
   }
 }
-.el-step__title.is-process {
-  font-weight: 400;
-  color: #f36d01;
-}
-.el-step__icon {
-  width: 36px;
-  height: 36px;
-  background: #282828;
-  border: none !important;
-}
-.el-step.is-horizontal .el-step__line {
-  top: 18px;
-}
-.el-step.is-center .el-step__line {
-  left: 70%;
-  right: -50%;
-  background: #343434;
-}
-.el-step.is-horizontal .el-step__line {
-  height: 1px;
-  width: 60%;
-}
-.el-step__line-inner { border-color: #f36d01 ; }
-.el-step__title.is-success,
-.el-step__head.is-success {
-  color: #f36d01 !important;
-}
-
-// Select
-.el-input__inner {
-  background-color: #0a0b11;
-  color: #f36d01;
-  border: 1px solid #525252;
-  &:focus {
-    outline: #f36d01 auto 1px;
-  }
-}
-.el-select-dropdown__list {
-  background-color: #0a0b11;
-  color: #525252;
-  border: 1px solid #525252;
-}
-.el-select-dropdown__item.selected { color: #f36d01; }
 </style>
