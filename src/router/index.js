@@ -5,6 +5,9 @@ import Home       from '@/views/Home'
 import Order      from '@/views/Order'
 import NewOrder   from '@/views/NewOrder'
 import Disclaimer from '@/views/Disclaimer'
+import Instruction from '@/views/Instruction'
+import HowItWorks from '@/views/HowItWorks';
+import WebAR      from '@/views/WebAR';
 
 import Err404     from '@/views/404'
 
@@ -35,7 +38,24 @@ const routes = [
     component: NewOrder,
     meta: { layout: 'default', age: true, },
   },
-
+  {
+    path: '/instruction',
+    name: 'Instruction',
+    component: Instruction,
+    meta: { layout: 'static', age: true, },
+  },
+  {
+    path: '/how-it-works',
+    name: 'HowItWorks',
+    component: HowItWorks,
+    meta: { layout: 'static', age: true, },
+  },
+  {
+    path: '/webar',
+    name: 'WebAR',
+    component: WebAR,
+    meta: { layout: 'static', age: true, },
+  },
   {
     path: '/404',
     name: 'Err404',

@@ -1,0 +1,50 @@
+<template>
+  <section class="wrapper-page">
+    <Header :asideData="asideData" class="header" />
+    <main class="app-page">
+      <router-view></router-view>
+    </main>
+  </section>
+</template>
+
+<script>
+import Header from '@/components/Header';
+
+export default {
+  name: 'default',
+  components: { Header },
+  data: () => ({
+    asideData: {
+      isOpen: false,
+    },
+  }),
+};
+</script>
+
+<style lang="scss" scoped>
+.header {
+  background: #0a0b11;
+}
+
+.app-page {
+  position: relative;
+  margin: 200px auto 0;
+  background: #0a0b11;
+  max-width: 1568px;
+  padding: 0 30px 50px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 250px);
+
+  @media screen and (max-width: 560px) {
+    margin: 100px auto 50px;
+    min-height: calc(100vh - 150px);
+  }
+}
+.wrapper-page {
+  background: #0a0b11;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
