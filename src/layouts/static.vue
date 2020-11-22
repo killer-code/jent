@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   background: #0a0b11;
+  margin-right: 15px;
 }
 
 .app-page {
@@ -45,7 +46,6 @@ export default {
 }
 .wrapper-page {
   background: #0a0b11;
-  width: 100vw;
   height: 100vh;
 }
 </style>
