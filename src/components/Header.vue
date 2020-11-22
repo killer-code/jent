@@ -23,7 +23,7 @@
           WebAR
         </router-link>
 
-        <router-link to="/" class="nav__link">
+        <router-link to="/instruction" class="nav__link">
           Инструкция
         </router-link>
       </nav>
