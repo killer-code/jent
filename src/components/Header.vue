@@ -19,7 +19,7 @@
           Как работает
         </router-link>
 
-        <router-link to="/" class="nav__link">
+        <router-link to="/webar" class="nav__link">
           WebAR
         </router-link>
 
