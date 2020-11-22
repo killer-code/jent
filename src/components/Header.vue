@@ -15,15 +15,15 @@
       </button>
 
       <nav class="nav tb_d-none">
-        <router-link to="/" class="nav__link">
+        <router-link to="/how-it-works" class="nav__link">
           Как работает
         </router-link>
 
-        <router-link to="/" class="nav__link">
+        <router-link to="/webar" class="nav__link">
           WebAR
         </router-link>
 
-        <router-link to="/" class="nav__link">
+        <router-link to="/instruction" class="nav__link">
           Инструкция
         </router-link>
       </nav>
@@ -52,7 +52,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 999;
   transition: all .7s ease;
 
   &_min { left: 30vw; }
