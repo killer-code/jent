@@ -6,6 +6,7 @@ import Order      from '@/views/Order'
 import NewOrder   from '@/views/NewOrder'
 import Disclaimer from '@/views/Disclaimer'
 import Instruction from '@/views/Instruction'
+import HowItWorks from '@/views/HowItWorks';
 
 import Err404     from '@/views/404'
 
@@ -40,6 +41,12 @@ const routes = [
     path: '/instruction',
     name: 'Instruction',
     component: Instruction,
+    meta: { layout: 'default', age: true, },
+  },
+  {
+    path: '/how-it-works',
+    name: 'HowItWorks',
+    component: HowItWorks,
     meta: { layout: 'default', age: true, },
   },
   {
