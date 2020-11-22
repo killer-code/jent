@@ -172,12 +172,21 @@ export default {
       if (this.step-- < 1) this.step = 0;
     },
     nextStep() {
-      if ( this.step === 1 ) this.submitForm();
-      if (this.step++ > 2) this.step = 3;
+      if ( this.step === 1 ) {
+        this.submitForm();
+      } else {
+        if (this.step++ > 2) this.step = 3;
+      }
     },
     async submitForm() {
       this.response = await this.createOrder(this.formData);
       console.log(this.response);
+      if ( this.response == 'ok' ) {
+        this.step ++;
+        return;
+      } else {
+        return;
+      }
     }
   },
   mounted() {
