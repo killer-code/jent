@@ -91,13 +91,11 @@
 </template>
 
 <script>
-import Timer from '@/components/Timer';
 import StaticFooter from '@/components/StaticFooter';
 
 export default {
   name: 'HowItWorks',
   components: {
-    Timer,
     StaticFooter,
   },
 };
