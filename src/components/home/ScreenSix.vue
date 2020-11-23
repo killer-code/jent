@@ -26,10 +26,12 @@
         </div>
 
         <div class="app-row _mt-7">
-          <button class="app-btn app-btn_orange">
+          <button class="app-btn app-btn_orange"
+            @click="$router.push('/order')">
             Заказать
           </button>
-          <button class="app-btn app-btn_white _ml-7">
+          <button class="app-btn app-btn_white _ml-7"
+            @click="$router.push('/moneyback')">
             Возврат средств
           </button>
         </div>
@@ -258,7 +260,7 @@ export default {
   margin-top: 15vh;
 
   @media screen and (max-width: 1280px) {
-    margin-top: 7vh;
+    margin-top: 3vh;
   }
 }
 .txt_small {

@@ -171,10 +171,17 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 20px 0;
+    @media screen and ( max-width: 560px ) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   &__label {
     width: 45%;
     color: #fff;
+    @media screen and ( max-width: 560px ) {
+      width: 100%;
+    }
   }
   &__input {
     width: 100%;
@@ -184,6 +191,9 @@ export default {
   }
   &__check {
     color: #fff;
+    @media screen and ( max-width: 560px ) {
+      white-space: normal;
+    }
   }
 }
 </style>
@@ -192,5 +202,11 @@ export default {
 .el-checkbox__input.is-checked .el-checkbox__inner {
   background-color: #F36D01;
   border-color: #F36D01;
+}
+.el-select-dropdown.el-popper {
+  @media screen and ( max-width: 560px ) {
+    max-width: 300px !important;
+    left: calc(50% - 150px) !important;
+  }
 }
 </style>

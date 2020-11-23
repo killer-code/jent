@@ -41,6 +41,11 @@ export default {
     background: #f36d01;
   }
 }
+.el-step__title {
+  @media screen and ( max-width: 560px ) {
+    display: none;
+  }
+}
 .el-step__title.is-process {
   font-weight: 400;
   color: #f36d01;

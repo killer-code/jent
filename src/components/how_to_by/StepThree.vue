@@ -77,6 +77,11 @@ export default {
   line-height: 42px;
   margin-bottom: 24px;
   color: #fff;
+
+  @media screen and ( max-width: 560px ) {
+    font-size: 23px;
+    margin-bottom: 16px;
+  }
 }
 .sub-title {
   text-align: center;
@@ -85,6 +90,11 @@ export default {
   color: #fff;
 }
 .input-code {
+  @media screen and ( max-width: 560px ) {
+    display: flex;
+    justify-content: center;
+  }
+
   &__number {
     text-align: center;
 
@@ -106,6 +116,19 @@ export default {
       outline: none; 
       border-color: #fff;
     }
+
+    @media screen and ( max-width: 560px ) {
+      width: 48px;
+      height: 48px;
+      font-size: 38px;
+      line-height: 38px;
+      margin: 23px 3px 0;
+    }
+  }
+}
+br {
+  @media screen and ( max-width: 560px ) {
+    display: none;
   }
 }
 </style>

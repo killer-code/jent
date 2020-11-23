@@ -59,6 +59,11 @@ export default {
   height: 100vh;
   padding: 45px 30px;
   z-index: 10;
+
+  @media screen and ( max-width: 560px ) {
+    min-width: 100vw;
+    max-width: 100vw;
+  }
 }
 
 .btn-arrow {

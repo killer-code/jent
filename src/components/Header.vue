@@ -11,7 +11,7 @@
 
       <button @click="$router.push('/order')" 
         class="app-btn__how-by mb_d-none">
-        <span>Где купить</span>
+        <span>Заказать образец</span>
       </button>
 
       <nav class="nav tb_d-none">

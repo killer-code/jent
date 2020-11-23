@@ -14,7 +14,7 @@ export default ({
   },
   actions: {
     async fetchPharmacy(ctx, city) {
-      const res = await fetch(`http://fmdev.ru/pharmacy/map/api/getDrugstore/?product_code=jent&city_name=${city}`);
+      const res = await fetch(`https://fmdev.ru/pharmacy/map/api/getDrugstore/?product_code=jent&city_name=${city}`);
       const pharmacy = await res.json()
 
       ctx.commit('updatePharmacy', pharmacy);
