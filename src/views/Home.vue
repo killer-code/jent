@@ -12,7 +12,7 @@
         :getAsideData="getAsideData"/>
     </div>
     <div class="section">
-      <ScreenFour />
+      <ScreenFour :screen="screen" />
     </div>
     <div class="section">
       <ScreenFive />
@@ -37,7 +37,7 @@ import ScreenSix  from '@/components/home/ScreenSix'
 
 export default {
   name: 'Home',
-  props: ['asideData'],
+  props: ['asideData', 'screen'],
   components: { 
     ScreenOne, 
     ScreenTwo, 

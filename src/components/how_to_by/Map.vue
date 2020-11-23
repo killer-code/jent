@@ -76,6 +76,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper-map {
   width: 100%;
+  padding-left: 10px;
 }
 #map {
   width: 100%;

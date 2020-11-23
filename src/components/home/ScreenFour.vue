@@ -2,31 +2,36 @@
   <section class="screen-four">
     <div class="container">
 
-      <section class="scene-4-static">
+      <!-- <section class="scene-4-static">
         <img class="img-jent_static" 
           data-depth-x="0.15" data-depth-y="0.1"
           src="@/assets/img/bg-s4-1.png">
-      </section>
-      
-      <section class="content page-1-content">
-        <h2 class="caption-2">Действует быстро</h2>
+      </section> -->
 
-        <div class="_mt-7">
-          <p class="txt txt_left">
-            Препарат Джент действует эффективно, без долгих
-          </p>
-          <p class="txt txt_left">
-            ожиданий и усилий. В отличие от таблеток, оральный спрей 
-          </p>
-          <p class="txt txt_left">
-            Джент быстро всасывается через слизистую оболочку
-          </p>
-          <p class="txt txt_left">
-            полости рта и действует уже через 10 минут с момента 
-          </p>
-          <p class="txt txt_left">
-            использования. 
-          </p>
+      <section class="content page-1-content">
+        <div>
+          <h2 class="caption-2">Действует быстро</h2>
+
+          <div class="_mt-7">
+            <p class="txt txt_left">
+              Препарат Джент действует эффективно, без долгих
+              <br class="mb_d-none">
+              ожиданий и усилий. В отличие от таблеток, оральный спрей 
+              <br class="mb_d-none">
+              Джент быстро всасывается через слизистую оболочку
+              <br class="mb_d-none">
+              полости рта и действует уже через 10 минут с момента 
+              <br class="mb_d-none">
+              использования. 
+            </p>
+          </div>
+        </div>
+
+        <div class="mb_d-none">
+          <div class="timer2">
+            <img src="@/assets/img/circle-timer.svg" alt="">
+            <p class="timer2__txt">0</p>
+          </div>
         </div>
       </section>
 
@@ -39,11 +44,41 @@ import Parallax from 'parallax-js'
 
 export default {
   name: 'ScreenFour',
+  props: ['screen'],
   mounted() {
     // Delete sprite
-    const sceneSt = document.querySelector('.scene-4-static');
-    let parallaxInstance = new Parallax(sceneSt);
+    // const sceneSt = document.querySelector('.scene-4-static');
+    // let parallaxInstance = new Parallax(sceneSt);
     // END
+  },
+  methods: {
+    animeteTimer() {
+      const block = document.querySelector('.timer2'),
+            count = block.querySelector('.timer2__txt');
+
+      let counter = {
+        count: 0,
+      }
+
+      this.$anime({
+        targets: counter,
+        count: 10,
+        easing: 'linear',
+        round: 1,
+        duration: 2000,
+        delay: 2000,
+        update: function() {
+          count.innerHTML = counter.count;
+        }
+      });
+    },
+  },
+  watch: {
+    screen() {
+      if ( this.screen == 3 ) {
+        this.animeteTimer();
+      }
+    }
   }
 }
 </script>
@@ -54,9 +89,18 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  -webkit-box-shadow: inset 0px -20px 26px -2px rgba(5,0,18,.75);
-  -moz-box-shadow:    inset 0px -20px 26px -2px rgba(5,0,18,.75);
-  box-shadow:         inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  background-color: #0d0b16;
+  background-image: url('../../assets/img/bg-s4-11.jpg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  // -webkit-box-shadow: inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  // -moz-box-shadow:    inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  // box-shadow:         inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  @media screen and (max-width: 560px) {
+    background-size: 150%;
+    background-position: -110px bottom;
+  }
 }
 .content {
   display: flex;
@@ -75,9 +119,8 @@ export default {
 }
 .page-1-content {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   padding-top: 20vh;
   height: 100vh;
 
@@ -87,7 +130,9 @@ export default {
     justify-content: center;
   }
   @media screen and (max-width: 560px) {
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-end;
   }
 }
 .start { 
@@ -145,5 +190,52 @@ export default {
 }
 ._mt-60 {
   margin-top: 60px;
+}
+.mb_d-none {
+  @media screen and (max-width: 560px) {
+    display: none !important;
+  }
+}
+.timer2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media screen and (max-width: 560px) {
+    width: 100%;
+  }
+
+  &__txt {
+    font-family: 'Aldrich';
+    font-size: 250px;
+    font-weight: 500;
+    line-height: 240px;
+    margin-right: 50px;
+
+    background: radial-gradient(148.1% 170.18% at 184.02% -70.18%, #B34F51 0%, #43244E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media screen and (max-width: 560px) {
+      font-size: 60px;
+      font-weight: 500;
+      line-height: 60px;
+      margin-right: 20px;
+    }
+  }
+
+  & img {
+    @media screen and (max-width: 560px) {
+      width: 31px;
+      height: 31px;
+      margin-top: -30px;
+    }
+  }
+}
+p, h2 {
+  @media screen and (max-width: 560px) {
+    text-align: center !important;
+    width: 100%;
+  }
 }
 </style>

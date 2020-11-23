@@ -2,7 +2,6 @@ import Vue       from 'vue'
 import VueRouter from 'vue-router'
 
 import Home       from '@/views/Home'
-import Order      from '@/views/Order'
 import NewOrder   from '@/views/NewOrder'
 import Disclaimer from '@/views/Disclaimer'
 import Instruction from '@/views/Instruction'
@@ -25,12 +24,6 @@ const routes = [
     name: 'Disclaimer',
     component: Disclaimer,
     meta: { layout: 'empty', clear: true, },
-  },
-  {
-    path: '/test-order',
-    name: 'Order',
-    component: Order,
-    meta: { layout: 'default', age: true, },
   },
   {
     path: '/order',

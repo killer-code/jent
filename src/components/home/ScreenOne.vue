@@ -13,28 +13,19 @@
 
       <section class="content page-1-content">
         <div class="start">
-          <h2 class="caption-2 mb_d-none">Джент.</h2>
-          <h2 class="caption-2 caption-2_gradient mb_d-none">Быстрее ваших</h2>
-          <h2 class="caption-2 caption-2_gradient mb_d-none">желаний</h2>
-
-          <div class="txt _mt-7 mb_d-none">
-            <p>Инновационное решение, которое поможет</p>
-            <p>избежать неловких ситуаций и «неудач». Джент в</p>
-            <p>новом формате спрея усилит эрекцию за 10 минут.</p>
-          </div>
-        </div>
-
-        <div class="start">
-          <h2 class="caption-2 mb-d">Джент.
+          <h2 class="caption-2">Джент.<br class="mb_d-none">
             <strong class="caption-2 caption-2_gradient">
-              Быстрее ваших желаний
+              Быстрее ваших<br class="mb_d-none">
+            </strong>
+            <strong class="caption-2 caption-2_gradient">
+               желаний
             </strong>
           </h2>
 
-          <div class="txt mb-d _mt-7">
+          <div class="txt _mt-7">
             <p>
-              Инновационное решение, которое поможет
-              избежать неловких ситуаций и «неудач». Джент в
+              Инновационное решение, которое поможет<br class="mb_d-none">
+              избежать неловких ситуаций и «неудач». Джент в<br class="mb_d-none">
               новом формате спрея усилит эрекцию за 10 минут.
             </p>
           </div>
@@ -73,6 +64,7 @@
 
       </section>
     </div>
+    <!-- <div class="grad"></div> -->
   </section>
 </template>
 
@@ -105,14 +97,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.grad {
+  position: absolute;
+  height: 550px;
+  top: calc(100vh - 450px);
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+}
 .screen-one {
   position: relative;
   height: 100vh;
   width: 100vw;
 
-  -webkit-box-shadow: inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
-  -moz-box-shadow:    inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
-  box-shadow:         inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  // -webkit-box-shadow: inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  // -moz-box-shadow:    inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  // box-shadow:         inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
 }
 .scene-static {
   position: absolute;
@@ -266,6 +266,11 @@ export default {
       border-radius: 50%; 
       z-index: -1;
     }
+  }
+}
+p, h2 {
+  @media screen and (max-width: 560px) {
+    text-align: center !important;
   }
 }
 

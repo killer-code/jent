@@ -70,6 +70,7 @@ export default {
   @media screen and (max-width: 560px) {
     width: 36px;
     height: 36px;
+    left: calc(50% - 18px);
 
     & img {
       width: 6px;

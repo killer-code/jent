@@ -76,10 +76,14 @@
       </div>
 
       <div class="form__input">
-        <el-input
-          v-model="formData.phone"
+        <masked-input
+          class="el-input__inner"
+          type="tel"
+          mask="\+7\ (111)111-11-11"
+          placeholder="+7 (XXX)XXX-XX-XX"
+          v-model="phone"
           clearable>
-        </el-input>
+        </masked-input>
       </div>
     </section>
 
@@ -88,7 +92,7 @@
       </div>
 
       <div class="form__input">
-        <el-checkbox v-model="perInfo"
+        <el-checkbox v-model="formData.perInfo"
           calss="form__check">
           <span class="form__check">
             Даю согласие на обработку своих персональных данных
@@ -102,7 +106,7 @@
       </div>
 
       <div class="form__input">
-        <el-checkbox v-model="aply"
+        <el-checkbox v-model="formData.aply"
           calss="form__check">
           <span class="form__check">
             Я подтверждаю правила оферты
@@ -115,16 +119,17 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import MaskedInput from 'vue-masked-input'
 
 export default {
   name: 'StepTwo',
   props: ['formData'],
+  components: { MaskedInput },
   data: () => ({
     firstName: '',
     secondName: '',
     lastName: '',
-    perInfo: false,
-    aply: false,
+    phone: '',
   }),
   computed: {
     ...mapGetters(['getSpeciality']),
@@ -143,6 +148,17 @@ export default {
   watch: {
     fullName() {
       this.formData.name = this.fullName.trim();
+    },
+    phone() {
+      let arr = this.phone.split('');
+      let tel = [];
+      arr.forEach(el => {
+        if ( Number(el) ) {
+          tel.push(el);
+        }
+      });
+      let telStr = tel.join('');
+      this.formData.phone = telStr;
     }
   }
 }

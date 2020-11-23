@@ -1,7 +1,7 @@
 <template>
   <header class="app-header" :class="{ 'app-header_min': asideData.isOpen }">
     <div class="west-side">
-      <button class="app-btn">
+      <button class="app-btn" @click="openCloseMenu">
         <img src="@/assets/img/burger.svg" alt="" />
       </button>
 
@@ -10,7 +10,7 @@
       </router-link>
 
       <button @click="$router.push('/order')" class="app-btn__how-by mb_d-none">
-        <span>Как купить</span>
+        <span>Где купить</span>
       </button>
 
       <nav class="nav tb_d-none">
@@ -37,7 +37,15 @@
 <script>
 export default {
   name: 'Header',
-  props: ['asideData'],
+  props: ['asideData', 'nav'],
+  data: () => ({
+    menu: false,
+  }),
+  methods: {
+    openCloseMenu() {
+      this.nav.isOpen = true;
+    }
+  }
 };
 </script>
 

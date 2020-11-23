@@ -3,8 +3,8 @@
     <div class="container">
       <div id="canvas"></div>
 
-      <img class="img-jent_static" 
-        src="@/assets/img/bg-s2-1.png">
+      <!-- <img class="img-jent_static" 
+        src="@/assets/img/bg-s2-1.png"> -->
 
       <!-- <img class="img-jent_static" 
         src="@/assets/img/bg-s2-2.png"> -->
@@ -15,30 +15,15 @@
       <section class="content page-1-content">
         <h2 class="caption-2">Спрей</h2>
         <div class="_mt-7">
-          <div class="mb_d-none">
+          <div class="">
             <p class="txt txt_left">
-              Одна доза — два нажатия. Спрей Джент имеет
-            </p>
-            <p class="txt txt_left">
-              удобную гибкую дозировку, что снижает риск
-            </p>
-            <p class="txt txt_left">
-              возникновения побочных эффектов. В одном
-            </p>
-            <p class="txt txt_left">
-              «пшике» содержится 12,5 мг, а для получения 
-            </p>
-            <p class="txt txt_left">
-              мощной эрекции хватит всего двух нажатий.
-            </p>
-          </div>
-          <div class="mb_d">
-            <p class="txt txt_left mb-d">
-              Одна доза — два нажатия. Спрей Джент имеет
-              удобную гибкую дозировку, что снижает риск
-              возникновения побочных эффектов. В одном
-              «пшике» содержится 12,5 мг, а для получения 
-              мощной эрекции хватит всего двух нажатий.
+              Одна доза — два нажатия. Спрей Джент имеет удобную
+              <br class="mb_d-none"> 
+              гибкую дозировку, что снижает риск возникновения 
+              <br class="mb_d-none"> 
+              побочных эффектов. В одном «пшике» содержится 12,5 мг,
+              <br class="mb_d-none"> 
+              а для получения мощной эрекции хватит всего двух нажатий.
             </p>
           </div>
         </div>
@@ -96,16 +81,16 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(29.27% 59.49% at 50% 100%, rgba(79, 70, 92, 0.6) 0%, rgba(79, 70, 92, 0) 100%), #0A0B11;
-  background-image: url('../../assets/img/bg-s2-2.png');
-  background-position: 5vw 32vh;
+  background: #0A0B11;
+  background-image: url('../../assets/img/bg-s2-22.png');
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
   mix-blend-mode: lighten;
 
   @media screen and ( max-width: 560px ) {
-    background-position: -25vw 72%;
-    background-size: 75%;
+    background-position: -305px bottom;
+    background-size: 215%;
   }
 }
 .content {
@@ -286,7 +271,6 @@ export default {
     }
   }
 }
-
 @keyframes btn-mob-anim {
   0% { 
     width: 0px;

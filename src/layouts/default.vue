@@ -1,6 +1,8 @@
 <template>
   <section class="wrapper-page">
-    <Header :asideData="asideData" />
+    <Header :asideData="asideData" :nav="nav" />
+    <Navigation :nav="nav" />
+    
     <main class="app-page">
       <router-view></router-view>
     </main>
@@ -9,14 +11,14 @@
 
 <script>
 import Header from '@/components/Header'
+import Navigation from '@/components/Navigation'
 
 export default {
   name: 'default',
-  components: { Header },
+  components: { Header, Navigation },
   data: () => ({
-    asideData: {
-      isOpen: false,
-    },
+    asideData: { isOpen: false, },
+    nav: { isOpen: false, },
   }),
 }
 </script>
