@@ -9,12 +9,15 @@ import store  from './store'
 import VueFullPage from 'vue-fullpage.js'
 import Element     from 'element-ui'
 
-
-
 import * as PIXI from 'pixi.js'
 Vue.prototype.$PIXI = PIXI;
 import anime from 'animejs/lib/anime.es'
 Vue.prototype.$anime = anime;
+
+import moment from 'moment';
+import 'moment/locale/ru'
+
+Vue.prototype.$moment = moment;
 
 Vue.config.productionTip = false
 

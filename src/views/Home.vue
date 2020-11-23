@@ -5,11 +5,11 @@
         :getAsideData="getAsideData" />
     </div>
     <div class="section">
-      <ScreenTwo />
+      <ScreenTwo :asideData="asideData" 
+        :getAsideData="getAsideData"/>
     </div>
     <div class="section">
-      <ScreenThree :asideData="asideData" 
-        :getAsideData="getAsideData"/>
+      <ScreenThree />
     </div>
     <div class="section">
       <ScreenFour :screen="screen" />

@@ -19,7 +19,7 @@ export default ({
     },
 
     async pushSMS(ctx, payload) {
-      const url = 'http://fmdev.ru/pharmacy/map/api/checkSMSCode/';
+      const url = 'https://fmdev.ru/pharmacy/map/api/checkSMSCode/';
       const resp = await fetch(
         `${url}?phone=${payload.phone}&product_code=jent&sms_code=${payload.code}`, 
       {
@@ -37,7 +37,7 @@ export default ({
     },
 
     async moneyBack(ctx, code) {
-      const url = 'http://fmdev.ru/pharmacy/map/api/payment/';
+      const url = 'https://fmdev.ru/pharmacy/map/api/payment/';
       const resp = await fetch(
         `${url}?product_code=jent&secret_code=${code}`, 
       {

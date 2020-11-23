@@ -32,7 +32,7 @@
 
       <div class="description">
         <div class="description__title">
-          Гибкий формат дозирования спрея.
+          Меньше побочных эффектов
         </div>
         <div
             class="description__content description__content--spray description__content--with-bg"
@@ -40,16 +40,42 @@
           <div class="row">
             <img src="@/assets/img/spray.svg" alt="spray" class="image__spray" />
             <p>
-              Джент позволит вам контролировать дозу силденафила и избежать лишних
-              побочных реакций. В одном нажатии содержится 12,5 мг активного
-              вещества, а для получения мощной эрекции достаточно нажать всего два
-              раза. Распылите Джент на язык и проглотите.
+              Гибкий формат дозирования спрея Джент позволит вам 
+              контролировать дозу силденафила и избежать лишних 
+              побочных реакций. В одном нажатии содержится 12,5 мг 
+              активного вещества, а для получения мощной эрекции 
+              достаточно нажать всего два раза.
             </p>
           </div>
         </div>
       </div>
 
       <div class="description">
+        <div class="description__title">
+          Всего два нажатия
+        </div>
+        <div
+            class="description__content description__content--spray description__content--with-bg"
+        >
+          <div class="row">
+            <img src="@/assets/img/oral-icon.svg" alt="spray" class="image__spray" />
+            <p>
+              Скорость действия таблеток — в среднем 20-30 минут. 
+              Спрей Джент не проходит долгий путь через желудок, а 
+              всасывается через слизистую оболочку полости рта и 
+              действует через 10 минут. Просто распылите Джент на 
+              поверхность языка и проглотите. Спрей начинает всасываться 
+              во рту без лишних действий. Уже в желудке вещество 
+              полностью растворяется и попадает в кровь, обеспечивая 
+              мощный и стабильный результат. Для большего эффекта вы 
+              можете запить Джент водой, но, в отличие от таблеток, 
+              это необязательно.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="description">
         <div class="description__title">
           Скорость действия спрея.
         </div>
@@ -73,9 +99,9 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="description">
+      <!-- <div class="description">
         <div class="description__content">
           <p>
             Как правило, жирная пища и алкоголь снижает эффект средств для
@@ -85,8 +111,111 @@
             не препятствия.
           </p>
         </div>
+      </div> -->
+
+      <div class="description">
+        <div class="description__title">
+          Всегда рядом
+        </div>
+        <div
+            class="description__content description__content--clock description__content--with-bg"
+        >
+          <div class="row">
+            <img
+                src="@/assets/img/packet-icon.svg"
+                alt="spray"
+                class="image__clock"
+            />
+            <p>
+              Спрей идеально помещается в кармане. Его можно использовать 
+              незаметно везде: дома, в номере отеля, в баре или клубе. 
+              Удобная крышка-предохранитель защитит от случайных нажатий, 
+              а снять этикетку Джент легко.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="description">
+        <div class="description__title">
+          Сквозь препятствия
+        </div>
+        <div
+            class="description__content description__content--clock description__content--with-bg"
+        >
+          <div class="row row_top">
+            <img
+                src="@/assets/img/food-icon.svg"
+                alt="spray"
+                class="image__clock"
+            />
+            <div>
+              <p>
+                Как правило, алкоголь снижает эффект средств для потенции: 
+                замедляется действие силденафила и снижается качество эрекции. 
+                Но не в случае с Джент. В отличие от других препаратов, спрей 
+                не теряет свойств и действует, несмотря не препятствия.
+              </p>
+              <p>
+                Жирная пища обычно препятствует всасыванию силденафила, 
+                Джент — напротив — совместим с едой и действует без осечек. 
+                Кроме того, исследование установило: жирная пища не снижает 
+                эффективность силденафила, если принимать вещество незадолго 
+                до или во время приема пищи.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="description">
+        <div class="description__title">
+          Приятный вкус
+        </div>
+        <div
+            class="description__content description__content--clock 
+              description__content--with-bg"
+        >
+          <div class="row">
+            <img
+                src="@/assets/img/orange-icon.svg"
+                alt="spray"
+                class="image__clock"
+            />
+            <p>
+              Запивать таблетку с силденафилом неприятно. Они, как правило, 
+              очень горькие, и это портит весь настрой. Джент обладает 
+              цитрусовым вкусом. Спрей распыляется на язык и сразу 
+              передает ощущения.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- <section class="txt_small_wrap description__content">
+      <p class="txt_small">
+        * ООО «Фармамед» не несет ответственности за действия 
+        пользователей настоящего сайта.
+      </p>
+
+      <p class="txt_small">
+        Функционал Сайта предоставляется ООО «Фармамед» только 
+        для специалистов здравоохранения (медицинских работников 
+        и руководителей медицинских организаций). Если Вы не 
+        относитесь к данной категории лиц, просим прекратить 
+        использование Сайта, в противном случае на Вас возлагается 
+        вся ответственность действующего законодательства за 
+        последствия нарушения данного правила
+      </p>
+
+      <p class="txt_small">
+        ** используя настоящий Cайт вы обязуетесь, в случае 
+        приобретения/получения любого продукта посредством 
+        Cайта, использовать его только для личных целей и не 
+        вручать пациентам
+      </p>
+    </section> -->
 
     <StaticFooter />
   </section>
@@ -108,6 +237,10 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  &_top {
+    align-items: flex-start;
+  }
 
   @media screen and (max-width: 560px) {
     flex-direction: column;
@@ -249,5 +382,15 @@ export default {
       }
     }
   }
+}
+.txt_small {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 13px;
+  color: #fff;
+  margin-bottom: 10px;
+  opacity: .5;
+  max-width: 1040px;
 }
 </style>

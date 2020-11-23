@@ -66,6 +66,10 @@ export default {
   overflow-y: auto;
   width: 45%;
   padding-right: 10px;
+
+  @media screen and ( max-width: 560px ) {
+    width: 100%;
+  }
 }
 .app-select_city {
   width: 100%;

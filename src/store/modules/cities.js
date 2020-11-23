@@ -26,13 +26,13 @@ export default ({
   },
   actions: {
     async fetchUserCity(ctx, ip) {
-      const res = await fetch(`http://api.sypexgeo.net/h6JRc/json/${ip}`);
+      const res = await fetch(`https://api.sypexgeo.net/h6JRc/json/${ip}`);
       const city = await res.json()
 
       ctx.commit('updateUserCity', city);
     },
     async fetchCities(ctx) {
-      const res = await fetch(`http://fmdev.ru/pharmacy/map/api/getListCity/?product_code=jent`, {
+      const res = await fetch(`https://fmdev.ru/pharmacy/map/api/getListCity/?product_code=jent`, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',

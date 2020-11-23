@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <section>
+    <section  class="west">
       <WestSide :asideData="asideData" />
     </section>
 
@@ -71,7 +71,9 @@ export default {
     // json_2: require('@/assets/img/sprites/scene-2/screen-2.json'),
     // sprite_2: require('@/assets/img/sprites/scene-2/screen-2.png'),
 
-    asideData: { isOpen: false, },
+    asideData: { 
+      isOpen: false,
+    },
     nav: { isOpen: false, },
     scroll: 0,
     isMob: window.innerWidth < 560,
@@ -84,6 +86,9 @@ export default {
         fitToSectionDelay: 1500,
         scrollingSpeed: 500,
       }
+    },
+    isAsideActive: function() {
+      return this.asideData.isOpen;
     }
   },
   methods: {
@@ -102,7 +107,26 @@ export default {
     },
     scrollDown() {
       this.$refs.fullpage.api.moveSectionDown();
+    },
+    westSideScrolling(e) {
+      console.log(e);
     }
+  },
+  watch: {
+    isAsideActive() {
+      if ( this.isAsideActive ) {
+        this.$refs.fullpage.api.setAllowScrolling(false);
+      } else {
+        this.$refs.fullpage.api.setAllowScrolling(true);
+      }
+    }
+  },
+  mounted() {
+    const west = document.querySelector('.west');
+    west.addEventListener('wheel', e => {
+      const el = e.target.closest('.aside_wrap');
+      el.scrollTop += e.deltaY;
+    })
   }
 }
 </script>

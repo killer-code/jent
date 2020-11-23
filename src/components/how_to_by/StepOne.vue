@@ -6,7 +6,9 @@
       :cities="cities"
       :maxHeight="maxHeight" />
 
-    <Map :pharmacy="pharmacy" :maxHeight="maxHeight" />
+    <Map :pharmacy="pharmacy" 
+      :maxHeight="maxHeight" 
+      v-if="!isMobile"/>
   </section>
 </template>
 
@@ -17,6 +19,9 @@ import WestSide from '@/components/how_to_by/WestSide'
 export default {
   name: 'StepOne',
   props: ['formData', 'pharmacy', 'cities', 'maxHeight'],
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
   components: { Map, WestSide, },
 }
 </script>

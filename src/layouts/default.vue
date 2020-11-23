@@ -33,15 +33,28 @@ export default {
   max-width: 1200px;
   padding: 0 30px;
   z-index: 1;
+
+  @media screen and ( max-width: 560px ) {
+    height: auto;
+    margin-top: 80px;
+  }
 }
 .wrapper-page {
   background:#0A0B11;
   width: 100vw;
   height: 100%;
+
+  @media screen and ( max-width: 560px ) {
+    height: auto;
+  }
 }
 .footer {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 10px;
   padding-bottom: 20px;
+
+  @media screen and ( max-width: 560px ) {
+    position: relative;
+  }
 }
 </style>

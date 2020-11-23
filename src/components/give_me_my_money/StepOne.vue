@@ -65,6 +65,10 @@ export default {
   align-items: center;
   justify-content: center;
   padding-top: 15vh;
+
+  @media screen and ( max-width: 560px ) {
+    padding-top: 5vh;
+  }
 }
 .box-card {
   display: flex;
@@ -77,6 +81,10 @@ export default {
   background: #0A0B11;
   max-width: 520px;
   padding: 32px;
+
+  @media screen and ( max-width: 560px ) {
+    padding: 16px;
+  }
 }
 .card {
   &__title {
@@ -85,11 +93,20 @@ export default {
     line-height: 42px;
     color: #fff;
     text-align: center;
+
+    @media screen and ( max-width: 560px ) {
+      font-size: 23px;
+      line-height: 32px;
+      text-align: left;
+    }
   }
   &__subt {
     margin-top: 21px;
     text-align: center;
     color: #fff;
+    @media screen and ( max-width: 560px ) {
+      font-size: 14px;;
+    }
   }
 }
 .input {
@@ -112,6 +129,12 @@ export default {
   &:focus { 
     outline: none; 
     border-color: #fff;
+  }
+  @media screen and ( max-width: 560px ) {
+    font-size: 32px;
+    line-height: 32px;
+    height: 50px;
+    margin: 23px 0 16px;
   }
 }
 .btn__push {
@@ -147,5 +170,10 @@ export default {
   transition: all .3s ease;
 
   &:hover { opacity: 1; } 
+}
+br {
+  @media screen and ( max-width: 560px ) {
+    display: none;
+  }
 }
 </style>

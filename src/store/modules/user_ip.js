@@ -4,6 +4,7 @@ export default ({
   },
   getters: {
     userIP(state) {
+      localStorage.ip = state.user_ip.ip;
       return state.user_ip.ip;
     },
   },

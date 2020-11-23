@@ -74,7 +74,7 @@ export default {
   width: 100vw;
 
   background-color: #0c0b11;
-  background-image: url('../../assets/img/bg-s4-11.jpg');
+  background-image: url('../../assets/img/bg-s4-111.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

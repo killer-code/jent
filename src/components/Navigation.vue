@@ -18,11 +18,14 @@
           WebAR
         </router-link>
         <router-link to="/order" class="menu__item">
-          Заказать пробник
+          Заказать образец
         </router-link>
-        <router-link to="/" class="menu__item">
+        <router-link to="/moneyback" class="menu__item">
+          Возврат средств
+        </router-link>
+        <!-- <router-link to="/" class="menu__item">
           Правовая информация
-        </router-link>
+        </router-link> -->
 
         <router-link to="/how-it-works" class="menu__item mb-d">
           Как работает

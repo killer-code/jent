@@ -31,16 +31,25 @@
               Назад
             </button>
             <button class="btn__store next"
+              :class="{ 'order-1' : step == 2 }" 
               :disabled="disabledBtn" 
               @click="nextStep">
               {{ step === 2 ? 'Подтвердить' : 'Далее' }}
             </button>
 
-            <section class="justify_between order-3" v-if="step == 2">
-              <div class="timer"></div>
+            <section class="order-3"
+              :class="deltaTime !== 0 ? 'justify_between' : 'justify_center'" 
+              v-if="step == 2">
+              <div class="timer" v-if="deltaTime !== 0">
+                <p class="timer__txt_1 clock">{{ deltaTime }}</p>
+              </div>
               <div class="timer__txt">
                 <p class="timer__txt_1">Не получили код?</p>
-                <p class="timer__txt_2">Выслать новый код</p>
+                <a href="#" class="timer__txt_2 link"
+                  @click.stop.prevent="repeatSMS"
+                  :class="{'link_disabled' : deltaTime !== 0}">
+                  Выслать новый
+                </a>
               </div>
             </section>
           </section>
@@ -86,8 +95,10 @@ export default {
 
       response: '',
       step: 0,
-      maxHeight: window.innerHeight / 3,
       valid: true,
+      gameOver: 180000,
+      deltaTime: 0,
+      isMobile: window.innerWidth < 561,
     }
   },
   computed: {
@@ -99,11 +110,7 @@ export default {
       'getSpeciality',
     ]),
     ip: function() {
-      if ( !localStorage.getItem('ip') ) {
-        this.fetchUserIP();
-      } else {
-        return localStorage.getItem('ip');
-      }
+      this.fetchUserIP();
     },
     city: function() {
       if ( this.ip ) {
@@ -160,7 +167,14 @@ export default {
       )) {
         return true;
       }
-    }
+    },
+    maxHeight: function() {
+      if ( this.isMobile ) {
+        return window.innerHeight
+      } else {
+        return window.innerHeight / 3
+      }
+    },
   },
   methods: {
     ...mapActions([
@@ -234,11 +248,28 @@ export default {
       } else {
         return;
       }
+    },
+    async repeatSMS() {
+      let res = await this.getSMS(this.formData);
+      this.gameOver = 180000;
+      this.timer();
+    },
+    timer() {
+      setInterval(() => {
+        if ( this.gameOver > 0 && this.step == 2 ) {
+          this.gameOver -= 1000;
+          this.deltaTime = this.$moment(this.gameOver).format('mm:ss');
+        } else {
+          this.deltaTime = 0;
+        }
+      }, 1000)
     }
   },
   mounted() {
+    this.fetchUserIP();
     this.fetchCities();
     this.getUserCity();
+    this.timer();
   },
   watch: {
     userIP() {
@@ -252,6 +283,11 @@ export default {
     },
     selectedCity() {
       localStorage.city = this.selectedCity;
+    },
+    step() {
+      if ( this.step === 2 ) {
+        this.timer();
+      }
     }
   }
 }
@@ -259,12 +295,30 @@ export default {
 
 <style lang="scss" scoped>
 .row { display: flex; }
-.justify_between { display: flex; justify-content: space-between; }
+.justify_between { 
+  display: flex; 
+  justify-content: space-between;
+
+  @media screen and ( max-width: 560px ) {
+    flex-direction: row;
+    align-items: center;
+  } 
+}
+.order-3.justify_between {
+  @media screen and ( max-width: 560px ) {
+    flex-direction: column;
+    align-items: center;
+  } 
+}
 
 .container {
   max-width: 1070px;
   padding: 0 15px;
   margin: auto;
+
+  @media screen and ( max-width: 560px ) {
+    padding: 0;
+  }
 }
 .box-card {
   background: none;
@@ -317,9 +371,28 @@ export default {
   &_1 { color: #fff; }
   &_2 {
     margin-left: 5px;
-    color: #79B0F9;
     cursor: pointer;
+  }
+  @media screen and ( max-width: 560px ) {
+    flex-direction: column;
+    margin-top: 10px;
   }
 }
 .d-none { display: none; }
+.timer__txt {
+  justify-content: center;
+}
+.link {
+  color: #f36d01;
+  opacity: .7;
+  transition: all .3s ease;
+
+  &:hover { opacity: 1; } 
+  &_disabled {
+    opacity: .3;
+    pointer-events: none;
+  }
+}
+.order-1, .order-2 { width: 100%; }
+.clock { color: #f36d01; }
 </style>
