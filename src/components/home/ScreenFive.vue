@@ -7,17 +7,15 @@
 
         <div class="_mt-7 ">
           <p class="txt txt_left">
-            Джент совестим с алкоголем и жирной пищей.
+            Джент совместим с алкоголем, а прием пищи 
             <br class="mb_d-none">
-            Как известно, регулярное употребление алкоголя со 
+            не снижает эффективность. Идеален для
             <br class="mb_d-none">
-            временем ослабляет сексуальное желание 
+            ношения в кармане: компактный размер, 
             <br class="mb_d-none">
-            и уменьшает чувствительность половых органов.  
+            легкоснимающаяся этикетка, крышка-  
             <br class="mb_d-none">
-            Спрей Джент действует быстро и эффективно, 
-            <br class="mb_d-none">
-            игнорируя все препятствия.
+            предохранитель от случайных нажатий.
           </p>
         </div>
       </section>
@@ -75,9 +73,8 @@ export default {
 .page-1-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  padding-top: 20vh;
   height: 100vh;
 
   @media screen and (max-width: 768px) {

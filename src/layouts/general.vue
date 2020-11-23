@@ -29,7 +29,7 @@
     <full-page ref="fullpage" id="fullpage" :options="options">
       <router-view :asideData="asideData" :screen="scroll" />
     </full-page>
-    <Footer :scroll="scroll" @down="scrollDown" />
+    <Footer :scroll="scroll" @down="scrollDown" v-if="scroll != 5" />
   </section>
 </template>
 

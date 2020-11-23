@@ -17,14 +17,6 @@
         <router-link to="/how-it-works" class="nav__link">
           Как работает
         </router-link>
-
-        <router-link to="/webar" class="nav__link">
-          WebAR
-        </router-link>
-
-        <router-link to="/instruction" class="nav__link">
-          Инструкция
-        </router-link>
       </nav>
     </div>
 

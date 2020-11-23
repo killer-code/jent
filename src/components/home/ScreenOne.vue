@@ -24,9 +24,15 @@
 
           <div class="txt _mt-7">
             <p>
-              Инновационное решение, которое поможет<br class="mb_d-none">
-              избежать неловких ситуаций и «неудач». Джент в<br class="mb_d-none">
-              новом формате спрея усилит эрекцию за 10 минут.
+              Джент — это инновационное средство для усиления
+              <br class="mb_d-none">
+              потенции в удобном формате спрея для приема
+              <br class="mb_d-none">
+              внутрь. Джент воздействует на естественные 
+              <br class="mb_d-none">
+              механизмы возникновения эрекции и начинает
+              <br class="mb_d-none">
+              действовать уже через 10 минут.
             </p>
           </div>
         </div>
@@ -50,7 +56,7 @@
           <div class="_mb-7 _mt-60">
             <p class="txt txt_left">Инновационный</p>
             <p class="txt txt_left">формат 
-              <strong class="txt txt_strong">мини-спрея</strong>
+              <strong class="txt txt_strong">спрея</strong>
             </p>
 
             <div @click="openAside" 

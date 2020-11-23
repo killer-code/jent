@@ -3,9 +3,9 @@
     <div class="container">
       
       <section class="scene-3-static">
-        <img class="img-jent_static-1" 
+        <!-- <img class="img-jent_static-1" 
           data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/bg-s3-1.jpg">
+          src="@/assets/img/bg-s3-1.jpg"> -->
 
         <img class="img-jent_static animate-west-side" 
           data-depth-x="-0.1" data-depth-y="-0.1"
@@ -20,18 +20,20 @@
       </section>
 
       <section class="content page-1-content">
-        <h2 class="caption-2">Активная молекула</h2>
+        <h2 class="caption-2">
+          Действующее<br class="mb_d-none">
+          вещество
+        </h2>
 
         <div class="_mt-7">
           <p class="txt txt_left">
-            Спрей Джент — это всё тот же безопасный и хорошо
+            В основе Джент — хорошо изученная молекула силденафил.
             <br class="mb_d-none">
-            изученный 
-            <strong class="txt txt_strong">силденафил</strong>. 
-            Вещество уже давно используют <br class="mb_d-none">
-            для лечения проблем с потенцией. Оно отлично помогает
+            Вещество входит в рекомендации Американской 
+            <br class="mb_d-none"> 
+            урологической ассоциации (AUA), Европейской ассоциации 
             <br class="mb_d-none">
-            мужчинам достигать и поддерживать мощную эрекцию.
+            урологов (EAU).
           </p>
         </div>
       </section>

@@ -33,17 +33,45 @@
             Возврат средств
           </button>
         </div>
+
+        <section class="txt_small_wrap">
+          <p class="txt_small">
+            * ООО «Фармамед» не несет ответственности за действия 
+            пользователей настоящего сайта.
+          </p>
+
+          <p class="txt_small">
+            Функционал Сайта предоставляется ООО «Фармамед» только 
+            для специалистов здравоохранения (медицинских работников 
+            и руководителей медицинских организаций). Если Вы не 
+            относитесь к данной категории лиц, просим прекратить 
+            использование Сайта, в противном случае на Вас возлагается 
+            вся ответственность действующего законодательства за 
+            последствия нарушения данного правила
+          </p>
+
+          <p class="txt_small">
+            ** используя настоящий Cайт вы обязуетесь, в случае 
+            приобретения/получения любого продукта посредством 
+            Cайта, использовать его только для личных целей и не 
+            вручать пациентам”
+          </p>
+        </section>
       </section>
 
     </div>
+
+    <StaticFooter class="footer" />
   </section>
 </template>
 
 <script>
 import Parallax from 'parallax-js'
+import StaticFooter from '@/components/StaticFooter'
 
 export default {
   name: 'ScreenSix',
+  components: { StaticFooter },
   mounted() {
     // Delete sprite
     const sceneSt = document.querySelector('.scene-6-static');
@@ -58,10 +86,6 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-
-  // -webkit-box-shadow: inset 0px 17px 22px -2px rgba(255,255,255,.1);
-  // -moz-box-shadow:    inset 0px 17px 22px -2px rgba(255,255,255,.1);
-  // box-shadow:         inset 0px 17px 22px -2px rgba(255,255,255,.1);
 
   @media screen and (max-width: 560px) {
     background: rgba(0,0,0,.4);
@@ -93,9 +117,10 @@ export default {
 .page-1-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   height: 100vh;
+  padding-top: 20vh;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -219,5 +244,22 @@ p, h2 {
     text-align: center !important;
     width: 100%;
   }
+}
+.txt_small_wrap {
+  margin-top: 15vh;
+}
+.txt_small {
+  font-family: 'Roboto';
+  max-width: 545px;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 13px;
+  color: #fff;
+  margin-bottom: 13px;
+  opacity: .5;
+}
+.footer {
+  position: fixed;
+  bottom: 20px;
 }
 </style>
