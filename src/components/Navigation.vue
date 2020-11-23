@@ -11,23 +11,23 @@
       </div>
 
       <div class="menu__body">
-        <router-link to="/order" class="menu__item">
+        <router-link to="/instruction" class="menu__item">
           Инструкция
         </router-link>
-        <router-link to="/order" class="menu__item">
+        <router-link to="/webar" class="menu__item">
           WebAR
         </router-link>
         <router-link to="/order" class="menu__item">
           Заказать пробник
         </router-link>
-        <router-link to="/order" class="menu__item">
+        <router-link to="/" class="menu__item">
           Правовая информация
         </router-link>
 
-        <router-link to="/order" class="menu__item mb-d">
+        <router-link to="/how-it-works" class="menu__item mb-d">
           Как работает
         </router-link>
-        <router-link to="/order" class="menu__item menu__item_btn mb-d">
+        <router-link to="/" class="menu__item menu__item_btn mb-d">
           Где купить
         </router-link>
       </div>

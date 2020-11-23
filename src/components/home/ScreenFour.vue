@@ -2,35 +2,25 @@
   <section class="screen-four">
     <div class="container">
 
-      <!-- <section class="scene-4-static">
-        <img class="img-jent_static" 
-          data-depth-x="0.15" data-depth-y="0.1"
-          src="@/assets/img/bg-s4-1.png">
-      </section> -->
-
       <section class="content page-1-content">
-        <div>
-          <h2 class="caption-2">Действует быстро</h2>
-
-          <div class="_mt-7">
-            <p class="txt txt_left">
-              Препарат Джент действует эффективно, без долгих
-              <br class="mb_d-none">
-              ожиданий и усилий. В отличие от таблеток, оральный спрей 
-              <br class="mb_d-none">
-              Джент быстро всасывается через слизистую оболочку
-              <br class="mb_d-none">
-              полости рта и действует уже через 10 минут с момента 
-              <br class="mb_d-none">
-              использования. 
-            </p>
-          </div>
-        </div>
-
         <div class="mb_d-none">
           <div class="timer2">
             <img src="@/assets/img/circle-timer.svg" alt="">
             <p class="timer2__txt">0</p>
+          </div>
+        </div>
+
+        <div class="txt_wraper">
+          <h2 class="caption-2">Всего два нажатия</h2>
+
+          <div class="_mt-7">
+            <p class="txt txt_left">
+              Спрей начинает всасываться уже во рту и действует всего
+              <br class="mb_d-none">
+              через 10 минут. Для достижения максимального эффекта Джент
+              <br class="mb_d-none">
+              нужно запить водой.
+            </p>
           </div>
         </div>
       </section>
@@ -40,16 +30,10 @@
 </template>
 
 <script>
-import Parallax from 'parallax-js'
-
 export default {
   name: 'ScreenFour',
   props: ['screen'],
   mounted() {
-    // Delete sprite
-    // const sceneSt = document.querySelector('.scene-4-static');
-    // let parallaxInstance = new Parallax(sceneSt);
-    // END
   },
   methods: {
     animeteTimer() {
@@ -89,14 +73,11 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  background-color: #0d0b16;
+  background-color: #0c0b11;
   background-image: url('../../assets/img/bg-s4-11.jpg');
   background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
-  // -webkit-box-shadow: inset 0px -20px 26px -2px rgba(5,0,18,.75);
-  // -moz-box-shadow:    inset 0px -20px 26px -2px rgba(5,0,18,.75);
-  // box-shadow:         inset 0px -20px 26px -2px rgba(5,0,18,.75);
+  background-position: center;
+  background-size: contain;
   @media screen and (max-width: 560px) {
     background-size: 150%;
     background-position: -110px bottom;
@@ -119,9 +100,8 @@ export default {
 }
 .page-1-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 20vh;
+  flex-direction: column;
+  padding-top: 15vh;
   height: 100vh;
 
   @media screen and (max-width: 768px) {
@@ -237,5 +217,8 @@ p, h2 {
     text-align: center !important;
     width: 100%;
   }
+}
+.txt_wraper {
+  margin-top: 10vh;
 }
 </style>

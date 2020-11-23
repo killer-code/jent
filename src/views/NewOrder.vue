@@ -4,7 +4,9 @@
 
       <OrderHeader :step="step" />
 
-      <el-card class="box-card" :class="{ 'box-card_min' : step == 2 }">
+      <el-card class="box-card" 
+        v-if="step !== 3"
+        :class="{ 'box-card_min' : step == 2, 'd-none' : step == 3 }" >
         <div>
           <section v-if="step === 0">
             <StepOne
@@ -29,8 +31,7 @@
               Назад
             </button>
             <button class="btn__store next"
-              :disabled="disabledBtn"
-              :class="{ 'd-none' : step > 1 }"  
+              :disabled="disabledBtn" 
               @click="nextStep">
               {{ step === 2 ? 'Подтвердить' : 'Далее' }}
             </button>
@@ -46,6 +47,8 @@
         </div>
       </el-card>
 
+      <StepFour v-if="step === 3" />
+
     </div>
   </section>
 </template>
@@ -60,10 +63,11 @@ import OrderHeader from '@/components/how_to_by/OrderHeader'
 import StepOne   from '@/components/how_to_by/StepOne'
 import StepTwo   from '@/components/how_to_by/StepTwo'
 import StepThree from '@/components/how_to_by/StepThree'
+import StepFour  from '@/components/how_to_by/StepFour'
 
 export default {
   name: 'NewOrder',
-  components: { OrderHeader, StepOne, StepTwo, StepThree, },
+  components: { OrderHeader, StepOne, StepTwo, StepThree, StepFour },
   data: function() {
     return {
       formData: {
@@ -83,6 +87,7 @@ export default {
       response: '',
       step: 0,
       maxHeight: window.innerHeight / 3,
+      valid: true,
     }
   },
   computed: {
@@ -184,13 +189,17 @@ export default {
     prevStep() {
       if (this.step-- < 1) this.step = 0;
     },
-    nextStep() {
+    async nextStep() {
       if ( this.step === 1 ) {
         try {
           this.submitForm()
             .then(() => {
               try {
-                this.getSMS(this.formData)
+                let res = this.getSMS(this.formData)
+                if ( res == 'ok' ) {
+                  this.valid = false;
+                  return;
+                }
               }
               catch(e) {
                 console.log(e);
@@ -202,8 +211,12 @@ export default {
         }   
       } else if ( this.step === 2 ) {
         try {
-          this.pushSMS(this.dataStep3)
-          this.step ++;
+          let res = await this.pushSMS(this.dataStep3)
+          if ( res == 'ok' ) {
+            this.step ++;
+          } else {
+            this.valid = false;
+          }
         }
         catch(e) {
           console.log(e);
@@ -308,4 +321,5 @@ export default {
     cursor: pointer;
   }
 }
+.d-none { display: none; }
 </style>
