@@ -20,21 +20,17 @@
       </section>
 
       <section class="content page-1-content">
-        <h2 class="caption-2">Активная молекула </h2>
+        <h2 class="caption-2">Активная молекула</h2>
 
         <div class="_mt-7">
           <p class="txt txt_left">
             Спрей Джент — это всё тот же безопасный и хорошо
-          </p>
-          <p class="txt txt_left">
+            <br class="mb_d-none">
             изученный 
             <strong class="txt txt_strong">силденафил</strong>. 
-            Вещество уже давно используют 
-          </p>
-          <p class="txt txt_left">
+            Вещество уже давно используют <br class="mb_d-none">
             для лечения проблем с потенцией. Оно отлично помогает
-          </p>
-          <p class="txt txt_left">
+            <br class="mb_d-none">
             мужчинам достигать и поддерживать мощную эрекцию.
           </p>
         </div>
@@ -64,9 +60,9 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.05);
-  -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.05);
-  box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  // -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  // -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  // box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.05);
 }
 .content {
   display: flex;
@@ -136,7 +132,6 @@ export default {
 }
 .img-jent_static {
   position: absolute;
-  margin-top: 150px;
   object-fit: contain;
 
   &-1 { 
@@ -163,19 +158,16 @@ export default {
 ._mt-60 {
   margin-top: 60px;
 }
+.mb_d-none {
+  @media screen and (max-width: 560px) {
+    display: none !important;
+  }
+}
 
-// .animate-west-side {
-//   animation: anim-west 10s ease infinite alternate;
-// }
-
-// @keyframes anim-west {
-//   0% { 
-//     left: -10px;
-//     top: -10px;
-//   }
-//   100% { 
-//     left: 10px;
-//     top: 10px;
-//   }
-// }
+p, h2 {
+  @media screen and (max-width: 560px) {
+    text-align: center !important;
+    width: 100%;
+  }
+}
 </style>

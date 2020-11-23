@@ -11,30 +11,16 @@
       <section class="content page-1-content">
         <h2 class="caption-2">Попробуйте Джент</h2>
 
-        <div class="_mt-7 mb_d-none">
+        <div class="_mt-7">
           <p class="txt txt_left mb_d-none">
             Оформите заказ, чтобы получить флакон нового Джент
-          </p>
-          <p class="txt txt_left mb_d-none">
+            <br class="mb_d-none">
             совершенно бесплатно. Оплатите заказ в ближайшей  
-          </p>
-          <p class="txt txt_left mb_d-none">
+            <br class="mb_d-none">
             аптеке, получите специальный код и введите его
-          </p>
-          <p class="txt txt_left mb_d-none">
+            <br class="mb_d-none">
             на странице «Возврат средств». Деньги поступят
-          </p>
-          <p class="txt txt_left mb_d-none">
-            на счёт вашего телефона в течение нескольких часов.
-          </p>
-        </div>
-
-        <div class="_mt-7 mb_d">
-          <p class="txt txt_left mb-d">
-            Оформите заказ, чтобы получить флакон нового Джент 
-            совершенно бесплатно. Оплатите заказ в ближайшей 
-            аптеке, получите специальный код и введите его 
-            на странице «Возврат средств». Деньги поступят 
+            <br class="mb_d-none">
             на счёт вашего телефона в течение нескольких часов.
           </p>
         </div>
@@ -73,12 +59,16 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  -webkit-box-shadow: inset 0px 17px 22px -2px rgba(255,255,255,.1);
-  -moz-box-shadow:    inset 0px 17px 22px -2px rgba(255,255,255,.1);
-  box-shadow:         inset 0px 17px 22px -2px rgba(255,255,255,.1);
+  // -webkit-box-shadow: inset 0px 17px 22px -2px rgba(255,255,255,.1);
+  // -moz-box-shadow:    inset 0px 17px 22px -2px rgba(255,255,255,.1);
+  // box-shadow:         inset 0px 17px 22px -2px rgba(255,255,255,.1);
 
   @media screen and (max-width: 560px) {
     background: rgba(0,0,0,.4);
+    background-image: url('../../assets/img/bg-s6-mob.png');
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: top center;
   }
 }
 .content {
@@ -111,6 +101,11 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+
+  @media screen and (max-width: 560px) {
+    justify-content: space-between;
+    padding-bottom: 15vh;
   }
 }
 .start { 
@@ -158,8 +153,12 @@ export default {
     object-fit: cover;
   }
   @media screen and (max-width: 560px) {
-    max-width: 200px;
-    object-fit: contain;
+    display: none !important;
+  }
+}
+.img-jent_static-1 {
+  @media screen and (max-width: 560px) {
+    display: none !important;
   }
 }
 .wrap_more {
@@ -168,7 +167,7 @@ export default {
 ._mt-7 {
   margin-top: 35px;
   @media screen and (max-width: 560px) {
-    margin-top: 16px;
+    margin-top: 5px;
   }
 }
 ._ml-7 {
@@ -212,6 +211,13 @@ export default {
   display: none !important;
   @media screen and (max-width: 560px) {
     display: block !important;
+  }
+}
+
+p, h2 {
+  @media screen and (max-width: 560px) {
+    text-align: center !important;
+    width: 100%;
   }
 }
 </style>

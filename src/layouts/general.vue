@@ -3,8 +3,13 @@
     <section>
       <WestSide :asideData="asideData" />
     </section>
+
     <section>
-      <Header :asideData="asideData" />
+      <Header :asideData="asideData" :nav="nav" />
+    </section>
+
+    <section>
+      <Navigation :nav="nav" />
     </section>
 
     <!-- <Preloader v-show="!loaded" :process="process" @load="changeLoad" /> -->
@@ -22,16 +27,17 @@
       v-show="scroll === 1" /> -->
 
     <full-page ref="fullpage" id="fullpage" :options="options">
-      <router-view :asideData="asideData" />
+      <router-view :asideData="asideData" :screen="scroll" />
     </full-page>
     <Footer :scroll="scroll" @down="scrollDown" />
   </section>
 </template>
 
 <script>
-import Header   from '@/components/Header'
-import Footer   from '@/components/Footer'
-import WestSide from '@/components/WestSide'
+import Header     from '@/components/Header'
+import Footer     from '@/components/Footer'
+import WestSide   from '@/components/WestSide'
+import Navigation from '@/components/Navigation'
 
 import Preloader from '@/components/Preloader'
 
@@ -45,6 +51,8 @@ export default {
     Header, 
     Footer, 
     WestSide, 
+    Navigation,
+
     Preloader,
     AnimationOne, 
     AnimationTwo,
@@ -61,9 +69,8 @@ export default {
     // json_2: require('@/assets/img/sprites/scene-2/screen-2.json'),
     // sprite_2: require('@/assets/img/sprites/scene-2/screen-2.png'),
 
-    asideData: {
-      isOpen: false,
-    },
+    asideData: { isOpen: false, },
+    nav: { isOpen: false, },
     scroll: 0,
   }),
   computed: {
@@ -71,8 +78,8 @@ export default {
       return {
         licenseKey: 'BSD-3-Clause',
         onLeave: this.onLeave,
-        fitToSectionDelay: 4500,
-        scrollingSpeed: 1500,
+        fitToSectionDelay: 1500,
+        scrollingSpeed: 500,
       }
     }
   },

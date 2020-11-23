@@ -5,6 +5,7 @@ import aside      from './modules/aside'
 import order      from './modules/order'
 import cities     from './modules/cities'
 import user_ip    from './modules/user_ip'
+import message    from './modules/message'
 import pharmacy   from './modules/pharmacy'
 import map_style  from './modules/map-style'
 import speciality from './modules/speciality'
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     order,
     cities,
     user_ip,
+    message,
     pharmacy,
     map_style,
     speciality,

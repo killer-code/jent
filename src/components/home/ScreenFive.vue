@@ -3,31 +3,21 @@
     <div class="container">
       
       <section class="content page-1-content">
-        <h2 class="caption-2">Действует быстро</h2>
+        <h2 class="caption-2">Совместим<br class="mb_d-none"> со всем</h2>
 
         <div class="_mt-7 ">
-          <p class="txt mb_d-none txt_left">
-            Препарат Джент действует эффективно, без долгих
-          </p>
-          <p class="txt mb_d-none txt_left">
-            ожиданий и усилий. В отличие от таблеток, оральный спрей 
-          </p>
-          <p class="txt mb_d-none txt_left">
-            Джент быстро всасывается через слизистую оболочку
-          </p>
-          <p class="txt mb_d-none txt_left">
-            полости рта и действует уже через 10 минут с момента 
-          </p>
-          <p class="txt mb_d-none txt_left">
-            использования. 
-          </p>
-
-          <p class="txt txt_left mb-d">
-            Препарат Джент действует эффективно, без долгих
-            ожиданий и усилий. В отличие от таблеток, оральный спрей 
-            Джент быстро всасывается через слизистую оболочку 
-            полости рта и действует уже через 10 минут с момента 
-            использования. 
+          <p class="txt txt_left">
+            Джент совестим с алкоголем и жирной пищей.
+            <br class="mb_d-none">
+            Как известно, регулярное употребление алкоголя со 
+            <br class="mb_d-none">
+            временем ослабляет сексуальное желание 
+            <br class="mb_d-none">
+            и уменьшает чувствительность половых органов.  
+            <br class="mb_d-none">
+            Спрей Джент действует быстро и эффективно, 
+            <br class="mb_d-none">
+            игнорируя все препятствия.
           </p>
         </div>
       </section>
@@ -52,15 +42,15 @@ export default {
   background-repeat: no-repeat;
   background-position: bottom;
 
-  -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  // -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  // -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  // box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
 
   @media screen and (max-width: 560px) {
     background: #060113;
     background-image: url('../../assets/img/bg-s5-mob.jpg');
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: bottom;
 
     -webkit-box-shadow: inherit;
     -moz-box-shadow:    inherit;
@@ -96,7 +86,7 @@ export default {
     justify-content: center;
   }
   @media screen and (max-width: 560px) {
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-bottom: 70px; 
   }
 }
@@ -170,6 +160,12 @@ export default {
   display: none !important;
   @media screen and (max-width: 560px) {
     display: block !important;
+  }
+}
+p, h2 {
+  @media screen and (max-width: 560px) {
+    text-align: center !important;
+    width: 100%;
   }
 }
 </style>

@@ -30,7 +30,7 @@
             </button>
             <button class="btn__store next"
               :disabled="disabledBtn"
-              :class="{ 'order-1' : step == 2 }"  
+              :class="{ 'd-none' : step > 1 }"  
               @click="nextStep">
               {{ step === 2 ? 'Подтвердить' : 'Далее' }}
             </button>
@@ -81,7 +81,7 @@ export default {
       formCode: { code: '', },
 
       response: '',
-      step: 1,
+      step: 0,
       maxHeight: window.innerHeight / 3,
     }
   },
@@ -130,6 +130,12 @@ export default {
     selectedCity: function() {
       return this.formData.city;
     },
+    dataStep3: function() {
+      return {
+        phone: this.formData.phone,
+        code: this.formCode.code
+      }
+    },
     disabledBtn: function() {
       if ( this.step === 0 && 
           ( this.formData.city == '' ||   
@@ -143,6 +149,11 @@ export default {
         !this.formData.perInfo || !this.formData.aply
       )) {
         return true;
+      }  else if ( this.step === 2 && (
+        this.formCode.code == '' ||
+        this.formCode.code.length < 4
+      )) {
+        return true;
       }
     }
   },
@@ -153,6 +164,8 @@ export default {
       'fetchPharmacy',
       'fetchUserCity',
       'createOrder',
+      'pushSMS',
+      'getSMS',
     ]),
     getUserCity() {
       this.citiesOptions.forEach(city => {
@@ -173,7 +186,28 @@ export default {
     },
     nextStep() {
       if ( this.step === 1 ) {
-        this.submitForm();
+        try {
+          this.submitForm()
+            .then(() => {
+              try {
+                this.getSMS(this.formData)
+              }
+              catch(e) {
+                console.log(e);
+              }
+            })
+        }
+        catch(e) {
+          console.log(e)
+        }   
+      } else if ( this.step === 2 ) {
+        try {
+          this.pushSMS(this.dataStep3)
+          this.step ++;
+        }
+        catch(e) {
+          console.log(e);
+        }
       } else {
         if (this.step++ > 2) this.step = 3;
       }

@@ -47,7 +47,7 @@ export default {
         this.num3 = numbers[2];
         this.num4 = numbers[3];
       }
-    }
+    },
   },
   methods: {
     inputCode(e) {
@@ -64,7 +64,7 @@ export default {
   watch: {
     fullCode() {
       this.code.code = this.fullCode.trim();
-    }
+    },
   }
 }
 </script>

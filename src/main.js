@@ -18,7 +18,10 @@ Vue.prototype.$anime = anime;
 
 Vue.config.productionTip = false
 
-Vue.use(VueFullPage);
+if (screen && screen.width > 560) {
+  Vue.use(VueFullPage);
+}
+
 Vue.use(Element)
 
 new Vue({
