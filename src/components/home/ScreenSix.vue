@@ -54,7 +54,7 @@
             ** используя настоящий Cайт вы обязуетесь, в случае 
             приобретения/получения любого продукта посредством 
             Cайта, использовать его только для личных целей и не 
-            вручать пациентам”
+            вручать пациентам
           </p>
         </section>
       </section>
@@ -210,8 +210,17 @@ export default {
   margin-top: 60px;
 }
 .app-row {
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 50%;
+  }
   @media screen and (max-width: 560px) {
     width: 100%;
+  }
+  & button {
+    @media screen and (max-width: 768px) {
+      margin: 10px 0 !important;
+    }
   }
 }
 .app-btn {
@@ -247,6 +256,10 @@ export default {
 
 .txt_small_wrap {
   margin-top: 15vh;
+
+  @media screen and (max-width: 1280px) {
+    margin-top: 7vh;
+  }
 }
 .txt_small {
   font-family: 'Roboto';

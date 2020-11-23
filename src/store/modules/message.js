@@ -11,7 +11,6 @@ export default ({
       });
 
       const result = await resp.json();
-      console.log(result);
       if ( result.status === 'error' ) {
         return result.message;
       } else {
@@ -30,12 +29,30 @@ export default ({
       });
 
       const result = await resp.json();
-      console.log(result);
       if ( result.status === 'error' ) {
         return result.message;
       } else {
         return result.status;
       }
     },
+
+    async moneyBack(ctx, code) {
+      const url = 'http://fmdev.ru/pharmacy/map/api/payment/';
+      const resp = await fetch(
+        `${url}?product_code=jent&secret_code=${code}`, 
+      {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+      });
+
+      const result = await resp.json();
+      console.log(result);
+      if ( result.status === 'error' ) {
+        return result.message;
+      } else {
+        return result.status;
+      }
+    }
   },
 })

@@ -6,7 +6,7 @@
 
         <button class="app-btn"
           @click="nav.isOpen = false">
-            <img src="@/assets/img/burger.svg" alt="" />
+            <img src="@/assets/img/icon-close.svg" alt="" />
         </button>
       </div>
 
@@ -63,7 +63,7 @@ export default {
 }
 
 .menu {
-  position: absolute;
+  position: fixed;
   transition: .5s ease;
   background: rgba(0,0,0,.6);
   left: 0;

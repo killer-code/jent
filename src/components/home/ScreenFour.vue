@@ -77,7 +77,12 @@ export default {
   background-image: url('../../assets/img/bg-s4-11.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+
+  @media screen and (max-width: 1280px) {
+    background-size: contain;
+  }
+
   @media screen and (max-width: 560px) {
     background-size: 150%;
     background-position: -110px top;
@@ -199,6 +204,12 @@ export default {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+    @media screen and (max-width: 1280px) {
+      font-size: 150px;
+      line-height: 140px;
+      margin-right: 70px;
+    }
+
     @media screen and (max-width: 560px) {
       font-size: 60px;
       font-weight: 500;
@@ -208,6 +219,9 @@ export default {
   }
 
   & img {
+    @media screen and (max-width: 1280px) {
+      margin-top: -5vh;
+    }
     @media screen and (max-width: 560px) {
       width: 31px;
       height: 31px;

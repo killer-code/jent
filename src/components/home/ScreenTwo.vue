@@ -84,6 +84,15 @@ export default {
   background-blend-mode: lighten;
   mix-blend-mode: lighten;
 
+  @media screen and (max-width: 1280px) {
+    background-size: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    background-position: right bottom;
+    background-size: contain;
+  }
+
   @media screen and ( max-width: 560px ) {
     background-position: -305px top;
     background-size: 215%;

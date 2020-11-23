@@ -1,7 +1,8 @@
 <template>
   <transition name="slide-left2right">
     <section class="westside" v-show="asideData.isOpen">
-      <aside v-if="asideData.description && asideData.title">
+      <aside v-if="asideData.description && asideData.title"
+        class="aside_wrap">
         <section class="app-header">
           <h3 class="caption-3">
             {{ asideData.title }}
@@ -73,6 +74,11 @@ export default {
     height: 24px;
     transform: rotate(180deg); 
   }
+}
+.aside_wrap {
+  position: relative;
+  max-height: 90vh;
+  overflow: scroll;
 }
 
 .aside {

@@ -153,14 +153,8 @@ export default {
     object-fit: cover;
     min-height: 400px;
   }
-
-  &-mob {
-    display: none;
-    @media screen and (max-width: 560px) {
-      object-fit: contain;
-    }
-  }
 }
+
 .wrap_more {
   margin-top: 20px;
 }

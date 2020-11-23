@@ -40,9 +40,9 @@ export default {
   background-repeat: no-repeat;
   background-position: bottom;
 
-  // -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  // -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  // box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  @media screen and (max-width: 1280px) {
+    background-size: contain;
+  }
 
   @media screen and (max-width: 560px) {
     background: #060113;
