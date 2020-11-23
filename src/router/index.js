@@ -1,12 +1,13 @@
 import Vue       from 'vue'
 import VueRouter from 'vue-router'
 
-import Home       from '@/views/Home'
-import NewOrder   from '@/views/NewOrder'
-import Disclaimer from '@/views/Disclaimer'
+import Home        from '@/views/Home'
+import WebAR       from '@/views/WebAR'
+import NewOrder    from '@/views/NewOrder'
+import GiveMoney   from '@/views/GiveMoney'
+import Disclaimer  from '@/views/Disclaimer'
+import HowItWorks  from '@/views/HowItWorks'
 import Instruction from '@/views/Instruction'
-import HowItWorks from '@/views/HowItWorks';
-import WebAR      from '@/views/WebAR';
 
 import Err404     from '@/views/404'
 
@@ -29,6 +30,12 @@ const routes = [
     path: '/order',
     name: 'NewOrder',
     component: NewOrder,
+    meta: { layout: 'default', age: true, },
+  },
+  {
+    path: '/moneyback',
+    name: 'GiveMoney',
+    component: GiveMoney,
     meta: { layout: 'default', age: true, },
   },
   {

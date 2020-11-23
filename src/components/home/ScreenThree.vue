@@ -3,16 +3,20 @@
     <div class="container">
       
       <section class="scene-3-static">
-        <!-- <img class="img-jent_static-1" 
-          data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/bg-s3-1.jpg"> -->
 
-        <img class="img-jent_static animate-west-side" 
+        <img class="img-jent_static animate-west-side mb_d-none" 
           data-depth-x="-0.1" data-depth-y="-0.1"
           src="@/assets/img/bg-s3-2.png">
-        <img class="img-jent_static animate-east-side" 
+        <img class="img-jent_static animate-east-side mb_d-none" 
           data-depth-x="-0.2" data-depth-y="-0.2"
           src="@/assets/img/bg-s3-3.png">
+
+        <img class="img-jent_static-mob animate-west-side" 
+          data-depth-x="-0.1" data-depth-y="-0.1"
+          src="@/assets/img/bg-s3-2-mob.png">
+        <img class="img-jent_static-mob animate-east-side" 
+          data-depth-x="-0.2" data-depth-y="-0.2"
+          src="@/assets/img/bg-s3-3-mob.png">
 
         <img class="img-jent_static-1" 
           data-depth-x="-0.05" data-depth-y="-0.05"
@@ -62,9 +66,9 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  // -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.05);
-  // -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.05);
-  // box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.05);
+  @media screen and (max-width: 560px) {
+    height: auto;
+  }
 }
 .content {
   display: flex;
@@ -93,9 +97,8 @@ export default {
   height: 100vh;
 
   @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    height: auto;
+    padding-top: 60vh;
   }
 }
 .start { 
@@ -147,10 +150,11 @@ export default {
     object-fit: cover;
   }
   @media screen and (max-width: 560px) {
-    object-fit: contain;
+    object-fit: cover;
     min-height: 400px;
   }
 }
+
 .wrap_more {
   margin-top: 20px;
 }
@@ -166,10 +170,4 @@ export default {
   }
 }
 
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
-  }
-}
 </style>

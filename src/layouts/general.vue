@@ -29,7 +29,9 @@
     <full-page ref="fullpage" id="fullpage" :options="options">
       <router-view :asideData="asideData" :screen="scroll" />
     </full-page>
-    <Footer :scroll="scroll" @down="scrollDown" v-if="scroll != 5" />
+    <Footer :scroll="scroll" 
+      @down="scrollDown" 
+      v-if="scroll != 5 && !isMob" />
   </section>
 </template>
 
@@ -72,6 +74,7 @@ export default {
     asideData: { isOpen: false, },
     nav: { isOpen: false, },
     scroll: 0,
+    isMob: window.innerWidth < 560,
   }),
   computed: {
     options: function() {
@@ -119,5 +122,10 @@ export default {
 }
 .opacity {
   opacity: 0;
+}
+.footer {
+  @media screen and (max-width: 560px) {
+    display: none;
+  }
 }
 </style>

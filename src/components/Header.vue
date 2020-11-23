@@ -9,7 +9,8 @@
         <img src="@/assets/img/logo.svg" alt="" />
       </router-link>
 
-      <button @click="$router.push('/order')" class="app-btn__how-by mb_d-none">
+      <button @click="$router.push('/order')" 
+        class="app-btn__how-by mb_d-none">
         <span>Где купить</span>
       </button>
 
@@ -20,8 +21,8 @@
       </nav>
     </div>
 
-    <p class="discription tb_d-none">
-      Информация для специалистов здравоохранения
+    <p class="discription mb_d-none">
+      Информация для специалистов здравоохранения * **
     </p>
   </header>
 </template>
@@ -144,5 +145,8 @@ export default {
   @media screen and (max-width: 560px) {
     display: none;
   }
+}
+.small {
+  font-size: 10px;
 }
 </style>

@@ -116,9 +116,9 @@ export default {
   height: 100vh;
   width: 100vw;
 
-  // -webkit-box-shadow: inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
-  // -moz-box-shadow:    inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
-  // box-shadow:         inset 0px -22px 32px -2px rgba(79, 70, 92, 0.1);
+  @media screen and (max-width: 560px) {
+    height: auto;
+  }
 }
 .scene-static {
   position: absolute;
@@ -158,8 +158,8 @@ export default {
     justify-content: center;
   }
   @media screen and ( max-width: 560px ) {
-    justify-content: flex-end;
-    padding-bottom: 70px;
+    height: auto;
+    padding-top: 55vh;
   }
 }
 .content > div { display: flex; }
@@ -272,11 +272,6 @@ export default {
       border-radius: 50%; 
       z-index: -1;
     }
-  }
-}
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
   }
 }
 

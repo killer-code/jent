@@ -12,7 +12,7 @@
         <h2 class="caption-2">Попробуйте Джент</h2>
 
         <div class="_mt-7">
-          <p class="txt txt_left mb_d-none">
+          <p class="txt txt_left">
             Оформите заказ, чтобы получить флакон нового Джент
             <br class="mb_d-none">
             совершенно бесплатно. Оплатите заказ в ближайшей  
@@ -54,7 +54,7 @@
             ** используя настоящий Cайт вы обязуетесь, в случае 
             приобретения/получения любого продукта посредством 
             Cайта, использовать его только для личных целей и не 
-            вручать пациентам”
+            вручать пациентам
           </p>
         </section>
       </section>
@@ -93,6 +93,8 @@ export default {
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: top center;
+
+    height: auto;
   }
 }
 .content {
@@ -129,7 +131,10 @@ export default {
   }
 
   @media screen and (max-width: 560px) {
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    padding-top: 55vh;
     padding-bottom: 15vh;
   }
 }
@@ -205,8 +210,17 @@ export default {
   margin-top: 60px;
 }
 .app-row {
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 50%;
+  }
   @media screen and (max-width: 560px) {
     width: 100%;
+  }
+  & button {
+    @media screen and (max-width: 768px) {
+      margin: 10px 0 !important;
+    }
   }
 }
 .app-btn {
@@ -239,14 +253,13 @@ export default {
   }
 }
 
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
-  }
-}
+
 .txt_small_wrap {
   margin-top: 15vh;
+
+  @media screen and (max-width: 1280px) {
+    margin-top: 7vh;
+  }
 }
 .txt_small {
   font-family: 'Roboto';
@@ -261,5 +274,8 @@ p, h2 {
 .footer {
   position: fixed;
   bottom: 20px;
+  @media screen and ( max-width: 560px ) {
+    position: absolute;
+  }
 }
 </style>

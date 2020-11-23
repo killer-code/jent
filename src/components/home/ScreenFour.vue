@@ -77,10 +77,16 @@ export default {
   background-image: url('../../assets/img/bg-s4-11.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+
+  @media screen and (max-width: 1280px) {
+    background-size: contain;
+  }
+
   @media screen and (max-width: 560px) {
     background-size: 150%;
-    background-position: -110px bottom;
+    background-position: -110px top;
+    height: auto;
   }
 }
 .content {
@@ -113,6 +119,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
+    height: auto;
+    padding-top: 40vh;
   }
 }
 .start { 
@@ -196,6 +204,12 @@ export default {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
+    @media screen and (max-width: 1280px) {
+      font-size: 150px;
+      line-height: 140px;
+      margin-right: 70px;
+    }
+
     @media screen and (max-width: 560px) {
       font-size: 60px;
       font-weight: 500;
@@ -205,17 +219,14 @@ export default {
   }
 
   & img {
+    @media screen and (max-width: 1280px) {
+      margin-top: -5vh;
+    }
     @media screen and (max-width: 560px) {
       width: 31px;
       height: 31px;
       margin-top: -30px;
     }
-  }
-}
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
   }
 }
 .txt_wraper {

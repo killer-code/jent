@@ -40,19 +40,17 @@ export default {
   background-repeat: no-repeat;
   background-position: bottom;
 
-  // -webkit-box-shadow: inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  // -moz-box-shadow:    inset 0px -17px 22px -2px rgba(255,255,255,.1);
-  // box-shadow:         inset 0px -17px 22px -2px rgba(255,255,255,.1);
+  @media screen and (max-width: 1280px) {
+    background-size: contain;
+  }
 
   @media screen and (max-width: 560px) {
     background: #060113;
     background-image: url('../../assets/img/bg-s5-mob.jpg');
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: top;
 
-    -webkit-box-shadow: inherit;
-    -moz-box-shadow:    inherit;
-    box-shadow:         inherit;
+    height: auto;
   }
 }
 .content {
@@ -83,8 +81,8 @@ export default {
     justify-content: center;
   }
   @media screen and (max-width: 560px) {
-    justify-content: flex-start;
-    padding-bottom: 70px; 
+    height: auto;
+    padding-top: 52vh; 
   }
 }
 .start { 
@@ -157,12 +155,6 @@ export default {
   display: none !important;
   @media screen and (max-width: 560px) {
     display: block !important;
-  }
-}
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
   }
 }
 </style>
