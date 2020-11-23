@@ -3,11 +3,6 @@
     <div class="container">
       <div id="canvas"></div>
 
-      <!-- <img class="img-jent_static" 
-        src="@/assets/img/bg-s2-1.png"> -->
-
-      <!-- <img class="img-jent_static" 
-        src="@/assets/img/bg-s2-2.png"> -->
       <button class="btn_mob">
         <img src="@/assets/img/cross.svg" alt="">
       </button>
@@ -90,8 +85,9 @@ export default {
   mix-blend-mode: lighten;
 
   @media screen and ( max-width: 560px ) {
-    background-position: -305px bottom;
+    background-position: -305px top;
     background-size: 215%;
+    height: auto;
   }
 }
 .content {
@@ -137,8 +133,8 @@ export default {
     justify-content: center;
   }
   @media screen and ( max-width: 560px ) {
-    justify-content: flex-start;
-    padding-top: 70px;
+    height: auto;
+    padding-top: 60vh;
   }
 }
 .content > div { display: flex; }
@@ -244,7 +240,7 @@ export default {
 
 .btn_mob {
   position: absolute;
-  top: calc(60% - 14.5px);
+  top: calc(20vh);
   right: 60px;
   display: none;
   width: 29px;

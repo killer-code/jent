@@ -12,7 +12,7 @@
         <h2 class="caption-2">Попробуйте Джент</h2>
 
         <div class="_mt-7">
-          <p class="txt txt_left mb_d-none">
+          <p class="txt txt_left">
             Оформите заказ, чтобы получить флакон нового Джент
             <br class="mb_d-none">
             совершенно бесплатно. Оплатите заказ в ближайшей  
@@ -93,6 +93,8 @@ export default {
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: top center;
+
+    height: auto;
   }
 }
 .content {
@@ -129,7 +131,10 @@ export default {
   }
 
   @media screen and (max-width: 560px) {
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    padding-top: 55vh;
     padding-bottom: 15vh;
   }
 }
@@ -239,12 +244,7 @@ export default {
   }
 }
 
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
-  }
-}
+
 .txt_small_wrap {
   margin-top: 15vh;
 }
@@ -261,5 +261,8 @@ p, h2 {
 .footer {
   position: fixed;
   bottom: 20px;
+  @media screen and ( max-width: 560px ) {
+    position: absolute;
+  }
 }
 </style>

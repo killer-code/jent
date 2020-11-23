@@ -80,7 +80,8 @@ export default {
   background-size: contain;
   @media screen and (max-width: 560px) {
     background-size: 150%;
-    background-position: -110px bottom;
+    background-position: -110px top;
+    height: auto;
   }
 }
 .content {
@@ -113,6 +114,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
+    height: auto;
+    padding-top: 40vh;
   }
 }
 .start { 
@@ -210,12 +213,6 @@ export default {
       height: 31px;
       margin-top: -30px;
     }
-  }
-}
-p, h2 {
-  @media screen and (max-width: 560px) {
-    text-align: center !important;
-    width: 100%;
   }
 }
 .txt_wraper {
