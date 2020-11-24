@@ -45,17 +45,19 @@ export default {
 .app-header {
   display: flex;
   align-items: baseline;
+  @media screen and ( max-width: 560px ) {
+    margin-top: 16px;
+  }
 }
 .westside {
-  position: absolute;
+  position: fixed;
   transition: .5s ease;
-  background: #000;
+  background: rgba(0,0,0,.95);
   left: 0;
   right: 70vw;
   top: 0;
   bottom: 0;
-  min-width: 30vw;
-  max-width: 30vw;
+  max-width: 400px;
   height: 100vh;
   padding: 45px 30px;
   z-index: 10;
@@ -92,32 +94,63 @@ export default {
   }
   &__txt {
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 21px;
+    line-height: 32px;
     opacity: .7;
     margin-bottom: 16px;
   }
   &__btn {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
-    margin-top: 20px;
+    border-radius: 4px;
+    padding: 8px 15px;
+    border: none;
+    color: #fff;
+    opacity: .7;
+    background: #f36d01;
+    margin-top: 30px;
+    transition: opacity .3s ease;
     cursor: pointer;
+
+    @media screen and ( max-width: 560px ) {
+      opacity: 1;
+    }
+
+    &:focus { outline: none; }
+    &:hover { opacity: 1; }
 
     & img {
       margin-left: 10px;
-      filter: invert(1);
     }
+  }
+}
+
+.caption-3 {
+  @media screen and ( max-width: 560px ) {
+    font-size: 23px;
+    line-height: 30px;
   }
 }
 
 .slide-left2right-enter-active, 
 .slide-left2right-leave-active {
-  transition: left right .3s ease;
+  transition: left right .5s ease;
+  @media screen and ( max-width: 560px ) {
+    transition: left right 1s ease;
+  }
 }
 .slide-left2right-enter, 
 .slide-left2right-leave-to {
-  left: -30vw;
+  left: -400px;
   right: 100vw;
+
+  @media screen and ( max-width: 560px ) {
+    left: -100vh;
+  }
 }
+.westside {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar { width: 0; }
 </style>

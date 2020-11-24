@@ -34,13 +34,14 @@
       <path d="M73.9703 6.47364C73.6632 6.29608 73.2702 6.40123 73.0927 6.70848L69.2352 13.3875C69.0578 13.6946 69.1629 14.0874 69.4699 14.2648C69.7771 14.4424 70.1701 14.3373 70.3476 14.03L74.2051 7.35095C74.3825 7.04385 74.2774 6.65112 73.9703 6.47364Z" class="line-active" fill="#FFBD3C"/>
     </svg>
 
-    <p class="timer__txt">0</p>
+    <p class="timer__txt">{{ dialog ? 10 : 0 }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Timer',
+  props: ['dialog'],
   methods: {
     animeteTimer() {
       const block = document.querySelector('.timer'),
@@ -82,14 +83,6 @@ export default {
     this.animeteTimer();
     this.animeClocker();
   },
-  // watch: {
-  //   loaded() {
-  //     if ( this.loaded ) {
-  //       this.animeteTimer();
-  //       this.animeClocker();
-  //     }
-  //   }
-  // }
 }
 </script>
 

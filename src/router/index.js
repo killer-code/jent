@@ -13,48 +13,77 @@ import Err404     from '@/views/404'
 
 Vue.use(VueRouter)
 
+const SITE_NAME = 'Jent'
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { layout: 'general', age: true, },
+    meta: { 
+      layout: 'general', 
+      title: `${SITE_NAME} - Главна`,
+      age: true,
+    },
   },
   {
     path: '/age',
     name: 'Disclaimer',
     component: Disclaimer,
-    meta: { layout: 'empty', clear: true, },
+    meta: { 
+      layout: 'empty', 
+      title: `${SITE_NAME}`,
+      clear: true, 
+    },
   },
   {
     path: '/order',
     name: 'NewOrder',
     component: NewOrder,
-    meta: { layout: 'default', age: true, },
+    meta: { 
+      layout: 'default', 
+      title: `${SITE_NAME} - Заказ`,
+      age: true, 
+    },
   },
   {
     path: '/moneyback',
     name: 'GiveMoney',
     component: GiveMoney,
-    meta: { layout: 'default', age: true, },
+    meta: { 
+      layout: 'default', 
+      title: `${SITE_NAME} - Возврат средств`,
+      age: true, 
+    },
   },
   {
     path: '/instruction',
     name: 'Instruction',
     component: Instruction,
-    meta: { layout: 'static', age: true, },
+    meta: { 
+      layout: 'static', 
+      title: `${SITE_NAME} - Инструкция`,
+      age: true, 
+    },
   },
   {
     path: '/how-it-works',
     name: 'HowItWorks',
     component: HowItWorks,
-    meta: { layout: 'static', age: true, },
+    meta: { 
+      layout: 'static', 
+      title: `${SITE_NAME} - Как работает`,
+      age: true, 
+    },
   },
   {
     path: '/webar',
     name: 'WebAR',
     component: WebAR,
-    meta: { layout: 'static', age: true, },
+    meta: { 
+      layout: 'static', 
+      title: `${SITE_NAME} - WebAR`,
+      age: true, 
+    },
   },
   {
     path: '/404',
@@ -68,11 +97,27 @@ const routes = [
   }
 ]
 
+// DEV
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior: function (to, from) {
+    if (to.hash) {
+      console.log(to.hash)
+      return {
+        selector: to.hash
+      }
+    }
+  },
 })
+
+// PROD
+// const router = new VueRouter({
+//   mode: 'history',
+//   base: "/new/",
+//   routes
+// });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.age)) {

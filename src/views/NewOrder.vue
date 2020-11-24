@@ -76,6 +76,12 @@ import StepFour  from '@/components/how_to_by/StepFour'
 
 export default {
   name: 'NewOrder',
+  metaInfo: {
+    title: 'Jent - Заказ',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   components: { OrderHeader, StepOne, StepTwo, StepThree, StepFour },
   data: function() {
     return {

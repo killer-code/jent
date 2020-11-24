@@ -5,10 +5,10 @@
       <section class="scene-3-static">
 
         <img class="img-jent_static animate-west-side mb_d-none" 
-          data-depth-x="-0.1" data-depth-y="-0.1"
+          data-depth-x="-0.2" data-depth-y="-0.2"
           src="@/assets/img/bg-s3-2.png">
         <img class="img-jent_static animate-east-side mb_d-none" 
-          data-depth-x="-0.2" data-depth-y="-0.2"
+          data-depth-x="-0.4" data-depth-y="-0.4"
           src="@/assets/img/bg-s3-3.png">
 
         <img class="img-jent_static-mob animate-west-side" 
@@ -170,4 +170,10 @@ export default {
   }
 }
 
+.img-jent_static-mob {
+  opacity: .7;
+  @media screen and (max-width: 560px) {
+    opacity: 1;
+  }
+}
 </style>

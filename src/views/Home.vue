@@ -38,6 +38,12 @@ import ScreenSix  from '@/components/home/ScreenSix'
 export default {
   name: 'Home',
   props: ['asideData', 'screen'],
+  metaInfo: {
+    title: 'Jent',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   components: { 
     ScreenOne, 
     ScreenTwo, 

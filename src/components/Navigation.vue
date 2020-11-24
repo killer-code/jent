@@ -11,6 +11,9 @@
       </div>
 
       <div class="menu__body">
+        <router-link to="/" class="menu__item">
+          Главная
+        </router-link>
         <router-link to="/instruction" class="menu__item">
           Инструкция
         </router-link>
@@ -68,7 +71,7 @@ export default {
 .menu {
   position: fixed;
   transition: .5s ease;
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.95);
   left: 0;
   top: 0;
   bottom: 0;
@@ -149,6 +152,11 @@ export default {
     opacity: 1;
     pointer-events: inherit;
   }
+}
+
+.router-link-exact-active.router-link-active {
+  color: #f36d01;
+  pointer-events: none;
 }
 
 .slide-left2right-enter-active, 

@@ -79,6 +79,12 @@ import StaticFooter from '@/components/StaticFooter';
 
 export default {
   name: 'WebAR',
+  metaInfo: {
+    title: 'Jent - WebAR',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   components: {
     StaticFooter,
   },

@@ -56,7 +56,8 @@ export default {
   transition: all 0.7s ease;
 
   &_min {
-    left: 30vw;
+    left: 400px;
+    @media screen and ( max-width: 560px ) { left: 0; }
   }
 
   @media screen and (max-width: 1280px) {

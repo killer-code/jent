@@ -13,6 +13,12 @@
 <script>
 export default {
   name: 'Disclaimer',
+  metaInfo: {
+    title: 'Jent',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   methods: {
     goSite() { 
       localStorage.old = true;

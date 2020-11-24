@@ -9,14 +9,21 @@
 
 <script>
 // AIzaSyDMmTRqn819N4o9BJ2r0N4J_0VPL8KAcLU
-import gmapsInit from '@/utils/gmaps'
-import { mapGetters } from 'vuex'
+import gmapsInit       from '@/utils/gmaps'
+import MarkerClusterer from '@googlemaps/markerclustererplus';
+import { mapGetters }  from 'vuex'
 
 export default {
   name: 'Map',
   props: ['pharmacy', 'maxHeight'],
   data: () => ({
     map: '',
+    clusterStyle: [{
+      textColor: '#F36D01',
+      url: require('../../assets/img/cluster-icon.svg'),
+      height: 30,
+      width: 30,
+    }],
   }),
   computed: {
     ...mapGetters(['getMapStyle']),
@@ -29,7 +36,14 @@ export default {
         styles: this.getMapStyle,
         disableDefaultUI: true
       }
-    }
+    },
+    mcOptions: function() {
+      return {
+        gridSize: 50,
+        styles: this.clusterStyle,
+        maxZoom: 15
+      }
+    },
   },
   methods: {
     drowMarkers(store) {
@@ -37,18 +51,27 @@ export default {
         this.map = new google.maps.Map(
           document.getElementById("map"), this.mapOptions
         )
-        
+        let markers = [];
+
         for (let i = 0; i < store.length; i++) {
           const coords = [ 
             Number(store[i].LAT), 
             Number(store[i].LON)
           ];
           const latLng = new google.maps.LatLng(coords[0], coords[1]);
-          new google.maps.Marker({
+
+          let marker = new google.maps.Marker({
             position: latLng,
             map: this.map,
+            icon: require('../../assets/img/map-pin.svg'),
           });
+          
+          markers.push(marker);
         }
+
+        const markerCluster = new MarkerClusterer(
+          this.map, markers, this.mcOptions
+        );
       }
     }
   },
@@ -81,5 +104,12 @@ export default {
 #map {
   width: 100%;
   border-radius: 6px;
+}
+</style>
+
+<style lang="scss">
+.cluster span {
+  font-size: 14px;
+  line-height: 30px;
 }
 </style>
