@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="description">
+      <div class="description" id="format">
         <div class="description__title">
           Меньше побочных эффектов
         </div>
@@ -38,7 +38,8 @@
             class="description__content description__content--spray description__content--with-bg"
         >
           <div class="row">
-            <img src="@/assets/img/spray.svg" alt="spray" class="image__spray" />
+            <img src="@/assets/img/spray.svg" alt="spray" 
+            class="image__spray" />
             <p>
               Гибкий формат дозирования спрея Джент позволит вам 
               контролировать дозу силденафила и избежать лишних 
@@ -50,7 +51,7 @@
         </div>
       </div>
 
-      <div class="description">
+      <div class="description" id="onetwo">
         <div class="description__title">
           Всего два нажатия
         </div>
@@ -58,7 +59,8 @@
             class="description__content description__content--spray description__content--with-bg"
         >
           <div class="row">
-            <img src="@/assets/img/oral-icon.svg" alt="spray" class="image__spray" />
+            <img src="@/assets/img/oral-icon.svg" alt="spray" 
+              class="image__oral" />
             <p>
               Скорость действия таблеток — в среднем 20-30 минут. 
               Спрей Джент не проходит долгий путь через желудок, а 
@@ -157,11 +159,8 @@
                 не теряет свойств и действует, несмотря не препятствия.
               </p>
               <p>
-                Жирная пища обычно препятствует всасыванию силденафила, 
-                Джент — напротив — совместим с едой и действует без осечек. 
-                Кроме того, исследование установило: жирная пища не снижает 
-                эффективность силденафила, если принимать вещество незадолго 
-                до или во время приема пищи.
+                Пища обычно препятствует усвоению силденафила, 
+                Джент — совместим с едой и действует без осечек. 
               </p>
             </div>
           </div>
@@ -226,6 +225,12 @@ import StaticFooter from '@/components/StaticFooter';
 
 export default {
   name: 'HowItWorks',
+  metaInfo: {
+    title: 'Jent - Как работает',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   components: {
     StaticFooter,
   },
@@ -256,6 +261,12 @@ export default {
     @media screen and (max-width: 560px) {
       margin: 0 auto 30px 0;
     }
+  }
+
+  &__oral {
+    width: 75px;
+    height: 160px;
+    margin: 42px 85px 42px 0;
   }
 
   &__clock {

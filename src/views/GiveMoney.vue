@@ -13,6 +13,12 @@ import Error from '@/components/give_me_my_money/Error'
 
 export default {
   name: 'GiveMoney',
+  metaInfo: {
+    title: 'Jent - Возврат средств',
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   components: { StepOne, StepTwo, Error },
   data: () => ({
     step: 0,

@@ -1,55 +1,92 @@
 <template>
-  <section class="screen-two">
-    <div class="container">
-      <div id="canvas"></div>
+  <section>
+    <section class="screen-two">
+      <div class="container">
+        <div id="canvas"></div>
 
-      <button class="btn_mob">
-        <img src="@/assets/img/cross.svg" alt="">
-      </button>
-      
-      <section class="content page-1-content">
-        <h2 class="caption-2">
-          Меньше побочных<br class="mb_d-none"> 
-          эффектов
-        </h2>
-        <div class="_mt-7">
-          <div class="">
-            <p class="txt txt_left">
-              В одном нажатии содержится 12,5 мг действующего
-              <br class="mb_d-none"> 
-              вещества, что позволяет подобрать индивидуальную 
-              <br class="mb_d-none"> 
-              дозировку. Минимальная доза — два нажатия (25 мг).
-            </p>
-          </div>
-        </div>
-
-        <div class="block-2 mb_d-none _mt-7">
-          <div class="circle">
-            <p class="timer__txt">2x</p>
-          </div>
-
-          <div class="block-2_txt_wrap">
-            <p class="txt txt_left">
-              <strong class="txt txt_strong">
-                Два нажатия
-              </strong> 
-              достаточно
-            </p>
-            <p class="txt txt_left">для получения мощной</p>
-            <p class="txt txt_left">эрекции.</p>
-
-            <div @click="openAside" 
-                data-key="twoFirst" 
-                class="txt_left wrap_more wrap_more_left">
-              <p class="more">Подробнее</p>
-              <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
+        <button class="btn_mob" @click="openModal">
+          <img src="@/assets/img/cross.svg" alt="">
+        </button>
+        
+        <section class="content page-1-content">
+          <h2 class="caption-2">
+            Меньше побочных<br class="mb_d-none"> 
+            эффектов
+          </h2>
+          <div class="_mt-7">
+            <div class="">
+              <p class="txt txt_left">
+                В одном нажатии содержится 12,5 мг действующего
+                <br class="mb_d-none"> 
+                вещества, что позволяет подобрать индивидуальную 
+                <br class="mb_d-none"> 
+                дозировку. Минимальная доза — два нажатия (25 мг).
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-    </div>
+          <div class="block-2 mb_d-none _mt-7">
+            <div class="circle">
+              <p class="timer__txt">2x</p>
+            </div>
+
+            <div class="block-2_txt_wrap">
+              <p class="txt txt_left">
+                <strong class="txt txt_strong">
+                  Двух нажатий
+                </strong> 
+                достаточно
+              </p>
+              <p class="txt txt_left">для получения мощной</p>
+              <p class="txt txt_left">эрекции.</p>
+
+              <div @click="openAside" 
+                  data-key="twoFirst" 
+                  class="txt_left wrap_more wrap_more_left">
+                <p class="more">Подробнее</p>
+                <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <transition name="slide-right2left">
+      <section class="dialog" v-show="dialog">
+        <section class="dialog__block">
+          <div class="_mb-7">
+              <div class="row__header">
+                <div class="circle">
+                  <p class="timer__txt">2x</p>
+                </div>
+
+                <div @click="closeModal">
+                  <img src="@/assets/img/icon-close.svg" alt="">
+                </div>
+              </div>
+              
+              <div class="block-2_txt_wrap">
+                <p class="txt txt_left">
+                  <strong class="txt txt_strong">
+                    Двух нажатий
+                  </strong> 
+                  достаточно
+                </p>
+                <p class="txt txt_left">для получения мощной</p>
+                <p class="txt txt_left">эрекции.</p>
+
+                <div @click="closeOpen" 
+                    data-key="twoFirst" 
+                    class="txt_left wrap_more wrap_more_left">
+                  <p class="more">Подробнее</p>
+                  <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
+                </div>
+              </div>
+            </div>
+        </section>
+      </section>
+    </transition>
   </section>
 </template>
 
@@ -57,6 +94,9 @@
 export default {
   name: 'ScreenTwo',
   props: ['asideData', 'getAsideData'],
+  data: () => ({
+    dialog: false,
+  }),
   methods: {
     openAside(e) {
       const btnKey = e.target.parentElement.dataset.key;
@@ -67,6 +107,24 @@ export default {
       this.asideData.title = asideData.title;
       this.asideData.isOpen = true;
     },
+    openModal() {
+      this.dialog = true;
+      document.querySelector('body')
+        .classList.add('blocked');
+      document.querySelector('html')
+        .classList.add('blocked')
+    },
+    closeModal() {
+      this.dialog = false;
+      document.querySelector('body')
+        .classList.remove('blocked')
+      document.querySelector('html')
+        .classList.remove('blocked')
+    },
+    closeOpen(e) {
+      this.closeModal();
+      this.openAside(e);
+    }
   },
 }
 </script>
@@ -214,6 +272,10 @@ export default {
   border: 14px solid rgba(255, 255, 255, .2);
   box-sizing: border-box;
   border-radius: 50%;
+
+  @media screen and ( max-width: 560px ) {
+    margin-left: 0;
+  }
 }
 .timer__txt {
   font-family: 'Aldrich';
@@ -225,6 +287,11 @@ export default {
 
   &_txt_wrap {
     margin-left: 30px;
+
+    @media screen and ( max-width: 560px ) {
+      margin-top: 16px;
+      margin-left: 0;
+    }
   }
   & .txt {
     font-size: 32px;
@@ -285,5 +352,41 @@ export default {
     width: 52px;
     height: 52px;
   }
+}
+
+
+.dialog {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 1000;
+  transition: all 1s ease;
+
+  &__block {
+    padding: 20px 15px;
+    background: #0A0B11;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px #1B1826;
+    width: 100%;
+  }
+}
+.row__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide-right2left-enter-active, 
+.slide-right2left-leave-active {
+  transition: left right .3s ease;
+}
+.slide-right2left-enter, 
+.slide-right2left-leave-to {
+  left: 100vw;
 }
 </style>

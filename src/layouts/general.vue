@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <section  class="west">
+    <section class="west">
       <WestSide :asideData="asideData" />
     </section>
 

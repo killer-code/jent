@@ -7,7 +7,7 @@
           src="@/assets/img/jent-static.png">
       </section>
 
-      <button class="btn_mob">
+      <button class="btn_mob" @click="openModal">
         <img src="@/assets/img/cross.svg" alt="">
       </button>
 
@@ -70,7 +70,34 @@
 
       </section>
     </div>
-    <!-- <div class="grad"></div> -->
+    
+    <transition name="slide-right2left">
+      <section class="dialog" v-show="dialog">
+        <section class="dialog__block">
+          <div class="_mb-7">
+              <div class="row__header">
+                <Timer :dialog="dialog" />
+                <div @click="closeModal">
+                  <img src="@/assets/img/icon-close.svg" alt="">
+                </div>
+              </div>
+              
+              <div class="right_txt">
+                <p class="txt txt_left">Стабильная эрекция</p>
+                <p class="txt txt_left">уже через 10 мин</p>
+
+                <div @click="closeOpen" 
+                    data-key="oneSecond"
+                    class="txt_left wrap_more wrap_more_left">
+                  <p class="more">Подробнее</p>
+                  <img src="@/assets/img/arr_r.svg" class="more__arr" alt="">
+                </div>
+              </div>
+            </div>
+        </section>
+      </section>
+    </transition>
+
   </section>
 </template>
 
@@ -82,6 +109,9 @@ export default {
   name: 'ScreenOne',
   components: { Timer },
   props: ['asideData', 'getAsideData'],
+  data: () => ({
+    dialog: false,
+  }),
   methods: {
     openAside(e) {
       const btnKey = e.target.parentElement.dataset.key;
@@ -91,7 +121,29 @@ export default {
       this.asideData.link = asideData.link;
       this.asideData.title = asideData.title;
       this.asideData.isOpen = true;
+
+      if ( this.dialog ) {
+        this.dialog = false;
+      }
     },
+    openModal() {
+      this.dialog = true;
+      document.querySelector('body')
+        .classList.add('blocked');
+      document.querySelector('html')
+        .classList.add('blocked');
+    },
+    closeModal() {
+      this.dialog = false;
+      document.querySelector('body')
+        .classList.remove('blocked');
+      document.querySelector('html')
+        .classList.remove('blocked');
+    },
+    closeOpen(e) {
+      this.closeModal();
+      this.openAside(e);
+    }
   },
   mounted() {
     // Delete sprite
@@ -284,5 +336,48 @@ export default {
     width: 52px;
     height: 52px;
   }
+}
+
+.dialog {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 1000;
+  transition: all 1s ease;
+
+  &__block {
+    padding: 20px 15px;
+    background: #0A0B11;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px #1B1826;
+    width: 100%;
+  }
+}
+.row__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide-right2left-enter-active, 
+.slide-right2left-leave-active {
+  transition: left right .3s ease;
+}
+.slide-right2left-enter, 
+.slide-right2left-leave-to {
+  left: 100vw;
+}
+
+</style>
+
+<style lang="scss">
+.blocked {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
 }
 </style>

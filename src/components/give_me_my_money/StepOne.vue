@@ -97,7 +97,6 @@ export default {
     @media screen and ( max-width: 560px ) {
       font-size: 23px;
       line-height: 32px;
-      text-align: left;
     }
   }
   &__subt {

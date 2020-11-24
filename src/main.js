@@ -9,6 +9,9 @@ import store  from './store'
 import VueFullPage from 'vue-fullpage.js'
 import Element     from 'element-ui'
 
+import VueMeta from 'vue-meta'
+Vue.use(VueMeta)
+
 import * as PIXI from 'pixi.js'
 Vue.prototype.$PIXI = PIXI;
 import anime from 'animejs/lib/anime.es'

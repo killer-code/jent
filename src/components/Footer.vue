@@ -18,6 +18,9 @@ export default {
   data: () => ({
     screen: 1,
   }),
+  mounted() {
+    this.screen = Number(this.scroll) + 1;
+  },
   watch: {
     scroll() {
       this.screen = Number(this.scroll) + 1;
