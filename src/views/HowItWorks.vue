@@ -31,7 +31,12 @@
         </div>
       </div>
 
-      <div v-for="item in items" class="description" :id="item.id">
+      <div
+        v-for="item in items"
+        class="description"
+        :id="item.id"
+        :key="item.id"
+      >
         <div class="description__title">
           {{ item.title }}
         </div>
@@ -39,11 +44,7 @@
           class="description__content description__content--spray description__content--with-bg"
         >
           <div class="row">
-            <img
-              :src="item.image"
-              :alt="`${item.id} logo`"
-              class="image"
-            />
+            <img :src="item.image" :alt="`${item.id} logo`" class="image" />
             <div v-html="item.text" class="text"></div>
           </div>
         </div>
