@@ -15,7 +15,7 @@ import { mapGetters }  from 'vuex'
 
 export default {
   name: 'Map',
-  props: ['pharmacy', 'maxHeight'],
+  props: ['pharmacy', 'maxHeight', 'formData'],
   data: () => ({
     map: '',
     clusterStyle: [{
@@ -30,8 +30,10 @@ export default {
     mapOptions: function() {
       return {
         zoom: 12,
-        center: { lat: Number(this.pharmacy[0].LAT), 
-                  lng: Number(this.pharmacy[0].LON) },
+        center: { 
+          lat: Number(this.pharmacy[0].LAT), 
+          lng: Number(this.pharmacy[0].LON) 
+        },
         mapID: '7848c1d6687e48d0',
         styles: this.getMapStyle,
         disableDefaultUI: true
@@ -44,6 +46,9 @@ export default {
         maxZoom: 15
       }
     },
+    store: function() {
+      return this.formData.store_uid;
+    }
   },
   methods: {
     drowMarkers(store) {
@@ -63,7 +68,9 @@ export default {
           let marker = new google.maps.Marker({
             position: latLng,
             map: this.map,
-            icon: require('../../assets/img/map-pin.svg'),
+            title: store[i].NAME,
+            data: store[i].STORE_UID,
+            icon: store[i].STORE_UID == this.formData.store_uid ? require('../../assets/img/map-pin-a.svg') : require('../../assets/img/map-pin.svg')
           });
           markers.push(marker);
         }
@@ -74,7 +81,9 @@ export default {
 
         markers.forEach(m => {
           m.addListener('click', (e) => {
-            console.log(m);
+            this.formData.store_uid = m.data;
+            this.map.setZoom(16);
+            this.map.setCenter(m.getPosition());
             m.setIcon(require('../../assets/img/map-pin-a.svg'))
           })
         })
@@ -97,6 +106,19 @@ export default {
         );
         this.drowMarkers(this.pharmacy);
       }
+    },
+    store() {
+      this.mapOptions.zoom = 16;
+      this.pharmacy.forEach(pharm => {
+        if ( this.formData.store_uid == pharm.STORE_UID ) {
+          this.mapOptions.center.lat = Number(pharm.LAT);
+          this.mapOptions.center.lng = Number(pharm.LON);
+        }
+      });
+      this.map = new google.maps.Map(
+         document.getElementById("map"), this.mapOptions
+       );
+       this.drowMarkers(this.pharmacy);
     }
   }
 }
