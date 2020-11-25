@@ -137,6 +137,13 @@ export default {
           })
         });
       }
+      cities.sort((a, b) => {
+        let cityA = a.label.toLowerCase();
+        let cityB = b.label.toLowerCase();
+        if ( cityA < cityB ) return -1;
+        if ( cityB < cityA ) return 1;
+        return 0;
+      });
       
       return cities;
     },

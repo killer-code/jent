@@ -7,7 +7,8 @@
       :maxHeight="maxHeight" />
 
     <Map :pharmacy="pharmacy" 
-      :maxHeight="maxHeight" 
+      :maxHeight="maxHeight"
+      :formData="formData"  
       v-if="!isMobile"/>
   </section>
 </template>
