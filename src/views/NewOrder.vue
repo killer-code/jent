@@ -202,6 +202,9 @@ export default {
         this.citiesOptions.forEach(city => {
           if ( city.label == localStorage.getItem('district') ) {
             this.formData.city = city.label;
+          } else {
+            this.formData.city = 'Москва';
+            localStorage.city = 'Москва';
           }
         })
       }
@@ -285,7 +288,7 @@ export default {
       this.fetchPharmacy(this.formData.city);
     },
     citiesOptions() {
-      setTimeout(() => { this.getUserCity() }, 300) ;
+      this.getUserCity();
     },
     selectedCity() {
       localStorage.city = this.selectedCity;

@@ -108,9 +108,6 @@ export default {
     scrollDown() {
       this.$refs.fullpage.api.moveSectionDown();
     },
-    westSideScrolling(e) {
-      console.log(e);
-    }
   },
   watch: {
     isAsideActive() {

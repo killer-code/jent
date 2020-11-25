@@ -101,7 +101,6 @@ export default {
     openAside(e) {
       const btnKey = e.target.parentElement.dataset.key;
       const asideData = this.getAsideData[btnKey];
-      console.log();
       this.asideData.description = asideData.description;
       this.asideData.link = asideData.link;
       this.asideData.title = asideData.title;

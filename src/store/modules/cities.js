@@ -26,7 +26,7 @@ export default ({
   },
   actions: {
     async fetchUserCity(ctx, ip) {
-      const res = await fetch(`https://api.sypexgeo.net/h6JRc/json/${ip}`);
+      const res = await fetch(`https://api.sypexgeo.net/h6JRc/json/`);
       const city = await res.json()
 
       ctx.commit('updateUserCity', city);
@@ -37,8 +37,7 @@ export default ({
         mode: 'cors',
         cache: 'no-cache',
       });
-      const cities = await res.json()
-
+      const cities = await res.json();
       ctx.commit('updateCities', cities);
     },
   },

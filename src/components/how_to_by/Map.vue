@@ -65,13 +65,19 @@ export default {
             map: this.map,
             icon: require('../../assets/img/map-pin.svg'),
           });
-          
           markers.push(marker);
         }
 
         const markerCluster = new MarkerClusterer(
           this.map, markers, this.mcOptions
         );
+
+        markers.forEach(m => {
+          m.addListener('click', (e) => {
+            console.log(m);
+            m.setIcon(require('../../assets/img/map-pin-a.svg'))
+          })
+        })
       }
     }
   },
