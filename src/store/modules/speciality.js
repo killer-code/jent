@@ -105,7 +105,7 @@ export default ({
   },
   getters: {
     getSpeciality(state) {
-      return state.speciality
+      return state.speciality.sort();
     }
   },
 })

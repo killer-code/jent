@@ -8,6 +8,8 @@ import store  from './store'
 
 import VueFullPage from 'vue-fullpage.js'
 import Element     from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/ru-RU'
+
 
 import VueMeta from 'vue-meta'
 Vue.use(VueMeta)
@@ -28,7 +30,7 @@ if (screen && screen.width > 560) {
   Vue.use(VueFullPage);
 }
 
-Vue.use(Element)
+Vue.use(Element, { locale })
 
 new Vue({
   router,

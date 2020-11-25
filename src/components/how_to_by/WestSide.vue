@@ -4,6 +4,8 @@
     :style="{'max-height': `${maxHeight}px`}">
     <el-select 
       v-model="formData.city" 
+      filterable
+      lang="ru"
       class="app-select_city">
         <el-option
           v-for="item in cities"
@@ -57,7 +59,15 @@ export default {
       const uid = el.dataset.uid;
       this.formData.store_uid = uid;
     },
+    store: function() {
+      return this.formData.store_uid;
+    }
   },
+  watch: {
+    store() {
+      
+    }
+  }
 }
 </script>
 
