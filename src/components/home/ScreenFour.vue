@@ -110,6 +110,12 @@ export default {
   padding-top: 15vh;
   height: 100vh;
 
+  @media screen and ( max-width: 1440px  ) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-top: 100px;
+  }
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
@@ -139,6 +145,8 @@ export default {
   font-size: 21px;
   line-height: 34px;
   letter-spacing: 0.004em;
+
+  
 
   @media screen and (max-width: 1280px) {
     font-size: 16px;
@@ -204,7 +212,7 @@ export default {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1400px) {
       font-size: 150px;
       line-height: 140px;
       margin-right: 70px;
@@ -219,8 +227,10 @@ export default {
   }
 
   & img {
-    @media screen and (max-width: 1280px) {
-      margin-top: -5vh;
+    @media screen and (max-width: 1400px) {
+      margin-top: 8vh;
+      width: 71px;
+      height: 71px;
     }
     @media screen and (max-width: 560px) {
       width: 31px;
@@ -231,5 +241,13 @@ export default {
 }
 .txt_wraper {
   margin-top: 10vh;
+  @media screen and (max-width: 1440px) {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+  }
 }
+
 </style>

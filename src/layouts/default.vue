@@ -27,16 +27,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  position: relative;
+}
 .app-page {
   position: relative;
-  margin: 200px auto 50px;
+  margin: 50px auto 50px;
   max-width: 1200px;
   padding: 0 30px;
   z-index: 1;
 
   @media screen and ( max-width: 560px ) {
     height: auto;
-    margin-top: 80px;
+    margin-top: 32px;
   }
 }
 .wrapper-page {
@@ -49,7 +52,7 @@ export default {
   }
 }
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 10px;
   padding-bottom: 20px;
 

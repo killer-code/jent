@@ -135,6 +135,7 @@ export default {
   width: 100vw;
   background: #0A0B11;
   background-image: url('../../assets/img/bg-s2-22.png');
+  background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
@@ -282,7 +283,10 @@ export default {
   line-height: 43px;
 }
 .block-2 {
-  margin-top: 100px;
+  margin-top: 60px;
+  @media screen and ( max-width: 1400px ) {
+    margin-top: 16px;
+  }
 
   &_txt_wrap {
     margin-left: 30px;

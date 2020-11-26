@@ -183,9 +183,9 @@ export default {
     },
     maxHeight: function() {
       if ( this.isMobile ) {
-        return window.innerHeight
+        return window.innerHeight / 2;
       } else {
-        return window.innerHeight / 3
+        return window.innerHeight / 3;
       }
     },
   },
