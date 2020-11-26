@@ -41,9 +41,9 @@ a { text-decoration: none; }
     letter-spacing: 0.05em;
     text-transform: uppercase;
 
-    @media screen and (max-width: 1400px) {
-        font-size: 42px;
-        line-height: 55px;
+    @media screen and (max-width: 1600px) {
+        font-size: 39px;
+        line-height: 45px;
     }
     @media screen and (max-width: 560px) {
         font-weight: 300;

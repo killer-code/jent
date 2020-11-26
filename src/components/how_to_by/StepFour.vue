@@ -26,7 +26,7 @@
 
     <section class="txt">
       <p>
-        Статус вашего заказа можно посмотреть в личном кабинете 
+        Статус вашего заказа можно посмотреть на сайте
         <a href="https://apteka.ru/" 
           target="_blank" class="link"
           rel="noopener noreferrer">apteka.ru</a> 

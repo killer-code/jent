@@ -1,7 +1,7 @@
 <template>
   <section class="webar">
     <div class="webar__container">
-      <div class="webar__title">Web AR — дополненная реальность в вебе.</div>
+      <div class="webar__title">Web AR — дополненная реальность в веб.</div>
       <div class="webar__about">
         Что это значит? Пользователи могут получить доступ к просмотру контента
         в дополненной реальности, используя мобильный браузер.
