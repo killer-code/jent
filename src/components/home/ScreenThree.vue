@@ -4,23 +4,18 @@
       
       <section class="scene-3-static">
 
-        <img class="img-jent_static animate-west-side mb_d-none" 
-          data-depth-x="-0.2" data-depth-y="-0.2"
-          src="@/assets/img/bg-s3-2.png">
-        <img class="img-jent_static animate-east-side mb_d-none" 
-          data-depth-x="-0.4" data-depth-y="-0.4"
-          src="@/assets/img/bg-s3-3.png">
+        <img class="img-jent_static" 
+          data-depth-x="0.05" data-depth-y="0.05"
+          src="@/assets/img/bg-s3-1.png">
 
-        <img class="img-jent_static-mob animate-west-side" 
+        <img class="img-jent_static mb_d-none" 
+          data-depth-x="0.05" data-depth-y="0.15"
+          src="@/assets/img/bg-s3-2.png">
+
+        <img class="img-jent_static-mob" 
           data-depth-x="-0.1" data-depth-y="-0.1"
           src="@/assets/img/bg-s3-2-mob.png">
-        <img class="img-jent_static-mob animate-east-side" 
-          data-depth-x="-0.2" data-depth-y="-0.2"
-          src="@/assets/img/bg-s3-3-mob.png">
 
-        <img class="img-jent_static-1" 
-          data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/bg-s3-4.png">
       </section>
 
       <section class="content page-1-content">
@@ -138,6 +133,7 @@ export default {
 .img-jent_static {
   position: absolute;
   object-fit: contain;
+  height: 100vh;
 
   &-1 { 
     object-fit: cover; 
@@ -147,7 +143,8 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
-    object-fit: cover;
+    object-fit: contain;
+    min-height: 700px;
   }
   @media screen and (max-width: 560px) {
     object-fit: cover;
@@ -171,9 +168,10 @@ export default {
 }
 
 .img-jent_static-mob {
-  opacity: .7;
+  opacity: 0;
   @media screen and (max-width: 560px) {
     opacity: 1;
+    width: 100vw;
   }
 }
 </style>

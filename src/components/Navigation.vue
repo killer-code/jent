@@ -10,18 +10,18 @@
         </button>
       </div>
 
-      <div class="menu__body">
+      <div class="menu__body" @click="nav.isOpen = false">
         <router-link to="/" class="menu__item">
-          Главная
+            Главная
         </router-link>
         <router-link to="/instruction" class="menu__item">
-          Инструкция
+            Инструкция
         </router-link>
         <router-link to="/webar" class="menu__item">
-          WebAR
+            WebAR
         </router-link>
         <router-link to="/order" class="menu__item">
-          Заказать образец
+            Заказать образец
         </router-link>
         <router-link to="/moneyback" class="menu__item">
           Возврат средств

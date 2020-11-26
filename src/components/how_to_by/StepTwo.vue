@@ -64,6 +64,7 @@
 
       <div class="form__input">
         <el-input
+          type="email"
           v-model="formData.email"
           clearable>
         </el-input>
@@ -150,15 +151,8 @@ export default {
       this.formData.name = this.fullName.trim();
     },
     phone() {
-      let arr = this.phone.split('');
-      let tel = [];
-      arr.forEach(el => {
-        if ( Number(el) ) {
-          tel.push(el);
-        }
-      });
-      let telStr = tel.join('');
-      this.formData.phone = telStr;
+      let tel = this.phone.replace(/[^\d]/g, '');
+      this.formData.phone = tel;
     }
   }
 }

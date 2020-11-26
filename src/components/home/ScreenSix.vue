@@ -63,7 +63,7 @@
 
     </div>
 
-    <StaticFooter class="footer" />
+    <!-- <StaticFooter class="footer" /> -->
   </section>
 </template>
 
@@ -259,7 +259,7 @@ export default {
 .txt_small_wrap {
   margin-top: 15vh;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1400px) {
     margin-top: 3vh;
   }
 }

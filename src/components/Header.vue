@@ -20,10 +20,6 @@
         </router-link>
       </nav>
     </div>
-
-    <p class="discription mb_d-none">
-      Информация для специалистов здравоохранения * **
-    </p>
   </header>
 </template>
 

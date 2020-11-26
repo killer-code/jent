@@ -25,9 +25,7 @@
               <span class="number">2.</span> Или пройдите по ссылке
             </div>
             <div class="step__description">
-              <a href="https://medium.com/phygitalism/web-ar-348de5d7188"
-                >https://medium.com/phygitalism/web-ar-348de5d7188</a
-              >
+              https://jent.men/ar
             </div>
           </div>
 
@@ -35,9 +33,6 @@
             <div class="step__title">
               <span class="number">3.</span> Наслаждайтесь дополненной
               реальностью!
-            </div>
-            <div class="step__description">
-              Правила игры очень простые - распыляйте препарат на предметы.
             </div>
           </div>
         </div>
@@ -49,9 +44,8 @@
             <div class="step__title">
               <span class="number">1.</span> Пройдите по ссылке
             </div>
-            <a
-              class="step__link"
-              href="https://medium.com/phygitalism/web-ar-348de5d7188"
+            <a class="step__link"
+              href="https://jent.men/ar"
             >
               Web AR
             </a>
@@ -61,9 +55,6 @@
             <div class="step__title">
               <span class="number">2.</span> Наслаждайтесь дополненной
               реальностью!
-            </div>
-            <div class="step__description">
-              Правила игры очень простые - распыляйте препарат на предметы.
             </div>
           </div>
         </div>

@@ -42,8 +42,20 @@
 export default {
   name: 'WestSide',
   props: ['formData', 'pharmacy', 'cities', 'maxHeight',],
+  data: () => ({
+    isMob: window.innerWidth < 561,
+  }),
   computed: {
-    
+    store: function() {
+      return this.formData.store_uid;
+    },
+    k: function() {
+      if ( this.isMob ) {
+        return 80;
+      } else {
+        return 200;
+      }
+    }
   },
   methods: {
     getUid(e) {
@@ -59,13 +71,24 @@ export default {
       const uid = el.dataset.uid;
       this.formData.store_uid = uid;
     },
-    store: function() {
-      return this.formData.store_uid;
-    }
   },
   watch: {
     store() {
-      
+      setTimeout(() => {
+        let block = document.querySelector(`[data-uid~="${this.store}"]`);
+        document.querySelectorAll('.card__store_selected')
+          .forEach(el => {
+            if ( el.classList.contains('card__store_selected') ) {
+              el.classList.remove('card__store_selected')
+            }
+          });
+        block.classList.add('card__store_selected');
+        let topPos = block.offsetTop - this.k;
+        console.log(document.querySelector('.card__store'));
+        document.querySelector('.card__store')
+          .parentElement
+          .scrollTop = topPos;
+      }, 1000); 
     }
   }
 }
@@ -76,10 +99,6 @@ export default {
   overflow-y: auto;
   width: 45%;
   padding-right: 10px;
-
-  @media screen and ( max-width: 560px ) {
-    width: 100%;
-  }
 }
 .app-select_city {
   width: 100%;

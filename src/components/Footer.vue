@@ -44,8 +44,10 @@ export default {
   line-height: 31px;
   padding: 30px 96px 60px;
 
-  @media screen and (max-width: 1280px) {
-    padding: 40px 30px;
+  @media screen and (max-width: 1400px) {
+    font-size: 23px;
+    line-height: 27px;
+    padding: 40px 96px 20px;
   }
   @media screen and (max-width: 560px) {
     padding: 20px 15px;
@@ -69,6 +71,16 @@ export default {
   cursor: pointer;
 
   &:focus { outline: none; }
+
+  @media screen and (max-width: 1400px) {
+    width: 46px;
+    height: 46px;
+    left: calc(50% - 23px);
+
+    & img {
+      width: 10px;
+    }
+  }
 
   @media screen and (max-width: 560px) {
     width: 36px;

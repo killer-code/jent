@@ -40,7 +40,8 @@ export default {
   background-repeat: no-repeat;
   background-position: bottom;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1440px) {
+    background-position: center;
     background-size: contain;
   }
 
@@ -49,6 +50,7 @@ export default {
     background-image: url('../../assets/img/bg-s5-mob.jpg');
     background-repeat: no-repeat;
     background-position: top;
+    background-size: contain;
 
     height: auto;
   }
