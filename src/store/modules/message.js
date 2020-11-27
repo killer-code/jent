@@ -47,7 +47,6 @@ export default ({
       });
 
       const result = await resp.json();
-      console.log(result);
       if ( result.status === 'error' ) {
         return result.message;
       } else {

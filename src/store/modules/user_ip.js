@@ -18,7 +18,6 @@ export default ({
     async fetchUserIP(ctx) {
       const res = await fetch(`https://json.geoiplookup.io/`);
       const ip = await res.json()
-      console.log(ip.ip);
       ctx.commit('updateUserIP', ip);
     },
   },
