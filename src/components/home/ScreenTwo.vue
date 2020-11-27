@@ -4,9 +4,9 @@
       <div class="container">
         <div id="canvas"></div>
 
-        <button class="btn_mob" @click="openModal">
+        <div class="btn_mob" @click="openModal">
           <img src="@/assets/img/cross.svg" alt="">
-        </button>
+        </div>
         
         <section class="content page-1-content">
           <h2 class="caption-2">

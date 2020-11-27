@@ -21,7 +21,7 @@ export default {
   },
   components: { StepOne, StepTwo, Error },
   data: () => ({
-    step: 0,
+    step: 1,
     resp: { isErr: '' }
   }),
   computed: {

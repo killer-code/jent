@@ -111,20 +111,15 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  scrollBehavior: function (to, from) {
+  routes,
+  scrollBehavior: function (to, from, savedPosition) {
     if (to.hash) {
-      return { selector: to.hash }
+      return { selector: to.hash, offset : { x: 0, y: 550 } }
+    } else {
+      return { x: 0, y: 0 }
     }
   },
-  routes,
 })
-
-// PROD
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: "/new/",
-//   routes
-// });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.age)) {
