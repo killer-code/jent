@@ -257,7 +257,6 @@ export default {
     },
     async submitForm() {
       this.response = await this.createOrder(this.formData);
-      console.log(this.response);
       if ( this.response == 'ok' ) {
         this.step ++;
         return;

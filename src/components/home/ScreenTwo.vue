@@ -4,9 +4,9 @@
       <div class="container">
         <div id="canvas"></div>
 
-        <button class="btn_mob" @click="openModal">
+        <div class="btn_mob" @click="openModal">
           <img src="@/assets/img/cross.svg" alt="">
-        </button>
+        </div>
         
         <section class="content page-1-content">
           <h2 class="caption-2">
@@ -134,7 +134,7 @@ export default {
   height: 100vh;
   width: 100vw;
   background: #0A0B11;
-  background-image: url('../../assets/img/bg-s2-22.png');
+  background-image: url('../../assets/img/webp/bg-s2-22.webp');
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;

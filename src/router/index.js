@@ -1,13 +1,14 @@
 import Vue       from 'vue'
 import VueRouter from 'vue-router'
 
-import Home        from '@/views/Home'
-import WebAR       from '@/views/WebAR'
-import NewOrder    from '@/views/NewOrder'
-import GiveMoney   from '@/views/GiveMoney'
-import Disclaimer  from '@/views/Disclaimer'
-import HowItWorks  from '@/views/HowItWorks'
-import Instruction from '@/views/Instruction'
+import Home         from '@/views/Home'
+import WebAR        from '@/views/WebAR'
+import NewOrder     from '@/views/NewOrder'
+import GiveMoney    from '@/views/GiveMoney'
+import Disclaimer   from '@/views/Disclaimer'
+import HowItWorks   from '@/views/HowItWorks'
+import Instruction  from '@/views/Instruction'
+import PersonalData from '@/views/PersonalData'
 
 import Err404     from '@/views/404'
 
@@ -86,6 +87,15 @@ const routes = [
     },
   },
   {
+    path: '/personal-data',
+    name: 'PersonalData',
+    component: PersonalData,
+    meta: { 
+      layout: 'static', 
+      age: true, 
+    },
+  },
+  {
     path: '/404',
     name: 'Err404',
     component: Err404,
@@ -102,22 +112,14 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior: function (to, from) {
+  scrollBehavior: function (to, from, savedPosition) {
     if (to.hash) {
-      console.log(to.hash)
-      return {
-        selector: to.hash
-      }
+      return { selector: to.hash, offset : { x: 0, y: 550 } }
+    } else {
+      return { x: 0, y: 0 }
     }
   },
 })
-
-// PROD
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: "/new/",
-//   routes
-// });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.age)) {

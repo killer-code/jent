@@ -14,7 +14,6 @@ export default ({
   },
   mutations: {
     updateUserCity(state, city) {
-      console.log(city);
       localStorage.city = city.city.name_ru;
       localStorage.district = city.region.name_ru;
       state.user_city = city.city.name_ru;

@@ -84,7 +84,6 @@ export default {
           });
         block.classList.add('card__store_selected');
         let topPos = block.offsetTop - this.k;
-        console.log(document.querySelector('.card__store'));
         document.querySelector('.card__store')
           .parentElement
           .scrollTop = topPos;

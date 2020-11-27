@@ -7,9 +7,9 @@
           src="@/assets/img/jent-static.png">
       </section>
 
-      <button class="btn_mob" @click="openModal">
+      <div class="btn_mob" @click="openModal">
         <img src="@/assets/img/cross.svg" alt="">
-      </button>
+      </div>
 
       <section class="content page-1-content">
         <div class="start">
@@ -32,7 +32,7 @@
               <br class="mb_d-none">
               механизмы возникновения эрекции и начинает
               <br class="mb_d-none">
-              действовать уже через 10 минут.
+              действовать уже через 10 минут
             </p>
           </div>
         </div>

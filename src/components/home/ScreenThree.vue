@@ -6,11 +6,11 @@
 
         <img class="img-jent_static" 
           data-depth-x="0.05" data-depth-y="0.05"
-          src="@/assets/img/bg-s3-1.png">
+          src="@/assets/img/webp/bg-s3-1.webp">
 
         <img class="img-jent_static mb_d-none" 
           data-depth-x="0.05" data-depth-y="0.15"
-          src="@/assets/img/bg-s3-2.png">
+          src="@/assets/img/webp/bg-s3-2.webp">
 
         <img class="img-jent_static-mob" 
           data-depth-x="-0.1" data-depth-y="-0.1"

@@ -5,7 +5,7 @@
       <section class="scene-6-static">
         <img class="img-jent_static-1" 
           data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/bg-s6-12.png">
+          src="@/assets/img/webp/bg-s6-12.webp">
       </section>
 
       <section class="content page-1-content">
@@ -21,7 +21,7 @@
             <br class="mb_d-none">
             на странице «Возврат средств». Деньги поступят
             <br class="mb_d-none">
-            на счёт вашего телефона в течение нескольких часов.
+            на баланс мобильного телефона в течение 10 дней.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default {
 
   @media screen and (max-width: 560px) {
     background: rgba(0,0,0,.4);
-    background-image: url('../../assets/img/bg-s6-mob.png');
+    background-image: url('../../assets/img/webp/bg-s6-mob.webp');
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: top center;
