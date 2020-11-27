@@ -1,11 +1,11 @@
 <template>
   <section class="screen-one">
     <div class="container">
-      <section class="scene-static">
+      <!-- <section class="scene-static">
         <img class="img-jent_static" 
           data-depth-x="0.2" data-depth-y="0.1"
           src="@/assets/img/jent-static.png">
-      </section>
+      </section> -->
 
       <div class="btn_mob" @click="openModal">
         <img src="@/assets/img/cross.svg" alt="">
@@ -147,8 +147,8 @@ export default {
   },
   mounted() {
     // Delete sprite
-    const sceneSt = document.querySelector('.scene-static');
-    let parallaxInstance = new Parallax(sceneSt);
+    // const sceneSt = document.querySelector('.scene-static');
+    // let parallaxInstance = new Parallax(sceneSt);
     // END
   }
 }

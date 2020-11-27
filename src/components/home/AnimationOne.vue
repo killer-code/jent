@@ -1,8 +1,12 @@
 <template>
-  <section class="scene" style="position: fixed;">
-    <div data-depth-x="0.2" data-depth-y="0.1"
-      class="canvas sequence-1"></div>
-  </section>
+  <transition name="fade" mode="out-in">
+    <section class="scene" 
+      style="position: fixed;"
+      v-show="scroll < 2">
+      <div data-depth-x="0.2" data-depth-y="0.1"
+        class="canvas sequence-1"></div>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -17,7 +21,9 @@ export default {
     rotation: 0.1,
 
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+
+    parallaxInstance: '',
   }),
   computed: {
     app: function() {
@@ -42,13 +48,12 @@ export default {
       }
 
       const scene = document.querySelector('.scene');
-      let parallaxInstance = new Parallax(scene);
+      this.parallaxInstance = new Parallax(scene);
 
       const sequence = document.querySelector('.sequence-1');
       const self = this; 
 
       sequence.appendChild(self.app.view);
-      console.log( self.app )
       self.app.loader
         .add('image', this.json_1.meta.image)
         .load((loader, resources) => {
@@ -82,7 +87,7 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .8;
+            anim.animationSpeed = .5;
             anim.loop = false;
             // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
@@ -99,7 +104,7 @@ export default {
             anim.x = this.app.screen.width / 2;
             anim.y = this.app.screen.height / 2;
             anim.anchor.set(.5);
-            anim.animationSpeed = .8;
+            anim.animationSpeed = .5;
             anim.loop = false;
             // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
@@ -174,11 +179,17 @@ export default {
     scroll() {
       if ( this.scroll === 0 ) {
         this.onAssetsLoaded1();
+        this.parallaxInstance.enable();
         // document.querySelector('.scene').style.bottom = 0;
       }
       if ( this.scroll === 1 ) {
         // document.querySelector('.scene').style.bottom = -200 + 'px';
         this.onAssetsLoaded2();
+        this.parallaxInstance.disable();
+      }
+      if ( this.scroll === 2 ) {
+        // document.querySelector('.scene').style.bottom = -200 + 'px';
+        
       }
     }
   }
@@ -186,7 +197,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.scene {
-  transition: all 1s ease;
+.scene { transition: all 1s ease; }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+  transition-delay: 0.3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

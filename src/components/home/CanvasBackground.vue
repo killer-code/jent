@@ -30,7 +30,7 @@ export default {
       return ctx;
     },
     particalCount: function() {
-      let count = 300;
+      let count = 500;
       if ( window.innerWidth < 561 ) {
         count = 150;
       }

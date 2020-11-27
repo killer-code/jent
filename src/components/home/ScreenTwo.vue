@@ -85,6 +85,8 @@
               </div>
             </div>
         </section>
+
+        <canvas id="smoke"></canvas>
       </section>
     </transition>
   </section>
@@ -97,6 +99,8 @@ export default {
   data: () => ({
     dialog: false,
   }),
+  computed: {
+  },
   methods: {
     openAside(e) {
       const btnKey = e.target.parentElement.dataset.key;
@@ -123,8 +127,11 @@ export default {
     closeOpen(e) {
       this.closeModal();
       this.openAside(e);
-    }
+    },
   },
+  mounted() {
+    
+  }
 }
 </script>
 
@@ -133,50 +140,6 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: #0A0B11;
-  background-image: url('../../assets/img/webp/bg-s2-22.webp');
-  background-size: contain;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-blend-mode: lighten;
-  mix-blend-mode: lighten;
-
-  @media screen and (max-width: 1280px) {
-    background-size: contain;
-  }
-
-  @media screen and (max-width: 768px) {
-    background-position: right bottom;
-    background-size: contain;
-  }
-
-  @media screen and ( max-width: 560px ) {
-    background-position: -305px top;
-    background-size: 215%;
-    height: auto;
-  }
-}
-.content {
-  display: flex;
-  max-width: 1400px;
-  margin: 80px auto 0;
-}
-.content > div {
-  margin-right: 40px;
-}
-.scene-static {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
 }
 .content {
   display: flex;
@@ -204,12 +167,6 @@ export default {
   }
 }
 .content > div { display: flex; }
-.start { 
-  display: flex; 
-  flex-direction: column;
-  justify-content: center; 
-  width: fit-content; 
-}
 .txt {
   @media screen and (max-width: 1280px) {
     font-size: 21px;
@@ -226,40 +183,12 @@ export default {
     line-height: 26px;
   }
 }
-.end { 
-  display: flex; 
-  justify-content: flex-end; 
-  align-items: center; 
-  width: fit-content;
-  padding-top: 100px;
-  
-  @media screen and (max-width: 1280px) {
-    padding-top: 70px;
-    margin-right: 0;
-  }
-}
-.img-jent_static {
-  position: absolute;
-  object-fit: contain;
-  right: 60px;
-  bottom: 0;
-  @media screen and (max-width: 768px) {
-    object-fit: cover;
-  }
-  @media screen and (max-width: 560px) {
-    min-width: 680px;
-    right: -60px;
-  }
-}
 .wrap_more {
   margin-top: 20px;
 }
 ._mt-7 {
   margin-top: 35px;
   @media screen and ( max-width: 560px ) { margin-top: 16px; }
-}
-._mt-60 {
-  margin-top: 60px;
 }
 .circle {
   display: flex;
@@ -356,7 +285,6 @@ export default {
     height: 52px;
   }
 }
-
 
 .dialog {
   position: fixed;

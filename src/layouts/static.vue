@@ -2,8 +2,11 @@
   <section class="wrapper-page">
     <Header :asideData="asideData" :nav="nav" class="header" />
     <Navigation :nav="nav" />
+
     <main class="app-page">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </main>
   </section>
 </template>
@@ -48,5 +51,12 @@ export default {
 .wrapper-page {
   background: #0a0b11;
   height: 100vh;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
