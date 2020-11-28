@@ -39,9 +39,9 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "node-sass": "^4.14.1",
-    "react-snap": "^1.23.0",
-    "sass-loader": "^10.0.4",
+    "node-sass": "^5.0.0",
+    "react-snap": "^1.13.1",
+    "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "vue-template-compiler": "^2.6.11"
   },

@@ -9,7 +9,7 @@
 <script>
 import StepOne from '@/components/give_me_my_money/StepOne'
 import StepTwo from '@/components/give_me_my_money/StepTwo'
-import Error from '@/components/give_me_my_money/Error'
+import Error   from '@/components/give_me_my_money/Error'
 
 export default {
   name: 'GiveMoney',
@@ -21,7 +21,7 @@ export default {
   },
   components: { StepOne, StepTwo, Error },
   data: () => ({
-    step: 1,
+    step: 0,
     resp: { isErr: '' }
   }),
   computed: {
