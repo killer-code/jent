@@ -41,7 +41,7 @@ export default {
   }),
   computed: {
     disabledBtn: function() {
-      return this.code.length < 8;
+      return this.code.length < 3;
     }
   },
   methods: {
