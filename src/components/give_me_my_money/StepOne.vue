@@ -1,32 +1,42 @@
 <template>
-  <section class="wrapper">
+  <section>
+    <section class="wrapper">
 
-    <el-card class="box-card money">
-      <h2 class="card__title">Возврат средств</h2>
-      <p class="card__subt">
-        Введите код из чека для возврата<br> 
-        средств на баланс мобильного
-      </p>
+      <el-card class="box-card money">
+        <div class="row">
+          <h2 class="card__title">Возврат средств</h2>
 
-      <input class="input" 
-        type="text" maxlength="8"
-        v-model="code">
+          <button class="btn_mob" @click="$emit('open')">
+            ?
+          </button>
+        </div>
+        
+        <p class="card__subt">
+          Введите код из чека для возврата<br> 
+          средств на баланс мобильного
+        </p>
 
-      <button class="btn__push"
-        :disabled="disabledBtn"
-        @click="pushCode">
-        Подтвердить
-      </button>
-    </el-card>
+        <input class="input" 
+          type="text" maxlength="12"
+          v-model="code">
 
-    <div class="small_wrap">
-      <p class="small">Возникли проблемы?</p>
-      <p class="small">
-        тел.
-        <a href="tel:+78126470246" class="link">8 (812) 647-02-46</a>,
-        <a href="mailto:info@jent.men" class="link">info@jent.men</a>
-      </p>
-    </div>
+        <button class="btn__push"
+          :disabled="disabledBtn"
+          @click="pushCode">
+          Подтвердить
+        </button>
+      </el-card>
+
+      <div class="small_wrap">
+        <p class="small">Возникли проблемы?</p>
+        <p class="small">
+          тел.
+          <a href="tel:+78126470246" class="link">8 (812) 647-02-46</a>,
+          <a href="mailto:info@jent.men" class="link">info@jent.men</a>
+        </p>
+      </div>
+    </section>
+
   </section>
 </template>
 
@@ -37,7 +47,7 @@ export default {
   name: 'StepOne',
   props: ['resp'],
   data: () => ({
-    code: ''
+    code: '',
   }),
   computed: {
     disabledBtn: function() {
@@ -54,11 +64,19 @@ export default {
         this.resp.isErr = 2;
       }
     },
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.row { 
+  display: flex; 
+  justify-content: center;
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -173,6 +191,67 @@ export default {
 br {
   @media screen and ( max-width: 560px ) {
     display: none;
+  }
+}
+.btn_mob {
+  position: absolute;
+  right: -23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  color: #fff;
+  background: #f36d01;
+  margin-left: 2px;
+  cursor: pointer;
+  border: 0;
+  z-index: 1;
+
+  &:focus { outline: none; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,.1);
+    animation: btn-mob-anim 1s ease infinite alternate;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%; 
+    z-index: -1;
+  }
+
+  @media screen and ( max-width: 560px ) {
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
+    
+    &::before {
+      animation: btn-mob-anim_2 1s ease infinite alternate;
+    }
+  }
+}
+
+@keyframes btn-mob-anim {
+  0% { 
+    width: 0px;
+    height: 0px;  
+  }
+  100% { 
+    width: 32px;
+    height: 32px;
+  }
+}
+@keyframes btn-mob-anim_2 {
+  0% { 
+    width: 0px;
+    height: 0px;  
+  }
+  100% { 
+    width: 25px;
+    height: 25px;
   }
 }
 </style>
