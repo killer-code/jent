@@ -35,7 +35,7 @@ export default {
   margin: 50px auto 50px;
   max-width: 1200px;
   padding: 0 30px;
-  z-index: 1;
+  z-index: 10000;
 
   @media screen and ( max-width: 560px ) {
     height: auto;
