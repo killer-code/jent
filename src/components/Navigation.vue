@@ -71,7 +71,7 @@ export default {
 .menu {
   position: fixed;
   transition: .5s ease;
-  background: rgba(0,0,0,.95);
+  background: rgba(0,0,0,1);
   left: 0;
   top: 0;
   bottom: 0;

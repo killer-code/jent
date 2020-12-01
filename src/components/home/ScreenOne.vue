@@ -13,7 +13,7 @@
 
       <section class="content page-1-content">
         <div class="start">
-          <h2 class="caption-2">Джент.<br class="mb_d-none">
+          <h2 class="caption-2">
             <strong class="caption-2 caption-2_gradient">
               Быстрее ваших<br class="mb_d-none">
             </strong>
