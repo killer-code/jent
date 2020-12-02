@@ -20,9 +20,6 @@
         <router-link to="/webar" class="menu__item">
             WebAR
         </router-link>
-        <router-link to="/order" class="menu__item">
-            Заказать образец
-        </router-link>
         <router-link to="/moneyback" class="menu__item">
           Возврат средств
         </router-link>

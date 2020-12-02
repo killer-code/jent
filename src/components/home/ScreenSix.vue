@@ -26,11 +26,11 @@
         </div>
 
         <div class="app-row _mt-7">
-          <button class="app-btn app-btn_orange"
+          <!-- <button class="app-btn app-btn_orange"
             @click="$router.push('/order')">
             Заказать
-          </button>
-          <button class="app-btn app-btn_white _ml-7"
+          </button> -->
+          <button class="app-btn app-btn_white"
             @click="$router.push('/moneyback')">
             Возврат средств
           </button>

@@ -36,16 +36,16 @@ const routes = [
       clear: true, 
     },
   },
-  {
-    path: '/order',
-    name: 'NewOrder',
-    component: NewOrder,
-    meta: { 
-      layout: 'default', 
-      title: `${SITE_NAME} - Заказ`,
-      age: true, 
-    },
-  },
+  // {
+  //   path: '/order',
+  //   name: 'NewOrder',
+  //   component: NewOrder,
+  //   meta: { 
+  //     layout: 'default', 
+  //     title: `${SITE_NAME} - Заказ`,
+  //     age: true, 
+  //   },
+  // },
   {
     path: '/moneyback',
     name: 'GiveMoney',
