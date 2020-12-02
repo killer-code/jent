@@ -9,10 +9,10 @@
         <img src="@/assets/img/logo.svg" alt="" />
       </router-link>
 
-      <button @click="$router.push('/order')" 
+      <!-- <button @click="$router.push('/order')" 
         class="app-btn__how-by mb_d-none">
         <span>Заказать образец</span>
-      </button>
+      </button> -->
 
       <nav class="nav tb_d-none">
         <router-link to="/how-it-works" class="nav__link">

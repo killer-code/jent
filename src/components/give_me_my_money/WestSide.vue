@@ -51,7 +51,7 @@ export default {
 .how {
   position: fixed;
   transition: all .5s ease;
-  background: rgba(0,0,0,.95);
+  background: rgba(0,0,0,1);
   right: 0;
   left: calc(100vw - 350px);
   top: 0;

@@ -52,7 +52,7 @@ export default {
 .westside {
   position: fixed;
   transition: .5s ease;
-  background: rgba(0,0,0,.95);
+  background: rgba(0,0,0,1);
   left: 0;
   right: 70vw;
   top: 0;

@@ -5,7 +5,7 @@
       <section class="scene-6-static">
         <img class="img-jent_static-1" 
           data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/webp/bg-s6-12.webp">
+          src="@/assets/img/bg-s6-12.png">
       </section>
 
       <section class="content page-1-content">
@@ -26,11 +26,11 @@
         </div>
 
         <div class="app-row _mt-7">
-          <button class="app-btn app-btn_orange"
+          <!-- <button class="app-btn app-btn_orange"
             @click="$router.push('/order')">
             Заказать
-          </button>
-          <button class="app-btn app-btn_white _ml-7"
+          </button> -->
+          <button class="app-btn app-btn_white"
             @click="$router.push('/moneyback')">
             Возврат средств
           </button>
@@ -91,7 +91,7 @@ export default {
 
   @media screen and (max-width: 560px) {
     background: rgba(0,0,0,.4);
-    background-image: url('../../assets/img/webp/bg-s6-mob.webp');
+    background-image: url('../../assets/img/bg-s6-mob.png');
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: top center;

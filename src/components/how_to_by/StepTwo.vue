@@ -182,6 +182,7 @@ export default {
   }
   &__spec {
     width: 100%;
+    z-index: 100000000;
   }
   &__check {
     color: #fff;
@@ -202,5 +203,11 @@ export default {
     max-width: 300px !important;
     left: calc(50% - 150px) !important;
   }
+}
+</style>
+
+<style lang="scss">
+.el-select-dropdown.el-popper {
+  z-index: 100000000 !important;
 }
 </style>
