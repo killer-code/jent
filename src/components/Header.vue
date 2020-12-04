@@ -9,10 +9,11 @@
         <img src="@/assets/img/logo.svg" alt="" />
       </router-link>
 
-      <!-- <button @click="$router.push('/order')" 
+      <a href="https://apteka.ru/product/dzhent-5faa2d1ed20e1c0001219169/"
+        target="_blank"
         class="app-btn__how-by mb_d-none">
-        <span>Заказать образец</span>
-      </button> -->
+        <span>Купить</span>
+      </a>
 
       <nav class="nav tb_d-none">
         <router-link to="/how-it-works" class="nav__link">
@@ -81,6 +82,7 @@ export default {
     }
   }
 }
+.app-btn__how-by { padding: 0 15px; }
 .discription {
   font-weight: 400;
   font-size: 16px;

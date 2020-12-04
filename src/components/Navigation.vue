@@ -23,6 +23,9 @@
         <router-link to="/moneyback" class="menu__item">
           Возврат средств
         </router-link>
+        <a href="https://apteka.ru/product/dzhent-5faa2d1ed20e1c0001219169/" 
+          target="_blank"
+          class="menu__item">Купить</a>
         <!-- <router-link to="/" class="menu__item">
           Правовая информация
         </router-link> -->
