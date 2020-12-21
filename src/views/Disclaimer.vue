@@ -23,6 +23,10 @@ export default {
     goSite() { 
       localStorage.old = true;
       this.$router.push({ name: 'Home' });
+
+      setTimeout(() => {
+        localStorage.removeItem('old');
+      }, 3600000)
     }
   }
 }
