@@ -4,7 +4,7 @@
       
       <section class="scene-3-static">
 
-        <img class="img-jent_static" 
+        <!-- <img class="img-jent_static" 
           data-depth-x="0.05" data-depth-y="0.05"
           src="@/assets/img/bg-s3-1.png">
 
@@ -14,7 +14,9 @@
 
         <img class="img-jent_static-mob" 
           data-depth-x="-0.1" data-depth-y="-0.1"
-          src="@/assets/img/bg-s3-2-mob.png">
+          src="@/assets/img/bg-s3-2-mob.png"> -->
+
+        <img src="@/assets/img/bg-s3-1-new.png" alt="">
 
       </section>
 
@@ -172,6 +174,11 @@ export default {
   @media screen and (max-width: 560px) {
     opacity: 1;
     width: 100vw;
+  }
+}
+.scene-3-static img {
+  @media screen and (max-width: 768px) {
+    object-fit: cover;
   }
 }
 </style>
