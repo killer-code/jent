@@ -177,6 +177,8 @@ export default {
   }
 }
 .scene-3-static img {
+  width: 100%;
+  object-fit: cover;
   @media screen and (max-width: 768px) {
     object-fit: cover;
   }
