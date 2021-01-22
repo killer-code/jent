@@ -83,12 +83,6 @@ import pageData from './HowItWorksData';
 
 export default {
   name: 'HowItWorks',
-  metaInfo: {
-    title: 'Jent - Как работает',
-    htmlAttrs: {
-      lang: 'ru',
-    },
-  },
   components: {
     StaticFooter,
   },
