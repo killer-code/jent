@@ -17,12 +17,6 @@ import WestSide from '@/components/give_me_my_money/WestSide'
 
 export default {
   name: 'GiveMoney',
-  metaInfo: {
-    title: 'Jent - Возврат средств',
-    htmlAttrs: {
-      lang: 'ru',
-    }
-  },
   components: { StepOne, StepTwo, Error, WestSide },
   data: () => ({
     step: 0,

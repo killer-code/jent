@@ -7,11 +7,5 @@
 <script>
 export default {
   name: 'Err404',
-  metaInfo: {
-    title: '404',
-    htmlAttrs: {
-      lang: 'ru',
-    }
-  },
 }
 </script>

@@ -1011,12 +1011,6 @@ import StaticFooter from '@/components/StaticFooter';
 
 export default {
   name: 'Instruction',
-  metaInfo: {
-    title: 'Jent - Инструкция',
-    htmlAttrs: {
-      lang: 'ru',
-    }
-  },
   components: {
     StaticFooter,
   },
