@@ -38,7 +38,8 @@ export default {
   background: #060113;
   background-image: url('../../assets/img/bg-s5.jpg');
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center;
+  background-size: cover;
 
   @media screen and (max-width: 1440px) {
     background-position: center;
