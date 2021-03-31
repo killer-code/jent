@@ -1,12 +1,6 @@
 <template>
   <section class="screen-six">
     <div class="container">
-      
-      <section class="scene-6-static">
-        <img class="img-jent_static-1" 
-          data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/webp/bg-s6-12.webp">
-      </section>
 
       <section class="content page-1-content">
         <h2 class="caption-2">Попробуйте Джент</h2>
@@ -62,24 +56,13 @@
       </section>
 
     </div>
-
-    <!-- <StaticFooter class="footer" /> -->
   </section>
 </template>
 
 <script>
-import Parallax from 'parallax-js'
-import StaticFooter from '@/components/StaticFooter'
 
 export default {
   name: 'ScreenSix',
-  components: { StaticFooter },
-  mounted() {
-    // Delete sprite
-    const sceneSt = document.querySelector('.scene-6-static');
-    let parallaxInstance = new Parallax(sceneSt);
-    // END
-  }
 }
 </script>
 
@@ -88,16 +71,6 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-
-  @media screen and (max-width: 560px) {
-    background: rgba(0,0,0,.4);
-    background-image: url('../../assets/img/webp/bg-s6-mob.webp');
-    background-size: 85%;
-    background-repeat: no-repeat;
-    background-position: top center;
-
-    height: auto;
-  }
 }
 .content {
   display: flex;

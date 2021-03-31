@@ -35,25 +35,6 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background: #060113;
-  background-image: url('../../assets/img/bg-s5.jpg');
-  background-repeat: no-repeat;
-  background-position: bottom;
-
-  @media screen and (max-width: 1440px) {
-    background-position: center;
-    background-size: contain;
-  }
-
-  @media screen and (max-width: 560px) {
-    background: #060113;
-    background-image: url('../../assets/img/bg-s5-mob.jpg');
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: contain;
-
-    height: auto;
-  }
 }
 .content {
   display: flex;

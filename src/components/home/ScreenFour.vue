@@ -72,22 +72,6 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
-
-  background-color: #0c0b11;
-  background-image: url('../../assets/img/bg-s4-111.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  @media screen and (max-width: 1280px) {
-    background-size: contain;
-  }
-
-  @media screen and (max-width: 560px) {
-    background-size: 150%;
-    background-position: -110px top;
-    height: auto;
-  }
 }
 .content {
   display: flex;

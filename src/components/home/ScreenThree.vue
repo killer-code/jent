@@ -1,22 +1,6 @@
 <template>
   <section class="screen-three">
     <div class="container">
-      
-      <section class="scene-3-static">
-
-        <img class="img-jent_static" 
-          data-depth-x="0.05" data-depth-y="0.05"
-          src="@/assets/img/webp/bg-s3-1.webp">
-
-        <img class="img-jent_static mb_d-none" 
-          data-depth-x="0.05" data-depth-y="0.15"
-          src="@/assets/img/webp/bg-s3-2.webp">
-
-        <img class="img-jent_static-mob" 
-          data-depth-x="-0.1" data-depth-y="-0.1"
-          src="@/assets/img/bg-s3-2-mob.png">
-
-      </section>
 
       <section class="content page-1-content">
         <h2 class="caption-2">
@@ -42,16 +26,9 @@
 </template>
 
 <script>
-import Parallax from 'parallax-js'
-
 export default {
   name: 'ScreenThree',
-  mounted() {
-    // Delete sprite
-    const sceneSt = document.querySelector('.scene-3-static');
-    let parallaxInstance = new Parallax(sceneSt);
-    // END
-  }
+  mounted() {}
 }
 </script>
 

@@ -1,11 +1,6 @@
 <template>
   <section class="screen-one">
     <div class="container">
-      <!-- <section class="scene-static">
-        <img class="img-jent_static" 
-          data-depth-x="0.2" data-depth-y="0.1"
-          src="@/assets/img/jent-static.png">
-      </section> -->
 
       <div class="btn_mob" @click="openModal">
         <img src="@/assets/img/cross.svg" alt="">
@@ -102,7 +97,6 @@
 </template>
 
 <script>
-import Parallax from 'parallax-js'
 import Timer from '@/components/Timer'
 
 export default {
@@ -145,12 +139,7 @@ export default {
       this.openAside(e);
     }
   },
-  mounted() {
-    // Delete sprite
-    // const sceneSt = document.querySelector('.scene-static');
-    // let parallaxInstance = new Parallax(sceneSt);
-    // END
-  }
+  mounted() {}
 }
 </script>
 

@@ -14,13 +14,31 @@
 
     <Preloader v-show="!loaded" :process="process" @load="changeLoad" />
 
-    <CanvasBackground :loaded="loaded" />
+    <!-- <CanvasBackground :loaded="loaded" /> -->
 
-    <AnimationOne v-show="loaded" 
+    <AnimeScreenOne v-show="loaded && scroll === 0" 
       :scroll="scroll" 
-      :json_1="json_0" 
-      :sprite_1="sprite_0"
       @process="changeLoad" />
+
+    <!-- <AnimeScreenTwo v-show="loaded && scroll === 1" 
+      :scroll="scroll" 
+      @process="changeLoad" /> -->
+
+    <AnimeScreenThree v-show="loaded && scroll === 2" 
+      :scroll="scroll" 
+      @process="changeLoad" />
+
+   <!-- <AnimeScreenFour v-show="loaded && scroll === 3" 
+      :scroll="scroll" 
+      @process="changeLoad" /> -->
+
+    <!-- <AnimeScreenFive v-show="loaded && scroll === 4" 
+      :scroll="scroll" 
+      @process="changeLoad" />
+
+    <AnimeScreenSix v-show="loaded && scroll === 5" 
+      :scroll="scroll" 
+      @process="changeLoad" /> -->
 
     <full-page ref="fullpage" id="fullpage" :options="options">
       <transition name="fade" mode="out-in">
@@ -42,7 +60,13 @@ import Navigation from '@/components/Navigation'
 
 import Preloader from '@/components/Preloader'
 
-import AnimationOne from '@/components/home/AnimationOne'
+import AnimeScreenOne   from '@/components/home/AnimeScreenOne'
+import AnimeScreenTwo   from '@/components/home/AnimeScreenTwo'
+import AnimeScreenThree from '@/components/home/AnimeScreenThree'
+import AnimeScreenFour  from '@/components/home/AnimeScreenFour'
+import AnimeScreenFive  from '@/components/home/AnimeScreenFive'
+import AnimeScreenSix   from '@/components/home/AnimeScreenSix'
+
 import CanvasBackground from '@/components/home/CanvasBackground'
 
 export default {
@@ -54,15 +78,18 @@ export default {
     Navigation,
 
     Preloader,
-    AnimationOne, 
-    CanvasBackground
+    AnimeScreenOne,
+    AnimeScreenTwo,
+    AnimeScreenThree, 
+    AnimeScreenFour,
+    AnimeScreenFive,
+    AnimeScreenSix,
+    
+    CanvasBackground,
   },
   data: () => ({
     process: false,
     loaded: false,
-
-    json_0: require('@/assets/img/sprites/scene/screen-00.json'),
-    sprite_0: require('@/assets/img/sprites/scene/screen-00.png'),
 
     asideData: { 
       isOpen: false,
