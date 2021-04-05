@@ -32,7 +32,6 @@ export default {
   },
   mounted() {
     this.createScene();
-    document.addEventListener('mousemove', this.getMouseX, false);
   },
   methods: {
     createScene() {
@@ -41,7 +40,6 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
-
       const sequence = document.querySelector('.sequence-1');
       const self = this; 
 
@@ -49,10 +47,6 @@ export default {
       self.app.loader
         .add('image', this.json_1.meta.image)
         .load((loader, resources) => {
-          console.log("progress: " + loader.progress + "%");
-          
-          if ( loader.progress === 100 ) this.$emit('process');
-         
           const texture = new this.$PIXI.Texture.from(this.sprite_1);
           const sheet = new this.$PIXI.Spritesheet(texture, this.json_1);
 
@@ -81,7 +75,6 @@ export default {
             anim.anchor.set(.5);
             anim.animationSpeed = .5;
             anim.loop = false;
-            // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
 
             this.app.stage.addChild(anim);
@@ -98,7 +91,6 @@ export default {
             anim.anchor.set(.5);
             anim.animationSpeed = .5;
             anim.loop = false;
-            // anim.rotation += .001 * this.mouseY / 35;
             anim.play();
 
             this.app.stage.addChild(anim);
@@ -113,28 +105,6 @@ export default {
           {	this.app.stage.removeChild(this.app.stage.children[i]) };
       };
       for ( let i = 63; i > 30; i-- ) {
-        const val = i;
-
-        frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
-        const anim = new this.$PIXI.AnimatedSprite(frames);
-        
-        anim.x = this.app.screen.width / 2;
-        anim.y = this.app.screen.height / 2;
-        anim.anchor.set(.5);
-        anim.animationSpeed = .5;
-        anim.loop = false;
-        anim.play();
-
-        this.app.stage.addChild(anim);
-      }
-    },
-    onAssetsLoaded2() {
-      let frames = [];
-      if ( this.app.stage ) {
-        for (let i = this.app.stage.children.length - 1; i >= 0; i--) 
-          {	this.app.stage.removeChild(this.app.stage.children[i]) };
-      };
-      for ( let i = 30; i < 64; i++ ) {
         const val = i;
 
         frames.push(this.$PIXI.Texture.from(`R03.${val}.png`));
@@ -171,15 +141,6 @@ export default {
     scroll() {
       if ( this.scroll === 0 ) {
         this.onAssetsLoaded1();
-        // document.querySelector('.scene').style.bottom = 0;
-      }
-      if ( this.scroll === 1 ) {
-        // document.querySelector('.scene').style.bottom = -200 + 'px';
-        this.onAssetsLoaded2();
-      }
-      if ( this.scroll === 2 ) {
-        // document.querySelector('.scene').style.bottom = -200 + 'px';
-        
       }
     }
   }

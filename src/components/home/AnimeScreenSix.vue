@@ -10,13 +10,15 @@ export default {
   name: 'AnimeScreenSix',
   props: {
     scroll: Number,
+    animationState: Object,
+    sprite_img: Image,
   },
   data: () => ({
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_back:   require('@/assets/img/sprites/scene_06/back-2.json'),
-    sprite_back: require('@/assets/img/sprites/scene_06/back-2.webp'),
+    json_back: require('@/assets/img/sprites/scene_06/back-2.json'),
+    sheet_back: '',
   }),
   computed: {
     app: function() {
@@ -29,35 +31,33 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 1080 }
+    Y: function() { return this.height / 980 }
   },
   mounted() {
-    this.createScene();
+    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
+    this.$PIXI.settings.TARGET_FPMS = 0.05;
   },
   methods: {
     createScene() {
-      const sequence = document.querySelector('.sequence-6');
+      const sequence = document.querySelector('#main-scene');
       const self = this; 
-
+      self.app.view.classList.add('scene-006')
       sequence.appendChild(self.app.view);
-      self.app.loader
-        .add('image_back', this.json_back)
-        .load((loader, resources) => {
-          console.log("progress: " + loader.progress + "%");
-          
-          if ( loader.progress === 100 ) this.$emit('process');
-          
-          const back = new this.$PIXI.Texture.from(this.sprite_back);
-          const sheet_back  = new this.$PIXI.Spritesheet(back, this.json_back);
-          
 
-          // console.log(sheet);
-          if ( loader.progress === 100 ) {
-            sheet_back.parse(() => {
-              this.onAssetsLoadedNext();
-            })
-          }
-        })
+      if ( self.app.loader.resources.image_back ) {
+        self.app.loader
+          .load((loader, resources) => {
+            const back = new this.$PIXI.Texture.from(this.sprite_img);
+            self.sheet_back  = new this.$PIXI.Spritesheet(back, this.json_back);
+          })
+      } else {
+        self.app.loader
+          .add('image_back', this.json_back)
+          .load((loader, resources) => {
+            const back = new this.$PIXI.Texture.from(this.sprite_img);
+            self.sheet_back  = new this.$PIXI.Spritesheet(back, this.json_back);
+          })
+      }
     },
     onAssetsLoadedNext() {
       let frames = [];
@@ -80,40 +80,72 @@ export default {
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
+        anim.onComplete = () => {
+          this.$PIXI.utils.clearTextureCache()
+        };
 
         this.app.stage.addChild(anim);
       }
     },
-    // onAssetsLoaded2() {
-    //   let frames = [];
-    //   const childLength = this.app.stage.children.length;
-    //   if ( this.app.stage ) {
-    //     for (let i = childLength - 1; i >= 0; i--) 
-    //       {	this.app.stage.removeChild(this.app.stage.children[i]) };
-    //   };
-    //   for ( let i = 0; i < 30; i++ ) {
-    //     const val = i;
+    onAssetsLoadedUp() {
+      let frames = [];
 
-    //     frames.push(this.$PIXI.Texture.from(`Rotate_${val}.png`));
-    //     const anim = new this.$PIXI.AnimatedSprite(frames);
+      const childLength = this.app.stage.children.length;
+      if ( this.app.stage ) {
+        for (let i = childLength - 1; i >= 0; i--) {	
+          this.app.stage.removeChild(this.app.stage.children[i]);
+        };
+      }
+      for ( let i = 11; i >= 0; i-- ) {
+        const val = i;
+
+        frames.push(this.$PIXI.Texture.from(`back_${val}-min.webp`));
+        const anim = new this.$PIXI.AnimatedSprite(frames);
         
-    //     anim.x = this.app.screen.width / 2;
-    //     anim.y = this.app.screen.height / 2;
-    //     anim.anchor.set(.5);
-    //     anim.animationSpeed = .5;
-    //     anim.loop = false;
-    //     anim.play();
+        anim.x = this.app.screen.width / 2;
+        anim.y = this.app.screen.height / 2;
+        anim.anchor.set(.5);
+        anim.animationSpeed = .4;
+        anim.scale.set(this.X, this.Y);
+        anim.loop = false;
+        anim.play();
+        anim.onComplete = () => {
+          this.$PIXI.utils.clearTextureCache();
+          this.animationState.five === 'start';
+          this.animationState.six === '';
 
-    //     this.app.stage.addChild(anim);
-    //   }
-    // },
-  },
-  watch: {
-    scroll() {
-      if ( this.scroll === 5 ) {
-        this.onAssetsLoadedNext();
+          const treshScene = document.querySelector('.scene-006');
+          if ( treshScene ) {
+            document.getElementById('main-scene').removeChild(treshScene);
+          }
+        };
+
+        this.app.stage.addChild(anim);
       }
     }
+  },
+  watch: {
+    'animationState.six': function() {
+      if ( this.animationState.six === 'create' ) {
+        this.createScene();
+      }
+    },
+    scroll() {
+      if ( this.animationState.six === 'down' ) {
+        const treshScene = document.querySelector('.scene-005');
+        if ( treshScene ) {
+          document.getElementById('main-scene').removeChild(treshScene);
+        }
+        this.sheet_back.parse(() => {
+          this.onAssetsLoadedNext();
+        })
+      }
+      if ( this.animationState.six === 'up' ) {
+        this.sheet_back.parse(() => {
+          this.onAssetsLoadedUp();
+        })
+      }
+    },
   }
 }
 </script>

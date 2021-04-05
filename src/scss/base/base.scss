@@ -26,6 +26,24 @@ a { text-decoration: none; }
     min-height: 100vh;
     overflow-x: hidden;
 }
+#main-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    filter: contrast(1.6);
+    &::before {
+        content: '';
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.2);
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+}
 .caption-1 {
     font-weight: 600;
     font-size: 50px;

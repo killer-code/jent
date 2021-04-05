@@ -10,6 +10,8 @@ export default {
   name: 'AnimeScreenOne',
   props: {
     scroll: Number,
+    animationState: Object,
+    sprite_img: Image,
   },
   data: () => ({
     mouseX: 0,
@@ -19,7 +21,6 @@ export default {
     height: window.innerHeight,
 
     json_rotate:   require('@/assets/img/sprites/scene_01/rotate-2.json'),
-    sprite_rotate: require('@/assets/img/sprites/scene_01/rotate-2.webp'),
   }),
   computed: {
     app: function() {
@@ -31,41 +32,45 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 1080 }
+    Y: function() { return this.height / 980 }
   },
   mounted() {
+    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
     this.createScene();
-    document.addEventListener('mousemove', e => {
-      this.getMouseX(e);
-    })
   },
   methods: {
     createScene() {
-      const childLength = this.app.stage.children.length;
-      if ( this.app.stage ) {
-        for (let i = childLength - 1; i >= 0; i--) {	
-          this.app.stage.removeChild(this.app.stage.children[i]);
-        };
-      }
-
-      const sequence = document.querySelector('.sequence-1');
+      const sequence = document.querySelector('#main-scene');
       const self = this; 
+      self.app.view.classList.add('scene-001');
 
       sequence.appendChild(self.app.view);
-      self.app.loader
-        .add('image_rotate', this.json_rotate)
-        .load((loader, resources) => {
-          console.log("progress: " + loader.progress + "%");
-          
-          if ( loader.progress === 100 ) this.$emit('process');
-         
-          const rotate = new this.$PIXI.Texture.from(this.sprite_rotate);
-          const sheet_rotate = new this.$PIXI.Spritesheet(rotate, this.json_rotate);
+      
+      if ( self.app.loader.resources.image_rotate ) {
+        self.app.loader
+          .load((loader, resources) => {
+            const rotate = new this.$PIXI.Texture.from(this.sprite_img);
+            const sheet_rotate = new this.$PIXI.Spritesheet(rotate, this.json_rotate);
 
-          sheet_rotate.parse(() => {
-            this.onAssetsLoaded(0, 0);
+            sheet_rotate.parse(() => {
+              this.onAssetsLoaded(0, 1);
+            })
           })
-        })
+      } else {
+        self.app.loader
+          .add('image_rotate', this.json_rotate)
+          .load((loader, resources) => {
+            const rotate = new this.$PIXI.Texture.from(this.sprite_img);
+            const sheet_rotate = new this.$PIXI.Spritesheet(rotate, this.json_rotate);
+
+            sheet_rotate.parse(() => {
+              this.onAssetsLoaded(0, 1);
+            })
+          })
+      }
+      document.addEventListener('mousemove', e => {
+        this.getMouseX(e);
+      })
     },
     onAssetsLoaded(frame_start = 0, frame_end = 1) {
       const frames = [];
@@ -136,6 +141,25 @@ export default {
       }, 10)
     },
   },
-  watch: {}
+  watch: {
+    scroll() {
+      if ( this.scroll !== 0 ) {
+        document.removeEventListener('mousemove', e => {
+          this.getMouseX(e);
+        })
+      } else {
+        setTimeout(() => {
+          this.createScene();
+          document.addEventListener('mousemove', e => {
+            this.getMouseX(e);
+          })
+          const treshScene = document.querySelector('.scene-002');
+          if ( treshScene ) {
+            document.getElementById('main-scene').removeChild(treshScene);
+          }
+        }, 2500)
+      }
+    }
+  }
 }
 </script>

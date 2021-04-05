@@ -33,8 +33,6 @@ import ScreenFour  from '@/components/home/ScreenFour'
 import ScreenFive  from '@/components/home/ScreenFive'
 import ScreenSix   from '@/components/home/ScreenSix'
 
-// import * as db from '@/api/data.json'
-
 export default {
   name: 'Home',
   props: ['asideData', 'screen'],

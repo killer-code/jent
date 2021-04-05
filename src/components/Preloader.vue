@@ -13,14 +13,7 @@ import { BarLoader } from '@saeris/vue-spinners'
 export default {
   name: 'Preloader',
   components: { BarLoader },
-  props: ['loaded', 'process'],
-  watch: {
-    process() {
-      if ( process ) {
-        this.$emit('load')
-      }
-    }
-  }
+  props: { loaded: Boolean },
 }
 </script>
 

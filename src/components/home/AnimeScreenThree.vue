@@ -3,9 +3,10 @@
     style="position: fixed;">
       <img class="smoke" :class="{ 'smoke_active': startSmoke }"
         :style="`left: calc(${cloudLeft}px - 50%)`"
-        :src="require('@/assets/img/sprites/scene_03/smoke-min-10.webp')" alt="">
-      <div class="canvas sequence-3" style="position: absolute; left: 0; top: 0;"></div>
-      <div class="canvas sequence-3_star" style="position: absolute; left: 0; top: 0;"></div>
+        :src="require('@/assets/img/sprites/scene_03/cloud.png')" alt="">
+      <img class="smoke molecula__img" :class="{ 'smoke_active': startMol }"
+        :style="`left: calc(${cloudLeft}px - 50%)`"
+        :src="require('@/assets/img/sprites/scene_03/nebula.png')" alt="">
   </section>
 </template>
 
@@ -14,16 +15,16 @@ export default {
   name: 'AnimeScreenThree',
   props: {
     scroll: Number,
+    sprite_img: Image,
   },
   data: () => ({
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_mol:    require('@/assets/img/sprites/scene_03/molecula-2.json'),
-    sprite_mol:  require('@/assets/img/sprites/scene_03/molecula-2.webp'),
     sprite_star: require('@/assets/img/sprites/scene_03/star.png'),
-
+    sheet_mol: '',
     startSmoke: false,
+    startMol: false,
   }),
   computed: {
     app: function() {
@@ -42,55 +43,22 @@ export default {
     cloudLeft: function() { return this.app.screen.width / 1.5 },
     cloudTop: function() { return this.app.screen.height / 2 },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 1080 }
+    Y: function() { return this.height / 980 }
   },
-  mounted() {},
+  mounted() {
+    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
+    this.$PIXI.settings.TARGET_FPMS = 0.05;
+  },
   methods: {
     createScene() {
-      const sequence = document.querySelector('.sequence-3');
-      const self = this; 
+      const mainScene = document.querySelector('#main-scene');
 
-      sequence.appendChild(self.app.view);
-      self.app.loader
-        .add('image_mol', this.json_mol)
-        .load((loader, resources) => {
-          console.log("progress: " + loader.progress + "%");
-          
-          if ( loader.progress === 100 ) this.$emit('process');
-          
-          const mol = new this.$PIXI.Texture.from(this.sprite_mol);
-          const sheet_mol  = new this.$PIXI.Spritesheet(mol, this.json_mol);
-
-          if ( loader.progress === 100 ) {
-            sheet_mol.parse(() => {
-              this.onAssetsLoadedNext();
-            })
-          }
-        })
-    },
-    onAssetsLoadedNext() {
-      let frames = [];
-      for ( let i = 0; i <= 16; i++ ) {
-        const val = i;
-        const blurFilter = new this.$PIXI.filters.BlurFilter();
-        blurFilter.blurX = .5;
-        blurFilter.blurY = .5;
-        blurFilter.repeatEdgePixels = true;
-
-        frames.push(this.$PIXI.Texture.from(`molecula_${val}-min.webp`));
-        const anim = new this.$PIXI.AnimatedSprite(frames);
-        
-        anim.x = this.app.screen.width / 1.5;
-        anim.y = this.app.screen.height / 2;
-        anim.anchor.set(.5);
-        anim.animationSpeed = .5;
-        anim.filters = [blurFilter];
-        anim.scale.set(this.X, 1);
-        anim.loop = false;
-        anim.play();
-
-        this.app.stage.addChild(anim);
+      if ( !document.querySelector('.scene-003') ) {
+        mainScene.appendChild(document.createElement('div'))
+          .classList.add('scene-003');
       }
+
+      const sequence = document.querySelector('.scene-003');
     },
     onCreateSpace() {
       const self = this;
@@ -102,9 +70,9 @@ export default {
         height: this.height,
       });
 
-      document.body.querySelector('.sequence-3_star').appendChild(app.view);
+      document.querySelector('.scene-003').appendChild(app.view);
 
-      let starAmount = 500;
+      let starAmount = 350;
       let cameraZ = 0;
       let fov = 20;
       let baseSpeed = 0.025;
@@ -139,7 +107,7 @@ export default {
       }
 
       warpSpeed = 1;
-      setTimeout(() => { warpSpeed = 0 }, 2000)
+      setTimeout(() => { warpSpeed = 0 }, 1500)
 
       app.ticker.add(function(delta) {
           speed += (warpSpeed - speed) / 20;
@@ -166,15 +134,29 @@ export default {
   watch: {
     scroll() {
       if ( this.scroll === 2 ) {
+        this.createScene();
         const childLength = this.app.stage.children.length;
         if ( this.app.stage ) {
           for (let i = childLength - 1; i >= 0; i--) {	
             this.app.stage.removeChild(this.app.stage.children[i]);
           };
         };
+        const otherTresh = document.querySelector('.scene-004');
+        const treshScene = document.querySelector('.scene-002');
+        if ( treshScene ) {
+          document.getElementById('main-scene').removeChild(treshScene);
+        }
+        if ( otherTresh ) {
+          document.getElementById('main-scene').removeChild(otherTresh);
+        }
+
         this.onCreateSpace();
         setTimeout(() => { this.startSmoke = true }, 1700);
-        setTimeout(() => this.createScene(), 1500);
+        setTimeout(() => { this.startMol = true }, 2000)
+      } 
+      if ( this.scroll === 3 || this.scroll === 1 ){
+        this.startSmoke = false;
+        this.startMol = false;
       }
     }
   }
@@ -190,8 +172,12 @@ export default {
 .smoke {
   opacity: 0;
   position: absolute;
-  transition: all .3s ease;
+  transition: all 1s ease;
 
   &_active { opacity: .5; }
+}
+
+.molecula__img {
+  filter: contrast(1.5);
 }
 </style>

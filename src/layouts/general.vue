@@ -12,33 +12,43 @@
       <Navigation :nav="nav" />
     </section>
 
-    <Preloader v-show="!loaded" :process="process" @load="changeLoad" />
+    <Preloader v-show="!loaded" />
 
-    <!-- <CanvasBackground :loaded="loaded" /> -->
+    <CanvasBackground v-if="scroll == 0 || scroll == 1" />
+    
+    <MainScene v-show="loaded" />
 
-    <AnimeScreenOne v-show="loaded && scroll === 0" 
+    <AnimeScreenOne
+      :animationState="animationState"
+      :sprite_img="images[0]"
+      :loaded="loaded"
+      :scroll="scroll" />
+
+    <AnimeScreenTwo
+      :sprite_img="images[1]"
+      :animationState="animationState"
+      :scroll="scroll" />
+
+    <AnimeScreenThree
       :scroll="scroll" 
-      @process="changeLoad" />
+      :animationState="animationState"
+      :sprite_img="images[2]" />
 
-    <!-- <AnimeScreenTwo v-show="loaded && scroll === 1" 
-      :scroll="scroll" 
-      @process="changeLoad" /> -->
+    <AnimeScreenFour
+        :scroll="scroll" 
+        :animationState="animationState"
+        :sprite_img_line="images[3]"
+        :sprite_img_flackon="images[4]" />
 
-    <AnimeScreenThree v-show="loaded && scroll === 2" 
+    <AnimeScreenFive
       :scroll="scroll" 
-      @process="changeLoad" />
+      :sprite_img="images[5]"
+      :animationState="animationState" />
 
-   <!-- <AnimeScreenFour v-show="loaded && scroll === 3" 
+    <AnimeScreenSix
       :scroll="scroll" 
-      @process="changeLoad" /> -->
-
-    <!-- <AnimeScreenFive v-show="loaded && scroll === 4" 
-      :scroll="scroll" 
-      @process="changeLoad" />
-
-    <AnimeScreenSix v-show="loaded && scroll === 5" 
-      :scroll="scroll" 
-      @process="changeLoad" /> -->
+      :sprite_img="images[6]"
+      :animationState="animationState" />
 
     <full-page ref="fullpage" id="fullpage" :options="options">
       <transition name="fade" mode="out-in">
@@ -60,6 +70,7 @@ import Navigation from '@/components/Navigation'
 
 import Preloader from '@/components/Preloader'
 
+import MainScene        from '@/components/home/MainScene'
 import AnimeScreenOne   from '@/components/home/AnimeScreenOne'
 import AnimeScreenTwo   from '@/components/home/AnimeScreenTwo'
 import AnimeScreenThree from '@/components/home/AnimeScreenThree'
@@ -78,6 +89,7 @@ export default {
     Navigation,
 
     Preloader,
+    MainScene,
     AnimeScreenOne,
     AnimeScreenTwo,
     AnimeScreenThree, 
@@ -88,7 +100,6 @@ export default {
     CanvasBackground,
   },
   data: () => ({
-    process: false,
     loaded: false,
 
     asideData: { 
@@ -96,7 +107,25 @@ export default {
     },
     nav: { isOpen: false, },
     scroll: 0,
+    animationState: {
+      one: 'start',
+      two: '',
+      three: '',
+      four: '',
+      five: '',
+      six: '',
+    },
     isMob: window.innerWidth < 560,
+    images: [],
+    sprites: [
+      '/scene_01/rotate-2.webp',
+      '/scene_02/pshick-4.webp',
+      '/scene_03/molecula-2.png',
+      '/scene_04/lines-2.webp',
+      '/scene_04/flackon-4.webp',
+      '/scene_05/neon-2.webp',
+      '/scene_06/back-2.webp',
+    ],
   }),
   computed: {
     options: function() {
@@ -113,21 +142,80 @@ export default {
   },
   methods: {
     onLeave(index, nexIndex, direction) {
-      if ( direction === 'down' )
-        this.scroll ++;
-      else {
-        this.scroll --;
+      if ( direction === 'down' ) {
+        if ( this.scroll === 0 ) {
+          this.scroll ++;
+          this.animationState.one = '';
+          this.animationState.two = 'down';
+          return;
+        } 
+        if ( this.scroll === 1 ) {
+          this.scroll ++;
+          this.animationState.two = '';
+          this.animationState.three = 'start';
+          return;
+        } 
+        if ( this.scroll === 2 ) {
+          this.scroll ++;
+          this.animationState.three = '';
+          this.animationState.four = 'start';
+          return;
+        } 
+        if ( this.scroll === 3 ) {
+          this.scroll ++;
+          this.animationState.four = '';
+          this.animationState.five = 'down';
+          return;
+        } 
+        if ( this.scroll === 4 ) {
+          this.scroll ++;
+          this.animationState.five = '';
+          this.animationState.six = 'down';
+          return;
+        } 
+      } else {
+        if ( this.scroll === 1 ) {
+          this.scroll --;
+          this.animationState.one = '';
+          this.animationState.two = 'up';
+          return;
+        }
+        if ( this.scroll === 2 ) {
+          this.scroll --;
+          this.animationState.two = 'start';
+          this.animationState.three = '';
+          return;
+        } 
+        if ( this.scroll === 3 ) {
+          this.scroll --;
+          this.animationState.three = 'start';
+          this.animationState.four = '';
+          return;
+        } 
+        if ( this.scroll === 4 ) {
+          this.scroll --;
+          this.animationState.four = '';
+          this.animationState.five = 'up';
+          return;
+        }  
+        if ( this.scroll === 5 ) {
+          this.scroll --;
+          this.animationState.five = 'start';
+          this.animationState.six = 'up';
+          return;
+        }  
       }
-    },
-    changeLoad() {
-      setTimeout(() => { this.loaded = true; }, 2000)
-    },
-    changeProcess() {
-      setTimeout(() => { this.process = true; }, 100)
     },
     scrollDown() {
       this.$refs.fullpage.api.moveSectionDown();
     },
+    preload(sprites) {
+      for (let i = 0; i < sprites.length; i++) {
+        this.images[i] = new Image();
+        this.images[i].src = require(`@/assets/img/sprites${sprites[i]}`)
+      }
+      this.loaded = true;
+    }
   },
   watch: {
     isAsideActive() {
@@ -143,7 +231,8 @@ export default {
     west.addEventListener('wheel', e => {
       const el = e.target.closest('.aside_wrap');
       el.scrollTop += e.deltaY;
-    })
+    });
+    this.preload(this.sprites);
   }
 }
 </script>
