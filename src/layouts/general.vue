@@ -32,23 +32,22 @@
 
     <AnimeScreenThree
       :scroll="scroll" 
-      :animationState="animationState"
-      :sprite_img="images[2]" />
+      :animationState="animationState"/>
 
     <AnimeScreenFour
         :scroll="scroll" 
         :animationState="animationState"
-        :sprite_img_line="images[3]"
-        :sprite_img_flackon="images[4]" />
+        :sprite_img_line="images[2]"
+        :sprite_img_flackon="images[3]" />
 
     <AnimeScreenFive
       :scroll="scroll" 
-      :sprite_img="images[5]"
+      :sprite_img="images[4]"
       :animationState="animationState" />
 
     <AnimeScreenSix
       :scroll="scroll" 
-      :sprite_img="images[6]"
+      :sprite_img="images[5]"
       :animationState="animationState" />
 
     <full-page ref="fullpage" id="fullpage" :options="options">
@@ -119,13 +118,12 @@ export default {
     isMob: window.innerWidth < 560,
     images: [],
     sprites: [
-      '/scene_01/rotate-3.png',
-      '/scene_02/pshick-1.png',
-      '/scene_03/molecula-2.png',
-      '/scene_04/lines-2.webp',
-      '/scene_04/flackon-new.png',
-      '/scene_05/neon-2.webp',
-      '/scene_06/back-3.png',
+      '/scene_01/rotate.png',
+      '/scene_02/pshick.png',
+      '/scene_04/lines.webp',
+      '/scene_04/flackon.png',
+      '/scene_05/neon.webp',
+      '/scene_06/back.png',
     ],
   }),
   computed: {

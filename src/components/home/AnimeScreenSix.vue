@@ -17,7 +17,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_back: require('@/assets/img/sprites/scene_06/back-3.json'),
+    json_back: require('@/assets/img/sprites/scene_06/back.json'),
     sheet_back: '',
   }),
   computed: {

@@ -3,12 +3,9 @@
     style="position: fixed;">
       <div v-if="scroll === 2" 
         class="bac" :class="{'bac_active': startSmoke}"></div>
-      <!-- <img class="smoke" :class="{ 'smoke_active': startSmoke }"
-        :style="`left: calc(${cloudLeft}px - 50%)`"
-        :src="require('@/assets/img/sprites/scene_03/space.jpg')" alt=""> -->
       <img class="smoke molecula__img" :class="{ 'smoke_active': startMol }"
         :style="`left: calc(${cloudLeft}px - 50%)`"
-        :src="require('@/assets/img/sprites/scene_03/nebula.png')" alt="">
+        :src="require('@/assets/img/sprites/scene_03/nebula-min.png')" alt="">
   </section>
 </template>
 
@@ -23,7 +20,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    sprite_star: require('@/assets/img/sprites/scene_03/star-2.png'),
+    sprite_star: require('@/assets/img/sprites/scene_03/star.png'),
     sheet_mol: '',
     startSmoke: false,
     startMol: false,

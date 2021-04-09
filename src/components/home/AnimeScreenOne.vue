@@ -20,7 +20,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_rotate:   require('@/assets/img/sprites/scene_01/rotate-3.json'),
+    json_rotate:   require('@/assets/img/sprites/scene_01/rotate.json'),
   }),
   computed: {
     app: function() {
