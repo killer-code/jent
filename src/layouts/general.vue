@@ -17,7 +17,7 @@
     <!-- <CanvasBackground v-if="scroll == 0 || scroll == 1 || scroll == 5"
       :scroll="scroll" /> -->
     
-    <MainScene v-show="loaded" />
+    <MainScene v-show="loaded" :screen="scroll" />
 
     <AnimeScreenOne
       :animationState="animationState"

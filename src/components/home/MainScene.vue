@@ -5,6 +5,12 @@
 <script>
 export default {
   name: 'MainScene',
+  props: {
+    screen: Number,
+  },
+  mounted() {
+    
+  }
 }
 </script>
 

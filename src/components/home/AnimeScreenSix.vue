@@ -39,6 +39,8 @@ export default {
       const sequence = document.querySelector('#main-scene');
       const self = this; 
       self.app.view.classList.add('scene-006')
+      self.app.view.setAttribute('data-depth', '0.1');
+
       sequence.appendChild(self.app.view);
 
       if ( self.app.loader.resources.image_back ) {
@@ -78,7 +80,9 @@ export default {
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache()
+          this.$PIXI.utils.clearTextureCache();
+          const scene = document.getElementById('main-scene');
+          let parallaxInstance = new this.$parallax(scene);
         };
 
         this.app.stage.addChild(anim);

@@ -1,9 +1,10 @@
 <template>
-  <section class="scene" 
+  <section class="scene px-scene" 
     style="position: fixed;">
       <div v-if="scroll === 2" 
         class="bac" :class="{'bac_active': startSmoke}"></div>
       <img class="smoke molecula__img" :class="{ 'smoke_active': startMol }"
+        data-depth="0.1"
         :style="`left: calc(${cloudLeft}px - 50%)`"
         :src="require('@/assets/img/sprites/scene_03/nebula-min.png')" alt="">
   </section>
@@ -44,7 +45,10 @@ export default {
     X: function() { return this.width / 1920 },
     Y: function() { return this.height / 980 }
   },
-  mounted() {},
+  mounted() {
+    const scene = document.querySelector('.px-scene');
+    let parallaxInstance = new this.$parallax(scene);
+  },
   methods: {
     createScene() {
       const mainScene = document.querySelector('#main-scene');
@@ -217,10 +221,10 @@ export default {
   to { background-size: 100% 100%; }
 }
 @keyframes molecule {
-  0% { transform: skew(1deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-  25% { transform: skew(.5deg, 0deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
+  0% { transform: skew(.5deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
+  25% { transform: skew(.25deg, 0deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
   50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-  75% { transform: skew(0deg, -.5deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
-  100% { transform: skew(0deg, -1deg) scaleX(1) scaleY(1) rotate(0deg); }
+  75% { transform: skew(0deg, -.25deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
+  100% { transform: skew(0deg, -.5deg) scaleX(1) scaleY(1) rotate(0deg); }
 }
 </style>

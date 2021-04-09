@@ -20,7 +20,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_rotate:   require('@/assets/img/sprites/scene_01/rotate.json'),
+    json_rotate: require('@/assets/img/sprites/scene_01/rotate.json'),
   }),
   computed: {
     app: function() {
@@ -42,9 +42,13 @@ export default {
       const sequence = document.querySelector('#main-scene');
       const self = this; 
       self.app.view.classList.add('scene-001');
+      self.app.view.setAttribute('data-depth', '0.05');
 
       sequence.appendChild(self.app.view);
-      
+
+      const scene = document.getElementById('main-scene');
+      let parallaxInstance = new this.$parallax(scene);
+
       if ( self.app.loader.resources.image_rotate ) {
         self.app.loader
           .load((loader, resources) => {
