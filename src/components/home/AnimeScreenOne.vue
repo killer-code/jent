@@ -20,7 +20,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_rotate:   require('@/assets/img/sprites/scene_01/rotate-2.json'),
+    json_rotate:   require('@/assets/img/sprites/scene_01/rotate-3.json'),
   }),
   computed: {
     app: function() {
@@ -35,7 +35,6 @@ export default {
     Y: function() { return this.height / 980 }
   },
   mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
     this.createScene();
   },
   methods: {
@@ -49,7 +48,7 @@ export default {
       if ( self.app.loader.resources.image_rotate ) {
         self.app.loader
           .load((loader, resources) => {
-            const rotate = new this.$PIXI.Texture.from(this.sprite_img);
+            const rotate = new this.$PIXI.BaseTexture.from(this.sprite_img);
             const sheet_rotate = new this.$PIXI.Spritesheet(rotate, this.json_rotate);
 
             sheet_rotate.parse(() => {
@@ -60,7 +59,7 @@ export default {
         self.app.loader
           .add('image_rotate', this.json_rotate)
           .load((loader, resources) => {
-            const rotate = new this.$PIXI.Texture.from(this.sprite_img);
+            const rotate = new this.$PIXI.BaseTexture.from(this.sprite_img);
             const sheet_rotate = new this.$PIXI.Spritesheet(rotate, this.json_rotate);
 
             sheet_rotate.parse(() => {
@@ -85,7 +84,7 @@ export default {
           for ( let i = frame_start; i > frame_end; i-- ) {
             const val = i;
 
-            frames.push(this.$PIXI.Texture.from(`rotate_${val}-min.webp`));
+            frames.push(this.$PIXI.Texture.from(`rotate_${val}-min.png`));
             const anim = new this.$PIXI.AnimatedSprite(frames);
 
             anim.x = this.app.screen.width / 2;
@@ -102,7 +101,7 @@ export default {
           for ( let i = frame_start; i < frame_end; i++ ) {
             const val = i;
 
-            frames.push(this.$PIXI.Texture.from(`rotate_${val}-min.webp`));
+            frames.push(this.$PIXI.Texture.from(`rotate_${val}-min.png`));
             const anim = new this.$PIXI.AnimatedSprite(frames);
 
             anim.x = this.app.screen.width / 2;
@@ -142,22 +141,26 @@ export default {
     },
   },
   watch: {
+    'animationState.one': function() {
+      this.createScene();
+      this.app.ticker.start();
+      
+      const treshScene = document.querySelector('.scene-002');
+      if ( treshScene ) {
+        document.getElementById('main-scene').removeChild(treshScene);
+      }
+      setTimeout(() => {
+        document.addEventListener('mousemove', e => {
+          this.getMouseX(e);
+        })
+      }, 250)
+    },
     scroll() {
-      if ( this.scroll !== 0 ) {
+      if ( this.scroll === 1 ) {
         document.removeEventListener('mousemove', e => {
           this.getMouseX(e);
         })
-      } else {
-        setTimeout(() => {
-          this.createScene();
-          document.addEventListener('mousemove', e => {
-            this.getMouseX(e);
-          })
-          const treshScene = document.querySelector('.scene-002');
-          if ( treshScene ) {
-            document.getElementById('main-scene').removeChild(treshScene);
-          }
-        }, 2500)
+        this.app.ticker.stop();
       }
     }
   }

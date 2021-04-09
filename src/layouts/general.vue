@@ -14,7 +14,8 @@
 
     <Preloader v-show="!loaded" />
 
-    <CanvasBackground v-if="scroll == 0 || scroll == 1" />
+    <!-- <CanvasBackground v-if="scroll == 0 || scroll == 1 || scroll == 5"
+      :scroll="scroll" /> -->
     
     <MainScene v-show="loaded" />
 
@@ -118,13 +119,13 @@ export default {
     isMob: window.innerWidth < 560,
     images: [],
     sprites: [
-      '/scene_01/rotate-2.webp',
-      '/scene_02/pshick-4.webp',
+      '/scene_01/rotate-3.png',
+      '/scene_02/pshick-1.png',
       '/scene_03/molecula-2.png',
       '/scene_04/lines-2.webp',
-      '/scene_04/flackon-4.webp',
+      '/scene_04/flackon-new.png',
       '/scene_05/neon-2.webp',
-      '/scene_06/back-2.webp',
+      '/scene_06/back-3.png',
     ],
   }),
   computed: {
@@ -188,13 +189,14 @@ export default {
         } 
         if ( this.scroll === 3 ) {
           this.scroll --;
+          this.animationState.five = '';
           this.animationState.three = 'start';
           this.animationState.four = '';
           return;
         } 
         if ( this.scroll === 4 ) {
           this.scroll --;
-          this.animationState.four = '';
+          // this.animationState.four = '';
           this.animationState.five = 'up';
           return;
         }  

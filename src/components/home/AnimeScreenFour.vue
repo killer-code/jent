@@ -20,7 +20,7 @@ export default {
     height: window.innerHeight,
 
     json_lines:   require('@/assets/img/sprites/scene_04/lines-2.json'),
-    json_flackon:   require('@/assets/img/sprites/scene_04/flackon-4.json'),
+    json_flackon:   require('@/assets/img/sprites/scene_04/flackon-new.json'),
     sheet_lines: '',
     sheet_flackon: '',
   }),
@@ -35,12 +35,9 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
+    Y: function() { return this.height / 1080 }
   },
-  mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
-    this.$PIXI.settings.TARGET_FPMS = 0.05;
-  },
+  mounted() {},
   methods: {
     createScene() {
       const sequence = document.querySelector('#main-scene');
@@ -76,6 +73,8 @@ export default {
       blurFilter.repeatEdgePixels = true;
 
       let frames = [];
+      let container = new this.$PIXI.Container();
+
       for ( let i = 0; i <= 29; i++ ) {
         const val = i;
 
@@ -87,22 +86,20 @@ export default {
         anim.anchor.set(.5);
         anim.animationSpeed = .1;
         anim.scale.set(this.X, .8);
-        anim.filters = [blurFilter];
-        anim.loop = true;
+        anim.loop = false;
         anim.play();
-        anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache();
-        };
 
-        this.app.stage.addChild(anim);
+        container.addChild(anim);
       }
+      container.filters = [blurFilter];
+      this.app.stage.addChild(container);
     },
     onAssetsLoadedFlackon() {
       let frames = [];
-      for ( let i = 0; i <= 2; i++ ) {
+      for ( let i = 0; i <= 18; i++ ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`flackon_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`flackon_${val}-min.png`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
         
         anim.x = this.app.screen.width / 2;
@@ -114,7 +111,6 @@ export default {
         anim.play();
         anim.onComplete = () => {
           this.$PIXI.utils.clearTextureCache();
-          this.animationState.five = 'create'
         };
 
         this.app.stage.addChild(anim);
@@ -122,16 +118,11 @@ export default {
     },
   },
   watch: {
-    scroll() {;
-      if ( this.scroll === 2 ) {
-        const treshScene = document.querySelector('.scene-004');
-        const mainScene = document.getElementById('main-scene');
-        if ( treshScene ) {
-          mainScene.removeChild(treshScene)
-        }
-      }
-      if ( this.scroll === 3 ) {
+    'animationState.four': function() {
+      if ( this.animationState.four === 'start' ) {
         this.createScene();
+        this.app.ticker.start();
+
         const childLength = this.app.stage.children.length;
         if ( this.app.stage ) {
           for (let i = childLength - 1; i >= 0; i--) 
@@ -144,6 +135,7 @@ export default {
         if ( treshScene ) {
           mainScene.removeChild(treshScene)
         }
+
         setTimeout(() => {
           this.sheet_lines.parse(() => {
             this.onAssetsLoadedNext();
@@ -151,8 +143,25 @@ export default {
           this.sheet_flackon.parse(() => {
             this.onAssetsLoadedFlackon();
           })
-        }, 500)
-        
+        }, 150)
+
+        setTimeout(() => {
+          this.animationState.five = 'create'
+        }, 1500)
+      }
+    },
+    scroll() {;
+      if ( this.scroll === 2 ) {
+        this.app.ticker.stop();
+        const treshScene = document.querySelector('.scene-004');
+        const mainScene = document.getElementById('main-scene');
+        if ( treshScene ) {
+          mainScene.removeChild(treshScene)
+        }
+      }
+
+      if ( this.scroll === 4 ) {
+        this.app.ticker.stop();
       }
     }
   }

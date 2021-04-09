@@ -10,13 +10,6 @@ import HowItWorks   from '@/views/HowItWorks'
 import Instruction  from '@/views/Instruction'
 import PersonalData from '@/views/PersonalData'
 
-import Test  from '@/views/Test'
-import Test2 from '@/views/Test2'
-import Test3 from '@/views/Test3'
-import Test4 from '@/views/Test4'
-import Test5 from '@/views/Test5'
-import Test6 from '@/views/Test6'
-
 import Err404     from '@/views/404'
 
 Vue.use(VueRouter)
@@ -29,65 +22,6 @@ const routes = [
     component: Home,
     meta: { 
       layout: 'general', 
-      title: `${SITE_NAME} - Главна`,
-      age: true,
-    },
-  },
-  {
-    path: '/test',
-    name: 'Test',
-    component: Test,
-    meta: { 
-      layout: 'empty', 
-      title: `${SITE_NAME} - Главна`,
-      age: true,
-    },
-  },
-  {
-    path: '/test-2',
-    name: 'Test2',
-    component: Test2,
-    meta: { 
-      layout: 'empty', 
-      title: `${SITE_NAME} - Главна`,
-      age: true,
-    },
-  },
-  {
-    path: '/test-3',
-    name: 'Test3',
-    component: Test3,
-    meta: { 
-      layout: 'empty', 
-      title: `${SITE_NAME} - Главна`,
-    },
-  },
-  {
-    path: '/test-4',
-    name: 'Test4',
-    component: Test4,
-    meta: { 
-      layout: 'empty', 
-      title: `${SITE_NAME} - Главна`,
-      age: true,
-    },
-  },
-  {
-    path: '/test-5',
-    name: 'Test5',
-    component: Test5,
-    meta: { 
-      layout: 'empty', 
-      title: `${SITE_NAME} - Главна`,
-      age: true,
-    },
-  },
-  {
-    path: '/test-6',
-    name: 'Test6',
-    component: Test6,
-    meta: { 
-      layout: 'empty', 
       title: `${SITE_NAME} - Главна`,
       age: true,
     },

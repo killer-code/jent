@@ -17,7 +17,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_zilch:   require('@/assets/img/sprites/scene_02/pshick-4.json'),
+    json_zilch:   require('@/assets/img/sprites/scene_02/pshick-1.json'),
     sheet_zilch: '',
   }),
   computed: {
@@ -34,8 +34,6 @@ export default {
     Y: function() { return this.height / 980 }
   },
   mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
-    this.$PIXI.settings.TARGET_FPMS = 0.05;
     this.createScene()
   },
   methods: {
@@ -66,18 +64,19 @@ export default {
       for ( let i = 0; i <= 29; i++ ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`pshick_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`pshick_${val}-min.png`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
 
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .1;
+        anim.animationSpeed = .12;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache()
+          this.$PIXI.utils.clearTextureCache();
+          this.app.ticker.stop();
         };
         this.app.stage.addChild(anim);
       }
@@ -85,28 +84,34 @@ export default {
     onAssetsLoadedUp() {
       let frames = [];
 
-      for ( let i = 10; i >= 0; i-- ) {
+      for ( let i = 9; i >= 0; i-- ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`pshick_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`pshick_${val}-min.png`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
         
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .1;
+        anim.animationSpeed = .12;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache()
+          this.animationState.one = 'start';
+          this.$PIXI.utils.clearTextureCache();
+          this.app.ticker.stop();
+          const treshScene = document.querySelector('.scene-002');
+          if ( treshScene ) {
+            document.getElementById('main-scene').removeChild(treshScene);
+          }
         };
         this.app.stage.addChild(anim);
       }
     },
     onAssetsLoadedStatic() {
       let frames = [];
-      frames.push(this.$PIXI.Texture.from(`pshick_29-min.webp`));
+      frames.push(this.$PIXI.Texture.from(`pshick_29-min.png`));
       const anim = new this.$PIXI.AnimatedSprite(frames);
       
       anim.x = this.app.screen.width / 2;
@@ -117,9 +122,10 @@ export default {
       anim.loop = false;
       anim.play();
       anim.onComplete = () => {
-        this.$PIXI.utils.clearTextureCache()
+        this.$PIXI.utils.clearTextureCache();
+        this.app.ticker.stop();
       };
-      this.app.stage.addChild(anim);
+      this.app.stage.addChild(anim)
     }
   },
   watch: {
@@ -132,7 +138,8 @@ export default {
       }
       
       if ( this.scroll === 1 && this.animationState.two === 'down' ) {
-        this.createScene()
+        this.createScene();
+        this.app.ticker.start();
         this.sheet_zilch.parse(() => {
           this.onAssetsLoadedNext();
         })
@@ -144,21 +151,21 @@ export default {
       }
 
       if ( this.scroll === 0 && this.animationState.two === 'up' ) {
-        this.createScene()
+        this.createScene();
+        this.app.ticker.start();
         this.sheet_zilch.parse(() => {
           this.onAssetsLoadedUp();
         })
-        setTimeout(() => {
-          this.animationState.one = 'start';
-          this.animationState.two = '';
-        }, 2000);
       }
       if ( this.scroll === 1 && this.animationState.two === 'start' ) {
         this.createScene()
+        this.app.ticker.start();
+
         const treshScene = document.querySelector('.scene-003');
         if ( treshScene ) {
           document.getElementById('main-scene').removeChild(treshScene);
         }
+
         this.sheet_zilch.parse(() => {
           this.onAssetsLoadedStatic();
         })

@@ -9,7 +9,9 @@
 
 export default {
   name: 'CanvasBackground',
-  props: ['loaded'],
+  props: {
+    scroll: Number,
+  },
   data: () => ({
     height: window.innerHeight,
     particles: [],
@@ -30,14 +32,14 @@ export default {
       return ctx;
     },
     particalCount: function() {
-      let count = 500;
+      let count = 350;
       if ( window.innerWidth < 561 ) {
         count = 150;
       }
       return count;
     },
     width: function() {
-      let width = window.innerWidth / 1.5;
+      let width = window.innerWidth;
       if ( window.innerWidth < 561 ) {
         width = window.innerWidth
       }
@@ -50,13 +52,13 @@ export default {
     document.body.addEventListener('mousemove', this.moveParticles, false);
 
     this.createParticles();
-    this.drawParticles();
+    this.drawParticles(); 
     requestAnimationFrame(this.animateParticles);
   },
   methods: {
     randomNorm(mean, stdev) {
       const data = Math.abs(Math.round((Math.random() * 2 - 1) + 
-        (Math.random() * 2 - 1) + (Math.random() * 2 - 1)) * 
+        (Math.random() * 2 - 1) + (Math.random() * 2 - 1)) *                   
         stdev);
 
       return data;
@@ -104,8 +106,7 @@ export default {
         self.ctx.translate(
           this.x + self.mouse_coord.rx / -20 * this.radius, 
           this.y + self.mouse_coord.ry / -20 * this.radius
-        );  
-        // self.ctx.rotate(this.rotation);  
+        );   
         self.ctx.scale(1, this.scale);
           
           this.grad = self.ctx.createRadialGradient( 
@@ -209,6 +210,11 @@ export default {
     },  
   },
   watch: {
+    scroll() {
+      if ( this.scroll !== 0 || this.scroll !== 1 || this.scroll !== 5 ) {
+        cancelAnimationFrame(this.animateParticles);
+      }
+    }
   }
 }
 </script>

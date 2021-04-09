@@ -30,12 +30,9 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
+    Y: function() { return this.height / 1080 }
   },
-  mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
-    this.$PIXI.settings.TARGET_FPMS = 0.05;
-  },
+  mounted() {},
   methods: {
     createScene() {
       const sequence = document.querySelector('#main-scene');
@@ -76,7 +73,7 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .4;
+        anim.animationSpeed = .1;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
@@ -86,6 +83,7 @@ export default {
           this.sheet_neon.parse(() => {
             this.onAssetsLoadedRepeat();
           })
+
           const treshScene = document.querySelector('.scene-004');
           if ( treshScene ) {
             document.getElementById('main-scene').removeChild(treshScene);
@@ -113,7 +111,7 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .7;
+        anim.animationSpeed = .05;
         anim.scale.set(this.X, this.Y);
         anim.loop = true;
         anim.play();
@@ -142,19 +140,22 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .4;
+        anim.animationSpeed = .15;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache();
-          this.animationState.five === '';
-          this.animationState.four === 'start';
+          this.animationState.five = '';
+          this.animationState.four = 'start';
+          this.app.ticker.stop();
 
-          const treshScene = document.querySelector('.scene-005');
-          if ( treshScene ) {
-            document.getElementById('main-scene').removeChild(treshScene);
-          }
+          setTimeout(() => {
+            const treshScene = document.querySelector('.scene-005');
+            if ( treshScene ) {
+                document.getElementById('main-scene').removeChild(treshScene);
+            }
+          }, 250)
+          this.$PIXI.utils.clearTextureCache();
         };
 
         this.app.stage.addChild(anim);
@@ -166,29 +167,46 @@ export default {
       if ( this.animationState.five === 'create' ) {
         this.createScene();
       }
+      if ( this.animationState.five === 'start' ) {
+        this.createScene();
+        this.app.ticker.start();
+        setTimeout(() => {
+          this.sheet_neon.parse(() => {
+            this.onAssetsLoadedRepeat();
+          })
+        }, 1500)
+      }
     },
     scroll() {
       if ( this.animationState.five === 'down' ) {
+        this.app.ticker.start();
+
         const treshScene = document.querySelector('.scene-004');
+        const thisScene = document.querySelector('.scene-005');
+
         if ( treshScene ) {
           document.getElementById('main-scene').removeChild(treshScene);
         }
+        if (!thisScene) {
+          this.createScene();
+        }
+
         this.sheet_neon.parse(() => {
           this.onAssetsLoadedNext();
         }) 
       }
       if ( this.animationState.five === 'up' ) {
+        this.app.ticker.start();
         this.sheet_neon.parse(() => {
           this.onAssetsLoadedUp();
         })
+        const treshScene = document.querySelector('.scene-006');
+        if ( treshScene ) {
+          document.getElementById('main-scene').removeChild(treshScene);
+        }
       }
-      if ( this.animationState.five === 'start' ) {
-        this.createScene();
-        setTimeout(() => {
-          this.sheet_neon.parse(() => {
-            this.onAssetsLoadedRepeat();
-          })
-        }, 350)
+      if ( this.scroll === 5 ) {
+        this.app.ticker.stop();
       }
     }
   }

@@ -17,7 +17,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_back: require('@/assets/img/sprites/scene_06/back-2.json'),
+    json_back: require('@/assets/img/sprites/scene_06/back-3.json'),
     sheet_back: '',
   }),
   computed: {
@@ -31,12 +31,9 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
+    Y: function() { return this.height / 1080 }
   },
-  mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
-    this.$PIXI.settings.TARGET_FPMS = 0.05;
-  },
+  mounted() {},
   methods: {
     createScene() {
       const sequence = document.querySelector('#main-scene');
@@ -67,16 +64,16 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
-      for ( let i = 0; i <= 11; i++ ) {
+      for ( let i = 0; i <= 12; i++ ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`back_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`back_${val}-min.png`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
         
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .2;
+        anim.animationSpeed = .15;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
@@ -96,16 +93,16 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
-      for ( let i = 11; i >= 0; i-- ) {
+      for ( let i = 12; i >= 0; i-- ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`back_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`back_${val}-min.png`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
         
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .4;
+        anim.animationSpeed = .2;
         anim.scale.set(this.X, this.Y);
         anim.loop = false;
         anim.play();
@@ -132,6 +129,11 @@ export default {
     },
     scroll() {
       if ( this.animationState.six === 'down' ) {
+        const thisScene = document.querySelector('.scene-006');
+        if ( !thisScene ) {
+          this.createScene();
+        }
+        this.app.ticker.start();
         const treshScene = document.querySelector('.scene-005');
         if ( treshScene ) {
           document.getElementById('main-scene').removeChild(treshScene);

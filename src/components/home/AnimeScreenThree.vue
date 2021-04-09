@@ -1,9 +1,11 @@
 <template>
   <section class="scene" 
     style="position: fixed;">
-      <img class="smoke" :class="{ 'smoke_active': startSmoke }"
+      <div v-if="scroll === 2" 
+        class="bac" :class="{'bac_active': startSmoke}"></div>
+      <!-- <img class="smoke" :class="{ 'smoke_active': startSmoke }"
         :style="`left: calc(${cloudLeft}px - 50%)`"
-        :src="require('@/assets/img/sprites/scene_03/cloud.png')" alt="">
+        :src="require('@/assets/img/sprites/scene_03/space.jpg')" alt=""> -->
       <img class="smoke molecula__img" :class="{ 'smoke_active': startMol }"
         :style="`left: calc(${cloudLeft}px - 50%)`"
         :src="require('@/assets/img/sprites/scene_03/nebula.png')" alt="">
@@ -14,14 +16,14 @@
 export default {
   name: 'AnimeScreenThree',
   props: {
-    scroll: Number,
+    scroll: Number,                 
     sprite_img: Image,
   },
   data: () => ({
     width: window.innerWidth,
     height: window.innerHeight,
 
-    sprite_star: require('@/assets/img/sprites/scene_03/star.png'),
+    sprite_star: require('@/assets/img/sprites/scene_03/star-2.png'),
     sheet_mol: '',
     startSmoke: false,
     startMol: false,
@@ -45,10 +47,7 @@ export default {
     X: function() { return this.width / 1920 },
     Y: function() { return this.height / 980 }
   },
-  mounted() {
-    this.$PIXI.settings.ANISOTROPIC_LEVEL = 8;
-    this.$PIXI.settings.TARGET_FPMS = 0.05;
-  },
+  mounted() {},
   methods: {
     createScene() {
       const mainScene = document.querySelector('#main-scene');
@@ -62,24 +61,17 @@ export default {
     },
     onCreateSpace() {
       const self = this;
-      const app = new this.$PIXI.Application({
-        antialias: true,
-        transparent: true,
 
-        width: this.width,
-        height: this.height,
-      });
+      document.querySelector('.scene-003').appendChild(self.app.view);
 
-      document.querySelector('.scene-003').appendChild(app.view);
-
-      let starAmount = 350;
+      let starAmount = 550;
       let cameraZ = 0;
       let fov = 20;
       let baseSpeed = 0.025;
       let speed = 0;
       let warpSpeed = 0;
       let starStretch = 5;
-      let starBaseSize = 0.05;
+      let starBaseSize = 0.3;
 
       let stars = [];
 
@@ -102,30 +94,30 @@ export default {
           star.sprite.anchor.x = 0.5;
           star.sprite.anchor.y = 0.7;
           randomizeStar(star, true);
-          app.stage.addChild(star.sprite);
+          self.app.stage.addChild(star.sprite);
           stars.push(star);
       }
 
       warpSpeed = 1;
       setTimeout(() => { warpSpeed = 0 }, 1500)
 
-      app.ticker.add(function(delta) {
+      self.app.ticker.add(function(delta) {
           speed += (warpSpeed - speed) / 20;
           cameraZ += delta * 10 * (speed + baseSpeed);
           for (let i = 0; i < starAmount; i++) {
               let star = stars[i];
               if (star.z < cameraZ) randomizeStar(star);
               let z = star.z - cameraZ;
-              star.sprite.x = star.x * (fov / z) * app.renderer.screen.width + app.renderer.screen.width / 2;
-              star.sprite.y = star.y * (fov / z) * app.renderer.screen.width + app.renderer.screen.height / 2;
+              star.sprite.x = star.x * (fov / z) * self.app.renderer.screen.width + self.app.renderer.screen.width / 2;
+              star.sprite.y = star.y * (fov / z) * self.app.renderer.screen.width + self.app.renderer.screen.height / 2;
 
-              let dxCenter = star.sprite.x - app.renderer.screen.width / 2;
-              let dyCenter = star.sprite.y - app.renderer.screen.height / 2;
+              let dxCenter = star.sprite.x - self.app.renderer.screen.width / 2;
+              let dyCenter = star.sprite.y - self.app.renderer.screen.height / 2;
               let distanceCenter = Math.sqrt(dxCenter * dxCenter + dyCenter + dyCenter);
               let distanceScale = Math.max(0, (2000 - z) / 2000);
               star.sprite.scale.x = distanceScale * starBaseSize;
 
-              star.sprite.scale.y = distanceScale * starBaseSize + distanceScale * speed * starStretch * distanceCenter / app.renderer.screen.width;
+              star.sprite.scale.y = distanceScale * starBaseSize + distanceScale * speed * starStretch * distanceCenter / self.app.renderer.screen.width;
               star.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2;
           }
       })
@@ -135,12 +127,16 @@ export default {
     scroll() {
       if ( this.scroll === 2 ) {
         this.createScene();
+        this.app.ticker.start();
+
         const childLength = this.app.stage.children.length;
         if ( this.app.stage ) {
           for (let i = childLength - 1; i >= 0; i--) {	
             this.app.stage.removeChild(this.app.stage.children[i]);
           };
         };
+
+        const futureTresh = document.querySelector('.scene-005');
         const otherTresh = document.querySelector('.scene-004');
         const treshScene = document.querySelector('.scene-002');
         if ( treshScene ) {
@@ -149,14 +145,23 @@ export default {
         if ( otherTresh ) {
           document.getElementById('main-scene').removeChild(otherTresh);
         }
+        if ( futureTresh ) {
+          document.getElementById('main-scene').removeChild(futureTresh);
+        }
 
         this.onCreateSpace();
-        setTimeout(() => { this.startSmoke = true }, 1700);
-        setTimeout(() => { this.startMol = true }, 2000)
+        this.startSmoke = true;
+        setTimeout(() => { this.startMol = true }, 2300)
       } 
+
       if ( this.scroll === 3 || this.scroll === 1 ){
+        this.app.ticker.stop();
         this.startSmoke = false;
         this.startMol = false;
+      }
+
+      if ( this.scroll === 3 ) {
+        this.app.ticker.stop();
       }
     }
   }
@@ -172,12 +177,53 @@ export default {
 .smoke {
   opacity: 0;
   position: absolute;
-  transition: all 1s ease;
+  transition: all 1s ease; 
 
   &_active { opacity: .5; }
 }
 
 .molecula__img {
-  filter: contrast(1.5);
+  filter: contrast(1.1);
+  animation-name: molecule;
+  animation-duration: 10s;
+  animation-delay: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+.bac {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0A0B11;
+  background-image: url('~@/assets/img/sprites/scene_03/space.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -10;
+  background-size: 0%;
+  background-blend-mode: lighten;
+  
+  &_active {
+    animation-name: space;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.67,.27,.69,1.1);
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes space {
+  from { background-size: 0% 0%; }
+  to { background-size: 100% 100%; }
+}
+@keyframes molecule {
+  0% { transform: skew(1deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
+  25% { transform: skew(.5deg, 0deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
+  50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
+  75% { transform: skew(0deg, -.5deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
+  100% { transform: skew(0deg, -1deg) scaleX(1) scaleY(1) rotate(0deg); }
 }
 </style>
