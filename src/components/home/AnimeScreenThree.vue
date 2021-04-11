@@ -1,12 +1,15 @@
 <template>
   <section class="scene px-scene" 
-    style="position: fixed;">
+    style="position: fixed; display: flex; justify-content: flex-end;">
       <div v-if="scroll === 2" 
         class="bac" :class="{'bac_active': startSmoke}"></div>
-      <img class="smoke molecula__img" :class="{ 'smoke_active': startMol }"
-        data-depth="0.1"
-        :style="`left: calc(${cloudLeft}px - 50%)`"
-        :src="require('@/assets/img/sprites/scene_03/nebula-min.png')" alt="">
+
+      <div class="wrapper-img">
+        <img class="molecula molecula__img" :class="{ 'molecula_active': startMol }"
+          data-depth="0.1"
+          :src="require('@/assets/img/sprites/scene_03/nebula-min.svg')" alt="">
+      </div>
+        <!-- :style="`left: calc(${cloudLeft}px - 50%)`" -->
   </section>
 </template>
 
@@ -160,10 +163,6 @@ export default {
         this.startSmoke = false;
         this.startMol = false;
       }
-
-      if ( this.scroll === 3 ) {
-        this.app.ticker.stop();
-      }
     }
   }
 }
@@ -175,12 +174,22 @@ export default {
   display: flex;
   align-items: center;
 }
-.smoke {
-  opacity: 0;
-  position: absolute;
-  transition: all 1s ease; 
 
-  &_active { opacity: .5; }
+.wrapper-img {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
+}
+
+.molecula {
+  opacity: 0;
+  transition: all 1s ease;
+  margin-right: 10vw;
+  width: 50%;
+
+  &_active { opacity: 1; }
 }
 
 .molecula__img {
@@ -221,10 +230,10 @@ export default {
   to { background-size: 100% 100%; }
 }
 @keyframes molecule {
-  0% { transform: skew(.5deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-  25% { transform: skew(.25deg, 0deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
+  0% { transform: skew(.05deg, 0.05deg) scaleX(1) scaleY(1) rotate(0deg); }
+  25% { transform: skew(.1deg, 0.1deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
   50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-  75% { transform: skew(0deg, -.25deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
-  100% { transform: skew(0deg, -.5deg) scaleX(1) scaleY(1) rotate(0deg); }
+  75% { transform: skew(-0.05deg, -.05deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
+  100% { transform: skew(-0.1deg, -.1deg) scaleX(1) scaleY(1) rotate(0deg); }
 }
 </style>

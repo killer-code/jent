@@ -1,7 +1,17 @@
 <template>
   <section class="scene" 
     style="position: fixed;">
-      <div class="canvas sequence-6"></div>
+      <section class="parallax-scene" v-show="isStatic">
+        <img class="parallax-img"
+          data-depth="0.05"
+          :src="require('@/assets/img/sprites/scene_06/static/static-back-2-min.png')" 
+          alt="">
+
+        <img class="parallax-img"
+          data-depth="0.1"
+          :src="require('@/assets/img/sprites/scene_06/static/static-back-1-min.png')" 
+          alt="">
+      </section>
   </section>
 </template>
 
@@ -19,6 +29,8 @@ export default {
 
     json_back: require('@/assets/img/sprites/scene_06/back.json'),
     sheet_back: '',
+    isStatic: false,
+    parallaxInstance: '',
   }),
   computed: {
     app: function() {
@@ -39,7 +51,6 @@ export default {
       const sequence = document.querySelector('#main-scene');
       const self = this; 
       self.app.view.classList.add('scene-006')
-      self.app.view.setAttribute('data-depth', '0.1');
 
       sequence.appendChild(self.app.view);
 
@@ -66,6 +77,7 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
+      
       for ( let i = 0; i <= 12; i++ ) {
         const val = i;
 
@@ -80,23 +92,31 @@ export default {
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
+          const treshScene = document.querySelector('.scene-006');
+          if ( treshScene ) {
+            treshScene.style.display = 'none';
+          }
+
           this.$PIXI.utils.clearTextureCache();
-          const scene = document.getElementById('main-scene');
-          let parallaxInstance = new this.$parallax(scene);
+          this.isStatic = true;
+          
+          const scene = document.querySelector('.parallax-scene');
+          this.parallaxInstance = new this.$parallax(scene);
         };
 
         this.app.stage.addChild(anim);
       }
     },
+
     onAssetsLoadedUp() {
       let frames = [];
-
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {
         for (let i = childLength - 1; i >= 0; i--) {	
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
+
       for ( let i = 12; i >= 0; i-- ) {
         const val = i;
 
@@ -111,13 +131,16 @@ export default {
         anim.loop = false;
         anim.play();
         anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache();
-          this.animationState.five === 'start';
-          this.animationState.six === '';
+          // this.$PIXI.utils.clearTextureCache();
 
-          const treshScene = document.querySelector('.scene-006');
-          if ( treshScene ) {
-            document.getElementById('main-scene').removeChild(treshScene);
+          if ( val === 0 ) {
+            this.animationState.five = 'start';
+            this.animationState.six = '';
+
+            const treshScene = document.querySelector('.scene-006');
+            if ( treshScene ) {
+              document.getElementById('main-scene').removeChild(treshScene);
+            }
           }
         };
 
@@ -130,8 +153,22 @@ export default {
       if ( this.animationState.six === 'create' ) {
         this.createScene();
       }
+      if ( this.animationState.six === 'up' ) {
+        const treshScene = document.querySelector('.scene-006');
+        if ( treshScene ) {
+          treshScene.style.display = 'block';
+        }
+
+        this.parallaxInstance = '';
+        this.isStatic = false;
+
+        this.sheet_back.parse(() => {
+          this.onAssetsLoadedUp();
+        }) 
+      }
     },
     scroll() {
+
       if ( this.animationState.six === 'down' ) {
         const thisScene = document.querySelector('.scene-006');
         if ( !thisScene ) {
@@ -146,12 +183,25 @@ export default {
           this.onAssetsLoadedNext();
         })
       }
-      if ( this.animationState.six === 'up' ) {
-        this.sheet_back.parse(() => {
-          this.onAssetsLoadedUp();
-        })
-      }
     },
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.parallax-scene {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
+.parallax-img {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+</style>

@@ -26,7 +26,6 @@ body * { pointer-events: none; }
   justify-content: center;
   left: 0;
   top: 0;
-  padding-top: 90vh;
   width: 100vw;
   height: 100vh;
   z-index: 1000;

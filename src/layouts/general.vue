@@ -12,12 +12,12 @@
       <Navigation :nav="nav" />
     </section>
 
-    <Preloader v-show="!loaded" />
+    <Preloader v-if="!loaded" />
 
     <!-- <CanvasBackground v-if="scroll == 0 || scroll == 1 || scroll == 5"
       :scroll="scroll" /> -->
     
-    <MainScene v-show="loaded" :screen="scroll" />
+    <MainScene :screen="scroll" />
 
     <AnimeScreenOne
       :animationState="animationState"
@@ -28,11 +28,12 @@
     <AnimeScreenTwo
       :sprite_img="images[1]"
       :animationState="animationState"
+      :loaded="loaded"
       :scroll="scroll" />
 
     <AnimeScreenThree
       :scroll="scroll" 
-      :animationState="animationState"/>
+      :animationState="animationState" />
 
     <AnimeScreenFour
         :scroll="scroll" 
@@ -52,7 +53,7 @@
 
     <full-page ref="fullpage" id="fullpage" :options="options">
       <transition name="fade" mode="out-in">
-        <router-view :asideData="asideData" :screen="scroll" />
+        <router-view :asideData="asideData" :screen="scroll" :loaded="loaded" />
       </transition>
     </full-page>
 
@@ -194,13 +195,11 @@ export default {
         } 
         if ( this.scroll === 4 ) {
           this.scroll --;
-          // this.animationState.four = '';
           this.animationState.five = 'up';
           return;
         }  
         if ( this.scroll === 5 ) {
           this.scroll --;
-          this.animationState.five = 'start';
           this.animationState.six = 'up';
           return;
         }  
@@ -214,7 +213,6 @@ export default {
         this.images[i] = new Image();
         this.images[i].src = require(`@/assets/img/sprites${sprites[i]}`)
       }
-      this.loaded = true;
     }
   },
   watch: {
@@ -233,6 +231,10 @@ export default {
       el.scrollTop += e.deltaY;
     });
     this.preload(this.sprites);
+    
+    window.addEventListener('load', e => {
+      this.loaded = true;
+    })
   }
 }
 </script>

@@ -41,7 +41,7 @@
 <script>
 export default {
   name: 'Timer',
-  props: ['dialog'],
+  props: ['dialog', 'loaded'],
   methods: {
     animeteTimer() {
       const block = document.querySelector('.timer'),
@@ -57,7 +57,7 @@ export default {
         easing: 'linear',
         round: 1,
         duration: 2000,
-        delay: 2000,
+        delay: 1000,
         update: function() {
           count.innerHTML = counter.count;
         }
@@ -79,10 +79,15 @@ export default {
       });
     }
   },
-  mounted() {
-    this.animeteTimer();
-    this.animeClocker();
-  },
+  mounted() {},
+  watch: {
+    loaded() {
+      if ( this.loaded ) {
+        this.animeteTimer();
+        this.animeClocker();
+      }
+    }
+  }
 }
 </script>
 

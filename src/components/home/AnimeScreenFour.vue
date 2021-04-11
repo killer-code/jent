@@ -1,8 +1,50 @@
 <template>
   <section class="scene" 
     style="position: fixed;">
-      <div class="canvas sequence-4_lines" style="position: absolute; left: 0; top: 0;"></div>
-      <div class="canvas sequence-4" style="position: absolute; left: 0; top: 0;"></div>
+    <transition name="fade">
+      <div v-show="animationState.four === 'start'" class="death-star">
+        <div class="major-lasers delay-05">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(3deg); margin-top: 35px;"></div>
+        </div>
+        <div class="major-lasers delay-1">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(-4deg); margin-top: -48px;"></div>
+        </div>
+        <div class="major-lasers delay-15">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(-6deg); margin-top: -63px;"></div>
+        </div>
+        <div class="major-lasers delay-05">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(5deg); margin-top: 65px;"></div>
+        </div>
+        <div class="major-lasers delay-15">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(-5deg); margin-top: -55px;"></div>
+        </div>
+        <div class="major-lasers delay-1">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(2deg); margin-top: 40px;"></div>
+        </div>
+        <div class="major-lasers delay-05">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(-2deg); margin-top: -20px;"></div>
+        </div>
+        <div class="major-lasers delay-15">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(1deg); margin-top: 25px;"></div>
+        </div>
+        <div class="major-lasers delay-1">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(-1deg); margin-top: -15px;"></div>
+        </div>
+        <div class="major-lasers delay-05">
+          <div class="freakin-laser-beam" 
+            style="transform: rotate(0deg); margin-top: 5px;"></div>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -21,7 +63,7 @@ export default {
 
     json_lines:   require('@/assets/img/sprites/scene_04/lines.json'),
     json_flackon: require('@/assets/img/sprites/scene_04/flackon.json'),
-    
+
     sheet_lines: '',
     sheet_flackon: '',
   }),
@@ -68,10 +110,10 @@ export default {
       
     },
     onAssetsLoadedNext() {
-      const blurFilter = new this.$PIXI.filters.BlurFilter();
-      blurFilter.blurX = 20;
-      blurFilter.blurY = 8;
-      blurFilter.repeatEdgePixels = true;
+      // const blurFilter = new this.$PIXI.filters.BlurFilter();
+      // blurFilter.blurX = 20;
+      // blurFilter.blurY = 8;
+      // blurFilter.repeatEdgePixels = true;
 
       let frames = [];
       let container = new this.$PIXI.Container();
@@ -85,17 +127,19 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .1;
+        anim.animationSpeed = .3;
         anim.scale.set(this.X, .8);
-        anim.loop = false;
+        anim.loop = true;
         anim.play();
 
         container.addChild(anim);
       }
-      container.filters = [blurFilter];
+      // container.filters = [blurFilter];
       this.app.stage.addChild(container);
     },
     onAssetsLoadedFlackon() {
+      const childLength = this.app.stage.children.length;
+
       let frames = [];
       for ( let i = 0; i <= 18; i++ ) {
         const val = i;
@@ -106,13 +150,10 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .2;
+        anim.animationSpeed = .15;
         anim.scale.set(this.X, this.Y);
-        anim.loop = false;
+        anim.loop = true;
         anim.play();
-        anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache();
-        };
 
         this.app.stage.addChild(anim);
       }
@@ -138,9 +179,9 @@ export default {
         }
 
         setTimeout(() => {
-          this.sheet_lines.parse(() => {
-            this.onAssetsLoadedNext();
-          })
+          // this.sheet_lines.parse(() => {
+          //   this.onAssetsLoadedNext();
+          // })
           this.sheet_flackon.parse(() => {
             this.onAssetsLoadedFlackon();
           })
@@ -153,6 +194,7 @@ export default {
     },
     scroll() {;
       if ( this.scroll === 2 ) {
+        this.$PIXI.utils.clearTextureCache();
         this.app.ticker.stop();
         const treshScene = document.querySelector('.scene-004');
         const mainScene = document.getElementById('main-scene');
@@ -162,9 +204,88 @@ export default {
       }
 
       if ( this.scroll === 4 ) {
+        this.$PIXI.utils.clearTextureCache();
         this.app.ticker.stop();
       }
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+$laser: #fff;
+
+.death-star {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  .major-lasers {
+    z-index: 10000;
+    position: relative;
+    animation: laser-pulse 1s ease infinite;
+  }
+  .freakin-laser-beam {
+    opacity: .7;
+    z-index: 1000;
+    border-radius: 88px;
+    filter: blur(5px);
+    background-color: lighten(yellow,10);
+    transform: rotate(2deg);
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      border-radius: 0 100px 100px 0;
+      background-color: lighten(#fff,10);
+      box-shadow: 0 0 15px 0 #360000e7, 0 0 30px 20px #eb0202ef, 0 0 50px 10px #fc9d0fef;
+
+      animation-name: laser-start;
+      animation-duration: 3s;
+      animation-delay: 1s;
+      animation-timing-function: easy-out;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+  }
+
+  .delay-05 { animation-delay: .5s; }
+  .delay-1  { animation-delay: 1s; }
+  .delay-15 { animation-delay: 1.5s; }
+} 
+
+// Define Animation
+
+@keyframes laser-pulse {
+  0% { opacity: 1 };
+  10% { opacity: 1 };
+  30% { opacity: .8 };
+  35% { opacity: 1 };
+  40% { opacity: .7 };
+  50% { opacity: 1 };
+  60% { opacity: .9 };
+  70% { opacity: 1 };
+  80% { opacity: .9 };
+  90% { opacity: 1 };
+  100% { opacity: inherit };
+}
+
+@keyframes laser-start {
+  from { width: .9vw };
+  to   { width: 109.9vw };
+}
+
+@keyframes laser-go {
+  from { left: -100% }
+  to   { left: 100% }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

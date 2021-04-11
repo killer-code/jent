@@ -9,6 +9,7 @@
 export default {
   name: 'AnimeScreenTwo',
   props: {
+    loaded: Boolean,
     scroll: Number,
     animationState: Object,
     sprite_img: Image,
@@ -31,10 +32,7 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
-  },
-  mounted() {
-    this.createScene()
+    Y: function() { return this.height / 1080 }
   },
   methods: {
     async createScene() {
@@ -129,6 +127,11 @@ export default {
     }
   },
   watch: {
+    loaded() {
+      if ( this.loaded ) {
+        this.createScene();
+      }
+    },
     async scroll() {
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {

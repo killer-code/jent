@@ -9,6 +9,7 @@
 export default {
   name: 'AnimeScreenOne',
   props: {
+    loaded: Boolean,
     scroll: Number,
     animationState: Object,
     sprite_img: Image,
@@ -21,6 +22,7 @@ export default {
     height: window.innerHeight,
 
     json_rotate: require('@/assets/img/sprites/scene_01/rotate.json'),
+    parallaxInstance: '',
   }),
   computed: {
     app: function() {
@@ -32,10 +34,7 @@ export default {
       });
     },
     X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
-  },
-  mounted() {
-    this.createScene();
+    Y: function() { return this.height / 1080 }
   },
   methods: {
     createScene() {
@@ -47,7 +46,7 @@ export default {
       sequence.appendChild(self.app.view);
 
       const scene = document.getElementById('main-scene');
-      let parallaxInstance = new this.$parallax(scene);
+      this.parallaxInstance = new this.$parallax(scene);
 
       if ( self.app.loader.resources.image_rotate ) {
         self.app.loader
@@ -159,11 +158,20 @@ export default {
         })
       }, 250)
     },
+    loaded() {
+      if ( this.loaded ) {
+        this.createScene();
+        document.addEventListener('mousemove', e => {
+          this.getMouseX(e);
+        })
+      }
+    },
     scroll() {
       if ( this.scroll === 1 ) {
         document.removeEventListener('mousemove', e => {
           this.getMouseX(e);
         })
+        this.parallaxInstance = '';
         this.app.ticker.stop();
       }
     }

@@ -243,10 +243,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "pshick-1.png",
+	"image": "pshick.png",
 	"format": "RGBA8888",
 	"size": {"w":7041,"h":5764},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:31377c13bb94041502409f3b9e44f30d:4952ece9e1cd8a155ee9327251b2c60b:b78fe5b0494d17881f61095a3c20eeb6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1b12fc2dc9962806a26a15b08870aee2:4952ece9e1cd8a155ee9327251b2c60b:fa05e48c6963cbfb2a5b39a2de3704b2$"
 }
 }

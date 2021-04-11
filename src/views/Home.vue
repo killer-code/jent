@@ -2,6 +2,7 @@
   <div class="home">
     <div class="section">
       <ScreenOne :asideData="asideData" 
+        :loaded="loaded"
         :getAsideData="getAsideData" />
     </div>
     <div class="section">
@@ -35,7 +36,7 @@ import ScreenSix   from '@/components/home/ScreenSix'
 
 export default {
   name: 'Home',
-  props: ['asideData', 'screen'],
+  props: ['asideData', 'screen', 'loaded'],
   metaInfo: {
     title: 'Jent',
     htmlAttrs: {

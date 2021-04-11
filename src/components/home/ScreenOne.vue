@@ -34,7 +34,7 @@
 
         <section class="mb_d-none">
           <div class="end _mb-7">
-            <Timer />
+            <Timer :loaded="loaded" />
             <div class="right_txt">
               <p class="txt txt_left">Стабильная эрекция</p>
               <p class="txt txt_left">уже через 10 мин</p>
@@ -71,7 +71,7 @@
         <section class="dialog__block">
           <div class="_mb-7">
               <div class="row__header">
-                <Timer :dialog="dialog" />
+                <Timer :dialog="dialog" :loaded="loaded" />
                 <div @click="closeModal">
                   <img src="@/assets/img/icon-close.svg" alt="">
                 </div>
@@ -102,7 +102,7 @@ import Timer from '@/components/Timer'
 export default {
   name: 'ScreenOne',
   components: { Timer },
-  props: ['asideData', 'getAsideData'],
+  props: ['asideData', 'getAsideData', 'loaded'],
   data: () => ({
     dialog: false,
   }),

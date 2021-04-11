@@ -115,9 +115,6 @@ export default {
         anim.scale.set(this.X, this.Y);
         anim.loop = true;
         anim.play();
-        anim.onComplete = () => {
-          this.$PIXI.utils.clearTextureCache();
-        };
 
         this.app.stage.addChild(anim);
       }
@@ -149,12 +146,11 @@ export default {
           this.animationState.four = 'start';
           this.app.ticker.stop();
 
-          setTimeout(() => {
-            const treshScene = document.querySelector('.scene-005');
-            if ( treshScene ) {
-                document.getElementById('main-scene').removeChild(treshScene);
-            }
-          }, 250)
+          const treshScene = document.querySelector('.scene-005');
+          if ( treshScene ) {
+              document.getElementById('main-scene').removeChild(treshScene);
+          }
+
           this.$PIXI.utils.clearTextureCache();
         };
 
@@ -207,6 +203,7 @@ export default {
       }
       if ( this.scroll === 5 ) {
         this.app.ticker.stop();
+        this.$PIXI.utils.clearTextureCache();
       }
     }
   }
