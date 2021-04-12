@@ -9,10 +9,11 @@
 export default {
   name: 'AnimeScreenTwo',
   props: {
-    loaded: Boolean,
     scroll: Number,
-    animationState: Object,
+    loaded: Boolean,
     sprite_img: Image,
+    scrollpage: Object,
+    animationState: Object,
   },
   data: () => ({
     width: window.innerWidth,
@@ -75,6 +76,7 @@ export default {
         anim.onComplete = () => {
           this.$PIXI.utils.clearTextureCache();
           this.app.ticker.stop();
+          this.scrollpage.api.setAllowScrolling(true);
         };
         this.app.stage.addChild(anim);
       }
@@ -151,6 +153,8 @@ export default {
         if ( treshScene ) {
           document.getElementById('main-scene').removeChild(treshScene);
         }
+
+        this.scrollpage.api.setAllowScrolling(false);
       }
 
       if ( this.scroll === 0 && this.animationState.two === 'up' ) {
@@ -172,7 +176,6 @@ export default {
         this.sheet_zilch.parse(() => {
           this.onAssetsLoadedStatic();
         })
-        
       }
     }
   }

@@ -53,6 +53,7 @@ export default {
   name: 'AnimeScreenFour',
   props: {
     scroll: Number,
+    scrollpage: Object,
     animationState: Object,
     sprite_img_line: Image,
     sprite_img_flackon: Image,

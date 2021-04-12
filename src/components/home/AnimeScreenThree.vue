@@ -19,6 +19,7 @@ export default {
   props: {
     scroll: Number,                 
     sprite_img: Image,
+    scrollpage: Object,
   },
   data: () => ({
     width: window.innerWidth,
@@ -48,10 +49,10 @@ export default {
     X: function() { return this.width / 1920 },
     Y: function() { return this.height / 980 }
   },
-  mounted() {
-    const scene = document.querySelector('.px-scene');
-    let parallaxInstance = new this.$parallax(scene);
-  },
+  // mounted() {
+  //   const scene = document.querySelector('.px-scene');
+  //   let parallaxInstance = new this.$parallax(scene);
+  // },
   methods: {
     createScene() {
       const mainScene = document.querySelector('#main-scene');
@@ -103,7 +104,11 @@ export default {
       }
 
       warpSpeed = 1;
-      setTimeout(() => { warpSpeed = 0 }, 1500)
+      this.scrollpage.api.setAllowScrolling(false);
+      setTimeout(() => { 
+        warpSpeed = 0;
+        this.scrollpage.api.setAllowScrolling(true);
+      }, 1500)
 
       self.app.ticker.add(function(delta) {
           speed += (warpSpeed - speed) / 20;

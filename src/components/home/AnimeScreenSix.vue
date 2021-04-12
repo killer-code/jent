@@ -20,8 +20,9 @@ export default {
   name: 'AnimeScreenSix',
   props: {
     scroll: Number,
-    animationState: Object,
     sprite_img: Image,
+    scrollpage: Object,
+    animationState: Object,
   },
   data: () => ({
     width: window.innerWidth,
@@ -71,6 +72,8 @@ export default {
     },
     onAssetsLoadedNext() {
       let frames = [];
+      this.scrollpage.api.setAllowScrolling(false)
+
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {
         for (let i = childLength - 1; i >= 0; i--) {	
@@ -102,6 +105,7 @@ export default {
           
           const scene = document.querySelector('.parallax-scene');
           this.parallaxInstance = new this.$parallax(scene);
+          this.scrollpage.api.setAllowScrolling(true)
         };
 
         this.app.stage.addChild(anim);
@@ -110,6 +114,8 @@ export default {
 
     onAssetsLoadedUp() {
       let frames = [];
+      this.scrollpage.api.setAllowScrolling(false)
+
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {
         for (let i = childLength - 1; i >= 0; i--) {	
@@ -142,6 +148,8 @@ export default {
               document.getElementById('main-scene').removeChild(treshScene);
             }
           }
+
+          this.scrollpage.api.setAllowScrolling(true)
         };
 
         this.app.stage.addChild(anim);

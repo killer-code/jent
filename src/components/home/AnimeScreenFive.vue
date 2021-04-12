@@ -10,8 +10,9 @@ export default {
   name: 'AnimeScreenFive',
   props: {
     scroll: Number,
-    animationState: Object,
     sprite_img: Image,
+    scrollpage: Object,
+    animationState: Object,
   },
   data: () => ({
     width: window.innerWidth,
@@ -56,6 +57,7 @@ export default {
       }
     },
     onAssetsLoadedNext() {
+      this.scrollpage.api.setAllowScrolling(false)
       let frames = [];
 
       const childLength = this.app.stage.children.length;
@@ -83,7 +85,7 @@ export default {
           this.sheet_neon.parse(() => {
             this.onAssetsLoadedRepeat();
           })
-
+          this.scrollpage.api.setAllowScrolling(true)
           const treshScene = document.querySelector('.scene-004');
           if ( treshScene ) {
             document.getElementById('main-scene').removeChild(treshScene);
@@ -121,6 +123,7 @@ export default {
     },
     onAssetsLoadedUp() {
       let frames = [];
+      this.scrollpage.api.setAllowScrolling(false)
 
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {
@@ -151,6 +154,7 @@ export default {
               document.getElementById('main-scene').removeChild(treshScene);
           }
 
+          this.scrollpage.api.setAllowScrolling(true)
           this.$PIXI.utils.clearTextureCache();
         };
 

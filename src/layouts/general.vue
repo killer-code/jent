@@ -21,35 +21,41 @@
 
     <AnimeScreenOne
       :animationState="animationState"
+      :scrollpage="$refs.fullpage"
       :sprite_img="images[0]"
       :loaded="loaded"
       :scroll="scroll" />
 
     <AnimeScreenTwo
-      :sprite_img="images[1]"
       :animationState="animationState"
+      :scrollpage="$refs.fullpage"
+      :sprite_img="images[1]"
       :loaded="loaded"
       :scroll="scroll" />
 
     <AnimeScreenThree
-      :scroll="scroll" 
-      :animationState="animationState" />
+      :animationState="animationState"
+      :scrollpage="$refs.fullpage"
+      :scroll="scroll" />
 
     <AnimeScreenFour
-        :scroll="scroll" 
-        :animationState="animationState"
-        :sprite_img_line="images[2]"
-        :sprite_img_flackon="images[3]" />
+      :animationState="animationState"
+      :sprite_img_flackon="images[3]"
+      :sprite_img_line="images[2]"
+      :scrollpage="$refs.fullpage"
+      :scroll="scroll" />
 
     <AnimeScreenFive
-      :scroll="scroll" 
+      :animationState="animationState"
+      :scrollpage="$refs.fullpage"
       :sprite_img="images[4]"
-      :animationState="animationState" />
+      :scroll="scroll" />
 
     <AnimeScreenSix
-      :scroll="scroll" 
+      :animationState="animationState"
+      :scrollpage="$refs.fullpage"
       :sprite_img="images[5]"
-      :animationState="animationState" />
+      :scroll="scroll" />
 
     <full-page ref="fullpage" id="fullpage" :options="options">
       <transition name="fade" mode="out-in">
@@ -233,7 +239,9 @@ export default {
     this.preload(this.sprites);
     
     window.addEventListener('load', e => {
-      this.loaded = true;
+      setTimeout(() => {
+        this.loaded = true;
+      }, 1000)
     })
   }
 }

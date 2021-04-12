@@ -9,10 +9,11 @@
 export default {
   name: 'AnimeScreenOne',
   props: {
-    loaded: Boolean,
     scroll: Number,
-    animationState: Object,
+    loaded: Boolean,
     sprite_img: Image,
+    scrollpage: Object,
+    animationState: Object,
   },
   data: () => ({
     mouseX: 0,
@@ -173,6 +174,12 @@ export default {
         })
         this.parallaxInstance = '';
         this.app.ticker.stop();
+      }
+    },
+
+    scrollpage() {
+      if ( this.scrollpage ) {
+        this.scrollpage.api.setAllowScrolling(true);
       }
     }
   }
