@@ -61,9 +61,6 @@ body * { pointer-events: none; }
   }
 }
 
-.parx-scene {
-}
-
 @keyframes loading {
   0%   { opacity: 1; }
   50%  { opacity: 0; }
