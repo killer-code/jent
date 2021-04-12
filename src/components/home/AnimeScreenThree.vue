@@ -198,14 +198,14 @@ export default {
 }
 
 .molecula__img {
-  filter: contrast(1.1);
-  animation-name: molecule;
-  animation-duration: 10s;
-  animation-delay: 3s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-fill-mode: both;
+  filter: contrast(1.5);
+  // animation-name: molecule;
+  // animation-duration: 10s;
+  // animation-delay: 3s;
+  // animation-timing-function: linear;
+  // animation-iteration-count: infinite;
+  // animation-direction: alternate;
+  // animation-fill-mode: both;
 }
 
 .bac {
@@ -234,11 +234,11 @@ export default {
   from { background-size: 0% 0%; }
   to { background-size: 100% 100%; }
 }
-@keyframes molecule {
-  0% { transform: skew(.05deg, 0.05deg) scaleX(1) scaleY(1) rotate(0deg); }
-  25% { transform: skew(.1deg, 0.1deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
-  50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-  75% { transform: skew(-0.05deg, -.05deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
-  100% { transform: skew(-0.1deg, -.1deg) scaleX(1) scaleY(1) rotate(0deg); }
-}
+// @keyframes molecule {
+//   0% { transform: skew(.05deg, 0.05deg) scaleX(1) scaleY(1) rotate(0deg); }
+//   25% { transform: skew(.1deg, 0.1deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
+//   50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
+//   75% { transform: skew(-0.05deg, -.05deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
+//   100% { transform: skew(-0.1deg, -.1deg) scaleX(1) scaleY(1) rotate(0deg); }
+// }
 </style>

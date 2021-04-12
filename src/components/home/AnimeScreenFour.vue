@@ -1,10 +1,10 @@
 <template>
   <section class="scene" 
     style="position: fixed;">
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div v-show="animationState.four === 'start'" class="death-star">
         <div class="major-lasers delay-05">
-          <div class="freakin-laser-beam" 
+          <div class="freakin-laser-beam walking-laser-delay-1" 
             style="transform: rotate(3deg); margin-top: 35px;"></div>
         </div>
         <div class="major-lasers delay-1">
@@ -12,7 +12,7 @@
             style="transform: rotate(-4deg); margin-top: -48px;"></div>
         </div>
         <div class="major-lasers delay-15">
-          <div class="freakin-laser-beam" 
+          <div class="freakin-laser-beam walking-laser-delay-2" 
             style="transform: rotate(-6deg); margin-top: -63px;"></div>
         </div>
         <div class="major-lasers delay-05">
@@ -20,7 +20,7 @@
             style="transform: rotate(5deg); margin-top: 65px;"></div>
         </div>
         <div class="major-lasers delay-15">
-          <div class="freakin-laser-beam" 
+          <div class="freakin-laser-beam walking-laser-delay-3" 
             style="transform: rotate(-5deg); margin-top: -55px;"></div>
         </div>
         <div class="major-lasers delay-1">
@@ -28,7 +28,7 @@
             style="transform: rotate(2deg); margin-top: 40px;"></div>
         </div>
         <div class="major-lasers delay-05">
-          <div class="freakin-laser-beam" 
+          <div class="freakin-laser-beam walking-laser-delay-4" 
             style="transform: rotate(-2deg); margin-top: -20px;"></div>
         </div>
         <div class="major-lasers delay-15">
@@ -36,7 +36,7 @@
             style="transform: rotate(1deg); margin-top: 25px;"></div>
         </div>
         <div class="major-lasers delay-1">
-          <div class="freakin-laser-beam" 
+          <div class="freakin-laser-beam walking-laser-delay-5" 
             style="transform: rotate(-1deg); margin-top: -15px;"></div>
         </div>
         <div class="major-lasers delay-05">
@@ -44,7 +44,7 @@
             style="transform: rotate(0deg); margin-top: 5px;"></div>
         </div>
       </div>
-    </transition>
+    </transition> -->
   </section>
 </template>
 
@@ -89,13 +89,18 @@ export default {
 
       self.app.view.classList.add('scene-004');
       sequence.appendChild(self.app.view);
-      if ( self.app.loader.resources.image_lines && self.app.loader.resources.image_flackon ) {
+      if ( self.app.loader.resources.image_flackon ) { // self.app.loader.resources.image_lines && 
         self.app.loader
           .load((loader, resources) => {
             const lines = new this.$PIXI.Texture.from(this.sprite_img_line);
             self.sheet_lines  = new this.$PIXI.Spritesheet(lines, this.json_lines);
+
             const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
             self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
+
+            this.sheet_flackon.parse(() => {
+              this.onAssetsLoadedFlackon();
+            })
           })
       } else {
         self.app.loader
@@ -104,17 +109,25 @@ export default {
           .load((loader, resources) => {
             const lines = new this.$PIXI.Texture.from(this.sprite_img_line);
             self.sheet_lines  = new this.$PIXI.Spritesheet(lines, this.json_lines);
+
             const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
             self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
+            
+            this.sheet_lines.parse(() => {
+              this.onAssetsLoadedNext();
+            })
+
+            this.sheet_flackon.parse(() => {
+              this.onAssetsLoadedFlackon();
+            })
           })
       }
-      
     },
     onAssetsLoadedNext() {
-      // const blurFilter = new this.$PIXI.filters.BlurFilter();
-      // blurFilter.blurX = 20;
-      // blurFilter.blurY = 8;
-      // blurFilter.repeatEdgePixels = true;
+      const blurFilter = new this.$PIXI.filters.BlurFilter();
+      blurFilter.blurX = 20;
+      blurFilter.blurY = 8;
+      blurFilter.repeatEdgePixels = true;
 
       let frames = [];
       let container = new this.$PIXI.Container();
@@ -135,13 +148,12 @@ export default {
 
         container.addChild(anim);
       }
-      // container.filters = [blurFilter];
+      container.filters = [blurFilter];
       this.app.stage.addChild(container);
     },
     onAssetsLoadedFlackon() {
-      const childLength = this.app.stage.children.length;
-
       let frames = [];
+
       for ( let i = 0; i <= 18; i++ ) {
         const val = i;
 
@@ -162,16 +174,10 @@ export default {
   },
   watch: {
     'animationState.four': function() {
+      this.$PIXI.utils.clearTextureCache();
       if ( this.animationState.four === 'start' ) {
         this.createScene();
         this.app.ticker.start();
-
-        const childLength = this.app.stage.children.length;
-        if ( this.app.stage ) {
-          for (let i = childLength - 1; i >= 0; i--) 
-            {	this.app.stage.removeChild(this.app.stage.children[i]);
-          };
-        };
 
         const treshScene = document.querySelector('.scene-003');
         const mainScene = document.getElementById('main-scene');
@@ -179,14 +185,14 @@ export default {
           mainScene.removeChild(treshScene)
         }
 
-        setTimeout(() => {
-          // this.sheet_lines.parse(() => {
-          //   this.onAssetsLoadedNext();
-          // })
-          this.sheet_flackon.parse(() => {
-            this.onAssetsLoadedFlackon();
-          })
-        }, 150)
+        // setTimeout(() => {
+        //   // this.sheet_lines.parse(() => {
+        //   //   this.onAssetsLoadedNext();
+        //   // })
+        //   this.sheet_flackon.parse(() => {
+        //     this.onAssetsLoadedFlackon();
+        //   })
+        // }, 150)
 
         setTimeout(() => {
           this.animationState.five = 'create'
@@ -216,77 +222,95 @@ export default {
 <style lang="scss" scoped>
 $laser: #fff;
 
-.death-star {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  .major-lasers {
-    z-index: 10000;
-    position: relative;
-    animation: laser-pulse 1s ease infinite;
-  }
-  .freakin-laser-beam {
-    opacity: .7;
-    z-index: 1000;
-    border-radius: 88px;
-    filter: blur(5px);
-    background-color: lighten(yellow,10);
-    transform: rotate(2deg);
+// .death-star {
+//   display: flex;
+//   align-items: center;
+//   width: 100vw;
+//   height: 100vh;
+//   .major-lasers {
+//     z-index: 10000;
+//     position: relative;
+//     animation: laser-pulse 1s ease infinite;
+//   }
+//   .freakin-laser-beam {
+//     opacity: .7;
+//     z-index: 1000;
+//     border-radius: 88px;
+//     filter: blur(5px);
+//     background-color: lighten(yellow,10);
+//     transform: rotate(2deg);
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      border-radius: 0 100px 100px 0;
-      background-color: lighten(#fff,10);
-      box-shadow: 0 0 15px 0 #360000e7, 0 0 30px 20px #eb0202ef, 0 0 50px 10px #fc9d0fef;
+//     &::after {
+//       content: '';
+//       position: absolute;
+//       width: 0;
+//       height: 3px;
+//       border-radius: 0 100px 100px 0;
+//       background-color: lighten(#fff,10);
+//       box-shadow: 0 0 15px 0 #360000e7, 0 0 30px 20px #eb0202ef, 0 0 50px 10px #fc9d0fef;
 
-      animation-name: laser-start;
-      animation-duration: 3s;
-      animation-delay: 1s;
-      animation-timing-function: easy-out;
-      animation-iteration-count: 1;
-      animation-fill-mode: both;
-    }
-  }
+//       animation-name: laser-start;
+//       animation-duration: 3s;
+//       animation-delay: 1s;
+//       animation-timing-function: easy-out;
+//       animation-iteration-count: 1;
+//       animation-fill-mode: both;
+//     }
+//   }
 
-  .delay-05 { animation-delay: .5s; }
-  .delay-1  { animation-delay: 1s; }
-  .delay-15 { animation-delay: 1.5s; }
-} 
+//   .delay-05 { animation-delay: .5s; }
+//   .delay-1  { animation-delay: 1s; }
+//   .delay-15 { animation-delay: 1.5s; }
+// } 
 
-// Define Animation
+// .walking-laser-delay-1,
+// .walking-laser-delay-2,
+// .walking-laser-delay-3,
+// .walking-laser-delay-4,
+// .walking-laser-delay-5 {
+//   position: absolute;
 
-@keyframes laser-pulse {
-  0% { opacity: 1 };
-  10% { opacity: 1 };
-  30% { opacity: .8 };
-  35% { opacity: 1 };
-  40% { opacity: .7 };
-  50% { opacity: 1 };
-  60% { opacity: .9 };
-  70% { opacity: 1 };
-  80% { opacity: .9 };
-  90% { opacity: 1 };
-  100% { opacity: inherit };
-}
+//   animation-name: laser-go;
+//   animation-timing-function: linear;
+//   animation-iteration-count: infinite;
+//   animation-fill-mode: none;
+// }
+// .walking-laser-delay-1 { animation-delay: .3s; animation-duration: 2s; }
+// .walking-laser-delay-2 { animation-delay: 4s; animation-duration: 3s; }
+// .walking-laser-delay-3 { animation-delay: 5s; animation-duration: .5s; }
+// .walking-laser-delay-4 { animation-delay: 1.1s; animation-duration: 1s; }
+// .walking-laser-delay-5 { animation-delay: .75s; animation-duration: 3s; }
 
-@keyframes laser-start {
-  from { width: .9vw };
-  to   { width: 109.9vw };
-}
+// // Define Animation
 
-@keyframes laser-go {
-  from { left: -100% }
-  to   { left: 100% }
-}
+// @keyframes laser-pulse {
+//   0% { opacity: 1 };
+//   10% { opacity: 1 };
+//   30% { opacity: .8 };
+//   35% { opacity: 1 };
+//   40% { opacity: .7 };
+//   50% { opacity: 1 };
+//   60% { opacity: .9 };
+//   70% { opacity: 1 };
+//   80% { opacity: .9 };
+//   90% { opacity: 1 };
+//   100% { opacity: inherit };
+// }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s ease;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+// @keyframes laser-start {
+//   from { width: .9vw };
+//   to   { width: 109.9vw };
+// }
+
+// @keyframes laser-go {
+//   from { width: 0vw; }
+//   to   { width: 100vw; }
+// }
+
+// .fade-enter-active, .fade-leave-active {
+//   transition: opacity .3s ease;
+// }
+// .fade-enter, .fade-leave-to {
+//   opacity: 0;
+// }
 </style>

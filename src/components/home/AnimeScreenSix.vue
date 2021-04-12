@@ -3,12 +3,12 @@
     style="position: fixed;">
       <section class="parallax-scene" v-show="isStatic">
         <img class="parallax-img"
-          data-depth="0.05"
+          data-depth="-0.025"
           :src="require('@/assets/img/sprites/scene_06/static/static-back-2-min.png')" 
           alt="">
 
         <img class="parallax-img"
-          data-depth="0.1"
+          data-depth="0.025"
           :src="require('@/assets/img/sprites/scene_06/static/static-back-1-min.png')" 
           alt="">
       </section>

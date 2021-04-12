@@ -58,6 +58,7 @@ export default {
     },
     onAssetsLoadedNext() {
       this.scrollpage.api.setAllowScrolling(false)
+      document.querySelector('.scene-005').style.display = 'block';
       let frames = [];
 
       const childLength = this.app.stage.children.length;
@@ -124,6 +125,7 @@ export default {
     onAssetsLoadedUp() {
       let frames = [];
       this.scrollpage.api.setAllowScrolling(false)
+      document.querySelector('.scene-005').style.display = 'block';
 
       const childLength = this.app.stage.children.length;
       if ( this.app.stage ) {
@@ -166,6 +168,7 @@ export default {
     'animationState.five': function() {
       if ( this.animationState.five === 'create' ) {
         this.createScene();
+        document.querySelector('.scene-005').style.display = 'none';
       }
       if ( this.animationState.five === 'start' ) {
         this.createScene();

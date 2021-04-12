@@ -1,5 +1,16 @@
 <template>
   <section class="preloader-modal">
+    <section class="parx-scene">
+        <img class="parallax-img"
+          data-depth="0.05"
+          :src="require('@/assets/img/preloader-2-2-min.png')" 
+          alt="">
+
+        <img class="parallax-img"
+          data-depth="0.1"
+          :src="require('@/assets/img/preloader-1-2-min.png')" 
+          alt="">
+      </section>
     <section class="preloader">
       <BarLoader color="#ffffff" />
       <p class="preloader__txt preloader__txt_anim">Загрузка</p>
@@ -14,6 +25,10 @@ export default {
   name: 'Preloader',
   components: { BarLoader },
   props: { loaded: Boolean },
+  mounted() {
+    const scene = document.querySelector('.parx-scene');
+    const parallaxInstance = new this.$parallax(scene);
+  }
 }
 </script>
 
@@ -22,8 +37,9 @@ body * { pointer-events: none; }
 .preloader-modal {
   position: fixed;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   left: 0;
   top: 0;
   width: 100vw;
@@ -34,7 +50,7 @@ body * { pointer-events: none; }
 }
 .preloader {
   width: fit-content;
-  margin: 0 auto;
+  margin: 50px auto 0;
 
   &__txt {
     text-align: center;
@@ -43,6 +59,9 @@ body * { pointer-events: none; }
       animation: loading 2s ease infinite;
     }
   }
+}
+
+.parx-scene {
 }
 
 @keyframes loading {
