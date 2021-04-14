@@ -47,6 +47,10 @@ body * { pointer-events: none; }
   z-index: 1000;
 
   background-color: rgba(0, 0, 0, 1);
+
+  @media ( orientation: portrait ) {
+      justify-content: center;
+  }
 }
 .preloader {
   width: fit-content;

@@ -9,6 +9,9 @@
         </div>
         
         <section class="content page-1-content">
+
+          <MobileAnimeScreenTwo />
+
           <h2 class="caption-2">
             Меньше побочных<br class="mb_d-none"> 
             эффектов
@@ -93,9 +96,12 @@
 </template>
 
 <script>
+import MobileAnimeScreenTwo from '@/components/home/MobileAnimeScreenTwo'
+
 export default {
   name: 'ScreenTwo',
   props: ['asideData', 'getAsideData'],
+  components: { MobileAnimeScreenTwo },
   data: () => ({
     dialog: false,
   }),
@@ -140,6 +146,9 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+  @media screen and ( max-width: 560px ) {
+    height: auto;
+  }
 }
 .content {
   display: flex;
@@ -161,9 +170,17 @@ export default {
     align-items: flex-start;
     justify-content: center;
   }
+  @media ( orientation: portrait ) {
+    @media screen and ( max-width: 768px ) {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-top: 110px;
+    }
+  }
   @media screen and ( max-width: 560px ) {
+    padding-top: 0;
     height: auto;
-    padding-top: 60vh;
   }
 }
 .content > div { display: flex; }

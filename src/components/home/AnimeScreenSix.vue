@@ -43,8 +43,20 @@ export default {
         height: this.height,
       });
     },
-    X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 1080 }
+    X: function() { 
+      if ( this.width > this.height ) {
+        return this.width / 1920;
+      } else {
+        return .7;
+      }
+    },
+    Y: function() { 
+      if ( this.width > this.height ) {
+        return this.height / 1080;
+      } else {
+        return .7;
+      }
+    },
   },
   mounted() {},
   methods: {
@@ -203,7 +215,6 @@ export default {
   top: 0;
   width: 100vw;
   height: 100vh;
-
 }
 .parallax-img {
   position: fixed;
@@ -211,5 +222,12 @@ export default {
   top: 0;
   width: 100vw;
   height: 100vh;
+
+  // @media ( orientation: portrait ) {
+  //   @media screen and ( max-width: 768px ) {
+  //     transform: scale(.7) !important;
+  //     object-fit: cover;
+  //   }
+  // }
 }
 </style>

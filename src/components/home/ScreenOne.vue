@@ -7,6 +7,12 @@
       </div>
 
       <section class="content page-1-content">
+        <div class="mobile-scene">
+          <img :src="require('@/assets/img/sprites/scene_01/mobile/rotate-min.png')" 
+            data-depth="0.2"
+            alt="">
+        </div>
+
         <div class="start">
           <h2 class="caption-2">Джент.<br class="mb_d-none">
             <strong class="caption-2 caption-2_gradient">
@@ -105,6 +111,7 @@ export default {
   props: ['asideData', 'getAsideData', 'loaded'],
   data: () => ({
     dialog: false,
+    isMobile: window.innerWidth < 560,
   }),
   methods: {
     openAside(e) {
@@ -139,7 +146,12 @@ export default {
       this.openAside(e);
     }
   },
-  mounted() {}
+  mounted() {
+    if ( this.isMobile ) {
+      const scene = document.querySelector('.mobile-scene');
+      const parallaxInstance = new this.$parallax(scene);
+    }
+  }
 }
 </script>
 
@@ -159,24 +171,6 @@ export default {
 
   @media screen and (max-width: 560px) {
     height: auto;
-  }
-}
-.scene-static {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-
-  @media screen and (max-width: 768px) {
-    left: 20%;
-  }
-  @media screen and (max-width: 560px) {
-    left: 0;
-    top: -15vh;
   }
 }
 .content {
@@ -200,7 +194,7 @@ export default {
   }
   @media screen and ( max-width: 560px ) {
     height: auto;
-    padding-top: 55vh;
+    padding-top: 60px;
   }
 }
 .content > div { display: flex; }
@@ -351,6 +345,19 @@ export default {
 .row__header {
   display: flex;
   justify-content: space-between;
+}
+
+.content .mobile-scene {
+  display: none;
+  @media screen and (max-width: 560px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  & > img {
+    max-height: 65vh;
+  }
 }
 
 .slide-right2left-enter-active, 

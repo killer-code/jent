@@ -34,8 +34,20 @@ export default {
         height: this.height,
       });
     },
-    X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 1080 }
+    X: function() { 
+      if ( this.width > this.height ) {
+        return this.width / 1920;
+      } else {
+        return .7;
+      }
+    },
+    Y: function() { 
+      if ( this.width > this.height ) {
+        return this.height / 1080;
+      } else {
+        return .7;
+      }
+    },
   },
   methods: {
     createScene() {

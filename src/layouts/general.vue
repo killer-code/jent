@@ -17,9 +17,10 @@
     <!-- <CanvasBackground v-if="scroll == 0 || scroll == 1 || scroll == 5"
       :scroll="scroll" /> -->
     
-    <MainScene :screen="scroll" />
+    <MainScene :screen="scroll" v-if="!isMob" />
 
     <AnimeScreenOne
+      v-if="!isMob"
       :animationState="animationState"
       :scrollpage="$refs.fullpage"
       :sprite_img="images[0]"
@@ -27,6 +28,7 @@
       :scroll="scroll" />
 
     <AnimeScreenTwo
+      v-if="!isMob"
       :animationState="animationState"
       :scrollpage="$refs.fullpage"
       :sprite_img="images[1]"
@@ -34,11 +36,13 @@
       :scroll="scroll" />
 
     <AnimeScreenThree
+      v-if="!isMob"
       :animationState="animationState"
       :scrollpage="$refs.fullpage"
       :scroll="scroll" />
 
     <AnimeScreenFour
+      v-if="!isMob"
       :animationState="animationState"
       :sprite_img_flackon="images[3]"
       :sprite_img_line="images[2]"
@@ -46,12 +50,14 @@
       :scroll="scroll" />
 
     <AnimeScreenFive
+      v-if="!isMob"
       :animationState="animationState"
       :scrollpage="$refs.fullpage"
       :sprite_img="images[4]"
       :scroll="scroll" />
 
     <AnimeScreenSix
+      v-if="!isMob"
       :animationState="animationState"
       :scrollpage="$refs.fullpage"
       :sprite_img="images[5]"
@@ -236,7 +242,9 @@ export default {
       const el = e.target.closest('.aside_wrap');
       el.scrollTop += e.deltaY;
     });
-    this.preload(this.sprites);
+    if ( !this.isMob ) {
+      this.preload(this.sprites);
+    }
     
     window.addEventListener('load', e => {
       setTimeout(() => {

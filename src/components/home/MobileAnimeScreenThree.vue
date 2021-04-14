@@ -1,34 +1,26 @@
 <template>
-  <section class="scene px-scene" 
-    style="position: fixed; display: flex; justify-content: flex-end;">
-      <div v-if="scroll === 2" 
-        class="bac" :class="{'bac_active': startSmoke}"></div>
+  <section class="mobile-scene-3">
 
-      <div class="wrapper-img">
-        <img class="molecula molecula__img" :class="{ 'molecula_active': startMol }"
-          data-depth="0.1"
-          :src="require('@/assets/img/sprites/scene_03/nebula-min.svg')" alt="">
-      </div>
-        <!-- :style="`left: calc(${cloudLeft}px - 50%)`" -->
+    <div class="bac" 
+      :class="{'bac_active': startSmoke}"></div>
+
+    <div class="wrapper-img">
+      <img class="molecula molecula__img" :class="{ 'molecula_active': startMol }"
+        data-depth="0.1"
+        :src="require('@/assets/img/sprites/scene_03/nebula-min.svg')" alt="">
+    </div>
+
   </section>
 </template>
 
 <script>
 export default {
-  name: 'AnimeScreenThree',
-  props: {
-    scroll: Number,                 
-    sprite_img: Image,
-    scrollpage: Object,
-  },
+  name: 'MobileAnimeScreenThree',
   data: () => ({
-    width: window.innerWidth,
-    height: window.innerHeight,
-
     sprite_star: require('@/assets/img/sprites/scene_03/star.png'),
-    sheet_mol: '',
     startSmoke: false,
     startMol: false,
+    width: window.innerWidth,
   }),
   computed: {
     app: function() {
@@ -37,39 +29,21 @@ export default {
         transparent: true,
 
         width: this.width,
-        height: this.height,
+        height: 400,
       });
     },
 
     starTexture: function() {
       return this.$PIXI.Texture.from(this.sprite_star);
     },
-    cloudLeft: function() { return this.app.screen.width / 1.5 },
-    cloudTop: function() { return this.app.screen.height / 2 },
-    X: function() { return this.width / 1920 },
-    Y: function() { return this.height / 980 }
   },
-  // mounted() {
-  //   const scene = document.querySelector('.px-scene');
-  //   let parallaxInstance = new this.$parallax(scene);
-  // },
   methods: {
-    createScene() {
-      const mainScene = document.querySelector('#main-scene');
-
-      if ( !document.querySelector('.scene-003') ) {
-        mainScene.appendChild(document.createElement('div'))
-          .classList.add('scene-003');
-      }
-
-      const sequence = document.querySelector('.scene-003');
-    },
     onCreateSpace() {
       const self = this;
 
-      document.querySelector('.scene-003').appendChild(self.app.view);
+      document.querySelector('.mobile-scene-3').appendChild(self.app.view);
 
-      let starAmount = 550;
+      let starAmount = 250;
       let cameraZ = 0;
       let fov = 20;
       let baseSpeed = 0.025;
@@ -104,10 +78,8 @@ export default {
       }
 
       warpSpeed = 1;
-      this.scrollpage.api.setAllowScrolling(false);
       setTimeout(() => { 
         warpSpeed = 0;
-        this.scrollpage.api.setAllowScrolling(true);
       }, 1500)
 
       self.app.ticker.add(function(delta) {
@@ -132,66 +104,47 @@ export default {
       })
     },
   },
-  watch: {
-    scroll() {
-      if ( this.scroll === 2 ) {
-        this.createScene();
-        this.app.ticker.start();
-
-        const childLength = this.app.stage.children.length;
-        if ( this.app.stage ) {
-          for (let i = childLength - 1; i >= 0; i--) {	
-            this.app.stage.removeChild(this.app.stage.children[i]);
-          };
-        };
-
-        const futureTresh = document.querySelector('.scene-005');
-        const otherTresh = document.querySelector('.scene-004');
-        const treshScene = document.querySelector('.scene-002');
-        if ( treshScene ) {
-          document.getElementById('main-scene').removeChild(treshScene);
-        }
-        if ( otherTresh ) {
-          document.getElementById('main-scene').removeChild(otherTresh);
-        }
-        if ( futureTresh ) {
-          document.getElementById('main-scene').removeChild(futureTresh);
-        }
-
-        this.onCreateSpace();
-        this.startSmoke = true;
-        setTimeout(() => { this.startMol = true }, 2300)
-      } 
-
-      if ( this.scroll === 3 || this.scroll === 1 ){
-        this.app.ticker.stop();
-        this.startSmoke = false;
-        this.startMol = false;
-      }
-    }
+  mounted() {
+    setTimeout(() => {
+      this.onCreateSpace();
+    }, 3000)
+    setTimeout(() => {
+      this.startSmoke = true;
+      this.startMol = true;
+    }, 4500)
   }
 }
 </script>
 
-<style lang="scss">
-.scene {
-  position: fixed;
+<style lang="scss" scoped>
+.mobile-scene-3 {
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: -15px;
+  margin-bottom: -40px;
+
+  & > canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 .wrapper-img {
   display: flex !important;
   align-items: center;
   justify-content: flex-end;
+  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: auto;
 
   @media ( orientation: portrait ) {
     @media screen and ( max-width: 768px ) {
       align-items: flex-start;
       justify-content: center;
-      padding-top: 110px
+      padding: 0;
     }
   }
 }
@@ -199,8 +152,6 @@ export default {
 .molecula {
   opacity: 0;
   transition: all 1s ease;
-  margin-right: 10vw;
-  width: 50%;
 
   &_active { opacity: 1; }
 
@@ -213,22 +164,15 @@ export default {
 }
 
 .molecula__img {
-  filter: contrast(1.5);
-  // animation-name: molecule;
-  // animation-duration: 10s;
-  // animation-delay: 3s;
-  // animation-timing-function: linear;
-  // animation-iteration-count: infinite;
-  // animation-direction: alternate;
-  // animation-fill-mode: both;
+  filter: contrast(8.5);
 }
 
 .bac {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  width: 100%;
+  height: 400px;
   background-color: #0A0B11;
-  background-image: url('~@/assets/img/sprites/scene_03/space.jpg');
+  background-image: url('~@/assets/img/sprites/scene_03/mobile/space.jpg');
   background-repeat: no-repeat;
   background-position: center;
   z-index: -10;
@@ -260,11 +204,4 @@ export default {
   from { background-size: 0% 0%; }
   to {  background-size: 100% 50%; }
 }
-// @keyframes molecule {
-//   0% { transform: skew(.05deg, 0.05deg) scaleX(1) scaleY(1) rotate(0deg); }
-//   25% { transform: skew(.1deg, 0.1deg) scaleX(.95) scaleY(1.05) rotate(1.5deg); }
-//   50% { transform: skew(0deg, 0deg) scaleX(1) scaleY(1) rotate(0deg); }
-//   75% { transform: skew(-0.05deg, -.05deg) scaleX(1.05) scaleY(.95) rotate(-1.5deg); }
-//   100% { transform: skew(-0.1deg, -.1deg) scaleX(1) scaleY(1) rotate(0deg); }
-// }
 </style>

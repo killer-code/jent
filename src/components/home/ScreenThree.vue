@@ -3,6 +3,8 @@
     <div class="container">
 
       <section class="content page-1-content">
+        <MobileAnimeScreenThree v-if="isMobile" />
+
         <h2 class="caption-2">
           Действующее<br class="mb_d-none">
           вещество
@@ -26,8 +28,14 @@
 </template>
 
 <script>
+import MobileAnimeScreenThree from '@/components/home/MobileAnimeScreenThree'
+
 export default {
   name: 'ScreenThree',
+  components: { MobileAnimeScreenThree },
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
   mounted() {}
 }
 </script>
@@ -70,7 +78,7 @@ export default {
 
   @media screen and (max-width: 768px) {
     height: auto;
-    padding-top: 60vh;
+    // margin-top: -20px;
   }
 }
 .start { 
