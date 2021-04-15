@@ -3,6 +3,9 @@
     <div class="container">
       
       <section class="content page-1-content">
+
+        <MobileAnimeScreenFive v-if="isMobile" />
+
         <h2 class="caption-2">Совместим<br class="mb_d-none"> со всем</h2>
 
         <div class="_mt-7 ">
@@ -25,8 +28,14 @@
 </template>
 
 <script>
+import MobileAnimeScreenFive from '@/components/home/MobileAnimeScreenFive'
+
 export default {
   name: 'ScreenFive',
+  components: { MobileAnimeScreenFive },
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
 }
 </script>
 
@@ -35,6 +44,10 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  @media screen and (max-width: 560px) {
+    height: auto;
+  }
 }
 .content {
   display: flex;
@@ -65,7 +78,8 @@ export default {
   }
   @media screen and (max-width: 560px) {
     height: auto;
-    padding-top: 52vh; 
+    padding-top: 0; 
+    height: auto;
   }
 }
 .start { 

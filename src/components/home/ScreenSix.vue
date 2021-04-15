@@ -3,6 +3,18 @@
     <div class="container">
 
       <section class="content page-1-content">
+
+        <section v-if="isMobile" class="mobile-scene-6">
+          <img :src="require('@/assets/img/preloader-2-2-min.png')" 
+            data-depth="0.15" 
+            class="screen-six__img"
+            alt="">
+          <img :src="require('@/assets/img/preloader-1-2-min.png')" 
+            data-depth="0.1" 
+            class="screen-six__img"
+            alt="">
+        </section>
+
         <h2 class="caption-2">Попробуйте Джент</h2>
 
         <div class="_mt-7">
@@ -63,6 +75,15 @@
 
 export default {
   name: 'ScreenSix',
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
+  mounted() {
+    if ( this.isMobile ) {
+      const scene = document.querySelector('.mobile-scene-6');
+      const parallaxInstance = new this.$parallax(scene);
+    }
+  }
 }
 </script>
 
@@ -71,6 +92,9 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+  @media screen and (max-width: 560px) {
+    height: auto;
+  }
 }
 .content {
   display: flex;
@@ -109,8 +133,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     height: auto;
-    padding-top: 55vh;
-    padding-bottom: 15vh;
+    padding-top: 0;
+    padding-bottom: 5vh;
   }
 }
 .start { 
@@ -252,5 +276,19 @@ export default {
   @media screen and ( max-width: 560px ) {
     position: absolute;
   }
+}
+.mobile-scene-6 {
+  height: 400px;
+  width: 100vw;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.screen-six__img {
+  position: absolute;
+  object-fit: cover;
+  width: 120vw;
+  height: 400px;
+  margin-left: -5px;
+  margin-right: -45px;
 }
 </style>

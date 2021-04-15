@@ -70,4 +70,16 @@ body * { pointer-events: none; }
   50%  { opacity: 0; }
   100% { opacity: 1; }
 }
+
+.parx-scene {
+  @media screen and (max-width: 560px) {
+    height: 400px;
+  }
+}
+.parallax-img {
+  @media screen and (max-width: 560px) {
+    height: 400px;
+    object-fit: cover;
+  }
+}
 </style>

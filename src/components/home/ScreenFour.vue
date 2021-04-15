@@ -3,6 +3,9 @@
     <div class="container">
 
       <section class="content page-1-content">
+
+        <MobileAnimeScreenFour v-if="isMobile" />
+
         <div class="mb_d-none">
           <div class="timer2">
             <img src="@/assets/img/circle-timer.svg" alt="">
@@ -30,9 +33,15 @@
 </template>
 
 <script>
+import MobileAnimeScreenFour from '@/components/home/MobileAnimeScreenFour'
+
 export default {
   name: 'ScreenFour',
   props: ['screen'],
+  components: { MobileAnimeScreenFour },
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
   mounted() {
   },
   methods: {
@@ -72,6 +81,9 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+  @media screen and (max-width: 560px) {
+    height: auto;
+  }
 }
 .content {
   display: flex;
@@ -110,7 +122,7 @@ export default {
     justify-content: flex-start;
     align-items: flex-end;
     height: auto;
-    padding-top: 40vh;
+    padding-top: 0;
   }
 }
 .start { 
@@ -231,6 +243,10 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-around; 
+  }
+  @media screen and (max-width: 560px) {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
