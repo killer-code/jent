@@ -6,11 +6,11 @@
 
         <section v-if="isMobile" class="mobile-scene-6">
           <img :src="require('@/assets/img/preloader-2-2-min.png')" 
-            data-depth="0.15" 
+            data-depth=".5"
             class="screen-six__img"
             alt="">
           <img :src="require('@/assets/img/preloader-1-2-min.png')" 
-            data-depth="0.1" 
+            data-depth=".7"
             class="screen-six__img"
             alt="">
         </section>

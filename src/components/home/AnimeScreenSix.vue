@@ -57,6 +57,11 @@ export default {
         return .7;
       }
     },
+    isVertical: function() {
+      if ( this.height > this.width ) {
+        return true;
+      }
+    }
   },
   mounted() {},
   methods: {
@@ -108,15 +113,14 @@ export default {
         anim.play();
         anim.onComplete = () => {
           const treshScene = document.querySelector('.scene-006');
-          if ( treshScene ) {
+          if ( treshScene && !this.isVertical ) {
             treshScene.style.display = 'none';
+            this.isStatic = true;
+            const scene = document.querySelector('.parallax-scene');
+            this.parallaxInstance = new this.$parallax(scene);
           }
 
           this.$PIXI.utils.clearTextureCache();
-          this.isStatic = true;
-          
-          const scene = document.querySelector('.parallax-scene');
-          this.parallaxInstance = new this.$parallax(scene);
           this.scrollpage.api.setAllowScrolling(true)
         };
 

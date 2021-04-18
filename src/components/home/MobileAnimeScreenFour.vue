@@ -1,5 +1,11 @@
 <template>
-  <section class="mobile-scene-4"></section>
+  <section class="mobile-scene-4">
+    <div class="wrapper-img scene_mobile_static">
+      <img data-depth=".5"
+        class="img_static"
+        :src="require('@/assets/img/sprites/scene_04/mobile/flackon_static-min.png')" >
+    </div>
+  </section>
 </template>
 
 <script>
@@ -8,14 +14,15 @@ export default {
   data: () => ({
     width: window.innerWidth,
     height: 400,
+    isMobile: window.innerWidth < 561,
 
     json_lines:   require('@/assets/img/sprites/scene_04/mobile/lines.json'),
-    json_flackon: require('@/assets/img/sprites/scene_04/mobile/flackon.json'),
+    // json_flackon: require('@/assets/img/sprites/scene_04/mobile/flackon.json'),
     sprite_img_line:    require('@/assets/img/sprites/scene_04/mobile/lines.webp'),
-    sprite_img_flackon: require('@/assets/img/sprites/scene_04/mobile/flackon.png'),
+    // sprite_img_flackon: require('@/assets/img/sprites/scene_04/mobile/flackon.png'),
 
     sheet_lines: '',
-    sheet_flackon: '',
+    // sheet_flackon: '',
   }),
   computed: {
     app: function() {
@@ -40,12 +47,12 @@ export default {
             const lines = new this.$PIXI.Texture.from(this.sprite_img_line);
             self.sheet_lines  = new this.$PIXI.Spritesheet(lines, this.json_lines);
 
-            const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
-            self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
+            // const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
+            // self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
 
-            this.sheet_flackon.parse(() => {
-              this.onAssetsLoadedFlackon();
-            })
+            // this.sheet_flackon.parse(() => {
+            //   this.onAssetsLoadedFlackon();
+            // })
           })
       } else {
         self.app.loader
@@ -55,16 +62,16 @@ export default {
             const lines = new this.$PIXI.Texture.from(this.sprite_img_line);
             self.sheet_lines  = new this.$PIXI.Spritesheet(lines, this.json_lines);
 
-            const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
-            self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
+            // const flackon = new this.$PIXI.Texture.from(this.sprite_img_flackon);
+            // self.sheet_flackon  = new this.$PIXI.Spritesheet(flackon, this.json_flackon);
             
             this.sheet_lines.parse(() => {
               this.onAssetsLoadedNext();
             })
 
-            this.sheet_flackon.parse(() => {
-              this.onAssetsLoadedFlackon();
-            })
+            // this.sheet_flackon.parse(() => {
+            //   this.onAssetsLoadedFlackon();
+            // })
           })
       }
     },
@@ -96,29 +103,33 @@ export default {
       container.filters = [blurFilter];
       this.app.stage.addChild(container);
     },
-    onAssetsLoadedFlackon() {
-      let frames = [];
+    // onAssetsLoadedFlackon() {
+    //   let frames = [];
 
-      for ( let i = 0; i <= 18; i++ ) {
-        const val = i;
+    //   for ( let i = 0; i <= 2; i++ ) {
+    //     const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`flackon_${val}-min.png`));
-        const anim = new this.$PIXI.AnimatedSprite(frames);
+    //     frames.push(this.$PIXI.Texture.from(`flackon_${val}-min.png`));
+    //     const anim = new this.$PIXI.AnimatedSprite(frames);
         
-        anim.x = this.app.screen.width / 2;
-        anim.y = this.app.screen.height / 2;
-        anim.anchor.set(.5);
-        anim.animationSpeed = .15;
-        anim.scale.set(.3, .3);
-        anim.loop = true;
-        anim.play();
+    //     anim.x = this.app.screen.width / 2;
+    //     anim.y = this.app.screen.height / 2;
+    //     anim.anchor.set(.5);
+    //     anim.animationSpeed = .15;
+    //     anim.scale.set(.3, .3);
+    //     anim.loop = true;
+    //     anim.play();
 
-        this.app.stage.addChild(anim);
-      }
-    },
+    //     this.app.stage.addChild(anim);
+    //   }
+    // },
   },
   mounted() {
     this.createScene();
+    if ( this.isMobile ) {
+      const scene = document.querySelector('.scene_mobile_static');
+      const parallaxInstance = new this.$parallax(scene);
+    }
   }
 }
 </script>
@@ -127,5 +138,15 @@ export default {
 .mobile-scene-4 {
   margin-left: -15px;
   margin-right: -15px;
+}
+.wrapper-img {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 400px;
+  padding: 0;
+}
+.img_static {
+  height: 90%;
 }
 </style>

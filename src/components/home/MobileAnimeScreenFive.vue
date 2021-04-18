@@ -8,8 +8,8 @@ export default {
   data: () => ({
     width: window.innerWidth,
     height: 400,
-    json_neon: require('@/assets/img/sprites/scene_05/mobile/neon.json'),
-    sprite_img: require('@/assets/img/sprites/scene_05/mobile/neon.webp'),
+    json_neon: require('@/assets/img/sprites/scene_05/mobile/new-neon.json'),
+    sprite_img: require('@/assets/img/sprites/scene_05/mobile/new-neon.jpg'),
     sheet_neon: '',
   }),
   computed: {
@@ -61,16 +61,16 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
-      for ( let i = 0; i <= 11; i++ ) {
+      for ( let i = 0; i <= 9; i++ ) {
         const val = i;
 
-        frames.push(this.$PIXI.Texture.from(`neon_${val}-min.webp`));
+        frames.push(this.$PIXI.Texture.from(`neon-old-${val}-min.jpg`));
         const anim = new this.$PIXI.AnimatedSprite(frames);
         
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .1;
+        anim.animationSpeed = .25;
         anim.scale.set(.3, .3);
         anim.loop = true;
         anim.play();

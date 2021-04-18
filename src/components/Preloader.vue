@@ -2,12 +2,12 @@
   <section class="preloader-modal">
     <section class="parx-scene">
         <img class="parallax-img"
-          data-depth="0.05"
+          :data-depth="isMobile ? 0.5 : 0.1"
           :src="require('@/assets/img/preloader-2-2-min.png')" 
           alt="">
 
         <img class="parallax-img"
-          data-depth="0.1"
+          :data-depth="isMobile ? 0.7 : 0.15"
           :src="require('@/assets/img/preloader-1-2-min.png')" 
           alt="">
       </section>
@@ -25,6 +25,9 @@ export default {
   name: 'Preloader',
   components: { BarLoader },
   props: { loaded: Boolean },
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+  }),
   mounted() {
     const scene = document.querySelector('.parx-scene');
     const parallaxInstance = new this.$parallax(scene);

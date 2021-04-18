@@ -16,11 +16,16 @@
 <script>
 export default {
   name: 'MobileAnimeScreenThree',
+  props: { offset: Number },
   data: () => ({
     sprite_star: require('@/assets/img/sprites/scene_03/star.png'),
     startSmoke: false,
     startMol: false,
     width: window.innerWidth,
+    height: window.innerHeight,
+
+    warpSpeed: 0,
+    isJump: false,
   }),
   computed: {
     app: function() {
@@ -36,6 +41,22 @@ export default {
     starTexture: function() {
       return this.$PIXI.Texture.from(this.sprite_star);
     },
+
+    sceneOffset: function() {
+      const scene = document.querySelector('.mobile-scene-3');
+      return scene.getBoundingClientRect().top;
+    },
+    k: function() {
+      if ( this.height < 640 ) {
+        return 1
+      } else if ( this.height < 700 ) {
+        return 2.7
+      } else if ( this.height < 780 ) {
+        return 3.3
+      } else {
+        return 4
+      }
+    }
   },
   methods: {
     onCreateSpace() {
@@ -48,9 +69,8 @@ export default {
       let fov = 20;
       let baseSpeed = 0.025;
       let speed = 0;
-      let warpSpeed = 0;
       let starStretch = 5;
-      let starBaseSize = 0.3;
+      let starBaseSize = 0.2;
 
       let stars = [];
 
@@ -77,13 +97,10 @@ export default {
           stars.push(star);
       }
 
-      warpSpeed = 1;
-      setTimeout(() => { 
-        warpSpeed = 0;
-      }, 1500)
+      // self.warpSpeed = 1;
 
       self.app.ticker.add(function(delta) {
-          speed += (warpSpeed - speed) / 20;
+          speed += (self.warpSpeed - speed) / 20;
           cameraZ += delta * 10 * (speed + baseSpeed);
           for (let i = 0; i < starAmount; i++) {
               let star = stars[i];
@@ -105,13 +122,24 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
-      this.onCreateSpace();
-    }, 3000)
-    setTimeout(() => {
-      this.startSmoke = true;
-      this.startMol = true;
-    }, 4500)
+    this.onCreateSpace();
+  },
+  watch: {
+    offset() {
+      if ( ( this.sceneOffset - 100 * this.k < this.offset ) && !this.isJump ) {
+        this.isJump = true;
+        this.warpSpeed = 1;
+
+        setTimeout(() => { 
+          this.warpSpeed = 0;
+        }, 1500)
+
+        setTimeout(() => {
+          this.startSmoke = true;
+          this.startMol = true;
+        }, 1700)
+      }
+    },
   }
 }
 </script>
@@ -147,6 +175,11 @@ export default {
       padding: 0;
     }
   }
+  @media screen and ( max-width: 560px ) {
+    filter: contrast(5.5);
+    z-index: 1000;
+  }
+  
 }
 
 .molecula {
@@ -161,10 +194,6 @@ export default {
       width: 90%;
     }
   }
-}
-
-.molecula__img {
-  filter: contrast(8.5);
 }
 
 .bac {

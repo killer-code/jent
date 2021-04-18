@@ -3,7 +3,7 @@
     <div class="container">
 
       <section class="content page-1-content">
-        <MobileAnimeScreenThree v-if="isMobile" />
+        <MobileAnimeScreenThree v-if="isMobile" :offset="offset" />
 
         <h2 class="caption-2">
           Действующее<br class="mb_d-none">
@@ -32,6 +32,7 @@ import MobileAnimeScreenThree from '@/components/home/MobileAnimeScreenThree'
 
 export default {
   name: 'ScreenThree',
+  props: { offset: Number },
   components: { MobileAnimeScreenThree },
   data: () => ({
     isMobile: window.innerWidth < 561,
@@ -69,6 +70,7 @@ export default {
   margin: 0 auto;
   max-width: 1920px;
 }
+
 .page-1-content {
   display: flex;
   flex-direction: column;
@@ -79,6 +81,19 @@ export default {
   @media screen and (max-width: 768px) {
     height: auto;
     // margin-top: -20px;
+  }
+  @media ( orientation: portrait ) {
+    @media screen and ( max-width: 768px ) {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding-bottom: 150px;
+      height: 100vh;
+    }
+  }
+  @media screen and ( max-width: 561px ) {
+    height: auto;
+    padding-bottom: 0;
   }
 }
 .start { 

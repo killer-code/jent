@@ -118,7 +118,20 @@ a { text-decoration: none; }
     }
 }
 
-.canvas { filter: contrast(1.4); }
+canvas {
+    @media screen and ( max-width: 560px ) {
+        position: relative;
+        z-index: -1;
+    }
+}
+
+.canvas { 
+    filter: contrast(1.4); 
+    @media screen and ( max-width: 560px ) {
+        position: relative;
+        z-index: -10;
+    }
+}
 .scene { z-index: -1; width: 100%; height: 100vh; }
 
 ._mb-7 { margin-bottom: 28px; }

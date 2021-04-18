@@ -7,9 +7,9 @@
       </div>
 
       <section class="content page-1-content">
-        <div class="mobile-scene">
+        <div v-if="isMobile" class="mobile-scene">
           <img :src="require('@/assets/img/sprites/scene_01/mobile/rotate-min.png')" 
-            data-depth="0.2"
+            data-depth=".5"
             alt="">
         </div>
 
@@ -111,7 +111,7 @@ export default {
   props: ['asideData', 'getAsideData', 'loaded'],
   data: () => ({
     dialog: false,
-    isMobile: window.innerWidth < 560,
+    isMobile: window.innerWidth < 561,
   }),
   methods: {
     openAside(e) {
@@ -347,16 +347,19 @@ export default {
   justify-content: space-between;
 }
 
-.content .mobile-scene {
+.mobile-scene {
   display: none;
   @media screen and (max-width: 560px) {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
+    margin-left: -15px;
   }
 
   & > img {
     max-height: 65vh;
+    position: relative;
+    z-index: 10;
   }
 }
 

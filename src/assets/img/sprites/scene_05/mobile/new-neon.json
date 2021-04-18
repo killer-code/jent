@@ -1,0 +1,92 @@
+{"frames": {
+
+"neon-old-0-min.jpg":
+{
+	"frame": {"x":1,"y":1,"w":456,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-1-min.jpg":
+{
+	"frame": {"x":459,"y":1,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-2-min.jpg":
+{
+	"frame": {"x":1,"y":435,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-3-min.jpg":
+{
+	"frame": {"x":435,"y":459,"w":456,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-4-min.jpg":
+{
+	"frame": {"x":1,"y":435,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-5-min.jpg":
+{
+	"frame": {"x":893,"y":1,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-6-min.jpg":
+{
+	"frame": {"x":893,"y":459,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-7-min.jpg":
+{
+	"frame": {"x":1,"y":893,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-8-min.jpg":
+{
+	"frame": {"x":435,"y":893,"w":456,"h":432},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+},
+"neon-old-9-min.jpg":
+{
+	"frame": {"x":869,"y":917,"w":456,"h":432},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":456,"h":432},
+	"sourceSize": {"w":456,"h":432}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "new-neon.jpg",
+	"format": "RGB888",
+	"size": {"w":1326,"h":1350},
+	"scale": "0.4",
+	"smartupdate": "$TexturePacker:SmartUpdate:31dfa302c600e5cf90700bfb41929e37:002d549ba7703fd3c06cde1e39a37803:6e9d51a40c61064ea74c592693d67a5a$"
+}
+}

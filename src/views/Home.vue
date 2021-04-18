@@ -7,10 +7,11 @@
     </div>
     <div class="section">
       <ScreenTwo :asideData="asideData" 
-        :getAsideData="getAsideData"/>
+        :getAsideData="getAsideData"
+        :offset="offset" />
     </div>
     <div class="section">
-      <ScreenThree />
+      <ScreenThree :offset="offset" />
     </div>
     <div class="section">
       <ScreenFour :screen="screen" />
@@ -51,8 +52,17 @@ export default {
     ScreenFive,
     ScreenSix,
   },
+  data: () => ({
+    isMobile: window.innerWidth < 561,
+    offset: 0,
+  }),
   computed: {
     ...mapGetters(['getAsideData']),
+  },
+  mounted() {
+    window.addEventListener('scroll', e => {
+      this.offset =  window.pageYOffset;
+    })
   },
   watch: {}
 }

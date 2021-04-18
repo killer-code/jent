@@ -2,160 +2,24 @@
 
 "flackon_0-min.png":
 {
-	"frame": {"x":1,"y":1,"w":198,"h":387},
-	"rotated": true,
+	"frame": {"x":0,"y":0,"w":198,"h":387},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
 	"sourceSize": {"w":768,"h":432}
 },
 "flackon_1-min.png":
 {
-	"frame": {"x":390,"y":1,"w":198,"h":387},
-	"rotated": true,
+	"frame": {"x":0,"y":387,"w":198,"h":387},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
 	"sourceSize": {"w":768,"h":432}
 },
 "flackon_2-min.png":
 {
-	"frame": {"x":779,"y":401,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_3-min.png":
-{
-	"frame": {"x":1168,"y":401,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_4-min.png":
-{
-	"frame": {"x":1557,"y":401,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_5-min.png":
-{
-	"frame": {"x":1,"y":601,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_6-min.png":
-{
-	"frame": {"x":390,"y":601,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_7-min.png":
-{
-	"frame": {"x":779,"y":601,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_8-min.png":
-{
-	"frame": {"x":1168,"y":601,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_9-min.png":
-{
-	"frame": {"x":1557,"y":601,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_10-min.png":
-{
-	"frame": {"x":779,"y":1,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_11-min.png":
-{
-	"frame": {"x":1168,"y":1,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_12-min.png":
-{
-	"frame": {"x":1557,"y":1,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_13-min.png":
-{
-	"frame": {"x":1,"y":201,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_14-min.png":
-{
-	"frame": {"x":390,"y":201,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_15-min.png":
-{
-	"frame": {"x":779,"y":201,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_16-min.png":
-{
-	"frame": {"x":1168,"y":201,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_17-min.png":
-{
-	"frame": {"x":1557,"y":201,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_18-min.png":
-{
-	"frame": {"x":1,"y":401,"w":198,"h":387},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
-	"sourceSize": {"w":768,"h":432}
-},
-"flackon_19-min.png":
-{
-	"frame": {"x":390,"y":401,"w":198,"h":387},
-	"rotated": true,
+	"frame": {"x":0,"y":774,"w":198,"h":387},
+	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":339,"y":44,"w":198,"h":387},
 	"sourceSize": {"w":768,"h":432}
@@ -165,8 +29,8 @@
 	"version": "1.0",
 	"image": "flackon.png",
 	"format": "RGBA8888",
-	"size": {"w":1945,"h":800},
+	"size": {"w":198,"h":1161},
 	"scale": "0.4",
-	"smartupdate": "$TexturePacker:SmartUpdate:ce1cf26382b13e066e67010a012bcec0:1faf5880d7dc738b1994e96867dcff66:e894d686dfc90dab2d675960db9c3ce1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e1b0c75bbd70c8ae5029aad83e0975fe:1e2deb1a594062bc24f7adf1ae36a2f0:e894d686dfc90dab2d675960db9c3ce1$"
 }
 }

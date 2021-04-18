@@ -2,7 +2,6 @@
   <section>
     <section class="screen-two">
       <div class="container">
-        <div id="canvas"></div>
 
         <div class="btn_mob" @click="openModal">
           <img src="@/assets/img/cross.svg" alt="">
@@ -10,7 +9,7 @@
         
         <section class="content page-1-content">
 
-          <MobileAnimeScreenTwo />
+          <MobileAnimeScreenTwo :offset="offset" />
 
           <h2 class="caption-2">
             Меньше побочных<br class="mb_d-none"> 
@@ -88,10 +87,9 @@
               </div>
             </div>
         </section>
-
-        <canvas id="smoke"></canvas>
       </section>
     </transition>
+    
   </section>
 </template>
 
@@ -100,7 +98,7 @@ import MobileAnimeScreenTwo from '@/components/home/MobileAnimeScreenTwo'
 
 export default {
   name: 'ScreenTwo',
-  props: ['asideData', 'getAsideData'],
+  props: ['asideData', 'getAsideData', 'offset'],
   components: { MobileAnimeScreenTwo },
   data: () => ({
     dialog: false,
@@ -272,6 +270,7 @@ export default {
   border-radius: 50%;
   background: #f36d01;
   cursor: pointer;
+  z-index: 10;
 
   &:focus { outline: none; }
   @media screen and (max-width: 560px) {
