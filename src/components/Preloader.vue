@@ -57,7 +57,7 @@ body * { pointer-events: none; }
 }
 .preloader {
   width: fit-content;
-  margin: 50px auto 0;
+  margin: 10px auto;
 
   &__txt {
     text-align: center;
@@ -80,6 +80,8 @@ body * { pointer-events: none; }
   }
 }
 .parallax-img {
+  height: 90vh;
+  object-fit: contain;
   @media screen and (max-width: 560px) {
     height: 400px;
     object-fit: cover;

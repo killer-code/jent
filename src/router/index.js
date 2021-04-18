@@ -36,26 +36,26 @@ const routes = [
       clear: true, 
     },
   },
-  {
-    path: '/order',
-    name: 'NewOrder',
-    component: NewOrder,
-    meta: { 
-      layout: 'default', 
-      title: `${SITE_NAME} - Заказ`,
-      age: true, 
-    },
-  },
-  {
-    path: '/moneyback',
-    name: 'GiveMoney',
-    component: GiveMoney,
-    meta: { 
-      layout: 'default', 
-      title: `${SITE_NAME} - Возврат средств`,
-      age: true, 
-    },
-  },
+  // {
+  //   path: '/order',
+  //   name: 'NewOrder',
+  //   component: NewOrder,
+  //   meta: { 
+  //     layout: 'default', 
+  //     title: `${SITE_NAME} - Заказ`,
+  //     age: true, 
+  //   },
+  // },
+  // {
+  //   path: '/moneyback',
+  //   name: 'GiveMoney',
+  //   component: GiveMoney,
+  //   meta: { 
+  //     layout: 'default', 
+  //     title: `${SITE_NAME} - Возврат средств`,
+  //     age: true, 
+  //   },
+  // },
   {
     path: '/instruction',
     name: 'Instruction',
@@ -86,15 +86,15 @@ const routes = [
       age: true, 
     },
   },
-  {
-    path: '/personal-data',
-    name: 'PersonalData',
-    component: PersonalData,
-    meta: { 
-      layout: 'static', 
-      age: true, 
-    },
-  },
+  // {
+  //   path: '/personal-data',
+  //   name: 'PersonalData',
+  //   component: PersonalData,
+  //   meta: { 
+  //     layout: 'static', 
+  //     age: true, 
+  //   },
+  // },
   {
     path: '/404',
     name: 'Err404',

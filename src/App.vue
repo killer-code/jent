@@ -15,26 +15,27 @@ export default {
     height: window.innerHeight,
   }),
   // Проверить какие из параметров неправильно вычесляются (В разнице слишком большие числа получаются)
-  // mounted() {
-  //   window.addEventListener('resize', e => {
-  //     if ( Math.abs(e.target.outerHeight - this.height) > 350 || 
-  //          Math.abs(e.target.outerWidth - this.width) > 350 ) {
-  //           window.location.reload();
-  //     }
-  //     if ( this.width > this.height  ) {
-  //       if ( e.target.outerWidth < e.target.outerHeight ) {
-  //         window.location.reload();
-  //       }
-  //     }
-  //     if ( this.width < this.height  ) {
-  //       if ( e.target.outerWidth > e.target.outerHeight ) {
-  //         window.location.reload();
-  //       }
-  //     }
-  //   })
-  //   window.addEventListener("orientationchange", () => {
-  //     window.location.reload();
-  //   }, false);
-  // }
+  mounted() {
+    window.addEventListener('resize', e => {
+      console.log(e.currentTarget.visualViewport);
+      if ( Math.abs(e.currentTarget.visualViewport.height - this.height) > 100 || 
+           Math.abs(e.currentTarget.visualViewport.width - this.width) > 200 ) {
+            window.location.reload();
+      }
+      if ( this.width > this.height  ) {
+        if ( e.target.outerWidth < e.target.outerHeight ) {
+          window.location.reload();
+        }
+      }
+      if ( this.width < this.height  ) {
+        if ( e.target.outerWidth > e.target.outerHeight ) {
+          window.location.reload();
+        }
+      }
+    })
+    window.addEventListener("orientationchange", () => {
+      window.location.reload();
+    }, false);
+  }
 }
 </script>

@@ -236,6 +236,18 @@ export default {
       }
     }
   },
+  created() {
+    window.addEventListener('load', e => {
+      setTimeout(() => {
+        this.loaded = true;
+      }, 1000)
+    })
+    if ( !this.loaded ) {
+      setTimeout(() => {
+        this.loaded = true;
+      }, 7000)
+    }
+  },
   mounted() {
     const west = document.querySelector('.west');
     west.addEventListener('wheel', e => {
@@ -245,12 +257,6 @@ export default {
     if ( !this.isMob ) {
       this.preload(this.sprites);
     }
-    
-    window.addEventListener('load', e => {
-      setTimeout(() => {
-        this.loaded = true;
-      }, 1000)
-    })
   }
 }
 </script>

@@ -20,12 +20,6 @@
         <router-link to="/webar" class="menu__item">
             WebAR
         </router-link>
-        <router-link to="/order" class="menu__item">
-            Заказать образец
-        </router-link>
-        <router-link to="/moneyback" class="menu__item">
-          Возврат средств
-        </router-link>
         <!-- <router-link to="/" class="menu__item">
           Правовая информация
         </router-link> -->
@@ -33,9 +27,11 @@
         <router-link to="/how-it-works" class="menu__item mb-d">
           Как работает
         </router-link>
-        <router-link to="/" class="menu__item menu__item_btn mb-d">
-          Где купить
-        </router-link>
+        <a href="https://apteka.ru/product/dzhent-5faa2d1ed20e1c0001219169/" 
+          target="_blanck"
+          class="menu__item menu__item_btn mb-d">
+            Где купить
+        </a>
       </div>
     </section>
   </transition>

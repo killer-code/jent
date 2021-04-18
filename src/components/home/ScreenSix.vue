@@ -17,7 +17,7 @@
 
         <h2 class="caption-2">Попробуйте Джент</h2>
 
-        <div class="_mt-7">
+        <!-- <div class="_mt-7">
           <p class="txt txt_left">
             Оформите заказ, чтобы получить флакон нового Джент
             <br class="mb_d-none">
@@ -29,17 +29,18 @@
             <br class="mb_d-none">
             на баланс мобильного телефона в течение 10 дней.
           </p>
-        </div>
+        </div> -->
 
         <div class="app-row _mt-7">
-          <button class="app-btn app-btn_orange"
-            @click="$router.push('/order')">
-            Заказать
-          </button>
-          <button class="app-btn app-btn_white _ml-7"
+          <a href="https://apteka.ru/product/dzhent-5faa2d1ed20e1c0001219169/"
+            target="_blanck"
+            class="app-btn app-btn_orange" >
+              Где купить
+          </a>
+          <!-- <button class="app-btn app-btn_white _ml-7"
             @click="$router.push('/moneyback')">
             Возврат средств
-          </button>
+          </button> -->
         </div>
 
         <section class="txt_small_wrap">
@@ -223,21 +224,27 @@ export default {
   }
 }
 .app-btn {
-  padding: 13px 73px;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  padding: 5px 30px;
   background: none;
   box-sizing: border-box;
   border-radius: 8px;
+  font-size: 19px;
   color: #fff;
   cursor: pointer;
 
   &:focus { outline: none; }
   &_white  { border: 1px solid #fff; }
-  &_orange { border: 1px solid #f36d01; }
+  &_orange { color: #f36d01; border: 1px solid #f36d01; }
 
   @media screen and (max-width: 560px) {
-    padding: 10px 0;
+    padding: 5px 30px;
     width: 100%;
-    margin: 5px 0;
+    margin-top: 35px;
+    margin-bottom: 35px;
   }
 }
 .mb_d-none {
