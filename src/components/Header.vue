@@ -56,6 +56,7 @@ export default {
   }
   @media screen and (max-width: 560px) {
     padding: 20px 15px;
+    background: linear-gradient(180deg, #0A0B11 53%, rgba(10, 11, 17, 0) 107%);
   }
 }
 .app-btn {

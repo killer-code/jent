@@ -7,6 +7,7 @@ import NewOrder     from '@/views/NewOrder'
 import GiveMoney    from '@/views/GiveMoney'
 import Disclaimer   from '@/views/Disclaimer'
 import HowItWorks   from '@/views/HowItWorks'
+import HomeStatic   from '@/views/HomeStatic'
 import Instruction  from '@/views/Instruction'
 import PersonalData from '@/views/PersonalData'
 
@@ -22,6 +23,16 @@ const routes = [
     component: Home,
     meta: { 
       layout: 'general', 
+      title: `${SITE_NAME} - Главна`,
+      age: true,
+    },
+  },
+  {
+    path: '/static',
+    name: 'HomeStatic',
+    component: HomeStatic,
+    meta: { 
+      layout: 'light', 
       title: `${SITE_NAME} - Главна`,
       age: true,
     },

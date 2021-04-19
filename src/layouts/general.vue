@@ -225,6 +225,15 @@ export default {
         this.images[i] = new Image();
         this.images[i].src = require(`@/assets/img/sprites${sprites[i]}`)
       }
+    },
+    supportsWebGL() {
+      try {
+        return !!window.WebGLRenderingContext && 
+          (!!document.createElement('canvas').getContext('webgl') || !!document.createElement('canvas').getContext('webgl2'));
+      } catch( e ) {
+          console.log(e)
+          return false;
+      }
     }
   },
   watch: {
@@ -247,6 +256,8 @@ export default {
         this.loaded = true;
       }, 7000)
     }
+
+    this.supportsWebGL() ? console.log('QWEQWE') : this.$router.push({ name: 'HomeStatic' })
   },
   mounted() {
     const west = document.querySelector('.west');

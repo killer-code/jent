@@ -37,9 +37,9 @@ export default {
       } else if ( this.height < 700 ) {
         return 2.8
       } else if ( this.height < 780 ) {
-        return 3.4
+        return 3
       } else {
-        return 4.4
+        return 4
       }
     }
   },

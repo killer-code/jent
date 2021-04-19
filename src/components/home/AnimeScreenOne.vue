@@ -51,6 +51,7 @@ export default {
   },
   methods: {
     createScene() {
+
       const sequence = document.querySelector('#main-scene');
       const self = this; 
       self.app.view.classList.add('scene-001');
@@ -179,7 +180,12 @@ export default {
     },
     loaded() {
       if ( this.loaded ) {
-        this.createScene();
+        try {
+          this.createScene();
+        } catch (err) {
+          window.location.href = '/static'
+        }
+        
         document.addEventListener('mousemove', e => {
           this.getMouseX(e);
         })
