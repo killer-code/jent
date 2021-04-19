@@ -5,12 +5,17 @@
 <script>
 export default {
   name: 'MobileAnimeScreenFive',
+  props: { offset: Number },
   data: () => ({
     width: window.innerWidth,
     height: 400,
     json_neon: require('@/assets/img/sprites/scene_05/mobile/new-neon.json'),
     sprite_img: require('@/assets/img/sprites/scene_05/mobile/new-neon.jpg'),
     sheet_neon: '',
+    static_img: require('@/assets/img/sprites/scene_05/mobile/new-neon_static-min.jpg'),
+
+    complite: false,
+    startAnimation: false,
   }),
   computed: {
     app: function() {
@@ -22,6 +27,21 @@ export default {
         height: this.height,
       });
     },
+    sceneOffset: function() {
+      const scene = document.querySelector('.mobile-scene-5');
+      return scene.getBoundingClientRect().top;
+    },
+    k: function() {
+      if ( this.height < 640 ) {
+        return 2.1
+      } else if ( this.height < 700 ) {
+        return 2.8
+      } else if ( this.height < 780 ) {
+        return 3.4
+      } else {
+        return 4.4
+      }
+    }
   },
   methods: {
     createScene() {
@@ -35,9 +55,8 @@ export default {
             const neon = new this.$PIXI.Texture.from(this.sprite_img);
             self.sheet_neon  = new this.$PIXI.Spritesheet(neon, this.json_neon);
 
-            self.sheet_neon.parse(() => {
-              this.onAssetsLoadedRepeat();
-            })
+            this.app.ticker.start();
+            this.onAssetsLoadedStart();
           })
       } else {
         self.app.loader
@@ -46,13 +65,27 @@ export default {
             const neon = new this.$PIXI.Texture.from(this.sprite_img);
             self.sheet_neon  = new this.$PIXI.Spritesheet(neon, this.json_neon);
 
-            self.sheet_neon.parse(() => {
-              this.onAssetsLoadedRepeat();
-            })
+            this.app.ticker.start();
+            this.onAssetsLoadedStart();
           })
       }
     },
-    onAssetsLoadedRepeat() {
+    onAssetsLoadedStart() {
+      let frames = [];
+
+      frames.push(this.$PIXI.Texture.from(this.static_img));
+      const anim = new this.$PIXI.AnimatedSprite(frames);
+
+      anim.x = this.app.screen.width / 2;
+      anim.y = this.app.screen.height / 2;
+      anim.anchor.set(.5);
+      anim.animationSpeed = .12;
+      anim.scale.set(.3, .3);
+      anim.loop = false;
+      anim.play();
+      this.app.stage.addChild(anim);
+    },
+    onAssetsLoadedGo() {
       let frames = [];
 
       const childLength = this.app.stage.children.length;
@@ -61,7 +94,7 @@ export default {
           this.app.stage.removeChild(this.app.stage.children[i]);
         };
       }
-      for ( let i = 0; i <= 9; i++ ) {
+      for ( let i = 0; i <= 11; i++ ) {
         const val = i;
 
         frames.push(this.$PIXI.Texture.from(`neon-old-${val}-min.jpg`));
@@ -70,10 +103,14 @@ export default {
         anim.x = this.app.screen.width / 2;
         anim.y = this.app.screen.height / 2;
         anim.anchor.set(.5);
-        anim.animationSpeed = .25;
+        anim.animationSpeed = .15;
         anim.scale.set(.3, .3);
-        anim.loop = true;
+        anim.loop = false;
         anim.play();
+        anim.onComplete = () => {
+          this.app.ticker.stop();
+
+        };
 
         this.app.stage.addChild(anim);
       }
@@ -82,6 +119,21 @@ export default {
   mounted() {
     this.createScene();
   },
+  watch: {
+    offset() {
+      if ( ( this.sceneOffset - 100 * this.k < this.offset ) && !this.complite ) {
+        this.startAnimation = true;
+      }
+    },
+    startAnimation() {
+      this.app.ticker.start();
+      if ( this.startAnimation ) {
+        this.sheet_neon.parse(() => {
+          this.onAssetsLoadedGo();
+        })
+      }
+    }
+  }
 }
 </script>
 

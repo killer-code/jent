@@ -156,6 +156,12 @@ export default {
       }, 10)
     },
   },
+  mounted() {
+    const treshScene = document.querySelector('.scene-005');
+    if ( treshScene ) {
+      document.removeChild(treshScene);
+    }
+  },
   watch: {
     'animationState.one': function() {
       this.createScene();

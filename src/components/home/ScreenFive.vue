@@ -4,7 +4,7 @@
       
       <section class="content page-1-content">
 
-        <MobileAnimeScreenFive v-if="isMobile" />
+        <MobileAnimeScreenFive v-if="isMobile" :offset="offset" />
 
         <h2 class="caption-2">Совместим<br class="mb_d-none"> со всем</h2>
 
@@ -32,6 +32,7 @@ import MobileAnimeScreenFive from '@/components/home/MobileAnimeScreenFive'
 
 export default {
   name: 'ScreenFive',
+  props: { offset: Number },
   components: { MobileAnimeScreenFive },
   data: () => ({
     isMobile: window.innerWidth < 561,

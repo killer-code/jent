@@ -17,7 +17,7 @@
       <ScreenFour :screen="screen" />
     </div>
     <div class="section">
-      <ScreenFive />
+      <ScreenFive :offset="offset" />
     </div>
     <div class="section">
       <ScreenSix />

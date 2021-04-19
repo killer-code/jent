@@ -14,7 +14,6 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
   }),
-  // Проверить какие из параметров неправильно вычесляются (В разнице слишком большие числа получаются)
   mounted() {
     window.addEventListener('resize', e => {
       console.log(e.currentTarget.visualViewport);
