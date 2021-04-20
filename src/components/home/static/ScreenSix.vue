@@ -5,7 +5,10 @@
       <section class="scene-6-static">
         <img class="img-jent_static-1" 
           data-depth-x="-0.05" data-depth-y="-0.05"
-          src="@/assets/img/static/bg-s6-12.png">
+          src="@/assets/img/sprites/scene_06/static/static-back-2-min.png">
+        <img class="img-jent_static-1" 
+          data-depth-x="-0.1" data-depth-y="-0.1"
+          src="@/assets/img/sprites/scene_06/static/static-back-1-min.png">
       </section>
 
       <section class="content page-1-content">
@@ -225,6 +228,9 @@ export default {
   }
 }
 .img-jent_static-1 {
+  position: absolute !important;
+  width: 100vw;
+  height: 100vh;
   @media screen and (max-width: 560px) {
     display: none !important;
   }

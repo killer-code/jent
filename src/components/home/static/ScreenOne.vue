@@ -76,7 +76,8 @@
         <section class="dialog__block">
           <div class="_mb-7">
               <div class="row__header">
-                <Timer :dialog="dialog" />
+                <Timer :dialog="dialog" :loaded="loaded" />
+                
                 <div @click="closeModal">
                   <img src="@/assets/img/icon-close.svg" alt="">
                 </div>
@@ -108,7 +109,7 @@ import Timer from '@/components/Timer'
 export default {
   name: 'ScreenOne',
   components: { Timer },
-  props: ['asideData', 'getAsideData'],
+  props: ['asideData', 'getAsideData', 'loaded'],
   data: () => ({
     dialog: false,
   }),

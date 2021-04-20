@@ -71,7 +71,13 @@ import StaticFooter from '@/components/StaticFooter';
 export default {
   name: 'WebAR',
   metaInfo: {
-    title: 'Jent - WebAR',
+    title: 'Web AR — дополненная реальность в веб | Jent',
+    meta: [
+      { vmid: 'description', property: 'description', 
+        content: 'Пользователи могут получить доступ к просмотру контента ' +
+          'с дополненной реальности, используя мобильный браузер.'
+      },
+    ],
     htmlAttrs: {
       lang: 'ru',
     }

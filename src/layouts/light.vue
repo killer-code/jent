@@ -15,7 +15,7 @@
     <CanvasBackground :loaded="loaded" />
 
     <full-page ref="fullpage" id="fullpage" :options="options">
-      <router-view :asideData="asideData" :screen="scroll" />
+      <router-view :asideData="asideData" :screen="scroll" :loaded="loaded" />
     </full-page>
     
     <Footer :scroll="scroll" 
@@ -99,6 +99,9 @@ export default {
       const el = e.target.closest('.aside_wrap');
       el.scrollTop += e.deltaY;
     })
+    setTimeout(() => {
+      this.loaded = true;
+    }, 500);
   }
 }
 </script>

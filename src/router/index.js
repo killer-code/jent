@@ -15,7 +15,6 @@ import Err404     from '@/views/404'
 
 Vue.use(VueRouter)
 
-const SITE_NAME = 'Jent'
 const routes = [
   {
     path: '/',
@@ -23,7 +22,6 @@ const routes = [
     component: Home,
     meta: { 
       layout: 'general', 
-      title: `${SITE_NAME} - Главна`,
       age: true,
     },
   },
@@ -33,7 +31,6 @@ const routes = [
     component: HomeStatic,
     meta: { 
       layout: 'light', 
-      title: `${SITE_NAME} - Главна`,
       age: true,
     },
   },
@@ -43,7 +40,6 @@ const routes = [
     component: Disclaimer,
     meta: { 
       layout: 'empty', 
-      title: `${SITE_NAME}`,
       clear: true, 
     },
   },
@@ -73,7 +69,6 @@ const routes = [
     component: Instruction,
     meta: { 
       layout: 'static', 
-      title: `${SITE_NAME} - Инструкция`,
       age: true, 
     },
   },
@@ -83,7 +78,6 @@ const routes = [
     component: HowItWorks,
     meta: { 
       layout: 'static', 
-      title: `${SITE_NAME} - Как работает`,
       age: true, 
     },
   },
@@ -93,7 +87,6 @@ const routes = [
     component: WebAR,
     meta: { 
       layout: 'static', 
-      title: `${SITE_NAME} - WebAR`,
       age: true, 
     },
   },

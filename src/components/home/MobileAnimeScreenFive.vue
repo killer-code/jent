@@ -33,11 +33,11 @@ export default {
     },
     k: function() {
       if ( this.height < 640 ) {
-        return 2.1
+        return 2.4
       } else if ( this.height < 700 ) {
-        return 2.8
+        return 2.9
       } else if ( this.height < 780 ) {
-        return 3
+        return 3.3
       } else {
         return 4
       }

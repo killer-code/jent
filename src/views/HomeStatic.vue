@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div class="section">
-      <ScreenOne :asideData="asideData" 
+      <ScreenOne :loaded="loaded"
+        :asideData="asideData" 
         :getAsideData="getAsideData" />
     </div>
     <div class="section">
@@ -36,8 +37,21 @@ import ScreenSix   from '@/components/home/static/ScreenSix'
 // import * as db from '@/api/data.json'
 
 export default {
+  metaInfo: {
+    title: 'Спрей для улучшения мужской потенции джент | Jent',
+    meta: [
+      { vmid: 'description', property: 'description', 
+        content: 'Джент — это инновационное средство для усиления потенции в удобном ' +
+          'формате спрея для приема внутрь. Джент воздействует на естественные механизмы ' + 
+          'возникновения эрекции и начинаетдействовать уже через 10 минут.' 
+      },
+    ],
+    htmlAttrs: {
+      lang: 'ru',
+    }
+  },
   name: 'HomeStatic',
-  props: ['asideData', 'screen'],
+  props: ['asideData', 'screen', 'loaded'],
   components: { 
     ScreenOne, 
     ScreenTwo, 
@@ -49,5 +63,9 @@ export default {
   computed: {
     ...mapGetters(['getAsideData']),
   },
+  mounted() {
+    document.querySelector('body').classList.remove('blocked')
+    document.querySelector('html').classList.remove('blocked')
+  }
 }
 </script>

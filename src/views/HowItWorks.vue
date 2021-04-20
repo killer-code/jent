@@ -84,10 +84,16 @@ import pageData from './HowItWorksData';
 export default {
   name: 'HowItWorks',
   metaInfo: {
-    title: 'Jent - Как работает',
+    title: 'Как работает спрей для потенции джент | Jent',
+    meta: [
+      { vmid: 'description', property: 'description', 
+        content: 'Механизм действия спрея для потенции джент. Для получения мощной эрекции ' +
+          'достаточно двух нажатий, препарат действует через 10 минут.'
+      },
+    ],
     htmlAttrs: {
       lang: 'ru',
-    },
+    }
   },
   components: {
     StaticFooter,

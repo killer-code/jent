@@ -1012,7 +1012,13 @@ import StaticFooter from '@/components/StaticFooter';
 export default {
   name: 'Instruction',
   metaInfo: {
-    title: 'Jent - Инструкция',
+    title: 'Инструкция по применению спрея для потенции джент | Jent',
+    meta: [
+      { vmid: 'description', property: 'description', 
+        content: 'Инструкция по медицинскому применению лекарственного ' +
+          'препарата Джент. Перед применением проконсультируйтесь с врачом.'
+      },
+    ],
     htmlAttrs: {
       lang: 'ru',
     }

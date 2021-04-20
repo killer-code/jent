@@ -48,9 +48,9 @@ export default {
     },
     k: function() {
       if ( this.height < 640 ) {
-        return 1
+        return 1.6
       } else if ( this.height < 700 ) {
-        return 2.7
+        return 2.6
       } else if ( this.height < 780 ) {
         return 3.3
       } else {
@@ -137,7 +137,7 @@ export default {
         setTimeout(() => {
           this.startSmoke = true;
           this.startMol = true;
-        }, 1700)
+        }, 1500)
       }
     },
   }
@@ -205,7 +205,8 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   z-index: -10;
-  background-size: 0%;
+  background-size: 100% 100%;
+  opacity: 0;
   background-blend-mode: lighten;
   
   &_active {
@@ -226,11 +227,11 @@ export default {
 }
 
 @keyframes space {
-  from { background-size: 0% 0%; }
-  to {  background-size: 100% 100%; }
+  from { opacity: 0; }
+  to {  opacity: .7; }
 }
 @keyframes space-vert {
-  from { background-size: 0% 0%; }
-  to {  background-size: 100% 50%; }
+  from { opacity: 0; }
+  to {  opacity: .7; }
 }
 </style>

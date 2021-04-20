@@ -39,7 +39,14 @@ export default {
   name: 'Home',
   props: ['asideData', 'screen', 'loaded'],
   metaInfo: {
-    title: 'Jent',
+    title: 'Спрей для улучшения мужской потенции джент | Jent',
+    meta: [
+      { vmid: 'description', property: 'description', 
+        content: 'Джент — это инновационное средство для усиления потенции в удобном ' +
+          'формате спрея для приема внутрь. Джент воздействует на естественные механизмы ' + 
+          'возникновения эрекции и начинаетдействовать уже через 10 минут.' 
+      },
+    ],
     htmlAttrs: {
       lang: 'ru',
     }
@@ -60,6 +67,9 @@ export default {
     ...mapGetters(['getAsideData']),
   },
   mounted() {
+    document.querySelector('body').classList.remove('blocked')
+    document.querySelector('html').classList.remove('blocked')
+
     window.addEventListener('scroll', e => {
       this.offset =  window.pageYOffset;
     })

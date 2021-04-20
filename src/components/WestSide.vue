@@ -35,8 +35,16 @@
 export default {
   name: 'WestSide',
   props: ['asideData'],
-  mounted() {
-    
+  watch: {
+    'asideData.isOpen': function() {
+      if ( this.asideData.isOpen ) {
+        document.querySelector('body').classList.add('blocked')
+        document.querySelector('html').classList.add('blocked')
+      } else {
+        document.querySelector('body').classList.remove('blocked')
+        document.querySelector('html').classList.remove('blocked')
+      }
+    }
   }
 }
 </script>
@@ -60,7 +68,7 @@ export default {
   max-width: 400px;
   height: 100vh;
   padding: 45px 30px;
-  z-index: 10;
+  z-index: 10000;
 
   @media screen and ( max-width: 560px ) {
     min-width: 100vw;
