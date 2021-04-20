@@ -42,7 +42,7 @@
           class="description__content description__content--spray description__content--with-bg"
         >
           <div class="row">
-            <img :src="item.image" :alt="`${item.id} logo`" class="image" />
+            <img :src="require(`@/assets/img${item.image}`)" :alt="`${item.id} logo`" class="image" />
             <div v-html="item.text" class="text"></div>
           </div>
         </div>
