@@ -2,7 +2,6 @@
   "name": "jent",
   "version": "0.1.0",
   "private": true,
-  "license": "BSD-3-Clause",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
@@ -14,17 +13,18 @@
     "ckeditor4-vue": "^1.2.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
+    "esm": "^3.2.25",
     "moment": "^2.29.1",
     "parallax-js": "^3.1.0",
     "pixi-filters": "^4.0.0",
     "pixi.js": "^5.3.3",
+    "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.6.11",
     "vue-extend-layout": "^2.0.6",
     "vue-fullpage.js": "^0.1.6",
     "vue-masked-input": "^0.5.2",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.2.0",
-    "vue-router-sitemap": "0.0.4",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -34,12 +34,15 @@
     "@vue/cli-service": "~4.5.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4",
+    "sitemap-webpack-plugin": "^1.1.0",
     "style-loader": "^2.0.0",
+    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "license": "BSD-3-Clause"
 }
