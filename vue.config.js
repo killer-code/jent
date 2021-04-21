@@ -1,4 +1,8 @@
-const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const path = require('path')
+const SitemapPlugin = require('sitemap-webpack-plugin').default
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+
 const paths = [
   {
     path: '/',
@@ -41,7 +45,20 @@ module.exports = {
           changefreq: 'weekly',
           priority: 0.8
         }
-      })
+      }),
+
+      // new PrerenderSPAPlugin({
+      //   staticDir: path.join(__dirname, './dist'),
+      //   routes: ['/', '/static', '/instruction', '/how-it-works', '/webar'],
+
+      //   renderer: new Renderer({
+      //     inject: {
+      //         foo: 'bar'
+      //     },
+      //     headless: false,
+      //     renderAfterDocumentEvent: 'render-event'
+      //   })
+      // }),
     ]
   }
 }
