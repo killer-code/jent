@@ -5,7 +5,6 @@ import Home         from '@/views/Home'
 import WebAR        from '@/views/WebAR'
 import NewOrder     from '@/views/NewOrder'
 import GiveMoney    from '@/views/GiveMoney'
-import Disclaimer   from '@/views/Disclaimer'
 import HowItWorks   from '@/views/HowItWorks'
 import HomeStatic   from '@/views/HomeStatic'
 import Instruction  from '@/views/Instruction'
@@ -22,7 +21,7 @@ const routes = [
     component: Home,
     meta: { 
       layout: 'general', 
-      age: true,
+      // age: true,
     },
   },
   {
@@ -31,18 +30,17 @@ const routes = [
     component: HomeStatic,
     meta: { 
       layout: 'light', 
-      age: true,
     },
   },
-  {
-    path: '/age',
-    name: 'Disclaimer',
-    component: Disclaimer,
-    meta: { 
-      layout: 'empty', 
-      clear: true, 
-    },
-  },
+  // {
+  //   path: '/age',
+  //   name: 'Disclaimer',
+  //   component: Disclaimer,
+  //   meta: { 
+  //     layout: 'empty', 
+  //     clear: true, 
+  //   },
+  // },
   // {
   //   path: '/order',
   //   name: 'NewOrder',
@@ -69,7 +67,6 @@ const routes = [
     component: Instruction,
     meta: { 
       layout: 'static', 
-      age: true, 
     },
   },
   {
@@ -77,8 +74,7 @@ const routes = [
     name: 'HowItWorks',
     component: HowItWorks,
     meta: { 
-      layout: 'static', 
-      age: true, 
+      layout: 'static',  
     },
   },
   {
@@ -87,7 +83,6 @@ const routes = [
     component: WebAR,
     meta: { 
       layout: 'static', 
-      age: true, 
     },
   },
   // {
@@ -125,20 +120,20 @@ const router = new VueRouter({
   },
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.age)) {
-    const isOld = localStorage.getItem('old');
-    if ( isOld ) {
-      next();
-    } else { next('/age') }
-  } else if (to.matched.some(record => record.meta.clear)) {
-    const isOld = localStorage.getItem('old');
-    if ( !isOld ) {
-      next();
-    } else { next('/') }
-  } else {
-    next();
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.age)) {
+//     const isOld = localStorage.getItem('old');
+//     if ( isOld ) {
+//       next();
+//     } else { next('/age') }
+//   } else if (to.matched.some(record => record.meta.clear)) {
+//     const isOld = localStorage.getItem('old');
+//     if ( !isOld ) {
+//       next();
+//     } else { next('/') }
+//   } else {
+//     next();
+//   }
+// })
 
 export default router

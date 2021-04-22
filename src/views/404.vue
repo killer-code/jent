@@ -29,7 +29,7 @@
           </div>
 
         <router-link to="/" 
-          class="menu__item menu__item_btn">
+          class="menu__item_btn">
             <span>Вернуться на сайт</span>
         </router-link>
 
