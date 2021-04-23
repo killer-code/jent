@@ -19,7 +19,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_zilch:   require('@/assets/img/sprites/scene_02/pshick.json'),
+    json_zilch:   require('@/assets/img/sprites/scene_02/pshick-2.json'),
     sheet_zilch: '',
   }),
   computed: {

@@ -63,7 +63,7 @@
       :sprite_img="images[5]"
       :scroll="scroll" />
 
-    <full-page ref="fullpage" id="fullpage" :options="options">
+    <full-page ref="fullpage" id="fullpage" :skip-init="true" :options="options">
       <transition name="fade" mode="out-in">
         <router-view :asideData="asideData" :screen="scroll" :loaded="loaded" />
       </transition>
@@ -72,6 +72,7 @@
     <Footer :scroll="scroll" 
       @down="scrollDown" 
       v-if="scroll != 5 && !isMob" />
+
   </section>
 </template>
 
@@ -132,10 +133,10 @@ export default {
     images: [],
     sprites: [
       '/scene_01/rotate.png',
-      '/scene_02/pshick.png',
-      '/scene_04/lines.webp',
+      '/scene_02/pshick-2.png',
+      '/scene_04/lines-2.webp',
       '/scene_04/flackon.png',
-      '/scene_05/neon.webp',
+      '/scene_05/neon-2.webp',
       '/scene_06/back.png',
     ],
   }),
@@ -234,7 +235,7 @@ export default {
           console.log(e)
           return false;
       }
-    }
+    },
   },
   watch: {
     isAsideActive() {
@@ -247,6 +248,22 @@ export default {
   },
   created() {
     window.addEventListener('load', e => {
+      let refs = this.$refs
+      if ( window.innerWidth > 560 ) {
+        let fullpageEnabled = document.documentElement.classList.contains('fp-enabled')
+        
+        if (!fullpageEnabled) {
+          refs.fullpage.init()
+        } else {
+          document.documentElement.classList.remove('fp-enabled')
+          refs.fullpage.destroy('all')
+          refs.fullpage.init()
+        }
+      } else {
+        document.documentElement.classList.remove('fp-enabled')
+        refs.fullpage.destroy('all')
+      }
+
       setTimeout(() => {
         this.loaded = true;
       }, 1000)
@@ -257,7 +274,7 @@ export default {
       }, 7000)
     }
 
-    this.supportsWebGL() ? console.log('QWEQWE') : this.$router.push({ name: 'HomeStatic' })
+    this.supportsWebGL() ? console.log('It is live') : this.$router.push({ name: 'HomeStatic' })
   },
   mounted() {
     const west = document.querySelector('.west');

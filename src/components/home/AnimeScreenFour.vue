@@ -62,7 +62,7 @@ export default {
     width: window.innerWidth,
     height: window.innerHeight,
 
-    json_lines:   require('@/assets/img/sprites/scene_04/lines.json'),
+    json_lines:   require('@/assets/img/sprites/scene_04/lines-2.json'),
     json_flackon: require('@/assets/img/sprites/scene_04/flackon.json'),
 
     sheet_lines: '',

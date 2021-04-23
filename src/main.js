@@ -28,9 +28,9 @@ Vue.prototype.$parallax = Parallax;
 
 Vue.config.productionTip = false
 
-if (screen && screen.width > 560) {
+// if (screen && screen.width > 560) {
   Vue.use(VueFullPage);
-}
+// }
 
 Vue.use(Element, { locale })
 

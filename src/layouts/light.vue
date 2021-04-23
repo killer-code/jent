@@ -14,8 +14,8 @@
 
     <CanvasBackground :loaded="loaded" />
 
-    <full-page ref="fullpage" id="fullpage" :options="options">
-      <router-view :asideData="asideData" :screen="scroll" :loaded="loaded" />
+    <full-page :options="options">
+      <router-view :asideData="asideData" :screen="scroll" :skip-init="true" :loaded="loaded" />
     </full-page>
     
     <Footer :scroll="scroll" 
@@ -81,19 +81,37 @@ export default {
       setTimeout(() => { this.process = true; }, 100)
     },
     scrollDown() {
-      this.$refs.fullpage.api.moveSectionDown();
+      this.$refs.fullpagestatic.api.moveSectionDown();
     },
   },
   watch: {
     isAsideActive() {
       if ( this.isAsideActive ) {
-        this.$refs.fullpage.api.setAllowScrolling(false);
+        this.$refs.fullpagestatic.api.setAllowScrolling(false);
       } else {
-        this.$refs.fullpage.api.setAllowScrolling(true);
+        this.$refs.fullpagestatic.api.setAllowScrolling(true);
       }
     }
   },
   mounted() {
+    window.addEventListener('load', e => {
+      let refs = this.$refs
+      if ( window.innerWidth > 560 ) {
+        let fullpageEnabled = document.documentElement.classList.contains('fp-enabled')
+        
+        if (!fullpageEnabled) {
+          refs.fullpage.init()
+        } else {
+          document.documentElement.classList.remove('fp-enabled')
+          refs.fullpage.destroy('all')
+          refs.fullpage.init()
+        }
+      } else {
+        document.documentElement.classList.remove('fp-enabled')
+        refs.fullpage.destroy('all')
+      }
+    })
+
     const west = document.querySelector('.west');
     west.addEventListener('wheel', e => {
       const el = e.target.closest('.aside_wrap');

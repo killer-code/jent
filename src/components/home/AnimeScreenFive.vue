@@ -17,7 +17,7 @@ export default {
   data: () => ({
     width: window.innerWidth,
     height: window.innerHeight,
-    json_neon: require('@/assets/img/sprites/scene_05/neon.json'),
+    json_neon: require('@/assets/img/sprites/scene_05/neon-2.json'),
     sheet_neon: '',
   }),
   computed: {

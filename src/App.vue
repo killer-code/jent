@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <vue-extend-layouts/>
+    <vue-extend-layouts />
 
-    <section v-show="!isOld" class="disc">
+     <section v-if="!isOld" class="disc">
       <Disclaimer />
     </section>
   </div>
