@@ -47,18 +47,18 @@ module.exports = {
         }
       }),
 
-      new PrerenderSPAPlugin({
-        staticDir: path.join(__dirname, './dist'),
-        routes: ['/', '/static', '/instruction', '/how-it-works', '/webar'],
+      // new PrerenderSPAPlugin({
+      //   staticDir: path.join(__dirname, './dist'),
+      //   routes: ['/', '/static', '/instruction', '/how-it-works', '/webar'],
 
-        renderer: new Renderer({
-          inject: {
-              foo: 'bar'
-          },
-          headless: false,
-          renderAfterDocumentEvent: 'render-event'
-        })
-      }),
+      //   renderer: new Renderer({
+      //     inject: {
+      //         foo: 'bar'
+      //     },
+      //     headless: false,
+      //     renderAfterDocumentEvent: 'render-event'
+      //   })
+      // }),
     ]
   }
 }
