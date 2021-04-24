@@ -107,6 +107,11 @@ export default {
           refs.fullpage.init()
         }
       } else {
+        const element = document.querySelector('.fp-enabled');
+        if ( element ) {
+          element.classList.remove('fp-enabled');
+          document.querySelector('body').style.overflow = 'auto';
+        }
         document.documentElement.classList.remove('fp-enabled')
         refs.fullpage.destroy('all')
       }

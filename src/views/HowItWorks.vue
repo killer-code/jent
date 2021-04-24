@@ -86,7 +86,7 @@ export default {
   metaInfo: {
     title: 'Как работает спрей для потенции джент | Jent',
     meta: [
-      { vmid: 'description', property: 'description', 
+      { vmid: 'description', property: 'description', name: 'description', 
         content: 'Механизм действия спрея для потенции джент. Для получения мощной эрекции ' +
           'достаточно двух нажатий, препарат действует через 10 минут.'
       },

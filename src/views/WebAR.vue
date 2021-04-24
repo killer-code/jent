@@ -73,7 +73,7 @@ export default {
   metaInfo: {
     title: 'Web AR — дополненная реальность в веб | Jent',
     meta: [
-      { vmid: 'description', property: 'description', 
+      { vmid: 'description', property: 'description', name: 'description', 
         content: 'Пользователи могут получить доступ к просмотру контента ' +
           'с дополненной реальности, используя мобильный браузер.'
       },

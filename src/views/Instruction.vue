@@ -1014,7 +1014,7 @@ export default {
   metaInfo: {
     title: 'Инструкция по применению спрея для потенции джент | Jent',
     meta: [
-      { vmid: 'description', property: 'description', 
+      { vmid: 'description', property: 'description', name: 'description',
         content: 'Инструкция по медицинскому применению лекарственного ' +
           'препарата Джент. Перед применением проконсультируйтесь с врачом.'
       },

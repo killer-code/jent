@@ -100,6 +100,7 @@ export default {
     },
 
     onAssetsLoadedNext() {
+      console.log('start')
       let frames = [];
 
       const childLength = this.app.stage.children.length;
@@ -142,6 +143,7 @@ export default {
   },
   watch: {
     offset() {
+      console.log('offset')
       if ( ( this.sceneOffset - 100 * this.k < this.offset ) && !this.complite ) {
         this.startAnimation = true;
       }
