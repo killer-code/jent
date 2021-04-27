@@ -36,29 +36,47 @@ const paths = [
   },
 ];
 
-module.exports = {
-  configureWebpack: {
-    plugins: [
-      new SitemapPlugin({ base: 'http://seq.killercode.site', paths, options: {
-          filename: 'sitemap.xml',
-          lastmod: true,
-          changefreq: 'weekly',
-          priority: 0.8
-        }
-      }),
-
-      // new PrerenderSPAPlugin({
-      //   staticDir: path.join(__dirname, './dist'),
-      //   routes: ['/', '/static', '/instruction', '/how-it-works', '/webar'],
-
-      //   renderer: new Renderer({
-      //     inject: {
-      //         foo: 'bar'
-      //     },
-      //     headless: false,
-      //     renderAfterDocumentEvent: 'render-event'
-      //   })
-      // }),
-    ]
+const getConfig = () => {
+  if ( process.env.VUE_APP_MODE === 'dev' ) {
+    return {
+      plugins: [
+        new SitemapPlugin({ base: 'http://seq.killercode.site', paths, options: {
+            filename: 'sitemap.xml',
+            lastmod: true,
+            changefreq: 'weekly',
+            priority: 0.8
+          }
+        })
+      ]
+    }
+  } else {
+    return {
+      plugins: [
+        new SitemapPlugin({ base: 'http://seq.killercode.site', paths, options: {
+            filename: 'sitemap.xml',
+            lastmod: true,
+            changefreq: 'weekly',
+            priority: 0.8
+          }
+        }),
+  
+        new PrerenderSPAPlugin({
+          staticDir: path.join(__dirname, './dist'),
+          routes: ['/', '/static', '/instruction', '/how-it-works', '/webar'],
+  
+          renderer: new Renderer({
+            inject: {
+                foo: 'bar'
+            },
+            headless: false,
+            renderAfterDocumentEvent: 'render-event'
+          })
+        }),
+      ]
+    }
   }
+}
+
+module.exports = {
+  configureWebpack: getConfig()
 }

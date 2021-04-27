@@ -227,15 +227,6 @@ export default {
         this.images[i].src = require(`@/assets/img/sprites${sprites[i]}`)
       }
     },
-    supportsWebGL() {
-      try {
-        return !!window.WebGLRenderingContext && 
-          (!!document.createElement('canvas').getContext('webgl') || !!document.createElement('canvas').getContext('webgl2'));
-      } catch( e ) {
-          console.log(e)
-          return false;
-      }
-    },
   },
   watch: {
     isAsideActive() {
@@ -278,8 +269,6 @@ export default {
         this.loaded = true;
       }, 7000)
     }
-
-    this.supportsWebGL() ? console.log('It is live') : this.$router.push({ name: 'HomeStatic' })
   },
   mounted() {
     const west = document.querySelector('.west');

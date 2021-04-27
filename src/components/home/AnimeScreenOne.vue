@@ -162,6 +162,7 @@ export default {
     if ( treshScene ) {
       document.removeChild(treshScene);
     }
+    console.log(this.app);
   },
   watch: {
     'animationState.one': function() {

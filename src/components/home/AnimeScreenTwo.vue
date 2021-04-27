@@ -89,6 +89,7 @@ export default {
           this.$PIXI.utils.clearTextureCache();
           this.app.ticker.stop();
           this.scrollpage.api.setAllowScrolling(true);
+          anim.filters = [new this.$PIXI.filters.FXAAFilter()]
         };
         this.app.stage.addChild(anim);
       }
@@ -136,9 +137,13 @@ export default {
       anim.onComplete = () => {
         this.$PIXI.utils.clearTextureCache();
         this.app.ticker.stop();
+        anim.filters = [new this.$PIXI.filters.FXAAFilter()]
       };
       this.app.stage.addChild(anim)
     }
+  },
+  mounted() {
+    console.log(this.app.renderer.gl.getParameter(this.app.renderer.gl.MAX_TEXTURE_SIZE))
   },
   watch: {
     loaded() {
