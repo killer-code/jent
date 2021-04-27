@@ -142,9 +142,6 @@ export default {
       this.app.stage.addChild(anim)
     }
   },
-  mounted() {
-    console.log(this.app.renderer.gl.getParameter(this.app.renderer.gl.MAX_TEXTURE_SIZE))
-  },
   watch: {
     loaded() {
       if ( this.loaded ) {

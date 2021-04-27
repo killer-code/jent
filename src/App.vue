@@ -27,7 +27,6 @@ export default {
   },
   mounted() {
     window.addEventListener('resize', e => {
-      console.log(e.currentTarget.visualViewport);
       if ( Math.abs(e.currentTarget.visualViewport.height - this.height) > 100 || 
            Math.abs(e.currentTarget.visualViewport.width - this.width) > 200 ) {
             window.location.reload();
